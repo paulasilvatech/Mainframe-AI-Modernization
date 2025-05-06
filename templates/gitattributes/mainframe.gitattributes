@@ -1,0 +1,113 @@
+# Mainframe .gitattributes template
+# This template provides Git configuration for mainframe file types
+
+# Default behavior: convert line endings to LF (Unix format) on checkout
+* text=auto
+
+# COBOL source files
+*.cbl text eol=lf working-tree-encoding=utf-8
+*.cob text eol=lf working-tree-encoding=utf-8
+*.CBL text eol=lf working-tree-encoding=utf-8
+*.COB text eol=lf working-tree-encoding=utf-8
+*.copy text eol=lf working-tree-encoding=utf-8
+*.COPY text eol=lf working-tree-encoding=utf-8
+
+# JCL files
+*.jcl text eol=lf working-tree-encoding=utf-8
+*.JCL text eol=lf working-tree-encoding=utf-8
+
+# Assembler files
+*.asm text eol=lf working-tree-encoding=utf-8
+*.ASM text eol=lf working-tree-encoding=utf-8
+
+# PL/I files
+*.pli text eol=lf working-tree-encoding=utf-8
+*.PLI text eol=lf working-tree-encoding=utf-8
+
+# REXX files
+*.rexx text eol=lf working-tree-encoding=utf-8
+*.REXX text eol=lf working-tree-encoding=utf-8
+
+# DB2 SQL files
+*.sql text eol=lf working-tree-encoding=utf-8
+*.SQL text eol=lf working-tree-encoding=utf-8
+
+# JSON/YAML config files
+*.json text eol=lf working-tree-encoding=utf-8
+*.yaml text eol=lf working-tree-encoding=utf-8
+*.yml text eol=lf working-tree-encoding=utf-8
+
+# Special handling for binary files
+*.bin binary
+*.BIN binary
+*.exe binary
+*.EXE binary
+*.dll binary
+*.DLL binary
+*.so binary
+*.SO binary
+*.o binary
+*.O binary
+*.obj binary
+*.OBJ binary
+*.lib binary
+*.LIB binary
+*.a binary
+*.A binary
+
+# EBCDIC-encoded files (if needed for reference)
+# These files are stored as-is, with no conversion
+*.ebcdic binary
+*.EBCDIC binary
+
+# Document files
+*.pdf binary
+*.PDF binary
+*.doc binary
+*.DOC binary
+*.docx binary
+*.DOCX binary
+*.xls binary
+*.XLS binary
+*.xlsx binary
+*.XLSX binary
+*.ppt binary
+*.PPT binary
+*.pptx binary
+*.PPTX binary
+
+# Image files
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.bmp binary
+*.ico binary
+
+# Diff/merge configuration
+# Specify merge drivers for specific file types if needed
+# *.cbl merge=cobol-merge
+
+# Specify custom diff drivers
+# *.cbl diff=cobol-diff
+
+# Language-specific settings
+# This helps GitHub recognize mainframe languages properly
+*.cbl linguist-language=COBOL
+*.cob linguist-language=COBOL
+*.CBL linguist-language=COBOL
+*.COB linguist-language=COBOL
+*.jcl linguist-language=JCL
+*.JCL linguist-language=JCL
+*.asm linguist-language=Assembly
+*.ASM linguist-language=Assembly
+*.pli linguist-language=PLI
+*.PLI linguist-language=PLI
+*.rexx linguist-language=Rexx
+*.REXX linguist-language=Rexx
+
+# Treat generated code and third-party code as vendored
+# This prevents them from being included in language statistics
+**/generated/** linguist-generated=true
+**/vendor/** linguist-vendored=true
+**/thirdparty/** linguist-vendored=true 
