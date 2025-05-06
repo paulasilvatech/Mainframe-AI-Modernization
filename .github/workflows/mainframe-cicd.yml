@@ -1,0 +1,191 @@
+name: Mainframe CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'code/cobol/**'
+      - 'code/jcl/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'code/cobol/**'
+      - 'code/jcl/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate Mainframe Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r code/risk-assessment/requirements.txt
+      
+      - name: Validate COBOL syntax
+        run: |
+          # Using GnuCOBOL for syntax checking
+          sudo apt-get update
+          sudo apt-get install -y gnucobol
+          
+          echo "Validating COBOL programs..."
+          find code/cobol -name "*.cbl" -o -name "*.cob" | while read file; do
+            echo "Checking $file"
+            cobc -fsyntax-only "$file"
+          done
+      
+      - name: Validate JCL
+        run: |
+          echo "Validating JCL files..."
+          python code/risk-assessment/validate_jcl.py
+      
+      - name: Run dependency analysis
+        run: |
+          echo "Analyzing dependencies..."
+          python code/risk-assessment/analyze_dependencies.py
+          
+  risk-assessment:
+    name: AI-Based Risk Assessment
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r code/risk-assessment/requirements.txt
+          pip install azure-identity azure-keyvault-secrets openai
+      
+      - name: Run AI risk assessment
+        env:
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          KEY_VAULT_URL: ${{ secrets.KEY_VAULT_URL }}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        run: |
+          echo "Running AI-based risk assessment..."
+          python code/risk-assessment/assess_risk.py
+      
+      - name: Upload risk report
+        uses: actions/upload-artifact@v3
+        with:
+          name: risk-assessment-report
+          path: risk-assessment-report.md
+  
+  build:
+    name: Build Mainframe Applications
+    needs: risk-assessment
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
+      
+      - name: Build COBOL applications in container
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/code/cobol:/source \
+            -v ${{ github.workspace }}/code/build:/build \
+            ghcr.io/mainframe-tools/gnucobol-compiler:latest \
+            /bin/bash -c "cd /source && ./build.sh"
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: mainframe-executables
+          path: code/build/
+  
+  deploy-dev:
+    name: Deploy to Development Environment
+    needs: build
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: mainframe-executables
+          path: mainframe-executables
+      
+      - name: Deploy to Azure Development Environment
+        env:
+          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+        run: |
+          echo "Deploying to development environment..."
+          # In a real implementation, this would deploy to an Azure environment
+          # configured for mainframe emulation or integration
+          python code/pipelines/deploy_to_dev.py
+      
+      - name: Run integration tests
+        run: |
+          echo "Running integration tests..."
+          python code/pipelines/integration_test.py
+  
+  deploy-prod:
+    name: Deploy to Production
+    needs: deploy-dev
+    if: github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://example.com/mainframe-app
+    steps:
+      - name: Approve production deployment
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: mainframe-admins
+          minimum-approvals: 2
+          issue-title: "Mainframe application deployment to production"
+          issue-body: "Please approve the deployment of the mainframe application to production"
+          exclude-workflow-initiator-as-approver: false
+      
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: mainframe-executables
+          path: mainframe-executables
+      
+      - name: Deploy to Production Environment
+        env:
+          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+        run: |
+          echo "Deploying to production environment..."
+          python code/pipelines/deploy_to_prod.py
+      
+      - name: Verify deployment
+        run: |
+          echo "Verifying production deployment..."
+          python code/pipelines/verify_deployment.py
+      
+      - name: Rollback on failure
+        if: failure()
+        run: |
+          echo "Deployment failed, initiating rollback..."
+          python code/pipelines/rollback.py 
