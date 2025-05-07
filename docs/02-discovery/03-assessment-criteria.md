@@ -2,6 +2,8 @@
 
 This document details the technical assessment criteria used by Azure AI Foundry to evaluate IBM z/OS mainframe applications for modernization.
 
+![Assessment Framework](../../images/assessment-framework.svg)
+
 ## Assessment Framework
 
 Azure AI Foundry uses a multi-dimensional assessment framework to evaluate mainframe applications across technical, operational, and business dimensions.

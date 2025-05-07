@@ -6,7 +6,7 @@ This document provides a comprehensive reference architecture for IBM z/OS mainf
 
 The reference architecture establishes a blueprint for implementing a hybrid modernization approach that enables organizations to modernize IBM z/OS mainframe applications while maintaining operational integrity and business continuity.
 
-![Reference Architecture](../../images/reference-architecture.png)
+![Reference Architecture](../../images/reference-architecture.svg)
 
 This architecture is designed to support multiple modernization patterns, including:
 - Rehosting (lift and shift)
@@ -135,7 +135,7 @@ The reference architecture supports these application patterns:
 
 #### Pattern 1: API-Enabled Mainframe
 
-![API-Enabled Pattern](../../images/api-enabled-pattern.png)
+![API-Enabled Pattern](../../images/api-enabled-pattern.svg)
 
 - Expose mainframe functionality via REST APIs
 - Modern frontends accessing mainframe services
@@ -144,7 +144,7 @@ The reference architecture supports these application patterns:
 
 #### Pattern 2: Hybrid Data Processing
 
-![Hybrid Data Pattern](../../images/hybrid-data-pattern.png)
+![Hybrid Data Pattern](../../images/hybrid-data-pattern.svg)
 
 - Replicate mainframe data to cloud platforms
 - Process data in cloud while maintaining mainframe source
@@ -153,7 +153,7 @@ The reference architecture supports these application patterns:
 
 #### Pattern 3: Incremental Refactoring
 
-![Incremental Refactoring Pattern](../../images/incremental-refactoring-pattern.png)
+![Incremental Refactoring Pattern](../../images/incremental-refactoring-pattern.svg)
 
 - Incrementally refactor components to cloud-native
 - Maintain interoperability with remaining mainframe components
@@ -162,7 +162,7 @@ The reference architecture supports these application patterns:
 
 #### Pattern 4: Containerized Rehosting
 
-![Containerized Rehosting Pattern](../../images/containerized-rehosting-pattern.png)
+![Containerized Rehosting Pattern](../../images/containerized-rehosting-pattern.svg)
 
 - Rehost mainframe applications in containers
 - Maintain application logic with minimal changes

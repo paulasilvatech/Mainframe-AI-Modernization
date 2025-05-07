@@ -1,3 +1,5 @@
+![Modernization Strategy](../../images/modernization-strategy.svg)
+
 # Mainframe Modernization Strategy Guide
 
 This guide outlines strategic approaches for modernizing IBM z/OS mainframe applications using Azure AI Foundry with GitHub and Azure DevOps integration.

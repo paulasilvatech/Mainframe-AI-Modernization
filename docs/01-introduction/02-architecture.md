@@ -2,6 +2,8 @@
 
 This document provides a detailed technical architecture for Azure AI Foundry integration with IBM z/OS environments.
 
+![Architecture Overview](../../images/architecture-overview.svg)
+
 ## Reference Architecture
 
 The following diagram illustrates the comprehensive reference architecture for Azure AI Foundry integration with IBM z/OS:

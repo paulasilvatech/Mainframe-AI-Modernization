@@ -1,5 +1,7 @@
 # Mainframe Inventory Process
 
+![Inventory Architecture](../../images/inventory-architecture.svg)
+
 This document outlines the technical process for creating a comprehensive inventory of IBM z/OS mainframe applications and components using Azure AI Foundry.
 
 ## Inventory Objectives
