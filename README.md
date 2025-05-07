@@ -14,6 +14,173 @@ This technical implementation guide serves as a complete resource for IT profess
 
 The playbook offers detailed implementation guidance for both GitHub and Azure DevOps integration paths, allowing teams to select the platform that best suits their requirements.
 
+## Architecture Overview
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 940">
+    <!-- White background with extended coverage -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Definitions for gradients -->
+    <defs>
+        <linearGradient id="mainframeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.9" />
+        </linearGradient>
+        
+        <linearGradient id="azureGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#0E7490" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.9" />
+        </linearGradient>
+        
+        <linearGradient id="githubGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#4B5563" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#9CA3AF" stop-opacity="0.9" />
+        </linearGradient>
+        
+        <linearGradient id="pipelineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.9" />
+        </linearGradient>
+        
+        <linearGradient id="deploymentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#059669" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#10B981" stop-opacity="0.9" />
+        </linearGradient>
+        
+        <linearGradient id="copilotGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#6366F1" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#818CF8" stop-opacity="0.9" />
+        </linearGradient>
+        
+        <linearGradient id="ghasGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#DC2626" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#EF4444" stop-opacity="0.9" />
+        </linearGradient>
+        
+        <!-- Arrow marker -->
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#94A3B8" />
+        </marker>
+    </defs>
+    
+    <!-- Main Diagram Elements -->
+    <!-- IBM z/OS Mainframe -->
+    <rect x="150" y="50" width="600" height="100" rx="8" fill="url(#mainframeGradient)" />
+    <text x="450" y="90" text-anchor="middle" fill="white" font-size="18" font-weight="bold">IBM z/OS MAINFRAME</text>
+    <text x="250" y="120" text-anchor="middle" fill="white" font-size="14">COBOL</text>
+    <text x="350" y="120" text-anchor="middle" fill="white" font-size="14">PL/I</text>
+    <text x="450" y="120" text-anchor="middle" fill="white" font-size="14">JCL</text>
+    <text x="550" y="120" text-anchor="middle" fill="white" font-size="14">Copybooks</text>
+    <text x="650" y="120" text-anchor="middle" fill="white" font-size="14">Assembler</text>
+    
+    <!-- Connecting Arrow -->
+    <path d="M450,150 L450,190" stroke="#94A3B8" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
+    
+    <!-- Azure AI Foundry -->
+    <rect x="150" y="190" width="600" height="80" rx="8" fill="url(#azureGradient)" />
+    <text x="450" y="230" text-anchor="middle" fill="white" font-size="18" font-weight="bold">AZURE AI FOUNDRY</text>
+    <text x="300" y="255" text-anchor="middle" fill="white" font-size="14">Code Analysis</text>
+    <text x="450" y="255" text-anchor="middle" fill="white" font-size="14">Knowledge Extraction</text>
+    <text x="600" y="255" text-anchor="middle" fill="white" font-size="14">Risk Assessment</text>
+    
+    <!-- Connecting Arrow -->
+    <path d="M450,270 L450,310" stroke="#94A3B8" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
+    
+    <!-- GitHub Ecosystem (Enlarged to include Copilot and GHAS) -->
+    <rect x="150" y="310" width="600" height="160" rx="8" fill="url(#githubGradient)" />
+    <text x="450" y="340" text-anchor="middle" fill="white" font-size="18" font-weight="bold">GITHUB ECOSYSTEM</text>
+    
+    <!-- GitHub Core Components -->
+    <rect x="200" y="360" width="180" height="40" rx="4" fill="white" fill-opacity="0.2" />
+    <text x="290" y="385" text-anchor="middle" fill="white" font-size="14">Code Repository</text>
+    
+    <rect x="520" y="360" width="180" height="40" rx="4" fill="white" fill-opacity="0.2" />
+    <text x="610" y="385" text-anchor="middle" fill="white" font-size="14">GitHub Actions</text>
+    
+    <!-- GitHub Copilot -->
+    <rect x="200" y="410" width="180" height="40" rx="4" fill="url(#copilotGradient)" />
+    <text x="290" y="435" text-anchor="middle" fill="white" font-size="14">GitHub Copilot</text>
+    
+    <!-- GitHub Advanced Security -->
+    <rect x="520" y="410" width="180" height="40" rx="4" fill="url(#ghasGradient)" />
+    <text x="610" y="435" text-anchor="middle" fill="white" font-size="14">GitHub Advanced Security</text>
+    
+    <!-- Connecting Arrow -->
+    <path d="M450,470 L450,510" stroke="#94A3B8" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
+    
+    <!-- CI/CD Pipeline -->
+    <rect x="150" y="510" width="600" height="80" rx="8" fill="url(#pipelineGradient)" />
+    <text x="450" y="540" text-anchor="middle" fill="white" font-size="18" font-weight="bold">CI/CD PIPELINE</text>
+    
+    <!-- Pipeline Steps -->
+    <rect x="190" y="550" width="80" height="25" rx="4" fill="white" fill-opacity="0.2" />
+    <text x="230" y="567" text-anchor="middle" fill="white" font-size="12">Build</text>
+    
+    <path d="M270,562 L310,562" stroke="white" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+    
+    <rect x="310" y="550" width="80" height="25" rx="4" fill="white" fill-opacity="0.2" />
+    <text x="350" y="567" text-anchor="middle" fill="white" font-size="12">Test</text>
+    
+    <path d="M390,562 L430,562" stroke="white" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+    
+    <rect x="430" y="550" width="80" height="25" rx="4" fill="white" fill-opacity="0.2" />
+    <text x="470" y="567" text-anchor="middle" fill="white" font-size="12">Security</text>
+    
+    <path d="M510,562 L550,562" stroke="white" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+    
+    <rect x="550" y="550" width="80" height="25" rx="4" fill="white" fill-opacity="0.2" />
+    <text x="590" y="567" text-anchor="middle" fill="white" font-size="12">Package</text>
+    
+    <path d="M630,562 L670,562" stroke="white" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+    
+    <rect x="670" y="550" width="80" height="25" rx="4" fill="white" fill-opacity="0.2" />
+    <text x="710" y="567" text-anchor="middle" fill="white" font-size="12">Deploy</text>
+    
+    <!-- Connecting Arrow -->
+    <path d="M450,590 L450,630" stroke="#94A3B8" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
+    
+    <!-- Deployment Environments -->
+    <rect x="150" y="630" width="600" height="80" rx="8" fill="url(#deploymentGradient)" />
+    <text x="450" y="660" text-anchor="middle" fill="white" font-size="18" font-weight="bold">DEPLOYMENT ENVIRONMENTS</text>
+    
+    <!-- Deployment Environment Options -->
+    <rect x="190" y="670" width="110" height="25" rx="4" fill="white" fill-opacity="0.2" />
+    <text x="245" y="687" text-anchor="middle" fill="white" font-size="12">Development</text>
+    
+    <rect x="320" y="670" width="110" height="25" rx="4" fill="white" fill-opacity="0.2" />
+    <text x="375" y="687" text-anchor="middle" fill="white" font-size="12">Test</text>
+    
+    <rect x="450" y="670" width="110" height="25" rx="4" fill="white" fill-opacity="0.2" />
+    <text x="505" y="687" text-anchor="middle" fill="white" font-size="12">Staging</text>
+    
+    <rect x="580" y="670" width="110" height="25" rx="4" fill="white" fill-opacity="0.2" />
+    <text x="635" y="687" text-anchor="middle" fill="white" font-size="12">Production</text>
+    
+    <!-- White background for legend section -->
+    <rect x="0" y="720" width="900" height="220" fill="white"/>
+    
+    <!-- Legends Section -->
+    <text x="450" y="750" text-anchor="middle" font-size="18" font-weight="bold" fill="#1F2937">TECHNOLOGY OVERVIEW</text>
+    
+    <!-- Legend Items -->
+    <rect x="150" y="780" width="20" height="20" rx="4" fill="url(#mainframeGradient)" />
+    <text x="180" y="795" font-size="14" fill="#1F2937" text-anchor="start">IBM z/OS Mainframe: Source of legacy code and business logic in COBOL, PL/I, Assembler</text>
+    
+    <rect x="150" y="810" width="20" height="20" rx="4" fill="url(#azureGradient)" />
+    <text x="180" y="825" font-size="14" fill="#1F2937" text-anchor="start">Azure AI Foundry: Specialized analysis of mainframe code, knowledge extraction from legacy systems</text>
+    
+    <rect x="150" y="840" width="20" height="20" rx="4" fill="url(#githubGradient)" />
+    <text x="180" y="855" font-size="14" fill="#1F2937" text-anchor="start">GitHub Ecosystem: Version control, code collaboration, AI-assisted development with Copilot</text>
+    
+    <rect x="150" y="870" width="20" height="20" rx="4" fill="url(#pipelineGradient)" />
+    <text x="180" y="885" font-size="14" fill="#1F2937" text-anchor="start">CI/CD Pipeline: Automates build, test, security checks and deployment processes</text>
+    
+    <rect x="150" y="900" width="20" height="20" rx="4" fill="url(#deploymentGradient)" />
+    <text x="180" y="915" font-size="14" fill="#1F2937" text-anchor="start">Deployment Environments: Progressive delivery through development to production</text>
+</svg>
+
+This diagram illustrates the high-level architecture of the IBM z/OS mainframe modernization approach using Azure AI Foundry with GitHub integration.
+
 ## Who is this playbook for?
 
 - Mainframe developers and administrators
