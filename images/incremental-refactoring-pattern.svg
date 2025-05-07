@@ -1,86 +1,82 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="500" viewBox="0 0 600 500">
-  <style>
-    .title { font-size: 18px; font-weight: bold; font-family: Arial, sans-serif; }
-    .subtitle { font-size: 14px; font-family: Arial, sans-serif; }
-    .header { font-size: 15px; font-weight: bold; font-family: Arial, sans-serif; }
-    .label { font-size: 13px; font-family: Arial, sans-serif; fill: #333; }
-    .small-label { font-size: 12px; font-family: Arial, sans-serif; fill: #333; }
-    .phase { font-size: 11px; font-style: italic; font-family: Arial, sans-serif; fill: #666; }
-    .azure { fill: #0078D4; }
-    .azure-light { fill: #50A0DB; }
-    .mainframe { fill: #0050C5; }
-    .mainframe-light { fill: #4D81BF; }
-    .refactored { fill: #107C10; }
-    .refactored-light { fill: #6BBD6B; }
-    .integration { fill: #8961AA; }
-    .integration-light { fill: #B798CD; }
-    .flow { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 5,3; }
-    .solid-flow { fill: none; stroke: #333; stroke-width: 2; }
-    rect { stroke: #333; stroke-width: 1.5; }
-    .arrow { fill: #666; }
-    .container { fill: #f5f5f5; stroke: #ddd; }
-  </style>
-  
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="500" viewBox="0 0 600 500">
   <!-- Title -->
-  <text x="300" y="35" text-anchor="middle" class="title">Incremental Refactoring Pattern</text>
-  <text x="300" y="55" text-anchor="middle" class="subtitle">Gradually modernizing mainframe components while maintaining interoperability</text>
+  <text x="300" y="35" text-anchor="middle" font-size="18" font-weight="bold" font-family="Arial, sans-serif">Incremental Refactoring Pattern</text>
+  <text x="300" y="55" text-anchor="middle" font-size="14" font-family="Arial, sans-serif">Gradually modernizing components while maintaining integration</text>
   
-  <!-- Phase 1: Initial State -->
-  <rect x="70" y="80" width="460" height="100" rx="10" ry="10" class="container" />
-  <text x="300" y="100" text-anchor="middle" class="header">Phase 1: Initial Assessment</text>
+  <!-- IBM z/OS Environment -->
+  <rect x="100" y="360" width="400" height="100" rx="10" ry="10" fill="#f0f8ff" stroke="#0050C5" stroke-width="1.5" />
+  <text x="300" y="380" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#0050C5">IBM z/OS Environment</text>
   
-  <rect x="100" y="120" width="400" height="40" rx="5" ry="5" class="mainframe-light" />
-  <text x="300" y="145" text-anchor="middle" class="small-label">IBM z/OS Mainframe Applications</text>
+  <!-- Mainframe Core System -->
+  <rect x="200" y="395" width="200" height="50" rx="5" ry="5" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
+  <text x="300" y="415" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">Core Mainframe System</text>
+  <text x="300" y="430" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Business-critical functionality</text>
   
-  <text x="140" y="170" text-anchor="middle" class="phase">Component A</text>
-  <text x="220" y="170" text-anchor="middle" class="phase">Component B</text>
-  <text x="300" y="170" text-anchor="middle" class="phase">Component C</text>
-  <text x="380" y="170" text-anchor="middle" class="phase">Component D</text>
-  <text x="460" y="170" text-anchor="middle" class="phase">Component E</text>
+  <!-- Legacy Components -->
+  <rect x="120" y="395" width="70" height="50" rx="5" ry="5" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
+  <text x="155" y="415" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">Legacy</text>
+  <text x="155" y="430" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">Components</text>
   
-  <!-- Phase 2: First Components Refactored -->
-  <rect x="70" y="190" width="460" height="100" rx="10" ry="10" class="container" />
-  <text x="300" y="210" text-anchor="middle" class="header">Phase 2: Initial Refactoring</text>
+  <rect x="410" y="395" width="70" height="50" rx="5" ry="5" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
+  <text x="445" y="415" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">Legacy</text>
+  <text x="445" y="430" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">Components</text>
   
-  <rect x="100" y="230" width="80" height="40" rx="5" ry="5" class="refactored-light" />
-  <text x="140" y="255" text-anchor="middle" class="small-label">Component A</text>
+  <!-- Integration Layer -->
+  <rect x="100" y="270" width="400" height="70" rx="10" ry="10" fill="#e6e6fa" stroke="#8961AA" stroke-width="1.5" />
+  <text x="300" y="295" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#8961AA">Integration Layer</text>
   
-  <rect x="190" y="230" width="310" height="40" rx="5" ry="5" class="mainframe-light" />
-  <text x="345" y="255" text-anchor="middle" class="small-label">IBM z/OS Mainframe Applications</text>
+  <!-- Integration Components -->
+  <rect x="130" y="310" width="100" height="30" rx="5" ry="5" fill="#B798CD" stroke="#8961AA" stroke-width="1.5" />
+  <text x="180" y="330" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">z/OS Connect</text>
   
-  <rect x="120" y="280" width="360" height="20" rx="5" ry="5" class="integration-light" opacity="0.8" />
-  <text x="300" y="295" text-anchor="middle" class="small-label">Integration Layer (APIs, Event Bus)</text>
+  <rect x="250" y="310" width="100" height="30" rx="5" ry="5" fill="#B798CD" stroke="#8961AA" stroke-width="1.5" />
+  <text x="300" y="330" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">API Management</text>
   
-  <!-- Phase 3: Additional Components Refactored -->
-  <rect x="70" y="320" width="460" height="100" rx="10" ry="10" class="container" />
-  <text x="300" y="340" text-anchor="middle" class="header">Phase 3: Expanded Refactoring</text>
+  <rect x="370" y="310" width="100" height="30" rx="5" ry="5" fill="#B798CD" stroke="#8961AA" stroke-width="1.5" />
+  <text x="420" y="330" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Event Grid</text>
   
-  <rect x="100" y="360" width="240" height="40" rx="5" ry="5" class="refactored-light" />
-  <text x="220" y="385" text-anchor="middle" class="small-label">Components A, B, C</text>
+  <!-- Azure Cloud Environment -->
+  <rect x="100" y="80" width="400" height="170" rx="10" ry="10" fill="#f0f0ff" stroke="#3333cc" stroke-width="1.5" />
+  <text x="300" y="100" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#3333cc">Azure Cloud Environment</text>
   
-  <rect x="350" y="360" width="150" height="40" rx="5" ry="5" class="mainframe-light" />
-  <text x="425" y="385" text-anchor="middle" class="small-label">Components D, E</text>
+  <!-- Cloud Components - Current Phase -->
+  <rect x="130" y="120" width="150" height="50" rx="5" ry="5" fill="#50A0DB" stroke="#0078D4" stroke-width="1.5" />
+  <text x="205" y="143" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="white">Current Phase</text>
   
-  <rect x="120" y="410" width="360" height="20" rx="5" ry="5" class="integration-light" opacity="0.8" />
-  <text x="300" y="425" text-anchor="middle" class="small-label">Enhanced Integration Layer</text>
+  <rect x="140" y="160" width="60" height="30" rx="3" ry="3" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
+  <text x="170" y="180" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Component 1</text>
   
-  <!-- Final State -->
-  <rect x="70" y="450" width="460" height="40" rx="10" ry="10" class="azure-light" opacity="0.7" />
-  <text x="120" y="475" text-anchor="middle" class="small-label">Azure Functions</text>
-  <text x="220" y="475" text-anchor="middle" class="small-label">App Service</text>
-  <text x="320" y="475" text-anchor="middle" class="small-label">Azure Kubernetes</text>
-  <text x="420" y="475" text-anchor="middle" class="small-label">Event Grid</text>
+  <rect x="210" y="160" width="60" height="30" rx="3" ry="3" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
+  <text x="240" y="180" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Component 2</text>
   
-  <!-- Flow Connectors -->
-  <path d="M300,160 L300,190" class="solid-flow" />
-  <path d="M300,300 L300,320" class="solid-flow" />
-  <path d="M300,430 L300,450" class="solid-flow" />
+  <!-- Cloud Components - Next Phase -->
+  <rect x="320" y="120" width="150" height="50" rx="5" ry="5" fill="#fce5cd" stroke="#a64d00" stroke-width="1.5" />
+  <text x="395" y="143" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#783f04">Next Phase</text>
   
-  <!-- Side Indicators -->
-  <rect x="50" y="170" width="10" height="250" rx="5" ry="5" fill="#E5E7EB" />
-  <text x="55" y="295" text-anchor="middle" class="small-label" transform="rotate(-90 55,295)">Incremental Transformation</text>
+  <rect x="330" y="160" width="60" height="30" rx="3" ry="3" fill="#f4b183" stroke="#783f04" stroke-width="1.5" />
+  <text x="360" y="180" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Component 3</text>
   
-  <rect x="540" y="170" width="10" height="250" rx="5" ry="5" fill="#E5E7EB" />
-  <text x="545" y="295" text-anchor="middle" class="small-label" transform="rotate(90 545,295)">Continuous Business Operation</text>
+  <rect x="400" y="160" width="60" height="30" rx="3" ry="3" fill="#f4b183" stroke="#783f04" stroke-width="1.5" />
+  <text x="430" y="180" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Component 4</text>
+  
+  <!-- Future Applications Phase -->
+  <rect x="130" y="200" width="340" height="30" rx="5" ry="5" fill="#d4e8d5" stroke="#38761d" stroke-width="1.5" />
+  <text x="300" y="220" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#fff">Future Phases: Components 5-10 (In Planning)</text>
+  
+  <!-- Flow Arrows -->
+  <path d="M155,395 L155,340" stroke="#333" stroke-width="2" fill="none" />
+  <path d="M300,395 L300,340" stroke="#333" stroke-width="2" fill="none" />
+  <path d="M445,395 L445,340" stroke="#333" stroke-width="2" fill="none" />
+  
+  <path d="M170,310 L170,190" stroke="#333" stroke-width="2" fill="none" />
+  <path d="M300,310 L300,230" stroke="#333" stroke-width="2" fill="none" />
+  <path d="M430,310 L430,190" stroke="#333" stroke-width="2" fill="none" />
+  
+  <!-- Key Benefits -->
+  <rect x="50" y="170" width="30" height="120" rx="5" ry="5" fill="#E5E7EB" stroke="#333" stroke-width="1.5" />
+  <text x="65" y="230" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#333" transform="rotate(-90 65,230)">Gradual Modernization</text>
+  
+  <rect x="520" y="170" width="30" height="120" rx="5" ry="5" fill="#E5E7EB" stroke="#333" stroke-width="1.5" />
+  <text x="535" y="230" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#333" transform="rotate(90 535,230)">Risk Reduction, Faster Time to Value</text>
 </svg> 

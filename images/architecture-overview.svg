@@ -1,132 +1,98 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="900" height="500" viewBox="0 0 900 500">
-  <style>
-    .title { font-size: 18px; font-weight: bold; font-family: Arial, sans-serif; }
-    .subtitle { font-size: 14px; font-family: Arial, sans-serif; }
-    .label { font-size: 13px; font-family: Arial, sans-serif; fill: #333; }
-    .small-label { font-size: 12px; font-family: Arial, sans-serif; fill: #333; }
-    .azure { fill: #0078D4; }
-    .azure-light { fill: #50A0DB; }
-    .ibm { fill: #1F70C1; }
-    .ibm-light { fill: #4D8FC8; }
-    .mainframe { fill: #003A6D; }
-    .mainframe-light { fill: #4D80A5; }
-    .flow { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 5,3; }
-    .solid-flow { fill: none; stroke: #333; stroke-width: 2; }
-    rect, path { stroke: #333; stroke-width: 1.5; }
-    .container { fill: #f5f5f5; stroke: #ddd; }
-    .ai { fill: #8961AA; }
-    .ai-light { fill: #AE95C1; }
-    .github { fill: #2B3137; }
-    .github-light { fill: #6E7478; }
-    .azure-devops { fill: #0078D7; }
-    .azure-devops-light { fill: #50A0DB; }
-  </style>
-  
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
   <!-- Title -->
-  <text x="450" y="35" text-anchor="middle" class="title">IBM z/OS Mainframe Modernization Architecture</text>
-  <text x="450" y="55" text-anchor="middle" class="subtitle">Using Azure AI Foundry with GitHub and Azure DevOps Integration</text>
+  <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold" font-family="Arial, sans-serif">Azure AI Foundry for IBM z/OS Mainframe Modernization</text>
   
-  <!-- IBM z/OS Environment -->
-  <rect x="50" y="100" width="200" height="300" rx="10" ry="10" class="mainframe-light" opacity="0.7" />
-  <text x="150" y="120" text-anchor="middle" class="label" fill="white">IBM z/OS Environment</text>
+  <!-- Cloud Environment -->
+  <rect x="100" y="70" width="600" height="280" rx="15" ry="15" fill="#f0f0ff" stroke="#3333cc" stroke-width="2" />
+  <text x="400" y="95" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#3333cc">Azure Cloud Environment</text>
   
-  <rect x="70" y="140" width="160" height="50" rx="5" ry="5" class="mainframe" />
-  <text x="150" y="170" text-anchor="middle" class="label" fill="white">COBOL Applications</text>
+  <!-- AI Foundry Platform -->
+  <rect x="150" y="110" width="500" height="100" rx="10" ry="10" fill="#ccd9ff" stroke="#0066cc" stroke-width="2" />
+  <text x="400" y="130" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#0066cc">Azure AI Foundry</text>
   
-  <rect x="70" y="200" width="160" height="50" rx="5" ry="5" class="mainframe" />
-  <text x="150" y="230" text-anchor="middle" class="label" fill="white">PL/I Applications</text>
+  <!-- AI Foundry Components -->
+  <rect x="170" y="145" width="100" height="50" rx="5" ry="5" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
+  <text x="220" y="175" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Code Intelligence</text>
   
-  <rect x="70" y="260" width="160" height="50" rx="5" ry="5" class="mainframe" />
-  <text x="150" y="290" text-anchor="middle" class="label" fill="white">JCL Procedures</text>
+  <rect x="290" y="145" width="100" height="50" rx="5" ry="5" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
+  <text x="340" y="175" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Translation Services</text>
   
-  <rect x="70" y="320" width="75" height="50" rx="5" ry="5" class="mainframe" />
-  <text x="107" y="350" text-anchor="middle" class="small-label" fill="white">CICS</text>
+  <rect x="410" y="145" width="100" height="50" rx="5" ry="5" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
+  <text x="460" y="175" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Risk Intelligence</text>
   
-  <rect x="155" y="320" width="75" height="50" rx="5" ry="5" class="mainframe" />
-  <text x="192" y="350" text-anchor="middle" class="small-label" fill="white">DB2</text>
+  <rect x="530" y="145" width="100" height="50" rx="5" ry="5" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
+  <text x="580" y="175" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Operational Intelligence</text>
   
-  <!-- Azure AI Foundry -->
-  <rect x="300" y="100" width="300" height="300" rx="10" ry="10" class="ai-light" opacity="0.7" />
-  <text x="450" y="120" text-anchor="middle" class="label" fill="white">Azure AI Foundry</text>
+  <!-- DevOps Integration -->
+  <rect x="150" y="225" width="230" height="100" rx="10" ry="10" fill="#d0f0d0" stroke="#008000" stroke-width="2" />
+  <text x="265" y="245" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#008000">GitHub Integration</text>
   
-  <rect x="320" y="140" width="260" height="50" rx="5" ry="5" class="ai" />
-  <text x="450" y="170" text-anchor="middle" class="label" fill="white">Code Analysis & Intelligence</text>
+  <rect x="170" y="260" width="90" height="40" rx="5" ry="5" fill="#107C10" stroke="#005500" stroke-width="1.5" />
+  <text x="215" y="282" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Source Control</text>
   
-  <rect x="320" y="200" width="260" height="50" rx="5" ry="5" class="ai" />
-  <text x="450" y="230" text-anchor="middle" class="label" fill="white">Business Rule Extraction</text>
+  <rect x="270" y="260" width="90" height="40" rx="5" ry="5" fill="#107C10" stroke="#005500" stroke-width="1.5" />
+  <text x="315" y="282" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">CI/CD Pipelines</text>
   
-  <rect x="320" y="260" width="260" height="50" rx="5" ry="5" class="ai" />
-  <text x="450" y="290" text-anchor="middle" class="label" fill="white">Transformation Services</text>
+  <!-- Azure DevOps Integration -->
+  <rect x="420" y="225" width="230" height="100" rx="10" ry="10" fill="#f0d0f0" stroke="#800080" stroke-width="2" />
+  <text x="535" y="245" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#800080">Azure DevOps Integration</text>
   
-  <rect x="320" y="320" width="125" height="50" rx="5" ry="5" class="ai" />
-  <text x="382" y="350" text-anchor="middle" class="small-label" fill="white">Risk Assessment</text>
+  <rect x="440" y="260" width="90" height="40" rx="5" ry="5" fill="#8961AA" stroke="#550055" stroke-width="1.5" />
+  <text x="485" y="282" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Work Management</text>
   
-  <rect x="455" y="320" width="125" height="50" rx="5" ry="5" class="ai" />
-  <text x="517" y="350" text-anchor="middle" class="small-label" fill="white">Operational Intelligence</text>
+  <rect x="540" y="260" width="90" height="40" rx="5" ry="5" fill="#8961AA" stroke="#550055" stroke-width="1.5" />
+  <text x="585" y="282" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Release Management</text>
   
-  <!-- Integration Platform -->
-  <rect x="650" y="100" width="200" height="140" rx="10" ry="10" class="github-light" opacity="0.7" />
-  <text x="750" y="120" text-anchor="middle" class="label" fill="white">GitHub Integration</text>
+  <!-- Mainframe Environment -->
+  <rect x="100" y="380" width="600" height="160" rx="15" ry="15" fill="#f0f8ff" stroke="#0050C5" stroke-width="2" />
+  <text x="400" y="405" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#0050C5">IBM z/OS Mainframe Environment</text>
   
-  <rect x="670" y="140" width="160" height="35" rx="5" ry="5" class="github" />
-  <text x="750" y="163" text-anchor="middle" class="small-label" fill="white">Source Control</text>
+  <!-- Mainframe Components -->
+  <rect x="140" y="425" width="120" height="90" rx="8" ry="8" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
+  <text x="200" y="450" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">Applications</text>
+  <text x="200" y="470" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">COBOL, PL/I,</text>
+  <text x="200" y="485" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">Assembler, JCL</text>
   
-  <rect x="670" y="185" width="160" height="35" rx="5" ry="5" class="github" />
-  <text x="750" y="208" text-anchor="middle" class="small-label" fill="white">GitHub Actions</text>
+  <rect x="290" y="425" width="120" height="90" rx="8" ry="8" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
+  <text x="350" y="450" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">Data</text>
+  <text x="350" y="470" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">DB2, VSAM,</text>
+  <text x="350" y="485" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">IMS, Physical Files</text>
   
-  <rect x="650" y="260" width="200" height="140" rx="10" ry="10" class="azure-devops-light" opacity="0.7" />
-  <text x="750" y="280" text-anchor="middle" class="label" fill="white">Azure DevOps Integration</text>
+  <rect x="440" y="425" width="120" height="90" rx="8" ry="8" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
+  <text x="500" y="450" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">Transactions</text>
+  <text x="500" y="470" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">CICS, IMS</text>
+  <text x="500" y="485" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">Batch Processing</text>
   
-  <rect x="670" y="300" width="160" height="35" rx="5" ry="5" class="azure-devops" />
-  <text x="750" y="323" text-anchor="middle" class="small-label" fill="white">Azure Repos</text>
-  
-  <rect x="670" y="345" width="160" height="35" rx="5" ry="5" class="azure-devops" />
-  <text x="750" y="368" text-anchor="middle" class="small-label" fill="white">Azure Pipelines</text>
+  <rect x="590" y="425" width="80" height="90" rx="8" ry="8" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
+  <text x="630" y="450" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">System</text>
+  <text x="630" y="470" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">z/OS</text>
+  <text x="630" y="485" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">Security</text>
   
   <!-- Modernized Applications -->
-  <rect x="300" y="420" width="300" height="60" rx="10" ry="10" class="azure-light" opacity="0.7" />
-  <text x="450" y="440" text-anchor="middle" class="label" fill="white">Modernized Applications</text>
+  <rect x="100" y="550" width="600" height="35" rx="5" ry="5" fill="#ecf0ff" stroke="#0066cc" stroke-width="2" />
+  <text x="400" y="572" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#0066cc">Modernized Applications and Services</text>
   
-  <rect x="320" y="450" width="80" height="20" rx="3" ry="3" class="azure" />
-  <text x="360" y="464" text-anchor="middle" class="small-label" fill="white">App Services</text>
+  <!-- Connection Lines -->
+  <line x1="200" y1="195" x2="200" y2="425" stroke="#333" stroke-width="2" stroke-dasharray="5,3" />
+  <line x1="350" y1="195" x2="350" y2="425" stroke="#333" stroke-width="2" stroke-dasharray="5,3" />
+  <line x1="500" y1="195" x2="500" y2="425" stroke="#333" stroke-width="2" stroke-dasharray="5,3" />
   
-  <rect x="410" y="450" width="80" height="20" rx="3" ry="3" class="azure" />
-  <text x="450" y="464" text-anchor="middle" class="small-label" fill="white">Functions</text>
+  <line x1="265" y1="325" x2="265" y2="425" stroke="#008000" stroke-width="2" stroke-dasharray="5,3" />
+  <line x1="535" y1="325" x2="535" y2="425" stroke="#800080" stroke-width="2" stroke-dasharray="5,3" />
   
-  <rect x="500" y="450" width="80" height="20" rx="3" ry="3" class="azure" />
-  <text x="540" y="464" text-anchor="middle" class="small-label" fill="white">Containers</text>
-  
-  <!-- Connections -->
-  <path d="M250,170 H300" class="solid-flow" />
-  <path d="M250,230 H300" class="solid-flow" />
-  <path d="M250,290 H300" class="solid-flow" />
-  <path d="M250,345 H300" class="solid-flow" />
-  
-  <path d="M600,165 H650" class="flow" />
-  <path d="M600,225 H650" class="flow" />
-  <path d="M600,285 H650" class="flow" />
-  <path d="M600,345 H650" class="flow" />
-  
-  <path d="M450,400 V420" class="solid-flow" />
+  <line x1="400" y1="490" x2="400" y2="550" stroke="#0050C5" stroke-width="2" />
   
   <!-- Legend -->
-  <rect x="600" y="440" width="250" height="50" class="container" />
-  <rect x="610" y="450" width="15" height="15" class="mainframe-light" />
-  <text x="630" y="463" class="small-label">IBM z/OS</text>
+  <rect x="640" y="10" width="20" height="15" fill="#0078D4" stroke="#333" stroke-width="1" />
+  <text x="665" y="22" font-size="10" font-family="Arial, sans-serif">AI Components</text>
   
-  <rect x="690" y="450" width="15" height="15" class="ai-light" />
-  <text x="710" y="463" class="small-label">Azure AI Foundry</text>
+  <rect x="640" y="30" width="20" height="15" fill="#107C10" stroke="#333" stroke-width="1" />
+  <text x="665" y="42" font-size="10" font-family="Arial, sans-serif">GitHub</text>
   
-  <rect x="790" y="450" width="15" height="15" class="github-light" />
-  <text x="810" y="463" class="small-label">GitHub</text>
+  <rect x="640" y="50" width="20" height="15" fill="#8961AA" stroke="#333" stroke-width="1" />
+  <text x="665" y="62" font-size="10" font-family="Arial, sans-serif">Azure DevOps</text>
   
-  <rect x="610" y="470" width="15" height="15" class="azure-devops-light" />
-  <text x="630" y="483" class="small-label">Azure DevOps</text>
-  
-  <line x1="690" y1="476" x2="710" y2="476" class="solid-flow" />
-  <text x="730" y="483" class="small-label">Data Flow</text>
-  
-  <line x1="790" y1="476" x2="810" y2="476" class="flow" />
-  <text x="830" y="483" class="small-label">Integration</text>
+  <rect x="640" y="70" width="20" height="15" fill="#4D81BF" stroke="#333" stroke-width="1" />
+  <text x="665" y="82" font-size="10" font-family="Arial, sans-serif">Mainframe</text>
 </svg> 

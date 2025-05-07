@@ -1,89 +1,86 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="500" viewBox="0 0 600 500">
-  <style>
-    .title { font-size: 18px; font-weight: bold; font-family: Arial, sans-serif; }
-    .subtitle { font-size: 14px; font-family: Arial, sans-serif; }
-    .header { font-size: 15px; font-weight: bold; font-family: Arial, sans-serif; }
-    .label { font-size: 13px; font-family: Arial, sans-serif; fill: #333; }
-    .small-label { font-size: 12px; font-family: Arial, sans-serif; fill: #333; }
-    .azure { fill: #0078D4; }
-    .azure-light { fill: #50A0DB; }
-    .synapse { fill: #0E53A7; }
-    .synapse-light { fill: #5F8FCA; }
-    .data { fill: #8961AA; }
-    .data-light { fill: #B798CD; }
-    .mainframe { fill: #0050C5; }
-    .mainframe-light { fill: #4D81BF; }
-    .flow { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 5,3; }
-    .solid-flow { fill: none; stroke: #333; stroke-width: 2; }
-    .arrow { fill: #666; }
-    rect { stroke: #333; stroke-width: 1.5; }
-    .container { fill: #f5f5f5; stroke: #ddd; }
-  </style>
-  
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="500" viewBox="0 0 600 500">
   <!-- Title -->
-  <text x="300" y="35" text-anchor="middle" class="title">Hybrid Data Processing Pattern</text>
-  <text x="300" y="55" text-anchor="middle" class="subtitle">Enabling cloud analytics on mainframe data</text>
+  <text x="300" y="35" text-anchor="middle" font-size="18" font-weight="bold" font-family="Arial, sans-serif">Hybrid Data Pattern</text>
+  <text x="300" y="55" text-anchor="middle" font-size="14" font-family="Arial, sans-serif">Replicating mainframe data to cloud platforms for modern processing</text>
   
-  <!-- Cloud Analytics Platform -->
-  <rect x="100" y="80" width="400" height="120" rx="10" ry="10" class="synapse-light" opacity="0.7" />
-  <text x="300" y="105" text-anchor="middle" class="header">Cloud Analytics Platform</text>
-  
-  <rect x="130" y="125" width="100" height="30" rx="5" ry="5" class="synapse" />
-  <text x="180" y="145" text-anchor="middle" class="small-label" fill="#fff">Azure Synapse</text>
-  
-  <rect x="250" y="125" width="100" height="30" rx="5" ry="5" class="synapse" />
-  <text x="300" y="145" text-anchor="middle" class="small-label" fill="#fff">Power BI</text>
-  
-  <rect x="370" y="125" width="100" height="30" rx="5" ry="5" class="synapse" />
-  <text x="420" y="145" text-anchor="middle" class="small-label" fill="#fff">Machine Learning</text>
-  
-  <rect x="130" y="165" width="340" height="20" rx="5" ry="5" class="synapse" />
-  <text x="300" y="180" text-anchor="middle" class="small-label" fill="#fff">Data Lake Storage</text>
-  
-  <!-- Data Integration Services -->
-  <rect x="100" y="240" width="400" height="100" rx="10" ry="10" class="azure-light" opacity="0.7" />
-  <text x="300" y="265" text-anchor="middle" class="header">Data Integration Services</text>
-  
-  <rect x="130" y="285" width="100" height="40" rx="5" ry="5" class="azure" />
-  <text x="180" y="310" text-anchor="middle" class="small-label" fill="#fff">Azure Data Factory</text>
-  
-  <rect x="250" y="285" width="100" height="40" rx="5" ry="5" class="azure" />
-  <text x="300" y="310" text-anchor="middle" class="small-label" fill="#fff">Azure Event Hubs</text>
-  
-  <rect x="370" y="285" width="100" height="40" rx="5" ry="5" class="azure" />
-  <text x="420" y="310" text-anchor="middle" class="small-label" fill="#fff">Logic Apps</text>
-  
-  <!-- Data Replication Layer -->
-  <rect x="100" y="380" width="400" height="60" rx="10" ry="10" class="data-light" opacity="0.7" />
-  <text x="300" y="410" text-anchor="middle" class="header">Data Replication Layer</text>
-  
-  <rect x="150" y="420" width="140" height="30" rx="5" ry="5" class="data" />
-  <text x="220" y="440" text-anchor="middle" class="small-label" fill="#fff">Change Data Capture</text>
-  
-  <rect x="310" y="420" width="140" height="30" rx="5" ry="5" class="data" />
-  <text x="380" y="440" text-anchor="middle" class="small-label" fill="#fff">Data Transformation</text>
+  <!-- IBM z/OS Environment -->
+  <rect x="100" y="360" width="400" height="100" rx="10" ry="10" fill="#f0f8ff" stroke="#0050C5" stroke-width="1.5" />
+  <text x="300" y="380" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#0050C5">IBM z/OS Environment</text>
   
   <!-- Mainframe Data Sources -->
-  <rect x="100" y="460" width="400" height="30" rx="5" ry="5" class="mainframe" />
-  <text x="300" y="480" text-anchor="middle" class="small-label" fill="#fff">IBM z/OS Data Sources (DB2, VSAM, IMS)</text>
+  <rect x="130" y="395" width="100" height="50" rx="5" ry="5" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
+  <text x="180" y="415" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">DB2</text>
+  <text x="180" y="435" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Source Data</text>
   
-  <!-- Flow Lines -->
-  <path d="M300,185 L300,240" class="solid-flow" />
-  <path d="M300,340 L300,380" class="solid-flow" />
-  <path d="M300,450 L300,460" class="solid-flow" />
+  <rect x="250" y="395" width="100" height="50" rx="5" ry="5" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
+  <text x="300" y="415" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">IMS DB</text>
+  <text x="300" y="435" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Source Data</text>
+  
+  <rect x="370" y="395" width="100" height="50" rx="5" ry="5" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
+  <text x="420" y="415" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">VSAM</text>
+  <text x="420" y="435" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Source Data</text>
+  
+  <!-- Data Integration Layer -->
+  <rect x="100" y="270" width="400" height="70" rx="10" ry="10" fill="#e6e6fa" stroke="#8961AA" stroke-width="1.5" />
+  <text x="300" y="295" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#8961AA">Data Integration Layer</text>
+  
+  <!-- Integration Components -->
+  <rect x="130" y="310" width="100" height="30" rx="5" ry="5" fill="#B798CD" stroke="#8961AA" stroke-width="1.5" />
+  <text x="180" y="330" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">CDC Tools</text>
+  
+  <rect x="250" y="310" width="100" height="30" rx="5" ry="5" fill="#B798CD" stroke="#8961AA" stroke-width="1.5" />
+  <text x="300" y="330" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">ETL/ELT Pipelines</text>
+  
+  <rect x="370" y="310" width="100" height="30" rx="5" ry="5" fill="#B798CD" stroke="#8961AA" stroke-width="1.5" />
+  <text x="420" y="330" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Data Factory</text>
+  
+  <!-- Azure Cloud Environment -->
+  <rect x="100" y="80" width="400" height="170" rx="10" ry="10" fill="#f0f0ff" stroke="#3333cc" stroke-width="1.5" />
+  <text x="300" y="100" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#3333cc">Azure Cloud Environment</text>
+  
+  <!-- Cloud Data Stores -->
+  <rect x="130" y="120" width="150" height="50" rx="5" ry="5" fill="#50A0DB" stroke="#0078D4" stroke-width="1.5" />
+  <text x="205" y="143" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="white">Data Storage</text>
+  
+  <rect x="140" y="160" width="60" height="30" rx="3" ry="3" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
+  <text x="170" y="180" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Synapse</text>
+  
+  <rect x="210" y="160" width="60" height="30" rx="3" ry="3" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
+  <text x="240" y="180" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Cosmos DB</text>
+  
+  <!-- Cloud Processing -->
+  <rect x="320" y="120" width="150" height="50" rx="5" ry="5" fill="#50A0DB" stroke="#0078D4" stroke-width="1.5" />
+  <text x="395" y="143" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="white">Data Processing</text>
+  
+  <rect x="330" y="160" width="60" height="30" rx="3" ry="3" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
+  <text x="360" y="180" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Databricks</text>
+  
+  <rect x="400" y="160" width="60" height="30" rx="3" ry="3" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
+  <text x="430" y="180" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Stream A.</text>
+  
+  <!-- Modern Applications Layer -->
+  <rect x="130" y="200" width="340" height="30" rx="5" ry="5" fill="#6BBD6B" stroke="#107C10" stroke-width="1.5" />
+  <text x="300" y="220" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Modern Applications &amp; Analytics Dashboards</text>
+  
+  <!-- Flow Arrows -->
+  <path d="M180,395 L180,340" stroke="#333" stroke-width="2" fill="none" />
+  <path d="M300,395 L300,340" stroke="#333" stroke-width="2" fill="none" />
+  <path d="M420,395 L420,340" stroke="#333" stroke-width="2" fill="none" />
+  
+  <path d="M180,310 L180,250 L300,250 L300,230" stroke="#333" stroke-width="2" fill="none" />
+  <path d="M300,310 L300,230" stroke="#333" stroke-width="2" fill="none" />
+  <path d="M420,310 L420,250 L300,250" stroke="#333" stroke-width="2" fill="none" />
+  
+  <path d="M170,200 L170,190" stroke="#333" stroke-width="2" fill="none" />
+  <path d="M240,200 L240,190" stroke="#333" stroke-width="2" fill="none" />
+  <path d="M360,200 L360,190" stroke="#333" stroke-width="2" fill="none" />
+  <path d="M430,200 L430,190" stroke="#333" stroke-width="2" fill="none" />
   
   <!-- Key Benefits -->
-  <rect x="50" y="210" width="30" height="120" rx="5" ry="5" fill="#E5E7EB" />
-  <text x="65" y="270" text-anchor="middle" class="small-label" transform="rotate(-90 65,270)">Real-time Analytics on Mainframe Data</text>
+  <rect x="50" y="170" width="30" height="120" rx="5" ry="5" fill="#E5E7EB" stroke="#333" stroke-width="1.5" />
+  <text x="65" y="230" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#333" transform="rotate(-90 65,230)">Real-time Synchronization</text>
   
-  <rect x="520" y="210" width="30" height="120" rx="5" ry="5" fill="#E5E7EB" />
-  <text x="535" y="270" text-anchor="middle" class="small-label" transform="rotate(90 535,270)">Source System Integrity Preserved</text>
-  
-  <!-- Data Flow Indicators -->
-  <path d="M200,185 L150,185 L150,220 L180,220" class="flow" />
-  <text x="195" y="223" class="small-label">Historical Data</text>
-  
-  <path d="M400,185 L450,185 L450,220 L420,220" class="flow" />
-  <text x="405" y="223" class="small-label">Real-time Data</text>
+  <rect x="520" y="170" width="30" height="120" rx="5" ry="5" fill="#E5E7EB" stroke="#333" stroke-width="1.5" />
+  <text x="535" y="230" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#333" transform="rotate(90 535,230)">Modern Analytics, Legacy Source</text>
 </svg> 

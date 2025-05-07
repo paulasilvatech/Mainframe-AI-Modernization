@@ -1,105 +1,85 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600" viewBox="0 0 800 600">
-  <style>
-    .title { font-size: 18px; font-weight: bold; font-family: Arial, sans-serif; }
-    .subtitle { font-size: 14px; font-family: Arial, sans-serif; }
-    .section-title { font-size: 16px; font-weight: bold; font-family: Arial, sans-serif; }
-    .label { font-size: 13px; font-family: Arial, sans-serif; fill: #333; }
-    .small-label { font-size: 12px; font-family: Arial, sans-serif; fill: #333; }
-    .header { font-size: 15px; font-weight: bold; font-family: Arial, sans-serif; }
-    .tech { fill: #0078D4; }
-    .tech-light { fill: #50A0DB; }
-    .business { fill: #107C10; }
-    .business-light { fill: #6BBD6B; }
-    .ops { fill: #5C2D91; }
-    .ops-light { fill: #9C89B8; }
-    .risk { fill: #D83B01; }
-    .risk-light { fill: #EB8C6A; }
-    .flow { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 5,3; }
-    .solid-flow { fill: none; stroke: #333; stroke-width: 2; }
-    rect { stroke: #333; stroke-width: 1.5; }
-    .arrow { fill: #666; }
-    .container { fill: #f5f5f5; stroke: #ddd; }
-    .metric-box { stroke: #666; stroke-width: 1; }
-  </style>
-  
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
   <!-- Title -->
-  <text x="400" y="35" text-anchor="middle" class="title">AI-Powered Assessment Framework</text>
-  <text x="400" y="55" text-anchor="middle" class="subtitle">Multi-dimensional evaluation for IBM z/OS applications</text>
+  <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold" font-family="Arial, sans-serif">Assessment Framework</text>
+  <text x="400" y="65" text-anchor="middle" font-size="16" font-family="Arial, sans-serif">Azure AI Foundry for IBM z/OS Modernization</text>
   
-  <!-- Main Framework Container -->
-  <rect x="50" y="80" width="700" height="450" rx="10" ry="10" class="container" />
+  <!-- Main container -->
+  <rect x="50" y="80" width="700" height="490" rx="10" ry="10" fill="#f5f5f5" stroke="#666666" stroke-width="2" />
   
-  <!-- Framework Dimensions -->
-  <rect x="75" y="100" width="650" height="70" rx="5" ry="5" fill="#E5E7EB" />
-  <text x="400" y="130" text-anchor="middle" class="section-title">Modernization Assessment Dimensions</text>
-  <text x="400" y="155" text-anchor="middle" class="label">Comprehensive evaluation across business, technical, operational and risk dimensions</text>
+  <!-- Assessment dimensions -->
+  <rect x="100" y="120" width="600" height="80" rx="8" ry="8" fill="#ccd9ff" stroke="#0066cc" stroke-width="1.5" />
+  <text x="400" y="155" text-anchor="middle" font-size="18" font-weight="bold" font-family="Arial, sans-serif" fill="#0066cc">Assessment Dimensions</text>
+  <text x="400" y="180" text-anchor="middle" font-size="14" font-family="Arial, sans-serif" fill="#333333">Multi-dimensional approach for comprehensive mainframe application evaluation</text>
   
-  <!-- Technical Assessment -->
-  <rect x="75" y="190" width="310" height="150" rx="5" ry="5" class="tech-light" opacity="0.7" />
-  <text x="230" y="210" text-anchor="middle" class="header" fill="#333">Technical Assessment</text>
+  <!-- Dimension boxes -->
+  <rect x="110" y="220" width="180" height="160" rx="8" ry="8" fill="#e1f5fe" stroke="#0288d1" stroke-width="1.5" />
+  <text x="200" y="245" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#0288d1">Technical</text>
   
-  <rect x="90" y="225" width="130" height="100" rx="5" ry="5" class="tech" opacity="0.3" />
-  <text x="155" y="245" text-anchor="middle" class="small-label">Code Complexity</text>
-  <text x="155" y="265" text-anchor="middle" class="small-label">15%</text>
-  <text x="155" y="285" text-anchor="middle" class="small-label">• Cyclomatic Complexity</text>
-  <text x="155" y="305" text-anchor="middle" class="small-label">• Control Flow Density</text>
+  <rect x="310" y="220" width="180" height="160" rx="8" ry="8" fill="#e8f5e9" stroke="#388e3c" stroke-width="1.5" />
+  <text x="400" y="245" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#388e3c">Business</text>
   
-  <rect x="240" y="225" width="130" height="100" rx="5" ry="5" class="tech" opacity="0.3" />
-  <text x="305" y="245" text-anchor="middle" class="small-label">Technical Debt</text>
-  <text x="305" y="265" text-anchor="middle" class="small-label">10%</text>
-  <text x="305" y="285" text-anchor="middle" class="small-label">• Dead Code</text>
-  <text x="305" y="305" text-anchor="middle" class="small-label">• Duplicate Logic</text>
+  <rect x="510" y="220" width="180" height="160" rx="8" ry="8" fill="#fff3e0" stroke="#f57c00" stroke-width="1.5" />
+  <text x="600" y="245" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#f57c00">Operational</text>
   
-  <!-- Business Assessment -->
-  <rect x="395" y="190" width="310" height="150" rx="5" ry="5" class="business-light" opacity="0.7" />
-  <text x="550" y="210" text-anchor="middle" class="header" fill="#333">Business Assessment</text>
+  <!-- Technical factors -->
+  <rect x="125" y="260" width="150" height="30" rx="5" ry="5" fill="#29b6f6" stroke="#0288d1" stroke-width="1" />
+  <text x="200" y="280" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Code Complexity</text>
   
-  <rect x="410" y="225" width="130" height="100" rx="5" ry="5" class="business" opacity="0.3" />
-  <text x="475" y="245" text-anchor="middle" class="small-label">Business Value</text>
-  <text x="475" y="265" text-anchor="middle" class="small-label">15%</text>
-  <text x="475" y="285" text-anchor="middle" class="small-label">• Revenue Impact</text>
-  <text x="475" y="305" text-anchor="middle" class="small-label">• Strategic Importance</text>
+  <rect x="125" y="295" width="150" height="30" rx="5" ry="5" fill="#29b6f6" stroke="#0288d1" stroke-width="1" />
+  <text x="200" y="315" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Dependencies</text>
   
-  <rect x="560" y="225" width="130" height="100" rx="5" ry="5" class="business" opacity="0.3" />
-  <text x="625" y="245" text-anchor="middle" class="small-label">Business Rules</text>
-  <text x="625" y="265" text-anchor="middle" class="small-label">15%</text>
-  <text x="625" y="285" text-anchor="middle" class="small-label">• Business Logic Clarity</text>
-  <text x="625" y="305" text-anchor="middle" class="small-label">• Logic Complexity</text>
+  <rect x="125" y="330" width="150" height="30" rx="5" ry="5" fill="#29b6f6" stroke="#0288d1" stroke-width="1" />
+  <text x="200" y="350" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Technical Debt</text>
   
-  <!-- Operational Assessment -->
-  <rect x="75" y="360" width="310" height="150" rx="5" ry="5" class="ops-light" opacity="0.7" />
-  <text x="230" y="380" text-anchor="middle" class="header" fill="#333">Operational Assessment</text>
+  <!-- Business factors -->
+  <rect x="325" y="260" width="150" height="30" rx="5" ry="5" fill="#66bb6a" stroke="#388e3c" stroke-width="1" />
+  <text x="400" y="280" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Business Value</text>
   
-  <rect x="90" y="395" width="130" height="100" rx="5" ry="5" class="ops" opacity="0.3" />
-  <text x="155" y="415" text-anchor="middle" class="small-label">Performance</text>
-  <text x="155" y="435" text-anchor="middle" class="small-label">15%</text>
-  <text x="155" y="455" text-anchor="middle" class="small-label">• CPU Consumption</text>
-  <text x="155" y="475" text-anchor="middle" class="small-label">• I/O Efficiency</text>
+  <rect x="325" y="295" width="150" height="30" rx="5" ry="5" fill="#66bb6a" stroke="#388e3c" stroke-width="1" />
+  <text x="400" y="315" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Strategic Alignment</text>
   
-  <rect x="240" y="395" width="130" height="100" rx="5" ry="5" class="ops" opacity="0.3" />
-  <text x="305" y="415" text-anchor="middle" class="small-label">Dependencies</text>
-  <text x="305" y="435" text-anchor="middle" class="small-label">15%</text>
-  <text x="305" y="455" text-anchor="middle" class="small-label">• System Dependencies</text>
-  <text x="305" y="475" text-anchor="middle" class="small-label">• Component Coupling</text>
+  <rect x="325" y="330" width="150" height="30" rx="5" ry="5" fill="#66bb6a" stroke="#388e3c" stroke-width="1" />
+  <text x="400" y="350" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Cost Implications</text>
   
-  <!-- Risk Assessment -->
-  <rect x="395" y="360" width="310" height="150" rx="5" ry="5" class="risk-light" opacity="0.7" />
-  <text x="550" y="380" text-anchor="middle" class="header" fill="#333">Risk Assessment</text>
+  <!-- Operational factors -->
+  <rect x="525" y="260" width="150" height="30" rx="5" ry="5" fill="#ffa726" stroke="#f57c00" stroke-width="1" />
+  <text x="600" y="280" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Change Frequency</text>
   
-  <rect x="410" y="395" width="130" height="100" rx="5" ry="5" class="risk" opacity="0.3" />
-  <text x="475" y="415" text-anchor="middle" class="small-label">Documentation</text>
-  <text x="475" y="435" text-anchor="middle" class="small-label">5%</text>
-  <text x="475" y="455" text-anchor="middle" class="small-label">• Code Comments</text>
-  <text x="475" y="475" text-anchor="middle" class="small-label">• External Docs</text>
+  <rect x="525" y="295" width="150" height="30" rx="5" ry="5" fill="#ffa726" stroke="#f57c00" stroke-width="1" />
+  <text x="600" y="315" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Resource Availability</text>
   
-  <rect x="560" y="395" width="130" height="100" rx="5" ry="5" class="risk" opacity="0.3" />
-  <text x="625" y="415" text-anchor="middle" class="small-label">Maintenance History</text>
-  <text x="625" y="435" text-anchor="middle" class="small-label">10%</text>
-  <text x="625" y="455" text-anchor="middle" class="small-label">• Change Frequency</text>
-  <text x="625" y="475" text-anchor="middle" class="small-label">• Defect Density</text>
+  <rect x="525" y="330" width="150" height="30" rx="5" ry="5" fill="#ffa726" stroke="#f57c00" stroke-width="1" />
+  <text x="600" y="350" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Support Requirements</text>
   
-  <!-- Scoring and Recommendation -->
-  <rect x="50" y="550" width="700" height="30" rx="5" ry="5" fill="#E5E7EB" />
-  <text x="400" y="570" text-anchor="middle" class="label">Modernization Complexity Index (MCI) = Weighted Sum of All Dimensions</text>
+  <!-- AI Analysis layer -->
+  <rect x="110" y="400" width="580" height="120" rx="8" ry="8" fill="#e8eaf6" stroke="#3f51b5" stroke-width="1.5" />
+  <text x="400" y="425" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#3f51b5">AI-Powered Analysis</text>
+  
+  <!-- AI capabilities -->
+  <rect x="125" y="450" width="160" height="50" rx="5" ry="5" fill="#7986cb" stroke="#3f51b5" stroke-width="1" />
+  <text x="205" y="470" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Automated Code Analysis</text>
+  <text x="205" y="485" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">Pattern Recognition</text>
+  
+  <rect x="310" y="450" width="160" height="50" rx="5" ry="5" fill="#7986cb" stroke="#3f51b5" stroke-width="1" />
+  <text x="390" y="470" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Business Rule Extraction</text>
+  <text x="390" y="485" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">Logic Identification</text>
+  
+  <rect x="495" y="450" width="160" height="50" rx="5" ry="5" fill="#7986cb" stroke="#3f51b5" stroke-width="1" />
+  <text x="575" y="470" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Risk Scoring Model</text>
+  <text x="575" y="485" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">ML-based Recommendations</text>
+  
+  <!-- Decision outputs -->
+  <rect x="100" y="540" width="600" height="50" rx="8" ry="8" fill="#f5f5f5" stroke="#673ab7" stroke-width="2" />
+  <text x="400" y="565" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#673ab7">Modernization Strategy Recommendations</text>
+  <text x="400" y="585" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="#673ab7">(Rehost, Refactor, Rearchitect, Replace)</text>
+  
+  <!-- Flow arrows -->
+  <line x1="200" y1="380" x2="200" y2="400" stroke="#666666" stroke-width="2" stroke-dasharray="5,3" />
+  <line x1="400" y1="380" x2="400" y2="400" stroke="#666666" stroke-width="2" stroke-dasharray="5,3" />
+  <line x1="600" y1="380" x2="600" y2="400" stroke="#666666" stroke-width="2" stroke-dasharray="5,3" />
+  
+  <line x1="200" y1="500" x2="200" y2="540" stroke="#666666" stroke-width="2" />
+  <line x1="400" y1="500" x2="400" y2="540" stroke="#666666" stroke-width="2" />
+  <line x1="600" y1="500" x2="600" y2="540" stroke="#666666" stroke-width="2" />
 </svg> 
