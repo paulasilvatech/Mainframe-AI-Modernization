@@ -943,10 +943,6 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
 | Performance Degradation | Increased response times during hybrid operations | Identify bottlenecks with distributed tracing, optimize integration points, implement caching strategies, review resource allocation |
 | Integration Errors | Functionality works in one system but fails in hybrid mode | Verify error handling consistency, check data type compatibility, validate business rule implementation, ensure transaction boundary consistency |
 
-## Case Studies
-
-For real-world examples of successful hybrid operations implementation during mainframe modernization, refer to the [Case Studies and Examples](../12-case-studies/README.md) chapter.
-
 ## Next Steps
 
 After implementing hybrid operations:

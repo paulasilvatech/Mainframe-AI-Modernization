@@ -112,17 +112,6 @@ Azure AI Foundry enhances implementation of this pattern by:
 - **Test Scenario Generation**: Developing test cases for validation
 - **Performance Optimization**: Recommendations for tuning containerized applications
 
-## Real-World Example
-
-A retail company had an inventory management system running on their mainframe that was reliable but expensive to maintain. They implemented the Containerized Rehosting Pattern to:
-
-1. Containerize their CICS and COBOL applications with minimal changes
-2. Deploy the containers to Azure Kubernetes Service
-3. Implement auto-scaling based on seasonal demand patterns
-4. Integrate with modern microservices for new e-commerce functionality
-
-The solution reduced their operational costs by 40%, improved scalability during peak retail seasons, and provided a path for incremental modernization of specific components in the future.
-
 ## When to Use This Pattern
 
 This pattern is ideal when:

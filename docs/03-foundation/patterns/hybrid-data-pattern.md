@@ -104,17 +104,6 @@ Azure AI Foundry enhances implementation of this pattern by:
 - **Optimization Recommendations**: Suggestions for improving data synchronization efficiency
 - **Schema Evolution**: Managing data model changes over time
 
-## Real-World Example
-
-A global insurance company maintained their policy and claims data in mainframe DB2 and VSAM files but needed modern analytics capabilities. They implemented the Hybrid Data Pattern to:
-
-1. Replicate policy and claims data to Azure Synapse in near real-time
-2. Create a 360-degree customer view by joining mainframe data with CRM data
-3. Develop predictive claims analytics using Azure Databricks
-4. Build executive dashboards with Power BI connecting to cloud data
-
-The solution delivered new analytical capabilities while maintaining the mainframe as the system of record, resulting in 60% faster reporting and $2M annual savings in mainframe costs.
-
 ## When to Use This Pattern
 
 This pattern is ideal when:

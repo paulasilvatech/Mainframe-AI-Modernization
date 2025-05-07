@@ -818,7 +818,6 @@ After completing the AI-powered transformation:
 1. Implement [CI/CD Pipelines](../09-cicd-implementation/README.md) for the transformed applications
 2. Apply [AI-Powered Risk Management](../10-risk-management/README.md) for deployment
 3. Set up [Hybrid Operations Management](../11-hybrid-operations/README.md) for maintaining both legacy and transformed systems during transition
-4. Review [Case Studies and Examples](../12-case-studies/README.md) for industry-specific insights
 
 ## References
 

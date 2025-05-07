@@ -99,17 +99,6 @@ Azure AI Foundry enhances the implementation of this pattern by:
 - **Test Case Generation**: Developing comprehensive test cases for validation
 - **Risk Assessment**: Evaluating technical risks of each component modernization
 
-## Real-World Example
-
-A global transportation company had a monolithic mainframe reservation system with 3.5 million lines of COBOL code. They applied the Incremental Refactoring Pattern to:
-
-1. Modernize the customer profile component first (moved to .NET Core microservices)
-2. Next, refactor the pricing engine (converted to Java microservices)
-3. Then, transform the notification system (implemented with Azure Functions)
-4. Finally, modernize the reservation core (migrated to containerized services)
-
-Throughout the process, their integration layer maintained seamless communication between modernized components and remaining mainframe functionality. The phased approach delivered immediate business benefits while reducing risk, with each phase taking 3-6 months instead of a multi-year complete rewrite.
-
 ## When to Use This Pattern
 
 This pattern is ideal when:

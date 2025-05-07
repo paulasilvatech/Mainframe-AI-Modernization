@@ -98,17 +98,6 @@ Azure AI Foundry assists implementation of this pattern by:
 - **Test Data Generation**: Creating realistic test data for API validation
 - **Documentation**: Producing comprehensive API documentation
 
-## Real-World Example
-
-A large financial institution had critical loan processing functionality in their mainframe systems but needed to provide a modern customer experience. They implemented the API-Enabled Pattern to:
-
-1. Expose loan application processing as REST APIs
-2. Create a responsive web portal for customer self-service
-3. Build an internal mobile app for loan officers
-4. Integrate with third-party credit verification services
-
-The solution preserved their mainframe investment while enabling new digital channels, resulting in 40% faster loan processing and improved customer satisfaction.
-
 ## When to Use This Pattern
 
 This pattern is ideal when:

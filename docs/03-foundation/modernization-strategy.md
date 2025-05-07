@@ -267,13 +267,19 @@ Integrate with the [AI-Powered Risk Management](../10-risk-management/README.md)
 6. **Document Knowledge**: Capture institutional knowledge during transformation
 7. **Upskill Teams**: Invest in training for modern technologies and methodologies
 
-## Case Studies
+## Resources and Next Steps
 
-Refer to [Case Studies and Examples](../12-case-studies/README.md) for real-world examples of mainframe modernization strategies implemented with Azure AI Foundry.
+### Resources
 
-## Next Steps
+- [Governance Framework](governance-framework.md) - Establish the decision-making and control framework
+- [Reference Architecture](reference-architecture.md) - Technical architecture patterns for implementation
+- [Team Organization](team-organization.md) - Structure teams for modernization success
+- [Development Environment](../04-development-environment/README.md) - Configure your development environment
 
-1. Conduct an [Application Discovery and Assessment](../02-discovery/README.md)
-2. Set up your [Development Environment](../04-development-environment/README.md)
-3. Implement [AI-Powered Code Analysis](../05-code-analysis/README.md)
-4. Explore [Integration Options](../06-github-integration/README.md) 
+### Next Steps
+
+1. Complete a detailed application inventory and assessment
+2. Conduct structured workshops to align business and technology stakeholders
+3. Apply the [hybrid portfolio approach](hybrid-strategy.md) to categorize applications
+4. Select appropriate [modernization patterns](patterns/README.md) for each category
+5. Develop a phased implementation roadmap 

@@ -499,7 +499,6 @@ After implementing the risk management framework, validate the implementation us
 After implementing AI-powered risk management, continue to:
 
 1. [Hybrid Operations Management](../11-hybrid-operations/README.md) - Managing hybrid operations across mainframe and modern platforms
-2. [Case Studies and Examples](../12-case-studies/README.md) - Real-world examples and lessons learned
 
 ## Additional Resources
 
