@@ -1,0 +1,55 @@
+name: Sample Mainframe CI/CD Pipeline
+
+# Sample implementation using the reusable mainframe CI/CD workflow template
+# This file demonstrates how to implement the mainframe CI/CD workflow for a specific project
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/cobol/**'
+      - 'src/jcl/**'
+      - 'src/copybook/**'
+      - 'src/pl1/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'src/cobol/**'
+      - 'src/jcl/**'
+      - 'src/copybook/**'
+      - 'src/pl1/**'
+  # Allow manual execution from GitHub UI
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'development'
+        type: choice
+        options:
+          - development
+          - test
+          - staging
+          - production
+      perform_security_scan:
+        description: 'Perform security scan'
+        type: boolean
+        default: true
+
+# Define jobs
+jobs:
+  # Execute the reusable workflow
+  mainframe-cicd:
+    name: Mainframe CI/CD Pipeline
+    uses: ./.github/workflows/mainframe-cicd-workflow.yml
+    with:
+      source-dir: 'src'
+      environment: ${{ github.event.inputs.environment || 'development' }}
+      perform-security-scan: ${{ github.event.inputs.perform_security_scan || true }}
+      deployment-strategy: 'blue-green'
+    secrets:
+      AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+      MAINFRAME_HOST: ${{ secrets.MAINFRAME_HOST }}
+      MAINFRAME_PORT: ${{ secrets.MAINFRAME_PORT }}
+      MAINFRAME_USER: ${{ secrets.MAINFRAME_USER }}
+      MAINFRAME_PASSWORD: ${{ secrets.MAINFRAME_PASSWORD }} 

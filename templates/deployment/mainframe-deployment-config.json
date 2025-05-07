@@ -1,0 +1,208 @@
+{
+  "$schema": "https://schema.azure-ai-foundry.com/mainframe-deployment-v1.0.json",
+  "description": "Mainframe deployment configuration template for IBM z/OS applications",
+  "deploymentStrategy": {
+    "type": "{{deploymentStrategy}}",
+    "options": {
+      "blueGreen": {
+        "verificationTimeout": 300,
+        "switchoverDelay": 30,
+        "autoRollback": true,
+        "healthCheckEndpoint": "/api/health"
+      },
+      "canary": {
+        "initialPercentage": 10,
+        "incrementPercentage": 20,
+        "incrementInterval": 30,
+        "verificationTimeout": 180,
+        "autoRollback": true
+      },
+      "rolling": {
+        "batchSize": 2,
+        "batchInterval": 60,
+        "verificationTimeout": 120,
+        "autoRollback": true
+      }
+    }
+  },
+  "environments": {
+    "development": {
+      "mainframeHost": "{{mainframe_dev_host}}",
+      "mainframePort": "{{mainframe_dev_port}}",
+      "loadLibrary": "DEV.LOADLIB",
+      "copyLibrary": "DEV.COPYLIB",
+      "jclLibrary": "DEV.PROCLIB",
+      "databaseName": "DEVDB01",
+      "transactionPrefix": "DEV",
+      "requiresApproval": false,
+      "approvers": [],
+      "notifications": {
+        "email": ["dev-team@example.com"],
+        "teams": ["DevTeamChannel"]
+      }
+    },
+    "test": {
+      "mainframeHost": "{{mainframe_test_host}}",
+      "mainframePort": "{{mainframe_test_port}}",
+      "loadLibrary": "TEST.LOADLIB",
+      "copyLibrary": "TEST.COPYLIB",
+      "jclLibrary": "TEST.PROCLIB",
+      "databaseName": "TESTDB01",
+      "transactionPrefix": "TST",
+      "requiresApproval": true,
+      "approvers": ["test-manager"],
+      "notifications": {
+        "email": ["test-team@example.com"],
+        "teams": ["TestTeamChannel"]
+      }
+    },
+    "staging": {
+      "mainframeHost": "{{mainframe_staging_host}}",
+      "mainframePort": "{{mainframe_staging_port}}",
+      "loadLibrary": "STAGING.LOADLIB",
+      "copyLibrary": "STAGING.COPYLIB",
+      "jclLibrary": "STAGING.PROCLIB",
+      "databaseName": "STGDB01",
+      "transactionPrefix": "STG",
+      "requiresApproval": true,
+      "approvers": ["release-manager", "qa-lead"],
+      "notifications": {
+        "email": ["staging-team@example.com"],
+        "teams": ["StagingTeamChannel"]
+      }
+    },
+    "production": {
+      "mainframeHost": "{{mainframe_prod_host}}",
+      "mainframePort": "{{mainframe_prod_port}}",
+      "loadLibrary": "PROD.LOADLIB",
+      "copyLibrary": "PROD.COPYLIB",
+      "jclLibrary": "PROD.PROCLIB",
+      "databaseName": "PRODDB01",
+      "transactionPrefix": "PRD",
+      "requiresApproval": true,
+      "approvers": ["release-manager", "operations-lead", "business-owner"],
+      "notifications": {
+        "email": ["operations@example.com", "business-stakeholders@example.com"],
+        "teams": ["ProductionDeployChannel"]
+      },
+      "deploymentWindow": {
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "timeRange": ["22:00", "04:00"]
+      }
+    }
+  },
+  "components": {
+    "cobol": {
+      "deploymentType": "load-module",
+      "sourceExtension": ".cbl",
+      "objectExtension": ".load",
+      "verificationMethod": "runtime-test"
+    },
+    "pli": {
+      "deploymentType": "load-module",
+      "sourceExtension": ".pli",
+      "objectExtension": ".load",
+      "verificationMethod": "runtime-test"
+    },
+    "jcl": {
+      "deploymentType": "procedure",
+      "sourceExtension": ".jcl",
+      "verificationMethod": "syntax-check"
+    },
+    "copybook": {
+      "deploymentType": "source",
+      "sourceExtension": ".cpy",
+      "verificationMethod": "reference-check"
+    },
+    "dclgen": {
+      "deploymentType": "source",
+      "sourceExtension": ".dclgen",
+      "verificationMethod": "reference-check"
+    }
+  },
+  "verificationTests": {
+    "development": {
+      "runUnitTests": true,
+      "runIntegrationTests": true,
+      "runPerformanceTests": false,
+      "testTimeout": 300
+    },
+    "test": {
+      "runUnitTests": true,
+      "runIntegrationTests": true,
+      "runPerformanceTests": true,
+      "testTimeout": 600
+    },
+    "staging": {
+      "runUnitTests": true,
+      "runIntegrationTests": true,
+      "runPerformanceTests": true,
+      "testTimeout": 900
+    },
+    "production": {
+      "runUnitTests": false,
+      "runIntegrationTests": true,
+      "runPerformanceTests": false,
+      "testTimeout": 300
+    }
+  },
+  "rollback": {
+    "automatic": true,
+    "triggers": {
+      "testFailureThreshold": 10,
+      "deploymentTimeout": 1800,
+      "criticalErrors": ["DB-CORRUPTION", "DATA-INTEGRITY-VIOLATION", "SECURITY-BREACH"]
+    },
+    "strategy": {
+      "type": "full-revert",
+      "options": {
+        "preserveBackup": true,
+        "backupRetentionDays": 7,
+        "notifyOnRollback": true
+      }
+    }
+  },
+  "security": {
+    "scanBeforeDeployment": true,
+    "vulnerabilityThreshold": "medium",
+    "complianceChecks": ["PCI-DSS", "HIPAA", "SOX"],
+    "securityGroups": {
+      "development": ["DEV-ACCESS"],
+      "test": ["TEST-ACCESS"],
+      "staging": ["STAGING-ACCESS"],
+      "production": ["PROD-ACCESS", "PROD-ADMIN"]
+    }
+  },
+  "monitoring": {
+    "healthCheck": {
+      "enabled": true,
+      "interval": 60,
+      "timeout": 30,
+      "retries": 3
+    },
+    "metrics": {
+      "collect": true,
+      "interval": 60
+    },
+    "alerts": {
+      "enabled": true,
+      "recipients": ["alerts@example.com"]
+    }
+  },
+  "aiFoundry": {
+    "riskAssessment": {
+      "enabled": true,
+      "threshold": "medium",
+      "categories": ["security", "performance", "compatibility", "business-impact"]
+    },
+    "intelligentRollback": {
+      "enabled": true,
+      "predictionThreshold": 0.7
+    },
+    "anomalyDetection": {
+      "enabled": true,
+      "sensitivity": "medium",
+      "learningPeriod": 7
+    }
+  }
+} 

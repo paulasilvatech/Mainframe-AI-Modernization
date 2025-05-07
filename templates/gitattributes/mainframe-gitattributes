@@ -1,0 +1,58 @@
+# .gitattributes template for IBM z/OS mainframe code repositories
+# This file ensures proper handling of mainframe code in Git
+
+# Default behavior for all files
+* text=auto
+
+# COBOL source files
+*.cbl text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
+*.cob text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
+*.cpy text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
+
+# PL/I source files
+*.pli text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
+*.inc text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
+
+# JCL procedures
+*.jcl text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
+*.proc text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
+
+# Assembler source files
+*.asm text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
+*.mac text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
+
+# REXX scripts
+*.rexx text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
+*.rex text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
+
+# DCLGEN files
+*.dclgen text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
+
+# Binary files (no conversion)
+*.load binary
+*.so binary
+*.dll binary
+*.exe binary
+*.bin binary
+*.obj binary
+
+# Documentation and configuration files
+*.md text
+*.txt text
+*.json text
+*.yaml text
+*.yml text
+*.xml text
+
+# Treat these files as text with consistent line endings
+*.sh text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Special attribute for GitHub user experience
+*.cbl linguist-language=COBOL
+*.cob linguist-language=COBOL
+*.pli linguist-language=PLI
+*.jcl linguist-language=JCL
+*.asm linguist-language=Assembly
+*.rexx linguist-language=REXX 

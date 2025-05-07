@@ -1,0 +1,363 @@
+# Azure DevOps Pipeline Template for Mainframe CI/CD with Azure AI Foundry
+# This template can be used in other pipelines with the "template" keyword
+
+parameters:
+- name: sourceDirectory
+  type: string
+  default: 'src'
+  displayName: 'Source code directory'
+- name: environment
+  type: string
+  default: 'development'
+  displayName: 'Deployment environment'
+- name: performSecurityScan
+  type: boolean
+  default: true
+  displayName: 'Perform security scan'
+- name: deploymentStrategy
+  type: string
+  default: 'blue-green'
+  displayName: 'Deployment strategy'
+
+# Pipeline variables that will be used across stages
+variables:
+  azureAIFoundryName: 'mainframe-ai-foundry'
+  azureResourceGroup: 'mainframe-modernization-rg'
+  mainframeAgentHost: '$(MAINFRAME_HOST)'
+  mainframeAgentPort: '$(MAINFRAME_PORT)'
+  mainframeAgentUser: '$(MAINFRAME_USER)'
+  mainframeAgentPassword: '$(MAINFRAME_PASSWORD)'
+  azureServiceConnection: 'azure-service-connection'
+  environmentName: ${{ parameters.environment }}
+
+# Define pipeline stages
+stages:
+# Stage 1: AI Analysis
+- stage: AIAnalysis
+  displayName: 'AI Foundry Analysis'
+  jobs:
+  - job: AnalyzeCode
+    displayName: 'Analyze Mainframe Code'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - checkout: self
+      fetchDepth: 0  # Fetch all history for AI analysis
+      
+    - task: AzureCLI@2
+      displayName: 'Login to Azure'
+      inputs:
+        azureSubscription: $(azureServiceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: 'az --version'
+    
+    - task: AIFoundryAnalysis@1
+      displayName: 'AI-Powered Code Analysis'
+      inputs:
+        resourceGroup: $(azureResourceGroup)
+        aiFoundryName: $(azureAIFoundryName)
+        sourceDirectory: '$(Build.SourcesDirectory)/${{ parameters.sourceDirectory }}'
+        analysisType: 'impact'
+        includeBusinessRules: true
+        outputFile: '$(Build.ArtifactStagingDirectory)/analysis-results.json'
+    
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish AI Analysis Results'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/analysis-results.json'
+        artifact: 'ai-analysis-results'
+        publishLocation: 'pipeline'
+
+# Stage 2: Build Mainframe Programs
+- stage: Build
+  displayName: 'Build Mainframe Programs'
+  dependsOn: AIAnalysis
+  jobs:
+  - job: BuildPrograms
+    displayName: 'Compile Mainframe Programs'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - checkout: self
+    
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download AI Analysis Results'
+      inputs:
+        artifactName: 'ai-analysis-results'
+        targetPath: '$(Pipeline.Workspace)/ai-analysis'
+    
+    - task: MainframeBuilderSetup@1
+      displayName: 'Setup Mainframe Build Environment'
+      inputs:
+        agentHost: $(mainframeAgentHost)
+        agentPort: $(mainframeAgentPort)
+        agentUser: $(mainframeAgentUser)
+        agentPassword: $(mainframeAgentPassword)
+    
+    - task: MainframeCOBOLCompile@1
+      displayName: 'Compile COBOL Programs'
+      inputs:
+        sourceDirectory: '$(Build.SourcesDirectory)/${{ parameters.sourceDirectory }}/cobol'
+        copybookDirectory: '$(Build.SourcesDirectory)/${{ parameters.sourceDirectory }}/copybook'
+        compilerOptions: 'RENT,APOST,MAP,LIST'
+        buildListFile: 'build-list.txt'
+        useAIResults: true
+        aiResultsFile: '$(Pipeline.Workspace)/ai-analysis/analysis-results.json'
+    
+    - task: MainframePLICompile@1
+      displayName: 'Compile PL/I Programs'
+      inputs:
+        sourceDirectory: '$(Build.SourcesDirectory)/${{ parameters.sourceDirectory }}/pl1'
+        includeDirectory: '$(Build.SourcesDirectory)/${{ parameters.sourceDirectory }}/include'
+        compilerOptions: 'MARGINS(2,72,1),NEST'
+        buildListFile: 'build-list.txt'
+        useAIResults: true
+        aiResultsFile: '$(Pipeline.Workspace)/ai-analysis/analysis-results.json'
+    
+    - task: MainframeJCLValidate@1
+      displayName: 'Validate JCL'
+      inputs:
+        sourceDirectory: '$(Build.SourcesDirectory)/${{ parameters.sourceDirectory }}/jcl'
+        substitutionVars: '$(Build.SourcesDirectory)/config/jcl-vars.json'
+    
+    - bash: |
+        mkdir -p $(Build.ArtifactStagingDirectory)/build-output
+        cp -r $(Build.SourcesDirectory)/${{ parameters.sourceDirectory }}/cobol/*.load $(Build.ArtifactStagingDirectory)/build-output/
+        cp -r $(Build.SourcesDirectory)/${{ parameters.sourceDirectory }}/pl1/*.load $(Build.ArtifactStagingDirectory)/build-output/
+        cp -r $(Build.SourcesDirectory)/${{ parameters.sourceDirectory }}/jcl/*.jcl $(Build.ArtifactStagingDirectory)/build-output/
+      displayName: 'Package Build Artifacts'
+    
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Build Artifacts'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/build-output'
+        artifact: 'mainframe-build-output'
+        publishLocation: 'pipeline'
+
+# Stage 3: Test
+- stage: Test
+  displayName: 'Test Mainframe Programs'
+  dependsOn: Build
+  jobs:
+  - job: TestPrograms
+    displayName: 'Run Tests'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - checkout: self
+    
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download Build Artifacts'
+      inputs:
+        artifactName: 'mainframe-build-output'
+        targetPath: '$(Pipeline.Workspace)/build-output'
+    
+    - task: MainframeTestEnvironment@1
+      displayName: 'Setup Mainframe Test Environment'
+      inputs:
+        agentHost: $(mainframeAgentHost)
+        agentPort: $(mainframeAgentPort)
+        agentUser: $(mainframeAgentUser)
+        agentPassword: $(mainframeAgentPassword)
+        testEnvironment: '$(environmentName)'
+    
+    - task: MainframeUnitTests@1
+      displayName: 'Run Unit Tests'
+      inputs:
+        loadModules: '$(Pipeline.Workspace)/build-output'
+        testScripts: '$(Build.SourcesDirectory)/test/unit'
+        reportOutput: '$(Build.ArtifactStagingDirectory)/test-results/unit'
+    
+    - task: MainframeIntegrationTests@1
+      displayName: 'Run Integration Tests'
+      inputs:
+        loadModules: '$(Pipeline.Workspace)/build-output'
+        testScripts: '$(Build.SourcesDirectory)/test/integration'
+        reportOutput: '$(Build.ArtifactStagingDirectory)/test-results/integration'
+    
+    - task: PublishTestResults@2
+      displayName: 'Publish Test Results'
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '$(Build.ArtifactStagingDirectory)/test-results/**/*.xml'
+        mergeTestResults: true
+        testRunTitle: 'Mainframe Tests'
+    
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Test Result Artifacts'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/test-results'
+        artifact: 'test-results'
+        publishLocation: 'pipeline'
+
+# Stage 4: Security Scan
+- stage: SecurityScan
+  displayName: 'Security Scan'
+  dependsOn: Build
+  condition: and(succeeded(), eq('${{ parameters.performSecurityScan }}', 'true'))
+  jobs:
+  - job: ScanCode
+    displayName: 'Scan Mainframe Code'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - checkout: self
+    
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download Build Artifacts'
+      inputs:
+        artifactName: 'mainframe-build-output'
+        targetPath: '$(Pipeline.Workspace)/build-output'
+    
+    - task: AzureCLI@2
+      displayName: 'Login to Azure'
+      inputs:
+        azureSubscription: $(azureServiceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: 'az --version'
+    
+    - task: AIFoundrySecurityScan@1
+      displayName: 'Run Security Scan'
+      inputs:
+        resourceGroup: $(azureResourceGroup)
+        aiFoundryName: $(azureAIFoundryName)
+        sourceDirectory: '$(Build.SourcesDirectory)/${{ parameters.sourceDirectory }}'
+        buildOutput: '$(Pipeline.Workspace)/build-output'
+        scanType: 'comprehensive'
+        outputFile: '$(Build.ArtifactStagingDirectory)/security-results.json'
+    
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Security Results'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/security-results.json'
+        artifact: 'security-results'
+        publishLocation: 'pipeline'
+
+# Stage 5: Package for Deployment
+- stage: Package
+  displayName: 'Package for Deployment'
+  dependsOn:
+  - Test
+  - SecurityScan
+  condition: |
+    and(
+      succeeded('Test'),
+      or(
+        succeeded('SecurityScan'),
+        eq('${{ parameters.performSecurityScan }}', 'false')
+      )
+    )
+  jobs:
+  - job: CreatePackage
+    displayName: 'Create Deployment Package'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - checkout: self
+    
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download Build Artifacts'
+      inputs:
+        artifactName: 'mainframe-build-output'
+        targetPath: '$(Pipeline.Workspace)/build-output'
+    
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download Test Results'
+      inputs:
+        artifactName: 'test-results'
+        targetPath: '$(Pipeline.Workspace)/test-results'
+    
+    - bash: |
+        mkdir -p $(Build.ArtifactStagingDirectory)/deployment-package
+        cp -r $(Pipeline.Workspace)/build-output/* $(Build.ArtifactStagingDirectory)/deployment-package/
+        
+        # Create deployment manifest
+        cat > $(Build.ArtifactStagingDirectory)/deployment-package/manifest.json << EOF
+        {
+          "version": "$(Build.BuildNumber)",
+          "buildId": "$(Build.BuildId)",
+          "buildTime": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+          "repository": "$(Build.Repository.Name)",
+          "branch": "$(Build.SourceBranchName)",
+          "components": {
+            "cobol": $(find $(Pipeline.Workspace)/build-output -name "*.load" | grep -v "pl1" | jq -R -s -c 'split("\n") | map(select(length > 0))'),
+            "pl1": $(find $(Pipeline.Workspace)/build-output -name "*.load" | grep "pl1" | jq -R -s -c 'split("\n") | map(select(length > 0))'),
+            "jcl": $(find $(Pipeline.Workspace)/build-output -name "*.jcl" | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          }
+        }
+        EOF
+      displayName: 'Generate Deployment Package'
+    
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Deployment Package'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/deployment-package'
+        artifact: 'deployment-package'
+        publishLocation: 'pipeline'
+
+# Stage 6: Deploy to Environment
+- stage: Deploy
+  displayName: 'Deploy to ${{ parameters.environment }}'
+  dependsOn: Package
+  condition: succeeded()
+  jobs:
+  - deployment: DeployToEnvironment
+    displayName: 'Deploy to ${{ parameters.environment }}'
+    environment: ${{ parameters.environment }}
+    pool:
+      vmImage: 'ubuntu-latest'
+    strategy:
+      runOnce:
+        preDeploy:
+          steps:
+          - task: AzureCLI@2
+            displayName: 'Login to Azure'
+            inputs:
+              azureSubscription: $(azureServiceConnection)
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: 'az --version'
+          
+          - task: DownloadPipelineArtifact@2
+            displayName: 'Download Deployment Package'
+            inputs:
+              artifactName: 'deployment-package'
+              targetPath: '$(Pipeline.Workspace)/deployment-package'
+          
+          - task: AIFoundryRiskAssessment@1
+            displayName: 'AI-Powered Deployment Risk Assessment'
+            inputs:
+              resourceGroup: $(azureResourceGroup)
+              aiFoundryName: $(azureAIFoundryName)
+              deploymentPackage: '$(Pipeline.Workspace)/deployment-package'
+              targetEnvironment: '$(environmentName)'
+              outputFile: '$(Pipeline.Workspace)/deployment-risk.json'
+              
+        deploy:
+          steps:
+          - task: MainframeDeploy@1
+            displayName: 'Deploy to Mainframe'
+            inputs:
+              agentHost: $(mainframeAgentHost)
+              agentPort: $(mainframeAgentPort)
+              agentUser: $(mainframeAgentUser)
+              agentPassword: $(mainframeAgentPassword)
+              deploymentPackage: '$(Pipeline.Workspace)/deployment-package'
+              environment: '$(environmentName)'
+              deploymentStrategy: '${{ parameters.deploymentStrategy }}'
+              rollbackOnFailure: true
+              
+        postDeploy:
+          steps:
+          - task: MainframeVerifyDeployment@1
+            displayName: 'Verify Deployment'
+            inputs:
+              agentHost: $(mainframeAgentHost)
+              agentPort: $(mainframeAgentPort)
+              agentUser: $(mainframeAgentUser)
+              agentPassword: $(mainframeAgentPassword)
+              deploymentPackage: '$(Pipeline.Workspace)/deployment-package'
+              environment: '$(environmentName)'
+              verificationTests: '$(Build.SourcesDirectory)/test/verification' 

@@ -1,0 +1,64 @@
+# Sample Azure DevOps Pipeline for Mainframe CI/CD with Azure AI Foundry
+# This pipeline implements the template for a specific mainframe project
+
+trigger:
+  branches:
+    include:
+    - main
+    - develop
+  paths:
+    include:
+    - src/cobol/**
+    - src/jcl/**
+    - src/copybook/**
+    - src/pl1/**
+
+# PR trigger configuration
+pr:
+  branches:
+    include:
+    - main
+    - develop
+  paths:
+    include:
+    - src/cobol/**
+    - src/jcl/**
+    - src/copybook/**
+    - src/pl1/**
+
+# Parameters for manual runs
+parameters:
+- name: environment
+  displayName: Deployment Environment
+  type: string
+  default: development
+  values:
+  - development
+  - test
+  - staging
+  - production
+- name: performSecurityScan
+  displayName: Perform Security Scan
+  type: boolean
+  default: true
+- name: deploymentStrategy
+  displayName: Deployment Strategy
+  type: string
+  default: blue-green
+  values:
+  - blue-green
+  - canary
+  - rolling
+
+# Variables
+variables:
+  azureServiceConnection: 'azure-service-connection'
+
+# Use the mainframe CI/CD template
+extends:
+  template: templates/pipelines/mainframe-cicd-template.yml
+  parameters:
+    sourceDirectory: 'src'
+    environment: ${{ parameters.environment }}
+    performSecurityScan: ${{ parameters.performSecurityScan }}
+    deploymentStrategy: ${{ parameters.deploymentStrategy }} 
