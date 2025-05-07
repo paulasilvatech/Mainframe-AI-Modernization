@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600" viewBox="0 0 800 600">
+  <style>
+    .title { font-size: 18px; font-weight: bold; font-family: Arial, sans-serif; }
+    .subtitle { font-size: 14px; font-family: Arial, sans-serif; }
+    .header { font-size: 15px; font-weight: bold; font-family: Arial, sans-serif; }
+    .label { font-size: 13px; font-family: Arial, sans-serif; fill: #333; }
+    .small-label { font-size: 12px; font-family: Arial, sans-serif; fill: #333; }
+    .decision { fill: #0078D4; }
+    .decision-light { fill: #50A0DB; }
+    .risk { fill: #D83B01; }
+    .risk-light { fill: #EB8C6A; }
+    .policy { fill: #107C10; }
+    .policy-light { fill: #6BBD6B; }
+    .metrics { fill: #8961AA; }
+    .metrics-light { fill: #B798CD; }
+    .flow { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 5,3; }
+    .solid-flow { fill: none; stroke: #333; stroke-width: 2; }
+    .arrow { fill: #666; }
+    rect { stroke: #333; stroke-width: 1.5; }
+    .container { fill: #f5f5f5; stroke: #ddd; }
+    .committee { fill: #2E8555; }
+    .committee-light { fill: #79B599; }
+    .hexagon {
+      stroke: #333;
+      stroke-width: 1.5;
+      fill: #f0f0f0;
+    }
+  </style>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" class="title">Governance Framework</text>
+  <text x="400" y="55" text-anchor="middle" class="subtitle">for IBM z/OS Mainframe Modernization</text>
+  
+  <!-- Central Governance Hub -->
+  <polygon points="400,80 480,120 480,180 400,220 320,180 320,120" class="hexagon committee-light" />
+  <text x="400" y="140" text-anchor="middle" class="header">Technical</text>
+  <text x="400" y="160" text-anchor="middle" class="header">Steering Committee</text>
+  <text x="400" y="180" text-anchor="middle" class="small-label">(TSC)</text>
+  
+  <!-- Four Pillars of Governance -->
+  <!-- Decision Making -->
+  <rect x="50" y="260" width="150" height="240" rx="10" ry="10" class="decision-light" opacity="0.7" />
+  <text x="125" y="280" text-anchor="middle" class="header">Decision Making</text>
+  <text x="125" y="300" text-anchor="middle" class="small-label">Framework</text>
+  
+  <rect x="65" y="320" width="120" height="40" rx="5" ry="5" class="decision" />
+  <text x="125" y="345" text-anchor="middle" class="small-label" fill="#fff">Strategic</text>
+  
+  <rect x="65" y="370" width="120" height="40" rx="5" ry="5" class="decision" />
+  <text x="125" y="395" text-anchor="middle" class="small-label" fill="#fff">Tactical</text>
+  
+  <rect x="65" y="420" width="120" height="40" rx="5" ry="5" class="decision" />
+  <text x="125" y="445" text-anchor="middle" class="small-label" fill="#fff">Operational</text>
+  
+  <!-- Risk Management -->
+  <rect x="230" y="260" width="150" height="240" rx="10" ry="10" class="risk-light" opacity="0.7" />
+  <text x="305" y="280" text-anchor="middle" class="header">Risk Management</text>
+  <text x="305" y="300" text-anchor="middle" class="small-label">Framework</text>
+  
+  <rect x="245" y="320" width="120" height="40" rx="5" ry="5" class="risk" />
+  <text x="305" y="345" text-anchor="middle" class="small-label" fill="#fff">Identification</text>
+  
+  <rect x="245" y="370" width="120" height="40" rx="5" ry="5" class="risk" />
+  <text x="305" y="395" text-anchor="middle" class="small-label" fill="#fff">Assessment</text>
+  
+  <rect x="245" y="420" width="120" height="40" rx="5" ry="5" class="risk" />
+  <text x="305" y="445" text-anchor="middle" class="small-label" fill="#fff">Mitigation</text>
+  
+  <!-- Policy Framework -->
+  <rect x="410" y="260" width="150" height="240" rx="10" ry="10" class="policy-light" opacity="0.7" />
+  <text x="485" y="280" text-anchor="middle" class="header">Policy</text>
+  <text x="485" y="300" text-anchor="middle" class="small-label">Framework</text>
+  
+  <rect x="425" y="320" width="120" height="40" rx="5" ry="5" class="policy" />
+  <text x="485" y="345" text-anchor="middle" class="small-label" fill="#fff">Code Management</text>
+  
+  <rect x="425" y="370" width="120" height="40" rx="5" ry="5" class="policy" />
+  <text x="485" y="395" text-anchor="middle" class="small-label" fill="#fff">Security</text>
+  
+  <rect x="425" y="420" width="120" height="40" rx="5" ry="5" class="policy" />
+  <text x="485" y="445" text-anchor="middle" class="small-label" fill="#fff">Compliance</text>
+  
+  <!-- Metrics and Reporting -->
+  <rect x="590" y="260" width="150" height="240" rx="10" ry="10" class="metrics-light" opacity="0.7" />
+  <text x="665" y="280" text-anchor="middle" class="header">Metrics &amp;</text>
+  <text x="665" y="300" text-anchor="middle" class="small-label">Reporting</text>
+  
+  <rect x="605" y="320" width="120" height="40" rx="5" ry="5" class="metrics" />
+  <text x="665" y="345" text-anchor="middle" class="small-label" fill="#fff">Technical Metrics</text>
+  
+  <rect x="605" y="370" width="120" height="40" rx="5" ry="5" class="metrics" />
+  <text x="665" y="395" text-anchor="middle" class="small-label" fill="#fff">Process Metrics</text>
+  
+  <rect x="605" y="420" width="120" height="40" rx="5" ry="5" class="metrics" />
+  <text x="665" y="445" text-anchor="middle" class="small-label" fill="#fff">Business Metrics</text>
+  
+  <!-- Connected Working Groups -->
+  <rect x="50" y="530" width="150" height="40" rx="5" ry="5" class="committee" />
+  <text x="125" y="555" text-anchor="middle" class="small-label" fill="#fff">Architecture WG</text>
+  
+  <rect x="230" y="530" width="150" height="40" rx="5" ry="5" class="committee" />
+  <text x="305" y="555" text-anchor="middle" class="small-label" fill="#fff">DevOps WG</text>
+  
+  <rect x="410" y="530" width="150" height="40" rx="5" ry="5" class="committee" />
+  <text x="485" y="555" text-anchor="middle" class="small-label" fill="#fff">Security WG</text>
+  
+  <rect x="590" y="530" width="150" height="40" rx="5" ry="5" class="committee" />
+  <text x="665" y="555" text-anchor="middle" class="small-label" fill="#fff">AI &amp; Analytics WG</text>
+  
+  <!-- Flow Lines -->
+  <path d="M355,150 L125,260" class="solid-flow" />
+  <path d="M380,185 L305,260" class="solid-flow" />
+  <path d="M420,185 L485,260" class="solid-flow" />
+  <path d="M445,150 L665,260" class="solid-flow" />
+  
+  <path d="M125,500 L125,530" class="solid-flow" />
+  <path d="M305,500 L305,530" class="solid-flow" />
+  <path d="M485,500 L485,530" class="solid-flow" />
+  <path d="M665,500 L665,530" class="solid-flow" />
+</svg> 

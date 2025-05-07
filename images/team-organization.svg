@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600" viewBox="0 0 800 600">
+  <style>
+    .title { font-size: 18px; font-weight: bold; font-family: Arial, sans-serif; }
+    .subtitle { font-size: 14px; font-family: Arial, sans-serif; }
+    .header { font-size: 15px; font-weight: bold; font-family: Arial, sans-serif; }
+    .label { font-size: 13px; font-family: Arial, sans-serif; fill: #333; }
+    .small-label { font-size: 12px; font-family: Arial, sans-serif; fill: #333; }
+    .leadership { fill: #0078D4; }
+    .leadership-light { fill: #50A0DB; }
+    .platform { fill: #107C10; }
+    .platform-light { fill: #6BBD6B; }
+    .app { fill: #8961AA; }
+    .app-light { fill: #B798CD; }
+    .integration { fill: #D83B01; }
+    .integration-light { fill: #EB8C6A; }
+    .operations { fill: #2E8555; }
+    .operations-light { fill: #79B599; }
+    .flow { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 5,3; }
+    .solid-flow { fill: none; stroke: #333; stroke-width: 2; }
+    .arrow { fill: #666; }
+    rect { stroke: #333; stroke-width: 1.5; }
+    .container { fill: #f5f5f5; stroke: #ddd; }
+  </style>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" class="title">Team Organization</text>
+  <text x="400" y="55" text-anchor="middle" class="subtitle">for IBM z/OS Mainframe Modernization with Azure AI Foundry</text>
+  
+  <!-- Leadership Team -->
+  <rect x="250" y="80" width="300" height="80" rx="10" ry="10" class="leadership-light" opacity="0.7" />
+  <text x="400" y="110" text-anchor="middle" class="header">Modernization Leadership Team</text>
+  <text x="400" y="130" text-anchor="middle" class="small-label">Program Management and Governance</text>
+  
+  <!-- Core Teams -->
+  <rect x="50" y="200" width="150" height="100" rx="10" ry="10" class="platform-light" opacity="0.7" />
+  <text x="125" y="230" text-anchor="middle" class="header">Platform</text>
+  <text x="125" y="250" text-anchor="middle" class="small-label">Team</text>
+  <text x="125" y="275" text-anchor="middle" class="small-label">• Cloud Infrastructure</text>
+  <text x="125" y="290" text-anchor="middle" class="small-label">• AI Platform</text>
+  
+  <rect x="250" y="200" width="300" height="100" rx="10" ry="10" class="app-light" opacity="0.7" />
+  <text x="400" y="230" text-anchor="middle" class="header">Application Teams</text>
+  <text x="400" y="250" text-anchor="middle" class="small-label">Modernization Implementation</text>
+  <text x="310" y="275" text-anchor="middle" class="small-label">• Mainframe</text>
+  <text x="310" y="290" text-anchor="middle" class="small-label">  Developers</text>
+  <text x="400" y="275" text-anchor="middle" class="small-label">• Cloud</text>
+  <text x="400" y="290" text-anchor="middle" class="small-label">  Developers</text>
+  <text x="490" y="275" text-anchor="middle" class="small-label">• DevOps</text>
+  <text x="490" y="290" text-anchor="middle" class="small-label">  Engineers</text>
+  
+  <rect x="600" y="200" width="150" height="100" rx="10" ry="10" class="integration-light" opacity="0.7" />
+  <text x="675" y="230" text-anchor="middle" class="header">Integration</text>
+  <text x="675" y="250" text-anchor="middle" class="small-label">Team</text>
+  <text x="675" y="275" text-anchor="middle" class="small-label">• API Integration</text>
+  <text x="675" y="290" text-anchor="middle" class="small-label">• Data Integration</text>
+  
+  <rect x="600" y="330" width="150" height="100" rx="10" ry="10" class="operations-light" opacity="0.7" />
+  <text x="675" y="360" text-anchor="middle" class="header">Operations</text>
+  <text x="675" y="380" text-anchor="middle" class="small-label">Team</text>
+  <text x="675" y="405" text-anchor="middle" class="small-label">• Hybrid Operations</text>
+  <text x="675" y="420" text-anchor="middle" class="small-label">• SRE Practices</text>
+  
+  <!-- Application Teams -->
+  <rect x="150" y="330" width="130" height="80" rx="10" ry="10" class="app" opacity="0.7" />
+  <text x="215" y="360" text-anchor="middle" class="small-label" fill="#fff">App Team 1</text>
+  <text x="215" y="380" text-anchor="middle" class="small-label" fill="#fff">(Product A)</text>
+  
+  <rect x="300" y="330" width="130" height="80" rx="10" ry="10" class="app" opacity="0.7" />
+  <text x="365" y="360" text-anchor="middle" class="small-label" fill="#fff">App Team 2</text>
+  <text x="365" y="380" text-anchor="middle" class="small-label" fill="#fff">(Product B)</text>
+  
+  <rect x="450" y="330" width="130" height="80" rx="10" ry="10" class="app" opacity="0.7" />
+  <text x="515" y="360" text-anchor="middle" class="small-label" fill="#fff">App Team N</text>
+  <text x="515" y="380" text-anchor="middle" class="small-label" fill="#fff">(Product X)</text>
+  
+  <!-- Skills Transformation Section -->
+  <rect x="50" y="450" width="700" height="120" rx="10" ry="10" class="container" />
+  <text x="400" y="470" text-anchor="middle" class="header">Skills Transformation Framework</text>
+  
+  <rect x="70" y="490" width="200" height="60" rx="5" ry="5" fill="#E5E7EB" />
+  <text x="170" y="510" text-anchor="middle" class="small-label">Mainframe Developer Path</text>
+  <text x="170" y="530" text-anchor="middle" class="small-label">Mainframe → Cloud Technologies</text>
+  
+  <rect x="300" y="490" width="200" height="60" rx="5" ry="5" fill="#E5E7EB" />
+  <text x="400" y="510" text-anchor="middle" class="small-label">Cloud Developer Path</text>
+  <text x="400" y="530" text-anchor="middle" class="small-label">Cloud → Mainframe Understanding</text>
+  
+  <rect x="530" y="490" width="200" height="60" rx="5" ry="5" fill="#E5E7EB" />
+  <text x="630" y="510" text-anchor="middle" class="small-label">DevOps Engineer Path</text>
+  <text x="630" y="530" text-anchor="middle" class="small-label">Hybrid CI/CD Pipeline Expertise</text>
+  
+  <!-- Flow Lines -->
+  <path d="M400,160 L400,200" class="solid-flow" />
+  <path d="M250,150 L125,200" class="solid-flow" />
+  <path d="M550,150 L675,200" class="solid-flow" />
+  <path d="M725,300 L725,330" class="solid-flow" />
+  
+  <path d="M400,300 L215,330" class="solid-flow" />
+  <path d="M400,300 L365,330" class="solid-flow" />
+  <path d="M400,300 L515,330" class="solid-flow" />
+</svg> 

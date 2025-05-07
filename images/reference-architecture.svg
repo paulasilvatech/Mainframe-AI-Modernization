@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600" viewBox="0 0 800 600">
+  <style>
+    .title { font-size: 18px; font-weight: bold; font-family: Arial, sans-serif; }
+    .subtitle { font-size: 14px; font-family: Arial, sans-serif; }
+    .header { font-size: 15px; font-weight: bold; font-family: Arial, sans-serif; }
+    .label { font-size: 13px; font-family: Arial, sans-serif; fill: #333; }
+    .small-label { font-size: 12px; font-family: Arial, sans-serif; fill: #333; }
+    .mainframe { fill: #0050C5; }
+    .mainframe-light { fill: #4D81BF; }
+    .azure { fill: #0078D4; }
+    .azure-light { fill: #50A0DB; }
+    .hybrid { fill: #8961AA; }
+    .hybrid-light { fill: #B798CD; }
+    .security { fill: #D83B01; }
+    .security-light { fill: #EB8C6A; }
+    .github { fill: #2B3137; }
+    .github-light { fill: #6E7478; }
+    .devops { fill: #0078D7; }
+    .devops-light { fill: #50A0DB; }
+    .flow { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 5,3; }
+    .solid-flow { fill: none; stroke: #333; stroke-width: 2; }
+    .arrow { fill: #666; }
+    rect { stroke: #333; stroke-width: 1.5; }
+    .container { fill: #f5f5f5; stroke: #ddd; }
+  </style>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" class="title">Reference Architecture</text>
+  <text x="400" y="55" text-anchor="middle" class="subtitle">for IBM z/OS Mainframe Modernization using Azure AI Foundry</text>
+  
+  <!-- IBM z/OS Environment -->
+  <rect x="50" y="80" width="180" height="180" rx="10" ry="10" class="mainframe-light" opacity="0.7" />
+  <text x="140" y="100" text-anchor="middle" class="header" fill="#fff">IBM z/OS Environment</text>
+  
+  <rect x="70" y="120" width="140" height="35" rx="5" ry="5" class="mainframe" />
+  <text x="140" y="142" text-anchor="middle" class="small-label" fill="#fff">Applications</text>
+  
+  <rect x="70" y="165" width="140" height="35" rx="5" ry="5" class="mainframe" />
+  <text x="140" y="187" text-anchor="middle" class="small-label" fill="#fff">Data Sources</text>
+  
+  <rect x="70" y="210" width="140" height="35" rx="5" ry="5" class="mainframe" />
+  <text x="140" y="232" text-anchor="middle" class="small-label" fill="#fff">Middleware</text>
+  
+  <!-- Integration Layer -->
+  <rect x="270" y="80" width="120" height="180" rx="10" ry="10" class="hybrid-light" opacity="0.7" />
+  <text x="330" y="100" text-anchor="middle" class="header">Integration Layer</text>
+  
+  <rect x="285" y="120" width="90" height="35" rx="5" ry="5" class="hybrid" />
+  <text x="330" y="142" text-anchor="middle" class="small-label" fill="#fff">z/OS Connect</text>
+  
+  <rect x="285" y="165" width="90" height="35" rx="5" ry="5" class="hybrid" />
+  <text x="330" y="187" text-anchor="middle" class="small-label" fill="#fff">Logic Apps</text>
+  
+  <rect x="285" y="210" width="90" height="35" rx="5" ry="5" class="hybrid" />
+  <text x="330" y="232" text-anchor="middle" class="small-label" fill="#fff">Data Factory</text>
+  
+  <!-- Azure Landing Zone -->
+  <rect x="430" y="80" width="320" height="180" rx="10" ry="10" class="azure-light" opacity="0.7" />
+  <text x="590" y="100" text-anchor="middle" class="header">Azure Landing Zone</text>
+  
+  <rect x="445" y="120" width="90" height="35" rx="5" ry="5" class="azure" />
+  <text x="490" y="142" text-anchor="middle" class="small-label" fill="#fff">Connectivity</text>
+  
+  <rect x="545" y="120" width="90" height="35" rx="5" ry="5" class="azure" />
+  <text x="590" y="142" text-anchor="middle" class="small-label" fill="#fff">Identity</text>
+  
+  <rect x="645" y="120" width="90" height="35" rx="5" ry="5" class="azure" />
+  <text x="690" y="142" text-anchor="middle" class="small-label" fill="#fff">Management</text>
+  
+  <rect x="445" y="165" width="90" height="35" rx="5" ry="5" class="security" />
+  <text x="490" y="187" text-anchor="middle" class="small-label" fill="#fff">Security</text>
+  
+  <rect x="545" y="165" width="90" height="35" rx="5" ry="5" class="azure" />
+  <text x="590" y="187" text-anchor="middle" class="small-label" fill="#fff">Monitoring</text>
+  
+  <rect x="645" y="165" width="90" height="35" rx="5" ry="5" class="azure" />
+  <text x="690" y="187" text-anchor="middle" class="small-label" fill="#fff">Governance</text>
+  
+  <rect x="490" y="210" width="200" height="35" rx="5" ry="5" class="azure" />
+  <text x="590" y="232" text-anchor="middle" class="small-label" fill="#fff">AI Foundry Platform</text>
+  
+  <!-- DevOps Integration -->
+  <rect x="50" y="290" width="340" height="120" rx="10" ry="10" class="github-light" opacity="0.7" />
+  <text x="220" y="310" text-anchor="middle" class="header">GitHub Integration</text>
+  
+  <rect x="70" y="330" width="90" height="60" rx="5" ry="5" class="github" />
+  <text x="115" y="360" text-anchor="middle" class="small-label" fill="#fff">Source Control</text>
+  
+  <rect x="175" y="330" width="90" height="60" rx="5" ry="5" class="github" />
+  <text x="220" y="360" text-anchor="middle" class="small-label" fill="#fff">GitHub Actions</text>
+  
+  <rect x="280" y="330" width="90" height="60" rx="5" ry="5" class="github" />
+  <text x="325" y="360" text-anchor="middle" class="small-label" fill="#fff">GitHub Packages</text>
+  
+  <rect x="430" y="290" width="320" height="120" rx="10" ry="10" class="devops-light" opacity="0.7" />
+  <text x="590" y="310" text-anchor="middle" class="header">Azure DevOps Integration</text>
+  
+  <rect x="445" y="330" width="90" height="60" rx="5" ry="5" class="devops" />
+  <text x="490" y="360" text-anchor="middle" class="small-label" fill="#fff">Azure Repos</text>
+  
+  <rect x="545" y="330" width="90" height="60" rx="5" ry="5" class="devops" />
+  <text x="590" y="360" text-anchor="middle" class="small-label" fill="#fff">Azure Pipelines</text>
+  
+  <rect x="645" y="330" width="90" height="60" rx="5" ry="5" class="devops" />
+  <text x="690" y="360" text-anchor="middle" class="small-label" fill="#fff">Azure Artifacts</text>
+  
+  <!-- Application Patterns -->
+  <rect x="50" y="440" width="170" height="140" rx="10" ry="10" class="container" />
+  <text x="135" y="460" text-anchor="middle" class="label">API-Enabled Pattern</text>
+  <rect x="65" y="470" width="140" height="100" rx="5" ry="5" fill="#E5E7EB" />
+  <text x="135" y="505" text-anchor="middle" class="small-label">Modern Frontend</text>
+  <text x="135" y="525" text-anchor="middle" class="small-label">↓</text>
+  <text x="135" y="545" text-anchor="middle" class="small-label">Mainframe Services</text>
+  
+  <rect x="240" y="440" width="170" height="140" rx="10" ry="10" class="container" />
+  <text x="325" y="460" text-anchor="middle" class="label">Hybrid Data Pattern</text>
+  <rect x="255" y="470" width="140" height="100" rx="5" ry="5" fill="#E5E7EB" />
+  <text x="325" y="505" text-anchor="middle" class="small-label">Cloud Analytics</text>
+  <text x="325" y="525" text-anchor="middle" class="small-label">↓</text>
+  <text x="325" y="545" text-anchor="middle" class="small-label">Replicated Data</text>
+  
+  <rect x="430" y="440" width="170" height="140" rx="10" ry="10" class="container" />
+  <text x="515" y="460" text-anchor="middle" class="label">Refactoring Pattern</text>
+  <rect x="445" y="470" width="140" height="100" rx="5" ry="5" fill="#E5E7EB" />
+  <text x="515" y="505" text-anchor="middle" class="small-label">Cloud Components</text>
+  <text x="515" y="525" text-anchor="middle" class="small-label">↕</text>
+  <text x="515" y="545" text-anchor="middle" class="small-label">Mainframe Core</text>
+  
+  <rect x="620" y="440" width="170" height="140" rx="10" ry="10" class="container" />
+  <text x="705" y="460" text-anchor="middle" class="label">Rehosting Pattern</text>
+  <rect x="635" y="470" width="140" height="100" rx="5" ry="5" fill="#E5E7EB" />
+  <text x="705" y="505" text-anchor="middle" class="small-label">Containerized</text>
+  <text x="705" y="525" text-anchor="middle" class="small-label">Apps in</text>
+  <text x="705" y="545" text-anchor="middle" class="small-label">Azure Kubernetes</text>
+  
+  <!-- Flow Lines -->
+  <path d="M230,170 L270,170" class="solid-flow" />
+  <path d="M390,170 L430,170" class="solid-flow" />
+  <path d="M220,290 L220,260 L590,260 L590,290" class="flow" />
+  <path d="M135,440 L135,410 L515,410 L515,440" class="flow" />
+</svg> 

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600" viewBox="0 0 800 600">
+  <style>
+    .title { font-size: 18px; font-weight: bold; font-family: Arial, sans-serif; }
+    .subtitle { font-size: 14px; font-family: Arial, sans-serif; }
+    .header { font-size: 15px; font-weight: bold; font-family: Arial, sans-serif; }
+    .label { font-size: 13px; font-family: Arial, sans-serif; fill: #333; }
+    .small-label { font-size: 12px; font-family: Arial, sans-serif; fill: #333; }
+    .mainframe { fill: #003A6D; }
+    .mainframe-light { fill: #4D80A5; }
+    .agent { fill: #8961AA; }
+    .agent-light { fill: #B798CD; }
+    .azure { fill: #0078D4; }
+    .azure-light { fill: #50A0DB; }
+    .knowledge { fill: #107C10; }
+    .knowledge-light { fill: #6BBD6B; }
+    .flow { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 5,3; }
+    .solid-flow { fill: none; stroke: #333; stroke-width: 2; }
+    .flow-arrow { fill: #666; }
+    rect { stroke: #333; stroke-width: 1.5; }
+    .container { fill: #f5f5f5; stroke: #ddd; }
+  </style>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" class="title">Mainframe Inventory Architecture</text>
+  <text x="400" y="55" text-anchor="middle" class="subtitle">Using Azure AI Foundry for comprehensive IBM z/OS inventory collection</text>
+  
+  <!-- IBM z/OS Environment -->
+  <rect x="50" y="100" width="180" height="300" rx="10" ry="10" class="mainframe-light" opacity="0.7" />
+  <text x="140" y="120" text-anchor="middle" class="header" fill="#fff">IBM z/OS Environment</text>
+  
+  <rect x="70" y="140" width="140" height="40" rx="5" ry="5" class="mainframe" />
+  <text x="140" y="165" text-anchor="middle" class="small-label" fill="#fff">System Catalogs</text>
+  
+  <rect x="70" y="190" width="140" height="40" rx="5" ry="5" class="mainframe" />
+  <text x="140" y="215" text-anchor="middle" class="small-label" fill="#fff">Program Libraries</text>
+  
+  <rect x="70" y="240" width="140" height="40" rx="5" ry="5" class="mainframe" />
+  <text x="140" y="265" text-anchor="middle" class="small-label" fill="#fff">JCL Procedures</text>
+  
+  <rect x="70" y="290" width="140" height="40" rx="5" ry="5" class="mainframe" />
+  <text x="140" y="315" text-anchor="middle" class="small-label" fill="#fff">DB2/IMS Catalogs</text>
+  
+  <rect x="70" y="340" width="140" height="40" rx="5" ry="5" class="mainframe" />
+  <text x="140" y="365" text-anchor="middle" class="small-label" fill="#fff">CICS/IMS Resources</text>
+  
+  <!-- AI Foundry Agents -->
+  <rect x="280" y="100" width="180" height="300" rx="10" ry="10" class="agent-light" opacity="0.7" />
+  <text x="370" y="120" text-anchor="middle" class="header" fill="#333">AI Foundry Agents</text>
+  
+  <rect x="300" y="140" width="140" height="40" rx="5" ry="5" class="agent" />
+  <text x="370" y="165" text-anchor="middle" class="small-label" fill="#fff">Catalog Extractor</text>
+  
+  <rect x="300" y="190" width="140" height="40" rx="5" ry="5" class="agent" />
+  <text x="370" y="215" text-anchor="middle" class="small-label" fill="#fff">Code Analyzer</text>
+  
+  <rect x="300" y="240" width="140" height="40" rx="5" ry="5" class="agent" />
+  <text x="370" y="265" text-anchor="middle" class="small-label" fill="#fff">Dependency Mapper</text>
+  
+  <rect x="300" y="290" width="140" height="40" rx="5" ry="5" class="agent" />
+  <text x="370" y="315" text-anchor="middle" class="small-label" fill="#fff">Data Flow Analyzer</text>
+  
+  <rect x="300" y="340" width="140" height="40" rx="5" ry="5" class="agent" />
+  <text x="370" y="365" text-anchor="middle" class="small-label" fill="#fff">Metadata Collector</text>
+  
+  <!-- Azure Cloud Services -->
+  <rect x="510" y="100" width="180" height="300" rx="10" ry="10" class="azure-light" opacity="0.7" />
+  <text x="600" y="120" text-anchor="middle" class="header" fill="#333">Azure Cloud Services</text>
+  
+  <rect x="530" y="140" width="140" height="40" rx="5" ry="5" class="azure" />
+  <text x="600" y="165" text-anchor="middle" class="small-label" fill="#fff">Data Factory</text>
+  
+  <rect x="530" y="190" width="140" height="40" rx="5" ry="5" class="azure" />
+  <text x="600" y="215" text-anchor="middle" class="small-label" fill="#fff">AI Foundry Service</text>
+  
+  <rect x="530" y="240" width="140" height="40" rx="5" ry="5" class="azure" />
+  <text x="600" y="265" text-anchor="middle" class="small-label" fill="#fff">Blob Storage</text>
+  
+  <rect x="530" y="290" width="140" height="40" rx="5" ry="5" class="azure" />
+  <text x="600" y="315" text-anchor="middle" class="small-label" fill="#fff">Cosmos DB</text>
+  
+  <rect x="530" y="340" width="140" height="40" rx="5" ry="5" class="azure" />
+  <text x="600" y="365" text-anchor="middle" class="small-label" fill="#fff">Azure Functions</text>
+  
+  <!-- Knowledge Base -->
+  <rect x="280" y="450" width="410" height="100" rx="10" ry="10" class="knowledge-light" opacity="0.7" />
+  <text x="485" y="470" text-anchor="middle" class="header" fill="#333">Inventory Knowledge Base</text>
+  
+  <rect x="300" y="490" width="110" height="40" rx="5" ry="5" class="knowledge" />
+  <text x="355" y="515" text-anchor="middle" class="small-label" fill="#fff">Application Catalog</text>
+  
+  <rect x="420" y="490" width="110" height="40" rx="5" ry="5" class="knowledge" />
+  <text x="475" y="515" text-anchor="middle" class="small-label" fill="#fff">Component Repository</text>
+  
+  <rect x="540" y="490" width="110" height="40" rx="5" ry="5" class="knowledge" />
+  <text x="595" y="515" text-anchor="middle" class="small-label" fill="#fff">Dependency Map</text>
+  
+  <!-- Flow Arrows -->
+  <path d="M230,160 H280" class="solid-flow" marker-end="url(#arrow)" />
+  <path d="M230,210 H280" class="solid-flow" marker-end="url(#arrow)" />
+  <path d="M230,260 H280" class="solid-flow" marker-end="url(#arrow)" />
+  <path d="M230,310 H280" class="solid-flow" marker-end="url(#arrow)" />
+  <path d="M230,360 H280" class="solid-flow" marker-end="url(#arrow)" />
+  
+  <path d="M460,160 H510" class="solid-flow" marker-end="url(#arrow)" />
+  <path d="M460,210 H510" class="solid-flow" marker-end="url(#arrow)" />
+  <path d="M460,260 H510" class="solid-flow" marker-end="url(#arrow)" />
+  <path d="M460,310 H510" class="solid-flow" marker-end="url(#arrow)" />
+  <path d="M460,360 H510" class="solid-flow" marker-end="url(#arrow)" />
+  
+  <path d="M600,400 L600,430 L485,430 L485,450" class="solid-flow" marker-end="url(#arrow)" />
+  
+  <!-- Arrow Marker Definition -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+        markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="flow-arrow"/>
+    </marker>
+  </defs>
+  
+  <!-- Data Flow Labels -->
+  <text x="255" y="150" text-anchor="middle" class="small-label">Extract</text>
+  <text x="485" y="150" text-anchor="middle" class="small-label">Process</text>
+  <text x="545" y="430" text-anchor="middle" class="small-label">Generate</text>
+</svg> 

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="500" viewBox="0 0 600 500">
+  <style>
+    .title { font-size: 18px; font-weight: bold; font-family: Arial, sans-serif; }
+    .subtitle { font-size: 14px; font-family: Arial, sans-serif; }
+    .header { font-size: 15px; font-weight: bold; font-family: Arial, sans-serif; }
+    .label { font-size: 13px; font-family: Arial, sans-serif; fill: #333; }
+    .small-label { font-size: 12px; font-family: Arial, sans-serif; fill: #333; }
+    .azure { fill: #0078D4; }
+    .azure-light { fill: #50A0DB; }
+    .mainframe { fill: #0050C5; }
+    .mainframe-light { fill: #4D81BF; }
+    .api { fill: #8961AA; }
+    .api-light { fill: #B798CD; }
+    .frontend { fill: #107C10; }
+    .frontend-light { fill: #6BBD6B; }
+    .flow { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 5,3; }
+    .solid-flow { fill: none; stroke: #333; stroke-width: 2; }
+    rect { stroke: #333; stroke-width: 1.5; }
+    .arrow { fill: #666; }
+    .container { fill: #f5f5f5; stroke: #ddd; }
+  </style>
+  
+  <!-- Title -->
+  <text x="300" y="35" text-anchor="middle" class="title">API-Enabled Mainframe Pattern</text>
+  <text x="300" y="55" text-anchor="middle" class="subtitle">Exposing mainframe functionality through modern APIs</text>
+  
+  <!-- Modern UI Layer -->
+  <rect x="100" y="80" width="400" height="80" rx="10" ry="10" class="frontend-light" opacity="0.7" />
+  <text x="300" y="110" text-anchor="middle" class="header">Modern User Interfaces</text>
+  
+  <rect x="130" y="130" width="80" height="30" rx="5" ry="5" class="frontend" />
+  <text x="170" y="150" text-anchor="middle" class="small-label" fill="#fff">Web App</text>
+  
+  <rect x="260" y="130" width="80" height="30" rx="5" ry="5" class="frontend" />
+  <text x="300" y="150" text-anchor="middle" class="small-label" fill="#fff">Mobile App</text>
+  
+  <rect x="390" y="130" width="80" height="30" rx="5" ry="5" class="frontend" />
+  <text x="430" y="150" text-anchor="middle" class="small-label" fill="#fff">Portal</text>
+  
+  <!-- API Management Layer -->
+  <rect x="100" y="200" width="400" height="100" rx="10" ry="10" class="azure-light" opacity="0.7" />
+  <text x="300" y="230" text-anchor="middle" class="header">Azure API Management</text>
+  
+  <rect x="150" y="250" width="80" height="30" rx="5" ry="5" class="azure" />
+  <text x="190" y="270" text-anchor="middle" class="small-label" fill="#fff">API Gateway</text>
+  
+  <rect x="260" y="250" width="80" height="30" rx="5" ry="5" class="azure" />
+  <text x="300" y="270" text-anchor="middle" class="small-label" fill="#fff">API Policies</text>
+  
+  <rect x="370" y="250" width="80" height="30" rx="5" ry="5" class="azure" />
+  <text x="410" y="270" text-anchor="middle" class="small-label" fill="#fff">Developer Portal</text>
+  
+  <!-- Integration Layer -->
+  <rect x="100" y="340" width="400" height="80" rx="10" ry="10" class="api-light" opacity="0.7" />
+  <text x="300" y="370" text-anchor="middle" class="header">API Integration Layer</text>
+  
+  <rect x="130" y="390" width="80" height="30" rx="5" ry="5" class="api" />
+  <text x="170" y="410" text-anchor="middle" class="small-label" fill="#fff">z/OS Connect</text>
+  
+  <rect x="260" y="390" width="80" height="30" rx="5" ry="5" class="api" />
+  <text x="300" y="410" text-anchor="middle" class="small-label" fill="#fff">Logic Apps</text>
+  
+  <rect x="390" y="390" width="80" height="30" rx="5" ry="5" class="api" />
+  <text x="430" y="410" text-anchor="middle" class="small-label" fill="#fff">Data Factory</text>
+  
+  <!-- Mainframe Layer -->
+  <rect x="150" y="460" width="300" height="30" rx="5" ry="5" class="mainframe" />
+  <text x="300" y="480" text-anchor="middle" class="small-label" fill="#fff">IBM z/OS Mainframe Applications</text>
+  
+  <!-- Flow Lines -->
+  <path d="M170,160 L170,200" class="solid-flow" />
+  <path d="M300,160 L300,200" class="solid-flow" />
+  <path d="M430,160 L430,200" class="solid-flow" />
+  
+  <path d="M170,280 L170,340" class="solid-flow" />
+  <path d="M300,280 L300,340" class="solid-flow" />
+  <path d="M430,280 L430,340" class="solid-flow" />
+  
+  <path d="M170,420 L170,450 L300,450 L300,460" class="solid-flow" />
+  <path d="M300,420 L300,460" class="solid-flow" />
+  <path d="M430,420 L430,450 L300,450" class="solid-flow" />
+  
+  <!-- Key Benefits -->
+  <rect x="50" y="170" width="30" height="120" rx="5" ry="5" fill="#E5E7EB" />
+  <text x="65" y="230" text-anchor="middle" class="small-label" transform="rotate(-90 65,230)">Modern UI, Legacy Backend</text>
+  
+  <rect x="520" y="170" width="30" height="120" rx="5" ry="5" fill="#E5E7EB" />
+  <text x="535" y="230" text-anchor="middle" class="small-label" transform="rotate(90 535,230)">Security, Scalability, Monitoring</text>
+</svg> 

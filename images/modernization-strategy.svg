@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="900" height="600" viewBox="0 0 900 600">
+  <style>
+    .title { font-size: 18px; font-weight: bold; font-family: Arial, sans-serif; }
+    .subtitle { font-size: 14px; font-family: Arial, sans-serif; }
+    .label { font-size: 13px; font-family: Arial, sans-serif; fill: #333; }
+    .small-label { font-size: 12px; font-family: Arial, sans-serif; fill: #333; }
+    .header { font-size: 15px; font-weight: bold; font-family: Arial, sans-serif; }
+    .rehost { fill: #007ACC; }
+    .rehost-light { fill: #66AFEB; }
+    .replatform { fill: #2E8555; }
+    .replatform-light { fill: #79B599; }
+    .refactor { fill: #8961AA; }
+    .refactor-light { fill: #BDA6CC; }
+    .rearchitect { fill: #D97706; }
+    .rearchitect-light { fill: #F3C388; }
+    .replace { fill: #DC2626; }
+    .replace-light { fill: #F49090; }
+    .flow { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 5,3; }
+    .solid-flow { fill: none; stroke: #333; stroke-width: 2; }
+    rect { stroke: #333; stroke-width: 1.5; }
+    .arrow { fill: #666; }
+    .container { fill: #f5f5f5; stroke: #ddd; }
+  </style>
+  
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" class="title">Mainframe Modernization Strategy</text>
+  <text x="450" y="55" text-anchor="middle" class="subtitle">Using Azure AI Foundry for IBM z/OS Modernization</text>
+  
+  <!-- Modernization Approaches -->
+  <rect x="50" y="80" width="800" height="280" rx="10" ry="10" class="container" />
+  <text x="450" y="100" text-anchor="middle" class="header">Modernization Approaches</text>
+  
+  <!-- Rehost -->
+  <rect x="70" y="120" width="140" height="220" rx="5" ry="5" class="rehost-light" opacity="0.7" />
+  <text x="140" y="140" text-anchor="middle" class="label">Rehost</text>
+  <text x="140" y="155" text-anchor="middle" class="small-label">(Lift and Shift)</text>
+  
+  <rect x="80" y="170" width="120" height="150" rx="5" ry="5" class="rehost" opacity="0.3" />
+  <text x="140" y="190" text-anchor="middle" class="small-label">Key Characteristics:</text>
+  <text x="140" y="210" text-anchor="middle" class="small-label">• Minimal code changes</text>
+  <text x="140" y="230" text-anchor="middle" class="small-label">• Emulation layers</text>
+  <text x="140" y="250" text-anchor="middle" class="small-label">• Preserve logic</text>
+  <text x="140" y="270" text-anchor="middle" class="small-label">• Quick migration</text>
+  <text x="140" y="290" text-anchor="middle" class="small-label">• Lower cost</text>
+  
+  <!-- Replatform -->
+  <rect x="220" y="120" width="140" height="220" rx="5" ry="5" class="replatform-light" opacity="0.7" />
+  <text x="290" y="140" text-anchor="middle" class="label">Replatform</text>
+  <text x="290" y="155" text-anchor="middle" class="small-label">(Lift, Tinker, Shift)</text>
+  
+  <rect x="230" y="170" width="120" height="150" rx="5" ry="5" class="replatform" opacity="0.3" />
+  <text x="290" y="190" text-anchor="middle" class="small-label">Key Characteristics:</text>
+  <text x="290" y="210" text-anchor="middle" class="small-label">• Targeted optimizations</text>
+  <text x="290" y="230" text-anchor="middle" class="small-label">• Cloud-compatible</text>
+  <text x="290" y="250" text-anchor="middle" class="small-label">• Database changes</text>
+  <text x="290" y="270" text-anchor="middle" class="small-label">• Containerization</text>
+  <text x="290" y="290" text-anchor="middle" class="small-label">• Medium effort</text>
+  
+  <!-- Refactor -->
+  <rect x="370" y="120" width="140" height="220" rx="5" ry="5" class="refactor-light" opacity="0.7" />
+  <text x="440" y="140" text-anchor="middle" class="label">Refactor</text>
+  <text x="440" y="155" text-anchor="middle" class="small-label">(Code Transformation)</text>
+  
+  <rect x="380" y="170" width="120" height="150" rx="5" ry="5" class="refactor" opacity="0.3" />
+  <text x="440" y="190" text-anchor="middle" class="small-label">Key Characteristics:</text>
+  <text x="440" y="210" text-anchor="middle" class="small-label">• Language conversion</text>
+  <text x="440" y="230" text-anchor="middle" class="small-label">• Improve structure</text>
+  <text x="440" y="250" text-anchor="middle" class="small-label">• API integration</text>
+  <text x="440" y="270" text-anchor="middle" class="small-label">• Business rule extraction</text>
+  <text x="440" y="290" text-anchor="middle" class="small-label">• Substantial effort</text>
+  
+  <!-- Rearchitect -->
+  <rect x="520" y="120" width="140" height="220" rx="5" ry="5" class="rearchitect-light" opacity="0.7" />
+  <text x="590" y="140" text-anchor="middle" class="label">Rearchitect</text>
+  <text x="590" y="155" text-anchor="middle" class="small-label">(Application Restructuring)</text>
+  
+  <rect x="530" y="170" width="120" height="150" rx="5" ry="5" class="rearchitect" opacity="0.3" />
+  <text x="590" y="190" text-anchor="middle" class="small-label">Key Characteristics:</text>
+  <text x="590" y="210" text-anchor="middle" class="small-label">• Microservices</text>
+  <text x="590" y="230" text-anchor="middle" class="small-label">• Cloud-native design</text>
+  <text x="590" y="250" text-anchor="middle" class="small-label">• Event-driven</text>
+  <text x="590" y="270" text-anchor="middle" class="small-label">• Elasticity & resilience</text>
+  <text x="590" y="290" text-anchor="middle" class="small-label">• High effort/value</text>
+  
+  <!-- Replace -->
+  <rect x="670" y="120" width="140" height="220" rx="5" ry="5" class="replace-light" opacity="0.7" />
+  <text x="740" y="140" text-anchor="middle" class="label">Replace</text>
+  <text x="740" y="155" text-anchor="middle" class="small-label">(New Implementation)</text>
+  
+  <rect x="680" y="170" width="120" height="150" rx="5" ry="5" class="replace" opacity="0.3" />
+  <text x="740" y="190" text-anchor="middle" class="small-label">Key Characteristics:</text>
+  <text x="740" y="210" text-anchor="middle" class="small-label">• COTS solutions</text>
+  <text x="740" y="230" text-anchor="middle" class="small-label">• New custom apps</text>
+  <text x="740" y="250" text-anchor="middle" class="small-label">• Data migration</text>
+  <text x="740" y="270" text-anchor="middle" class="small-label">• Functionality parity</text>
+  <text x="740" y="290" text-anchor="middle" class="small-label">• Variable effort</text>
+  
+  <!-- AI Foundry Tools -->
+  <rect x="50" y="380" width="800" height="100" rx="10" ry="10" class="container" />
+  <text x="450" y="400" text-anchor="middle" class="header">Azure AI Foundry Capabilities</text>
+  
+  <!-- AI Capabilities -->
+  <rect x="70" y="420" width="140" height="40" rx="5" ry="5" fill="#8961AA" opacity="0.7" />
+  <text x="140" y="445" text-anchor="middle" class="small-label" fill="white">Code Analysis</text>
+  
+  <rect x="220" y="420" width="140" height="40" rx="5" ry="5" fill="#8961AA" opacity="0.7" />
+  <text x="290" y="445" text-anchor="middle" class="small-label" fill="white">Business Rule Extraction</text>
+  
+  <rect x="370" y="420" width="140" height="40" rx="5" ry="5" fill="#8961AA" opacity="0.7" />
+  <text x="440" y="445" text-anchor="middle" class="small-label" fill="white">Code Transformation</text>
+  
+  <rect x="520" y="420" width="140" height="40" rx="5" ry="5" fill="#8961AA" opacity="0.7" />
+  <text x="590" y="445" text-anchor="middle" class="small-label" fill="white">Risk Assessment</text>
+  
+  <rect x="670" y="420" width="140" height="40" rx="5" ry="5" fill="#8961AA" opacity="0.7" />
+  <text x="740" y="445" text-anchor="middle" class="small-label" fill="white">Operational Intelligence</text>
+  
+  <!-- Decision Matrix -->
+  <rect x="50" y="500" width="800" height="80" rx="10" ry="10" class="container" />
+  <text x="450" y="520" text-anchor="middle" class="header">Decision Criteria</text>
+  
+  <!-- Variables -->
+  <text x="90" y="545" text-anchor="start" class="small-label">• Business Value</text>
+  <text x="230" y="545" text-anchor="start" class="small-label">• Technical Complexity</text>
+  <text x="400" y="545" text-anchor="start" class="small-label">• Change Frequency</text>
+  <text x="570" y="545" text-anchor="start" class="small-label">• Risk Tolerance</text>
+  <text x="700" y="545" text-anchor="start" class="small-label">• Time-to-Market</text>
+  
+  <text x="90" y="565" text-anchor="start" class="small-label">• Skills Availability</text>
+  <text x="230" y="565" text-anchor="start" class="small-label">• Strategic Importance</text>
+  <text x="400" y="565" text-anchor="start" class="small-label">• Performance Requirements</text>
+  <text x="570" y="565" text-anchor="start" class="small-label">• Data Complexity</text>
+  <text x="700" y="565" text-anchor="start" class="small-label">• Integration Points</text>
+</svg> 
