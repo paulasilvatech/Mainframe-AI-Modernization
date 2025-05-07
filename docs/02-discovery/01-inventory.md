@@ -18,8 +18,6 @@ The inventory process has these technical objectives:
 
 ### Deployment Architecture
 
-![Inventory Architecture](../../images/inventory-architecture.png)
-
 The inventory process uses a secure agent-based architecture:
 
 1. **Azure AI Foundry Agents**

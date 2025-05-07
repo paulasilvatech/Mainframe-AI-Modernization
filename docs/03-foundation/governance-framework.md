@@ -8,8 +8,6 @@ This document outlines the technical governance framework for IBM z/OS mainframe
 
 The governance framework establishes the structure, processes, and controls needed to manage the mainframe modernization journey efficiently. It defines the decision-making processes, roles and responsibilities, risk management approaches, and compliance considerations specific to Azure AI Foundry implementation.
 
-![Governance Framework](../../images/governance-framework.png)
-
 ## Governance Structure
 
 ### Technical Steering Committee

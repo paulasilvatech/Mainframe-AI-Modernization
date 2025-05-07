@@ -8,8 +8,6 @@ This document details the technical assessment criteria used by Azure AI Foundry
 
 Azure AI Foundry uses a multi-dimensional assessment framework to evaluate mainframe applications across technical, operational, and business dimensions.
 
-![Assessment Framework](../../images/assessment-framework.png)
-
 The framework employs these key technical components:
 
 1. **Code Analysis Engine**
