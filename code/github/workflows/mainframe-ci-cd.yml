@@ -1,0 +1,339 @@
+name: Mainframe CI/CD Pipeline
+
+# Triggers for the workflow
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/cobol/**'
+      - 'src/jcl/**'
+      - 'src/copybook/**'
+      - 'src/pl1/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'src/cobol/**'
+      - 'src/jcl/**'
+      - 'src/copybook/**'
+      - 'src/pl1/**'
+  # Allow manual execution from GitHub UI
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'development'
+        type: choice
+        options:
+          - development
+          - test
+          - staging
+          - production
+
+# Environment variables used across jobs
+env:
+  AZURE_AIFOUNDRY_NAME: mainframe-ai-foundry
+  AZURE_RESOURCE_GROUP: mainframe-modernization-rg
+  MAINFRAME_AGENT_HOST: ${{ secrets.MAINFRAME_HOST }}
+  MAINFRAME_AGENT_PORT: ${{ secrets.MAINFRAME_PORT }}
+  MAINFRAME_AGENT_USER: ${{ secrets.MAINFRAME_USER }}
+  MAINFRAME_AGENT_PASSWORD: ${{ secrets.MAINFRAME_PASSWORD }}
+
+# Workflow jobs
+jobs:
+  # Job 1: AI Analysis
+  ai-analysis:
+    name: AI Foundry Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history for AI analysis
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: AI-Powered Code Analysis
+        uses: azure/ai-foundry-analysis@v1
+        with:
+          resource-group: ${{ env.AZURE_RESOURCE_GROUP }}
+          aifoundry-name: ${{ env.AZURE_AIFOUNDRY_NAME }}
+          source-dir: ./src
+          analysis-type: 'impact'
+          include-business-rules: true
+          output-file: 'analysis-results.json'
+      
+      - name: Upload Analysis Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: ai-analysis-results
+          path: analysis-results.json
+
+  # Job 2: Build Mainframe Programs
+  build:
+    name: Build Mainframe Programs
+    runs-on: ubuntu-latest
+    needs: ai-analysis
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      
+      - name: Download AI Analysis Results
+        uses: actions/download-artifact@v3
+        with:
+          name: ai-analysis-results
+      
+      - name: Setup Mainframe Build Agent
+        uses: mainframe-tools/setup-builder@v1
+        with:
+          agent-host: ${{ env.MAINFRAME_AGENT_HOST }}
+          agent-port: ${{ env.MAINFRAME_AGENT_PORT }}
+          agent-user: ${{ env.MAINFRAME_AGENT_USER }}
+          agent-password: ${{ env.MAINFRAME_AGENT_PASSWORD }}
+      
+      - name: Compile COBOL Programs
+        uses: mainframe-tools/compile-cobol@v1
+        with:
+          source-dir: ./src/cobol
+          copybook-dir: ./src/copybook
+          compiler-options: 'RENT,APOST,MAP,LIST'
+          build-list-file: 'build-list.txt'
+          use-ai-results: true
+          ai-results-file: 'analysis-results.json'
+      
+      - name: Compile PL/I Programs
+        uses: mainframe-tools/compile-pli@v1
+        with:
+          source-dir: ./src/pl1
+          include-dir: ./src/include
+          compiler-options: 'MARGINS(2,72,1),NEST'
+          build-list-file: 'build-list.txt'
+          use-ai-results: true
+          ai-results-file: 'analysis-results.json'
+      
+      - name: Validate JCL
+        uses: mainframe-tools/validate-jcl@v1
+        with:
+          source-dir: ./src/jcl
+          substitution-vars: './config/jcl-vars.json'
+      
+      - name: Package Build Artifacts
+        run: |
+          mkdir -p ./build-output
+          cp -r ./src/cobol/*.load ./build-output/
+          cp -r ./src/pl1/*.load ./build-output/
+          cp -r ./src/jcl/*.jcl ./build-output/
+      
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: mainframe-build-output
+          path: ./build-output
+
+  # Job 3: Test
+  test:
+    name: Test Mainframe Programs
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: mainframe-build-output
+          path: ./build-output
+      
+      - name: Setup Mainframe Test Environment
+        uses: mainframe-tools/setup-test-env@v1
+        with:
+          agent-host: ${{ env.MAINFRAME_AGENT_HOST }}
+          agent-port: ${{ env.MAINFRAME_AGENT_PORT }}
+          agent-user: ${{ env.MAINFRAME_AGENT_USER }}
+          agent-password: ${{ env.MAINFRAME_AGENT_PASSWORD }}
+          test-environment: 'development'
+      
+      - name: Run Unit Tests
+        uses: mainframe-tools/run-unit-tests@v1
+        with:
+          load-modules: './build-output'
+          test-scripts: './test/unit'
+          report-output: './test-results/unit'
+      
+      - name: Run Integration Tests
+        uses: mainframe-tools/run-integration-tests@v1
+        with:
+          load-modules: './build-output'
+          test-scripts: './test/integration'
+          report-output: './test-results/integration'
+      
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: ./test-results
+
+  # Job 4: Security Scan
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: mainframe-build-output
+          path: ./build-output
+      
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Run Security Scan
+        uses: azure/ai-foundry-security-scan@v1
+        with:
+          resource-group: ${{ env.AZURE_RESOURCE_GROUP }}
+          aifoundry-name: ${{ env.AZURE_AIFOUNDRY_NAME }}
+          source-dir: ./src
+          build-output: ./build-output
+          scan-type: 'comprehensive'
+          output-file: 'security-results.json'
+      
+      - name: Upload Security Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: security-results
+          path: security-results.json
+
+  # Job 5: Package for Deployment
+  package:
+    name: Package for Deployment
+    runs-on: ubuntu-latest
+    needs: [test, security-scan]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: mainframe-build-output
+          path: ./build-output
+      
+      - name: Download Test Results
+        uses: actions/download-artifact@v3
+        with:
+          name: test-results
+          path: ./test-results
+      
+      - name: Download Security Results
+        uses: actions/download-artifact@v3
+        with:
+          name: security-results
+          
+      - name: Generate Deployment Package
+        run: |
+          mkdir -p ./deployment-package
+          cp -r ./build-output/* ./deployment-package/
+          
+          # Create deployment manifest
+          cat > ./deployment-package/manifest.json << EOF
+          {
+            "version": "${{ github.sha }}",
+            "buildTime": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+            "repository": "${{ github.repository }}",
+            "branch": "${{ github.ref_name }}",
+            "components": {
+              "cobol": $(find ./build-output -name "*.load" | grep -v "pl1" | jq -R -s -c 'split("\n") | map(select(length > 0))'),
+              "pl1": $(find ./build-output -name "*.load" | grep "pl1" | jq -R -s -c 'split("\n") | map(select(length > 0))'),
+              "jcl": $(find ./build-output -name "*.jcl" | jq -R -s -c 'split("\n") | map(select(length > 0))')
+            }
+          }
+          EOF
+      
+      - name: Upload Deployment Package
+        uses: actions/upload-artifact@v3
+        with:
+          name: deployment-package
+          path: ./deployment-package
+
+  # Job 6: Deploy to Environment
+  deploy:
+    name: Deploy to Environment
+    runs-on: ubuntu-latest
+    needs: package
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    environment:
+      name: ${{ github.event.inputs.environment || 'development' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      
+      - name: Download Deployment Package
+        uses: actions/download-artifact@v3
+        with:
+          name: deployment-package
+          path: ./deployment-package
+      
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: AI-Powered Deployment Risk Assessment
+        uses: azure/ai-foundry-risk-assessment@v1
+        with:
+          resource-group: ${{ env.AZURE_RESOURCE_GROUP }}
+          aifoundry-name: ${{ env.AZURE_AIFOUNDRY_NAME }}
+          deployment-package: './deployment-package'
+          target-environment: ${{ github.event.inputs.environment || 'development' }}
+          output-file: 'deployment-risk.json'
+      
+      - name: Deploy to Mainframe
+        uses: mainframe-tools/deploy@v1
+        with:
+          agent-host: ${{ env.MAINFRAME_AGENT_HOST }}
+          agent-port: ${{ env.MAINFRAME_AGENT_PORT }}
+          agent-user: ${{ env.MAINFRAME_AGENT_USER }}
+          agent-password: ${{ env.MAINFRAME_AGENT_PASSWORD }}
+          deployment-package: './deployment-package'
+          environment: ${{ github.event.inputs.environment || 'development' }}
+          deployment-strategy: 'blue-green'
+          rollback-on-failure: true
+      
+      - name: Verify Deployment
+        uses: mainframe-tools/verify-deployment@v1
+        with:
+          agent-host: ${{ env.MAINFRAME_AGENT_HOST }}
+          agent-port: ${{ env.MAINFRAME_AGENT_PORT }}
+          agent-user: ${{ env.MAINFRAME_AGENT_USER }}
+          agent-password: ${{ env.MAINFRAME_AGENT_PASSWORD }}
+          deployment-package: './deployment-package'
+          environment: ${{ github.event.inputs.environment || 'development' }}
+          verification-tests: './test/verification'
+      
+      - name: Notify Deployment Status
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue_number = context.issue.number;
+            const deployment_env = '${{ github.event.inputs.environment || 'development' }}';
+            const deployment_status = '${{ job.status }}';
+            
+            if (issue_number) {
+              github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue_number,
+                body: `Deployment to ${deployment_env} ${deployment_status == 'success' ? 'completed successfully ✅' : 'failed ❌'}`
+              });
+            } 

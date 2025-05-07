@@ -93,9 +93,51 @@ Azure AI Foundry implements a defense-in-depth approach for mainframe integratio
 | Knowledge Extraction | Business rule identification and documentation generation |
 | Hybrid Operations | Cross-platform monitoring and management |
 
+## Azure AI Core Capabilities
+
+### Code Intelligence
+
+The Code Intelligence component provides:
+
+- Syntactic and semantic analysis of mainframe code
+- Control flow and data flow analysis
+- Dependency mapping and visualization
+- Business rule extraction
+- Code quality assessment
+
+### Translation Services
+
+Translation Services facilitate the modernization of:
+
+- COBOL to Java/C#/.NET transformations
+- JCL to modern workflow definitions
+- CICS/IMS screens to RESTful APIs
+- DB2/VSAM access to modern data platforms
+- Batch processes to cloud-native services
+
+### Risk Intelligence
+
+Risk Intelligence delivers:
+
+- Predictive impact analysis
+- Criticality assessment
+- Test coverage recommendations
+- Deployment risk scoring
+- Mitigation strategy generation
+
+### Operational Intelligence
+
+Operational Intelligence provides:
+
+- Cross-platform performance monitoring
+- Anomaly detection and alerting
+- Capacity planning and forecasting
+- Problem pattern recognition
+- Incident root cause analysis
+
 ## Next Steps
 
 For detailed implementation steps, continue to:
 - [Technical Architecture Detail](02-architecture.md)
-- [Installation Prerequisites](03-prerequisites.md)
-- [IBM z/OS Integration Setup](04-zos-integration.md) 
+- [Azure AI Foundry Components](03-ai-foundry-components.md)
+- [Implementation Roadmap](04-implementation-roadmap.md) 
