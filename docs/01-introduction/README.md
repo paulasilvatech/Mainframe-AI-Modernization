@@ -13,6 +13,9 @@ This chapter covers the following introductory topics:
 - [Overview and Business Value](01-overview.md) - Introduction to mainframe modernization with Azure AI Foundry and the business case for transformation
 - [Architecture Overview](02-architecture.md) - Technical architecture of the Azure AI Foundry platform and integration patterns
 - [AI Foundry Components](03-ai-foundry-components.md) - Detailed exploration of the core AI components and their capabilities
+- [Installation Prerequisites](03-prerequisites.md) - Requirements and prerequisites for implementing Azure AI Foundry
+- [IBM z/OS Integration Setup](04-zos-integration.md) - Detailed setup instructions for IBM z/OS integration
+- [GitHub & Azure DevOps Integration](05-devops-integration.md) - Setup instructions for GitHub and Azure DevOps integration
 - [Implementation Roadmap](04-implementation-roadmap.md) - Phased approach to implementing mainframe modernization with Azure AI Foundry
 
 ## Objectives
