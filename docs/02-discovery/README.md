@@ -1,298 +1,382 @@
-# Discovery and Assessment
+# Discovery and Assessment Phase
 
 ## Overview
 
-This chapter guides you through the process of systematically discovering, analyzing, and assessing your mainframe environment to develop a data-driven modernization strategy. Using Azure AI tools, you'll gain insights into your mainframe applications, data, and dependencies.
+This chapter guides you through the discovery and assessment phase of your mainframe modernization journey using Azure AI Foundry. It covers the process of analyzing your mainframe environment, understanding application complexities, and developing a data-driven modernization strategy.
 
 ## Prerequisites
 
-- Access to mainframe system documentation and application inventories
-- Permission to analyze mainframe code and configurations
-- Completed [Introduction to Mainframe Modernization](../01-introduction/README.md)
-- Azure subscription for assessment tools
+- Completed [Introduction to Azure AI Foundry](../01-introduction/README.md)
+- Azure subscription with Azure AI Foundry enabled
+- Access to mainframe system documentation and code repositories
+- Appropriate permissions to analyze mainframe applications
 
-## Step 1: Inventory Collection Methodology
+## Step 1: Setting Up Azure AI Foundry for Mainframe Analysis
 
-Begin by collecting a comprehensive inventory of your mainframe environment. This inventory will form the foundation of your assessment.
+Before you can begin analyzing your mainframe environment, you need to set up Azure AI Foundry and configure it for mainframe code analysis.
 
-### Mainframe Components to Inventory
+### Creating an Azure AI Foundry Resource
 
-| Component | Description | Collection Approach |
-|-----------|-------------|---------------------|
-| Applications | Business applications running on the mainframe | Extract application listings from system catalogs |
-| Programs | COBOL, PL/I, Assembler programs | Extract from source code management systems |
-| JCL | Job Control Language procedures | Gather from procedure libraries |
-| Data | Databases, files, and data structures | Extract metadata from system catalogs |
-| Interfaces | APIs, file transfers, screen interfaces | Document from system configurations |
-| Infrastructure | Hardware, system software, middleware | Collect from system documentation |
+1. Log in to the Azure Portal and navigate to the Azure AI Foundry service
+2. Create a new Azure AI Foundry resource:
 
 ```bash
-# Example script to extract COBOL program inventory
-EXTRACT-PROG-LIST LANG=COBOL OUTPUT=COBOL.LIST
+# Create an Azure AI Foundry resource using Azure CLI
+az group create --name mainframe-modernization-rg --location eastus2
+
+az aifoundry create \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --location eastus2 \
+  --sku standard
 ```
 
-### Key Considerations
-
-- Be thorough in your inventory collection - missing components can impact the assessment
-- Document not just the "what" but also the "why" and "how" of existing systems
-- Pay special attention to interfaces between systems
-
-## Step 2: Azure AI Code Analysis
-
-Azure OpenAI Service can help analyze and understand mainframe code, particularly for applications with limited documentation or tribal knowledge.
-
-### Setting Up Azure OpenAI for COBOL Analysis
-
-1. Create an Azure OpenAI Service resource
-2. Configure appropriate permissions and access controls
-3. Prepare your COBOL code for analysis:
+3. Configure the Azure AI Foundry resource for COBOL analysis:
 
 ```bash
-# Example script to prepare COBOL files for Azure OpenAI analysis
-cat << 'EOF' > prepare-cobol.sh
-#!/bin/bash
-mkdir -p cobol-analysis
-find . -name "*.cbl" -o -name "*.cob" | while read file; do
-  # Create a clean version with line numbers and stripped comments
-  cat -n "$file" | sed 's/^\s*\*.\+$//' > "cobol-analysis/$(basename "$file").txt"
-done
-EOF
-
-chmod +x prepare-cobol.sh
-./prepare-cobol.sh
-```
-
-4. Use Azure OpenAI to analyze code structure, dependencies, and business rules:
-
-```python
-# Example Python code for Azure OpenAI COBOL analysis
-import os
-import openai
-from azure.identity import DefaultAzureCredential
-from azure.keyvault.secrets import SecretClient
-
-# Set up Azure OpenAI
-openai.api_type = "azure"
-openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT")
-openai.api_version = "2023-05-15"
-
-# Get API key from Key Vault
-credential = DefaultAzureCredential()
-key_vault_url = os.getenv("KEY_VAULT_URL")
-secret_client = SecretClient(vault_url=key_vault_url, credential=credential)
-openai.api_key = secret_client.get_secret("azure-openai-key").value
-
-def analyze_cobol_file(file_path):
-    with open(file_path, 'r') as file:
-        cobol_code = file.read()
-    
-    response = openai.ChatCompletion.create(
-        engine="gpt-4",
-        messages=[
-            {"role": "system", "content": "You are a COBOL expert. Analyze the following COBOL program and identify its main functions, business rules, data structures, and external dependencies."},
-            {"role": "user", "content": cobol_code}
-        ],
-        temperature=0.1,
-        max_tokens=4000
-    )
-    
-    return response.choices[0].message.content
-
-# Process all prepared COBOL files
-analysis_dir = "cobol-analysis"
-results_dir = "cobol-analysis-results"
-os.makedirs(results_dir, exist_ok=True)
-
-for filename in os.listdir(analysis_dir):
-    if filename.endswith(".txt"):
-        file_path = os.path.join(analysis_dir, filename)
-        print(f"Analyzing {filename}...")
-        analysis = analyze_cobol_file(file_path)
-        
-        # Save the analysis results
-        with open(os.path.join(results_dir, f"{filename}.analysis.md"), 'w') as f:
-            f.write(analysis)
+# Configure Azure AI Foundry for COBOL analysis
+az aifoundry cobol-config create \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --dialect "IBM-Enterprise-COBOL" \
+  --copybook-path "code/mainframe/copybooks" \
+  --enable-business-rule-extraction true
 ```
 
 ### Key Considerations
 
-- Ensure proper data governance when analyzing sensitive code
-- Remember that AI analysis is a starting point - human expertise is still valuable
-- Focus on business rules and logic rather than just technical components
+- Choose the appropriate COBOL dialect based on your mainframe environment
+- Ensure that Azure AI Foundry has access to your copybooks, which may require additional configuration
+- Consider the scale and complexity of your mainframe applications when selecting the service tier
 
-## Step 3: Dependency Mapping
+## Step 2: Inventory Collection and Initial Analysis
 
-Understanding dependencies between mainframe components is crucial for developing a modernization strategy that minimizes disruption.
+The next step is to collect a comprehensive inventory of your mainframe applications and perform an initial analysis to understand their structure and complexity.
 
-### Types of Dependencies to Map
+### Collecting Mainframe Application Inventory
 
-1. **Program-to-Program Dependencies**: Which programs call other programs
-2. **Program-to-Data Dependencies**: Which programs access which data resources
-3. **Job Flow Dependencies**: The sequence and relationships between jobs
-4. **Interface Dependencies**: Dependencies on external systems
+1. Identify all mainframe applications in scope for modernization
+2. Document key information for each application:
 
-Use a combination of automated tools and manual analysis to create a comprehensive dependency map:
+| Application Attribute | Description | Example |
+|----------------------|-------------|---------|
+| Application Name | Business name of the application | Customer Management System |
+| Application Code | System code or identifier | CUSTMGMT |
+| Business Function | Primary business function | Customer account management |
+| Criticality | Business criticality level | High/Medium/Low |
+| Mainframe Components | Program types involved | COBOL programs, JCL, Copybooks |
+| Database Technologies | Database systems used | DB2, VSAM, IMS |
+| Transaction Processing | TP monitors used | CICS, IMS-TM |
+| Integration Points | Interfaces with other systems | Batch file transfers, MQ, Web Services |
 
-```plaintext
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│                 │     │                 │     │                 │
-│  Customer       │     │  Account        │     │  Transaction    │
-│  Management     │────►│  Processing     │────►│  Handling       │
-│  System         │     │  System         │     │  System         │
-│                 │     │                 │     │                 │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
-        │                       │                       │
-        │                       │                       │
-        ▼                       ▼                       ▼
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│                 │     │                 │     │                 │
-│  Customer       │     │  Account        │     │  Transaction    │
-│  Database       │     │  Database       │     │  Log            │
-│                 │     │                 │     │                 │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
+3. Upload the application inventory to Azure AI Foundry:
+
+```bash
+# Upload application inventory to Azure AI Foundry
+az aifoundry inventory upload \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --inventory-file application-inventory.csv \
+  --format csv
+```
+
+### Uploading Source Code for Analysis
+
+1. Prepare mainframe code for analysis by organizing it into appropriate directories:
+
+```bash
+# Example directory structure
+mkdir -p code/mainframe/cobol code/mainframe/jcl code/mainframe/copybooks
+```
+
+2. Upload the source code to Azure AI Foundry for analysis:
+
+```bash
+# Upload source code to Azure AI Foundry
+az aifoundry code upload \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --source-dir code/mainframe \
+  --recursive true
 ```
 
 ### Key Considerations
 
-- Pay special attention to implicit dependencies that may not be documented
-- Identify critical paths and high-risk dependencies
-- Document data flow as well as control flow
+- Ensure all code components are included, especially copybooks and include files
+- Maintain the original directory structure to preserve relationships between components
+- Consider data sensitivity and apply appropriate data governance controls
+
+## Step 3: AI-Powered Code Analysis
+
+Azure AI Foundry uses advanced AI models to analyze your mainframe code and provide insights into its structure, complexity, and business rules.
+
+### Running the Analysis
+
+1. Initiate the code analysis process:
+
+```bash
+# Start the code analysis process
+az aifoundry analysis start \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --analysis-name "Initial-Analysis" \
+  --analysis-type "comprehensive" \
+  --include-business-rules true \
+  --include-dependencies true
+```
+
+2. Monitor the analysis progress:
+
+```bash
+# Check the status of the analysis
+az aifoundry analysis status \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --analysis-name "Initial-Analysis"
+```
+
+### Understanding Analysis Results
+
+Once the analysis is complete, Azure AI Foundry provides several insights:
+
+1. **Code Structure Analysis**: Breakdown of programs, procedures, and components
+2. **Complexity Metrics**: Cyclomatic complexity, lines of code, and maintainability index
+3. **Business Rule Extraction**: Identification of business rules embedded in the code
+4. **Dependency Mapping**: Visualization of relationships between components
+5. **Data Flow Analysis**: Tracking of data transformations through the system
+
+```bash
+# View the analysis results
+az aifoundry analysis results \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --analysis-name "Initial-Analysis" \
+  --output-file analysis-results.json
+```
+
+### Key Considerations
+
+- The initial analysis may take several hours for large codebases
+- Results may not capture 100% of business rules or dependencies
+- Manual validation and refinement of the results may be necessary
 
 ## Step 4: Business Rule Extraction
 
-Business rules embedded in mainframe code represent valuable intellectual property that must be preserved during modernization.
+Azure AI Foundry's business rule extraction capability identifies and documents business logic embedded in your mainframe code.
 
-Azure OpenAI can help extract and document these rules:
+### Extracting Business Rules
 
-```python
-# Example Python code for business rule extraction
-def extract_business_rules(file_path):
-    with open(file_path, 'r') as file:
-        cobol_code = file.read()
-    
-    response = openai.ChatCompletion.create(
-        engine="gpt-4",
-        messages=[
-            {"role": "system", "content": "You are a COBOL expert specialized in identifying business rules. For the given COBOL program, extract all business rules in a structured format. A business rule is a specific calculation, validation, condition, or process that implements a business policy or requirement."},
-            {"role": "user", "content": cobol_code}
-        ],
-        temperature=0.1,
-        max_tokens=4000
-    )
-    
-    return response.choices[0].message.content
+1. Review the business rules identified during the code analysis:
+
+```bash
+# Extract business rules to a separate file
+az aifoundry rules extract \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --analysis-name "Initial-Analysis" \
+  --output-format markdown \
+  --output-file business-rules.md
 ```
 
-Document the extracted rules in a business rule catalog:
+2. Business rules are categorized by type and complexity:
 
-| Rule ID | Description | Source Component | Complexity | Criticality |
-|---------|-------------|------------------|------------|-------------|
-| BR001 | Calculate customer credit score based on payment history | CUSTCRED.CBL | Medium | High |
-| BR002 | Apply 5% discount for orders over $1000 | ORDERPROC.CBL | Low | Medium |
-| BR003 | Validate account numbers using mod-10 algorithm | ACCTVALID.CBL | Medium | High |
+| Rule Category | Description | Example |
+|---------------|-------------|---------|
+| Calculation Rules | Mathematical or financial calculations | Interest calculation for different account types |
+| Validation Rules | Data validation and verification | Customer ID format validation |
+| Process Flow Rules | Business process control logic | Order processing workflow |
+| Decision Rules | Business decision criteria | Credit approval criteria |
 
-### Key Considerations
+3. Validate and refine the extracted business rules:
 
-- Validate extracted business rules with subject matter experts
-- Prioritize rules based on business value and complexity
-- Document context and rationale for business rules
-
-## Step 5: Modernization Readiness Assessment
-
-Based on your inventory, code analysis, and dependency mapping, assess the readiness of each component for modernization.
-
-### Sample Assessment Framework
-
-| Criterion | Weight | Scoring Guidelines |
-|-----------|--------|-------------------|
-| Business Value | 25% | 1: Low value to business<br>5: Critical to business operations |
-| Technical Complexity | 20% | 1: Simple, well-structured<br>5: Complex, poorly documented |
-| Dependency Risk | 20% | 1: Few dependencies<br>5: Many complex dependencies |
-| Modernization Benefit | 20% | 1: Limited benefit from modernization<br>5: Significant benefit |
-| Resource Requirements | 15% | 1: Minimal resources required<br>5: Substantial resources required |
-
-Apply this framework to each application or component to develop a modernization readiness score:
-
-```python
-# Example Python function to calculate modernization readiness
-def calculate_readiness_score(business_value, technical_complexity, 
-                             dependency_risk, modernization_benefit, resource_requirements):
-    score = (business_value * 0.25 + 
-             (6 - technical_complexity) * 0.20 +  # Invert scale for complexity
-             (6 - dependency_risk) * 0.20 +       # Invert scale for risk
-             modernization_benefit * 0.20 + 
-             (6 - resource_requirements) * 0.15)  # Invert scale for resources
-    
-    return score * 20  # Scale to 0-100
+```bash
+# Update business rule documentation
+az aifoundry rules update \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --rules-file updated-business-rules.md
 ```
 
 ### Key Considerations
 
-- Involve both business and technical stakeholders in the assessment
-- Consider both quantitative and qualitative factors
-- Use the assessment to prioritize modernization efforts
+- Business rule extraction is not 100% accurate and requires human validation
+- Some complex or implicit rules may require additional analysis
+- Consider involving business domain experts in the validation process
 
-## Step 6: Prioritization Framework
+## Step 5: Dependency Mapping
 
-With the assessment complete, develop a prioritization framework to sequence your modernization efforts:
+Understanding dependencies between different components of your mainframe environment is crucial for planning your modernization approach.
 
-| Quadrant | Characteristics | Modernization Approach |
-|----------|-----------------|------------------------|
-| High Value, Low Complexity | - Critical business functions<br>- Relatively simple to modernize<br>- Limited dependencies | Prioritize for early modernization, using API-first approach |
-| High Value, High Complexity | - Critical business functions<br>- Complex logic or many dependencies<br>- High risk if disrupted | Careful phased modernization with comprehensive testing |
-| Low Value, Low Complexity | - Less critical to business<br>- Simple implementation<br>- Few dependencies | Consider quick modernization when resources are available |
-| Low Value, High Complexity | - Limited business value<br>- Complex implementation<br>- Potentially high modernization cost | Consider replacing, retiring, or deferring modernization |
+### Analyzing Dependencies
 
-Use this quadrant approach to develop a modernization roadmap that balances business value, technical feasibility, and risk:
+1. Generate a dependency map from the analysis results:
 
-```plaintext
-       ┌─────────────────────┬─────────────────────┐
-       │                     │                     │
-       │  QUICK WINS         │  STRATEGIC PROJECTS │
-       │                     │                     │
-       │  - High Value       │  - High Value       │
-High   │  - Low Complexity   │  - High Complexity  │
-Value  │                     │                     │
-       │  Approach:          │  Approach:          │
-       │  API-First          │  Phased Hybrid      │
-       │                     │                     │
-       ├─────────────────────┼─────────────────────┤
-       │                     │                     │
-       │  FILL-INS           │  LAST PRIORITY      │
-       │                     │                     │
-       │  - Low Value        │  - Low Value        │
-Low    │  - Low Complexity   │  - High Complexity  │
-Value  │                     │                     │
-       │  Approach:          │  Approach:          │
-       │  Opportunistic      │  Retire or Retain   │
-       │                     │                     │
-       └─────────────────────┴─────────────────────┘
-              Low Complexity        High Complexity
+```bash
+# Generate dependency map
+az aifoundry dependency-map generate \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --analysis-name "Initial-Analysis" \
+  --output-format graphml \
+  --output-file dependency-map.graphml
+```
+
+2. The dependency map includes various types of dependencies:
+
+| Dependency Type | Description |
+|-----------------|-------------|
+| Program Call | Direct call between programs |
+| Copybook Include | Program including a copybook |
+| Data Access | Program accessing a database or file |
+| Job Flow | Sequential relationship between jobs |
+| Integration | Interface with external systems |
+
+3. Visualize the dependency map using the Azure AI Foundry portal or export it to external tools.
+
+### Identifying Critical Paths
+
+1. Use the dependency map to identify critical paths in your mainframe applications:
+
+```bash
+# Identify critical paths
+az aifoundry critical-path analyze \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --dependency-map dependency-map.graphml \
+  --output-file critical-paths.json
+```
+
+2. Review the critical paths to understand key dependencies and potential modernization risks.
+
+### Key Considerations
+
+- Focus on high-level dependencies first, then drill down into detailed component-level dependencies
+- Consider both technical and business dependencies
+- Use dependency information to inform your modernization strategy
+
+## Step 6: Modernization Readiness Assessment
+
+Based on the analysis results, Azure AI Foundry can help you assess the readiness of your mainframe applications for modernization.
+
+### Generating Readiness Scores
+
+1. Run the modernization readiness assessment:
+
+```bash
+# Generate modernization readiness assessment
+az aifoundry readiness assess \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --analysis-name "Initial-Analysis" \
+  --output-file readiness-assessment.json
+```
+
+2. The readiness assessment includes scores for various aspects:
+
+| Readiness Aspect | Description | Scoring |
+|------------------|-------------|---------|
+| Technical Complexity | Complexity of the code and architecture | 1-5 (1=simple, 5=complex) |
+| Documentation Quality | Quality and completeness of documentation | 1-5 (1=poor, 5=excellent) |
+| Testing Coverage | Availability and quality of test cases | 1-5 (1=none, 5=comprehensive) |
+| Business Criticality | Importance to business operations | 1-5 (1=low, 5=high) |
+| Modernization Benefit | Potential benefit from modernization | 1-5 (1=low, 5=high) |
+
+3. Use the readiness scores to prioritize applications for modernization:
+
+```bash
+# Generate prioritization recommendations
+az aifoundry prioritize \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --readiness-assessment readiness-assessment.json \
+  --output-file modernization-priorities.json
 ```
 
 ### Key Considerations
 
-- Balance short-term wins with long-term strategic goals
-- Consider resource constraints and dependencies between components
-- Reevaluate prioritization as you progress through modernization
+- Balance technical considerations with business priorities
+- Consider application interdependencies when planning the modernization sequence
+- Plan for a phased approach that delivers incremental value
+
+## Step 7: Developing a Modernization Strategy
+
+Based on the assessment results, develop a comprehensive modernization strategy tailored to your organization's needs.
+
+### Modernization Approaches
+
+Azure AI Foundry can recommend appropriate modernization approaches for each application:
+
+| Approach | Description | Best For |
+|----------|-------------|----------|
+| Rehost | Migrate as-is to cloud infrastructure | Low complexity, low business criticality |
+| Refactor | Restructure and optimize code without changing functionality | Medium complexity, medium business value |
+| Rearchitect | Significantly alter the application architecture | High complexity, high business value |
+| Rebuild | Completely rewrite the application | High complexity, high modernization benefit |
+| Replace | Replace with commercial off-the-shelf solutions | Low unique business value |
+
+### Generating a Modernization Roadmap
+
+1. Use Azure AI Foundry to generate a modernization roadmap:
+
+```bash
+# Generate modernization roadmap
+az aifoundry roadmap generate \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --prioritization modernization-priorities.json \
+  --timeline "18 months" \
+  --output-file modernization-roadmap.json
+```
+
+2. Review and refine the roadmap based on business priorities and constraints.
+
+### Key Considerations
+
+- Align the modernization strategy with overall business objectives
+- Consider resource constraints and technical dependencies
+- Plan for a phased approach with clear milestones and success criteria
+
+## Validation
+
+To verify that the discovery and assessment phase has been completed successfully:
+
+1. Check that all analysis tasks have completed:
+
+```bash
+# Verify all analysis tasks are complete
+az aifoundry analysis list \
+  --name mainframe-foundry \
+  --resource-group mainframe-modernization-rg \
+  --query "[?status=='Completed'].name" -o tsv
+```
+
+2. Ensure that key deliverables are available:
+   - Comprehensive application inventory
+   - Code analysis results
+   - Business rule documentation
+   - Dependency maps
+   - Modernization readiness assessment
+   - Prioritized modernization roadmap
 
 ## Troubleshooting
 
 | Issue | Cause | Solution |
 |-------|-------|----------|
-| Incomplete or inaccurate inventory | Limited access to systems or documentation | Conduct interviews with system owners and operators to fill gaps |
-| AI analysis produces limited insights | Poor quality source code or unusual coding patterns | Supplement AI analysis with manual code reviews and SME interviews |
-| Conflicting prioritization inputs | Different stakeholders have different priorities | Use a weighted scoring system that incorporates multiple perspectives |
+| Analysis fails with timeout | Large codebase exceeding time limits | Split the analysis into smaller batches by application or component |
+| Incomplete business rule extraction | Complex or uncommon code patterns | Use the Azure AI Foundry portal to manually refine business rule extraction |
+| Missing dependencies | Incomplete code upload or external dependencies | Ensure all code components are uploaded and document external dependencies manually |
+| Low confidence in analysis results | Unusual coding patterns or custom macros | Provide additional context information and conduct manual validation |
 
 ## Next Steps
 
-Now that you've completed your discovery and assessment, you can proceed to:
+Now that you've completed the discovery and assessment phase, you can proceed to:
 
-1. [Infrastructure Setup](../03-infrastructure/README.md): Set up the foundational infrastructure for your modernization journey
-2. [Hybrid Development Implementation](../04-hybrid-development/README.md): Configure your development environment for hybrid mainframe-cloud development
+1. [Foundation Setup](../03-foundation/README.md): Set up the infrastructure for your modernization journey
+2. [GitHub Integration for Mainframe Code](../04-github-integration/README.md): Configure GitHub for mainframe code management
 
 ## Additional Resources
 
-- [Azure OpenAI Documentation](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/)
-- [Mainframe Assessment Tools](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/migration/mainframe-migration-assessment-tools)
-- [Example Dependency Mapping Code](../../code/risk-assessment/dependency-mapping.py) 
+- [Azure AI Foundry Analysis Documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/analysis/)
+- [Business Rule Extraction Guide](https://learn.microsoft.com/en-us/azure/ai-foundry/business-rules/)
+- [Dependency Mapping Tools](https://learn.microsoft.com/en-us/azure/ai-foundry/dependency-mapping/)
+- [Sample Analysis Reports](../../code/ai-foundry/code-analysis/sample-reports/) 
