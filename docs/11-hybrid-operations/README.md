@@ -1,292 +1,620 @@
 # Hybrid Operations Management
 
-This chapter provides detailed technical guidance for implementing hybrid operations management for IBM z/OS mainframe applications integrated with Azure AI Foundry.
+This chapter provides technical guidance for implementing and managing hybrid operations during IBM z/OS mainframe modernization using Azure AI Foundry.
 
 ## Overview
 
-Hybrid operations management addresses the unique challenges of operating mainframe applications in a modernized environment where both traditional IBM z/OS systems and cloud components coexist. Azure AI Foundry provides intelligent capabilities to streamline operations, enhance monitoring, and facilitate effective management across the hybrid landscape.
-
-This chapter outlines a comprehensive approach to managing hybrid mainframe operations with a focus on automation, intelligent monitoring, and integrated management.
+Hybrid operations refers to the concurrent management of both legacy mainframe systems and modernized cloud applications during the transition period of a modernization initiative. This approach enables organizations to gradually migrate workloads while maintaining business continuity, reducing risk, and validating modernized components in a production environment.
 
 ## Objectives
 
-- Implement unified monitoring across mainframe and cloud environments
-- Establish AI-powered incident management for hybrid operations
-- Create automated operational workflows spanning z/OS and Azure
-- Develop intelligent capacity management across platforms
-- Implement unified security operations for hybrid environments
+- Implement seamless integration between mainframe and cloud environments
+- Ensure data consistency across systems during the transition period
+- Establish effective operational procedures for hybrid environments
+- Monitor and manage performance across platforms
+- Implement robust disaster recovery and business continuity strategies
+- Create a pathway for gradual decommissioning of mainframe components
 
-## Hybrid Operations Architecture
+## Hybrid Architecture Patterns
 
-The hybrid operations architecture consists of several integrated components:
+### 1. Integration Gateway
 
+**Description**: Centralized gateway that manages communication between mainframe and cloud systems
+
+**Components**:
+- API Gateway for service exposure and management
+- Message broker for asynchronous communication
+- Data transformation and protocol conversion
+- Security and access control
+- Monitoring and logging
+
+**Implementation Options**:
+- Azure API Management with custom connectors
+- Enterprise service bus with mainframe adapters
+- Event Grid with mainframe integration
+
+**Diagram**:
 ```
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                         HYBRID OPERATIONS MANAGEMENT                                 │
-├─────────────────────────────────────────────┬───────────────────────────────────────┤
-│                                             │                                       │
-│           IBM z/OS ENVIRONMENT              │           AZURE ENVIRONMENT           │
-│                                             │                                       │
-│  ┌─────────────────────────────────────┐    │    ┌─────────────────────────────┐    │
-│  │                                     │    │    │                             │    │
-│  │  ┌─────────────┐   ┌─────────────┐  │    │    │  ┌─────────────┐            │    │
-│  │  │             │   │             │  │    │    │  │             │            │    │
-│  │  │  Mainframe  │   │  Mainframe  │  │    │    │  │   Azure     │            │    │
-│  │  │  Apps       │   │  Monitoring │  │    │    │  │   Services  │            │    │
-│  │  │             │   │             │  │    │    │  │             │            │    │
-│  │  └──────┬──────┘   └──────┬──────┘  │    │    │  └──────┬──────┘            │    │
-│  │         │                 │         │    │    │         │                   │    │
-│  │  ┌──────▼──────┐   ┌──────▼──────┐  │    │    │  ┌──────▼──────┐            │    │
-│  │  │             │   │             │  │    │    │  │             │            │    │
-│  │  │  z/OS       │   │  SMF        │  │    │    │  │  Azure      │            │    │
-│  │  │  Services   │   │  Records    │  │    │    │  │  Monitor    │            │    │
-│  │  │             │   │             │  │    │    │  │             │            │    │
-│  │  └──────┬──────┘   └──────┬──────┘  │    │    │  └──────┬──────┘            │    │
-│  │         │                 │         │    │    │         │                   │    │
-│  └─────────┼─────────────────┼─────────┘    │    └─────────┼───────────────────┘    │
-│            │                 │              │              │                        │
-│     ┌──────▼─────────────────▼──────┐       │       ┌──────▼───────────────────┐    │
-│     │                              │        │       │                          │    │
-│     │      Integration Agents      │◄───────┼─────► │   Integration Services   │    │
-│     │                              │        │       │                          │    │
-│     └──────────────┬───────────────┘        │       └────────────┬─────────────┘    │
-│                    │                        │                    │                   │
-└────────────────────┼────────────────────────┼────────────────────┼───────────────────┘
-                     │                        │                    │                    
-                     │                        │                    │                    
-┌────────────────────▼────────────────────────▼────────────────────▼───────────────────┐
-│                                                                                      │
-│                              AZURE AI FOUNDRY                                        │
-│                                                                                      │
-│  ┌─────────────────────┐   ┌─────────────────────┐   ┌─────────────────────┐         │
-│  │                     │   │                     │   │                     │         │
-│  │  Unified Monitoring │   │  Intelligent        │   │  Automated          │         │
-│  │  & Observability    │   │  Incident Response  │   │  Operations         │         │
-│  │                     │   │                     │   │                     │         │
-│  └─────────────────────┘   └─────────────────────┘   └─────────────────────┘         │
-│                                                                                      │
-│  ┌─────────────────────┐   ┌─────────────────────┐   ┌─────────────────────┐         │
-│  │                     │   │                     │   │                     │         │
-│  │  Capacity           │   │  Security           │   │  Hybrid             │         │
-│  │  Intelligence       │   │  Operations         │   │  Operations Console │         │
-│  │                     │   │                     │   │                     │         │
-│  └─────────────────────┘   └─────────────────────┘   └─────────────────────┘         │
-│                                                                                      │
-└──────────────────────────────────────────────────────────────────────────────────────┘
+    ┌─────────────────┐     ┌───────────────────┐     ┌─────────────────┐
+    │                 │     │                   │     │                 │
+    │   Mainframe     │◄───►│   Integration     │◄───►│   Azure Cloud   │
+    │   Systems       │     │   Gateway         │     │   Applications  │
+    │                 │     │                   │     │                 │
+    └─────────────────┘     └───────────────────┘     └─────────────────┘
+           ▲                         ▲                        ▲
+           │                         │                        │
+           ▼                         ▼                        ▼
+    ┌─────────────────┐     ┌───────────────────┐     ┌─────────────────┐
+    │   Mainframe     │     │                   │     │   Cloud         │
+    │   Data Stores   │◄───►│   Data Sync       │◄───►│   Data Stores   │
+    │                 │     │   Services        │     │                 │
+    └─────────────────┘     └───────────────────┘     └─────────────────┘
 ```
 
-## Technical Implementation
+### 2. Service Virtualization
 
-### 1. Unified Monitoring Implementation
+**Description**: Abstraction layer that presents consistent interfaces regardless of implementation
 
-Implement unified monitoring across IBM z/OS and Azure environments:
+**Components**:
+- Virtual service definitions
+- Service registry and discovery
+- Routing and orchestration
+- Version management
+- Contract testing
 
-1. **Deploy Mainframe Integration Agents**:
+**Implementation Options**:
+- Azure App Configuration for feature flags
+- Azure API Management for service virtualization
+- Traffic Manager for request routing
+- Custom service virtualization layer
+
+**Diagram**:
+```
+                ┌─────────────────────────────────────┐
+                │        Service Virtualization       │
+                │                Layer                │
+                └─────────────────────────────────────┘
+                              ▲  ▲
+                              │  │
+                 ┌────────────┘  └─────────────┐
+                 │                             │
+    ┌────────────▼─────────┐     ┌────────────▼─────────┐
+    │                      │     │                      │
+    │  Mainframe Service   │     │   Cloud Service      │
+    │  Implementation      │     │   Implementation     │
+    │                      │     │                      │
+    └──────────────────────┘     └──────────────────────┘
+```
+
+### 3. Data Synchronization
+
+**Description**: Mechanisms to maintain data consistency across environments
+
+**Components**:
+- Change data capture
+- Bidirectional synchronization
+- Conflict resolution
+- Data validation and quality assurance
+- Synchronization monitoring
+
+**Implementation Options**:
+- Azure Data Factory with mainframe connectors
+- Custom ETL processes with mainframe integration
+- Event-driven synchronization with Azure Event Hubs
+- Database replication technologies
+
+**Patterns**:
+- **One-Way Sync**: Mainframe as source of truth with cloud as read-only
+- **Bidirectional Sync**: Changes in either system propagate to the other
+- **Master Data Management**: Central truth source with distribution
+- **Event Sourcing**: Event-based state tracking and replay
+
+### 4. Progressive Migration
+
+**Description**: Phased approach to moving functionality from mainframe to cloud
+
+**Components**:
+- Feature flags and toggles
+- Shadow mode operation
+- A/B testing capabilities
+- Traffic shifting mechanisms
+- Fallback procedures
+
+**Implementation Options**:
+- Azure App Configuration and Feature Management
+- Traffic Manager for gradual traffic shifting
+- Custom routing solutions
+- Monitoring-driven automation
+
+**Diagram**:
+```
+    Traffic Distribution During Progressive Migration
+
+    Phase 1: 90% Mainframe, 10% Cloud (New Features)
+    [███████████████████████████████████]  Mainframe
+    [███]  Cloud
+
+    Phase 2: 70% Mainframe, 30% Cloud
+    [█████████████████████████]  Mainframe
+    [█████████]  Cloud
+
+    Phase 3: 40% Mainframe, 60% Cloud
+    [████████████████]  Mainframe
+    [████████████████████████]  Cloud
+
+    Phase 4: 10% Mainframe, 90% Cloud (Legacy Features)
+    [███]  Mainframe
+    [███████████████████████████████████]  Cloud
+```
+
+## Implementation Steps
+
+### Step 1: Hybrid Architecture Design
+
+1. **Assess Integration Requirements**:
 
    ```bash
-   az ai-foundry agent deploy \
-     --resource-group mainframe-modernization-rg \
-     --aifoundry-name mainframe-ai-foundry \
-     --agent-type monitoring \
-     --target-host $(MAINFRAME_HOST) \
-     --target-port $(MAINFRAME_PORT) \
-     --credentials-file mainframe-credentials.json \
-     --configuration-file monitoring-config.json
+   # Generate integration requirements report
+   az ai-foundry analyze-integration \
+     --mainframe-inventory ./mainframe-inventory.json \
+     --modernization-plan ./modernization-plan.json \
+     --output ./integration-requirements.json
    ```
 
-2. **Configure Monitoring Integration**:
+2. **Define Data Synchronization Strategy**:
 
-   Create `monitoring-config.json`:
    ```json
    {
-     "monitoringConfiguration": {
-       "smfRecords": {
-         "enabled": true,
-         "recordTypes": [30, 70, 72, 89, 120],
-         "collectionInterval": 300,
-         "processingMode": "real-time"
+     "dataSyncStrategy": {
+       "customerData": {
+         "primarySource": "mainframe",
+         "syncDirection": "bidirectional",
+         "syncFrequency": "real-time",
+         "conflictResolution": "latest-wins"
        },
-       "rmfMonitoring": {
-         "enabled": true,
-         "metrics": ["CPU", "MEMORY", "IO", "WORKLOAD"],
-         "collectionInterval": 60
+       "transactionData": {
+         "primarySource": "mainframe",
+         "syncDirection": "mainframe-to-cloud",
+         "syncFrequency": "near-real-time",
+         "conflictResolution": "mainframe-wins"
        },
-       "applicationLogs": {
-         "enabled": true,
-         "sources": [
-           { "name": "CICS", "logName": "DFHLOG" },
-           { "name": "DB2", "logName": "DSNLOG" },
-           { "name": "IMS", "logName": "IMSLOG" },
-           { "name": "COBOL", "ddName": "SYSOUT" }
-         ]
-       },
-       "transactionTracking": {
-         "enabled": true,
-         "transactionClasses": ["FINANCIAL", "CUSTOMER", "BATCH"],
-         "correlationIdentifiers": ["USERID", "TRANSID", "TASKNUM"]
+       "referenceData": {
+         "primarySource": "cloud",
+         "syncDirection": "cloud-to-mainframe",
+         "syncFrequency": "scheduled",
+         "conflictResolution": "manual-resolution"
        }
      }
    }
    ```
 
-3. **Configure Azure Monitor Integration**:
+3. **Design Service Virtualization Layer**:
 
-   ```bash
-   az monitor diagnostic-settings create \
-     --name mainframe-integration \
-     --resource $(AIFOUNDRY_ID) \
-     --workspace $(LOG_ANALYTICS_WORKSPACE_ID) \
-     --logs '[{"category": "MainframeOperations", "enabled": true}]' \
-     --metrics '[{"category": "AllMetrics", "enabled": true}]'
+   ```yaml
+   # Integration Gateway Configuration
+   apiVersion: v1
+   kind: ConfigMap
+   metadata:
+     name: integration-gateway-config
+   data:
+     config.yaml: |
+       services:
+         - name: customer-management
+           virtualPath: /api/customers
+           implementations:
+             - type: mainframe
+               priority: 100
+               endpoint: ims://CUSTMGMT
+               condition: "feature.useMainframe == true"
+             - type: cloud
+               priority: 90
+               endpoint: https://customer-service/api/customers
+               condition: "feature.useCloud == true"
+           features:
+             useMainframe: true
+             useCloud: false
+             shadowMode: true
+         - name: account-management
+           virtualPath: /api/accounts
+           implementations:
+             - type: mainframe
+               priority: 100
+               endpoint: cics://ACCTMGMT
+               condition: "feature.useMainframe == true"
+             - type: cloud
+               priority: 90
+               endpoint: https://account-service/api/accounts
+               condition: "feature.useCloud == true"
+           features:
+             useMainframe: true
+             useCloud: false
+             shadowMode: true
    ```
 
-4. **Create Unified Dashboards**:
+### Step 2: Infrastructure Setup
+
+1. **Deploy Integration Gateway**:
 
    ```bash
-   az portal dashboard create \
-     --name HybridMainframeOperations \
-     --resource-group mainframe-modernization-rg \
+   # Deploy using Azure CLI
+   az deployment group create \
+     --resource-group mainframe-modernization \
+     --template-file ./templates/integration-gateway.json \
+     --parameters @./parameters/integration-gateway.parameters.json
+   ```
+
+2. **Configure Data Synchronization Services**:
+
+   ```bash
+   # Deploy data sync services
+   az deployment group create \
+     --resource-group mainframe-modernization \
+     --template-file ./templates/data-sync.json \
+     --parameters @./parameters/data-sync.parameters.json
+   ```
+
+3. **Implement Monitoring Infrastructure**:
+
+   ```bash
+   # Deploy cross-platform monitoring
+   az monitor workspace create \
+     --resource-group mainframe-modernization \
+     --workspace-name hybrid-operations \
+     --location eastus
+   
+   # Configure mainframe data collection
+   az monitor data-collection rule create \
+     --resource-group mainframe-modernization \
+     --rule-name mainframe-metrics \
      --location eastus \
-     --template-file templates/dashboards/hybrid-operations-dashboard.json
+     --destinations workspaces=/subscriptions/{subId}/resourceGroups/mainframe-modernization/providers/Microsoft.Monitor/workspaces/hybrid-operations
    ```
 
-### 2. Intelligent Incident Management
+### Step 3: Initial Integration Implementation
 
-Implement AI-powered incident management for hybrid environments:
+1. **Implement Mainframe Connectors**:
 
-1. **Deploy Incident Management Configuration**:
-
-   ```bash
-   az ai-foundry incident-management create \
-     --resource-group mainframe-modernization-rg \
-     --aifoundry-name mainframe-ai-foundry \
-     --configuration-file incident-management-config.json
+   ```java
+   // Example connector code for mainframe IMS transactions
+   @Service
+   public class ImsConnectorService {
+       private final String hostUrl;
+       private final String port;
+       private final String userName;
+       private final String password;
+       
+       public ImsConnectorService(@Value("${mainframe.host}") String hostUrl,
+                                 @Value("${mainframe.port}") String port,
+                                 @Value("${mainframe.username}") String userName,
+                                 @Value("${mainframe.password}") String password) {
+           this.hostUrl = hostUrl;
+           this.port = port;
+           this.userName = userName;
+           this.password = password;
+       }
+       
+       public CustomerResponse getCustomer(String customerId) {
+           // Create IMS request
+           ImsRequest request = ImsRequest.builder()
+               .transactionCode("CUSTINQ")
+               .addData("CUSTID", customerId)
+               .build();
+           
+           // Execute IMS transaction
+           ImsResponse response = executeImsTransaction(request);
+           
+           // Map IMS response to domain object
+           return mapToDomainObject(response);
+       }
+       
+       private ImsResponse executeImsTransaction(ImsRequest request) {
+           // Implementation of IMS transaction execution
+           // ...
+       }
+       
+       private CustomerResponse mapToDomainObject(ImsResponse response) {
+           // Mapping logic from IMS response to domain object
+           // ...
+       }
+   }
    ```
 
-   Create `incident-management-config.json`:
+2. **Implement API Gateway Routes**:
+
+   ```yaml
+   # API Gateway configuration
+   paths:
+     /customers/{customerId}:
+       get:
+         operationId: getCustomer
+         parameters:
+           - name: customerId
+             in: path
+             required: true
+             schema:
+               type: string
+         responses:
+           200:
+             description: Customer details
+             content:
+               application/json:
+                 schema:
+                   $ref: '#/components/schemas/Customer'
+         x-implementation:
+           mainframe:
+             transaction: CUSTINQ
+             mapping:
+               request:
+                 customerId: CUSTID
+               response:
+                 CUSTNAME: name
+                 CUSTADDR: address
+                 CUSTPHONE: phoneNumber
+           cloud:
+             service: customer-service
+             operation: getCustomer
+   ```
+
+3. **Set Up Feature Flags**:
+
    ```json
    {
-     "incidentManagement": {
-       "aiCapabilities": {
-         "anomalyDetection": true,
-         "rootCauseAnalysis": true,
-         "impactAssessment": true,
-         "recommendationEngine": true
-       },
-       "correlation": {
-         "enabled": true,
-         "correlationWindow": 300,
-         "crossPlatformCorrelation": true,
-         "suppressionRules": [
+     "feature-management": {
+       "use-mainframe-customer-service": {
+         "enabled-for": [
            {
-             "pattern": "DB2LOCK*",
-             "deduplicationWindow": 600
+             "name": "percentage",
+             "parameters": {
+               "value": 90
+             }
            }
          ]
        },
-       "notification": {
-         "channels": [
+       "use-cloud-customer-service": {
+         "enabled-for": [
            {
-             "type": "email",
-             "recipients": ["operations@example.com"]
-           },
-           {
-             "type": "teams",
-             "webhook": "https://teams.webhook.url"
-           },
-           {
-             "type": "serviceNow",
-             "connectionString": "$(SERVICE_NOW_CONNECTION)"
-           }
-         ],
-         "escalation": {
-           "levels": [
-             {
-               "level": 1,
-               "waitTime": 1800,
-               "recipients": ["tier1@example.com"]
-             },
-             {
-               "level": 2,
-               "waitTime": 3600,
-               "recipients": ["tier2@example.com"]
+             "name": "percentage",
+             "parameters": {
+               "value": 10
              }
-           ]
-         }
-       }
+           }
+         ]
+       },
+       "shadow-mode": true,
+       "comparison-validation": true
      }
    }
    ```
 
-2. **Configure Incident Response Playbooks**:
+### Step 4: Data Synchronization Implementation
 
-   ```bash
-   az ai-foundry playbook create \
-     --resource-group mainframe-modernization-rg \
-     --aifoundry-name mainframe-ai-foundry \
-     --name DB2Deadlock \
-     --template-file templates/playbooks/db2-deadlock-resolution.json
-   ```
+1. **Configure Change Data Capture**:
 
-3. **Implement Hybrid Runbooks**:
-
-   Create `db2-deadlock-resolution.json`:
    ```json
    {
-     "trigger": {
-       "type": "alert",
-       "alertRule": "DB2Deadlock",
-       "source": "Mainframe"
+     "source": {
+       "type": "mainframe-db2",
+       "connection": "connection-string",
+       "table": "CUSTOMER",
+       "captureMethod": "log-based"
      },
-     "actions": [
+     "target": {
+       "type": "azure-sql",
+       "connection": "connection-string",
+       "table": "Customers"
+     },
+     "mappings": [
+       {"source": "CUST_ID", "target": "CustomerId"},
+       {"source": "CUST_NAME", "target": "Name"},
+       {"source": "CUST_ADDR", "target": "Address"},
+       {"source": "CUST_PHONE", "target": "PhoneNumber"},
+       {"source": "CUST_STATUS", "target": "Status"}
+     ],
+     "syncMode": "bidirectional",
+     "conflictResolution": "latest-wins",
+     "monitoring": {
+       "alertThreshold": "5-minutes-delay",
+       "dataValidation": true
+     }
+   }
+   ```
+
+2. **Implement Data Consistency Checks**:
+
+   ```python
+   #!/usr/bin/env python3
+   
+   import pandas as pd
+   import pyodbc
+   import json
+   import logging
+   from datetime import datetime
+   
+   # Configure logging
+   logging.basicConfig(level=logging.INFO)
+   logger = logging.getLogger("data-consistency")
+   
+   def check_data_consistency(config_file):
+       """Check data consistency between mainframe and cloud databases."""
+       
+       # Load configuration
+       with open(config_file, 'r') as f:
+           config = json.load(f)
+       
+       # Connect to mainframe database
+       mainframe_conn = pyodbc.connect(config['mainframe']['connection_string'])
+       
+       # Connect to cloud database
+       cloud_conn = pyodbc.connect(config['cloud']['connection_string'])
+       
+       # Get data from mainframe
+       mainframe_query = config['mainframe']['query']
+       mainframe_df = pd.read_sql(mainframe_query, mainframe_conn)
+       
+       # Get data from cloud
+       cloud_query = config['cloud']['query']
+       cloud_df = pd.read_sql(cloud_query, cloud_conn)
+       
+       # Apply mappings
+       for mapping in config['mappings']:
+           mainframe_df.rename(columns={mapping['mainframe']: mapping['common']}, inplace=True)
+           cloud_df.rename(columns={mapping['cloud']: mapping['common']}, inplace=True)
+       
+       # Set keys for comparison
+       key_fields = config['key_fields']
+       
+       # Perform consistency check
+       mainframe_keys = set(tuple(x) for x in mainframe_df[key_fields].values)
+       cloud_keys = set(tuple(x) for x in cloud_df[key_fields].values)
+       
+       # Find missing records
+       missing_in_cloud = mainframe_keys - cloud_keys
+       missing_in_mainframe = cloud_keys - mainframe_keys
+       
+       # Find records with different values
+       common_keys = mainframe_keys.intersection(cloud_keys)
+       inconsistent_records = []
+       
+       for key in common_keys:
+           key_dict = dict(zip(key_fields, key))
+           
+           # Filter records by key
+           mf_record = mainframe_df.loc[(mainframe_df[key_fields] == pd.Series(key_dict)).all(axis=1)]
+           cloud_record = cloud_df.loc[(cloud_df[key_fields] == pd.Series(key_dict)).all(axis=1)]
+           
+           # Compare all fields
+           for field in config['compare_fields']:
+               if mf_record[field].iloc[0] != cloud_record[field].iloc[0]:
+                   inconsistent_records.append({
+                       'key': key_dict,
+                       'field': field,
+                       'mainframe_value': mf_record[field].iloc[0],
+                       'cloud_value': cloud_record[field].iloc[0]
+                   })
+       
+       # Generate report
+       report = {
+           'timestamp': datetime.now().isoformat(),
+           'missing_in_cloud': len(missing_in_cloud),
+           'missing_in_mainframe': len(missing_in_mainframe),
+           'inconsistent_records': len(inconsistent_records),
+           'details': {
+               'missing_in_cloud': [dict(zip(key_fields, k)) for k in missing_in_cloud][:100],
+               'missing_in_mainframe': [dict(zip(key_fields, k)) for k in missing_in_mainframe][:100],
+               'inconsistent_records': inconsistent_records[:100]
+           }
+       }
+       
+       # Log summary
+       logger.info(f"Consistency check completed: {report['missing_in_cloud']} missing in cloud, "
+                   f"{report['missing_in_mainframe']} missing in mainframe, "
+                   f"{report['inconsistent_records']} inconsistent records")
+       
+       # Save report
+       with open(f"consistency_report_{datetime.now().strftime('%Y%m%d%H%M%S')}.json", 'w') as f:
+           json.dump(report, f, indent=2)
+       
+       return report
+   
+   if __name__ == "__main__":
+       check_data_consistency("data_consistency_config.json")
+   ```
+
+3. **Implement Reconciliation Procedures**:
+
+   ```bash
+   #!/bin/bash
+   # Data reconciliation script
+   
+   # Get latest consistency report
+   REPORT=$(ls -t consistency_report_*.json | head -1)
+   
+   # Check threshold
+   INCONSISTENCIES=$(jq '.inconsistent_records' $REPORT)
+   THRESHOLD=100
+   
+   if [ $INCONSISTENCIES -gt $THRESHOLD ]; then
+     echo "Inconsistency threshold exceeded. Starting reconciliation..."
+     
+     # Extract inconsistent records
+     jq -r '.details.inconsistent_records[] | [.key.ID, .field, .mainframe_value, .cloud_value] | @csv' $REPORT > inconsistencies.csv
+     
+     # Run reconciliation process
+     python3 reconcile_data.py --input inconsistencies.csv --config reconciliation_rules.json
+     
+     # Report results
+     RECONCILED=$(wc -l < reconciliation_report.txt)
+     echo "Reconciled $RECONCILED records"
+   else
+     echo "Inconsistencies below threshold. No reconciliation needed."
+   fi
+   ```
+
+### Step 5: Operational Monitoring
+
+1. **Set Up Cross-Platform Dashboards**:
+
+   ```json
+   {
+     "dashboardName": "Hybrid Operations - Customer Services",
+     "panels": [
        {
-         "name": "CollectDiagnostics",
-         "type": "MainframeCommand",
-         "parameters": {
-           "command": "-DISPLAY THREAD(*) LOCKINFO",
-           "subsystem": "DB2"
-         },
-         "output": "diagnosticResults"
-       },
-       {
-         "name": "AnalyzeDeadlock",
-         "type": "AIAnalysis",
-         "parameters": {
-           "analysisType": "DeadlockPattern",
-           "input": "diagnosticResults"
-         },
-         "output": "analysisResults"
-       },
-       {
-         "name": "TakeRemediationAction",
-         "type": "ConditionalExecution",
-         "conditions": [
+         "title": "Mainframe Customer Services",
+         "metrics": [
            {
-             "condition": "analysisResults.confidence > 0.7",
-             "actions": [
-               {
-                 "name": "ApplyFix",
-                 "type": "MainframeCommand",
-                 "parameters": {
-                   "command": "-CANCEL THREAD(${analysisResults.threadId})",
-                   "subsystem": "DB2"
-                 }
-               }
-             ]
+             "name": "IMS Transaction Rate - CUSTINQ",
+             "source": "mainframe",
+             "query": "IMSTransactions where TransCode='CUSTINQ' | summarize count() by bin(TimeGenerated, 5m)"
            },
            {
-             "condition": "true",
-             "actions": [
-               {
-                 "name": "EscalateToHuman",
-                 "type": "Notification",
-                 "parameters": {
-                   "channel": "teams",
-                   "message": "DB2 deadlock detected, manual intervention required. Analysis results: ${analysisResults.summary}",
-                   "severity": "High"
-                 }
-               }
-             ]
+             "name": "Mainframe Response Time - CUSTINQ",
+             "source": "mainframe",
+             "query": "IMSTransactions where TransCode='CUSTINQ' | summarize avg(ResponseTime) by bin(TimeGenerated, 5m)"
+           }
+         ]
+       },
+       {
+         "title": "Cloud Customer Services",
+         "metrics": [
+           {
+             "name": "API Requests - Customer Service",
+             "source": "azure-monitor",
+             "query": "requests | where name startswith '/api/customers' | summarize count() by bin(timestamp, 5m)"
+           },
+           {
+             "name": "Cloud Response Time - Customer API",
+             "source": "azure-monitor",
+             "query": "requests | where name startswith '/api/customers' | summarize avg(duration) by bin(timestamp, 5m)"
+           }
+         ]
+       },
+       {
+         "title": "Integration Gateway",
+         "metrics": [
+           {
+             "name": "Gateway Requests by Destination",
+             "source": "azure-monitor",
+             "query": "GatewayRequests | summarize count() by destination | render piechart"
+           },
+           {
+             "name": "Gateway Error Rate",
+             "source": "azure-monitor",
+             "query": "GatewayRequests | summarize errorRate=countif(success == false) * 100.0 / count() by bin(timestamp, 5m)"
+           }
+         ]
+       },
+       {
+         "title": "Data Consistency",
+         "metrics": [
+           {
+             "name": "Inconsistent Records Trend",
+             "source": "consistency-checks",
+             "query": "ConsistencyReports | summarize inconsistentRecords=max(inconsistent_records) by bin(timestamp, 1h)"
+           },
+           {
+             "name": "Synchronization Latency",
+             "source": "data-sync",
+             "query": "SyncEvents | summarize latencySeconds=avg(latency_seconds) by bin(timestamp, 5m)"
            }
          ]
        }
@@ -294,612 +622,345 @@ Implement AI-powered incident management for hybrid environments:
    }
    ```
 
-### 3. Automated Operations Workflows
+2. **Configure Alerting Rules**:
 
-Implement automated operational workflows spanning z/OS and Azure:
-
-1. **Deploy Integration Automation**:
-
-   ```bash
-   az resource create \
-     --resource-group mainframe-modernization-rg \
-     --namespace Microsoft.Logic --resource-type workflows \
-     --name BatchProcessingWorkflow \
-     --properties @batch-processing-workflow.json \
-     --api-version 2019-05-01
+   ```yaml
+   # Alert configuration
+   alertRules:
+     - name: "High Gateway Error Rate"
+       description: "Integration gateway showing high error rate"
+       metric: "GatewayRequests | summarize errorRate=countif(success == false) * 100.0 / count() by bin(timestamp, 5m)"
+       condition: "errorRate > 5"
+       severity: "Critical"
+       actionGroups:
+         - "hybrid-operations-team"
+         
+     - name: "Data Sync Delay"
+       description: "Data synchronization showing high latency"
+       metric: "SyncEvents | summarize latencySeconds=max(latency_seconds) by bin(timestamp, 5m)"
+       condition: "latencySeconds > 300"
+       severity: "High"
+       actionGroups:
+         - "data-sync-team"
+         
+     - name: "Mainframe Transaction Failure"
+       description: "Increased failure rate for mainframe transactions"
+       metric: "IMSTransactions | summarize failRate=countif(Status != 'Success') * 100.0 / count() by bin(TimeGenerated, 5m)"
+       condition: "failRate > 2"
+       severity: "Critical"
+       actionGroups:
+         - "mainframe-team"
+         - "hybrid-operations-team"
+         
+     - name: "Feature Flag Status Change"
+       description: "Feature flag configuration has changed"
+       metric: "FeatureFlagEvents | where EventType == 'ConfigurationChanged'"
+       condition: "count > 0"
+       severity: "Information"
+       actionGroups:
+         - "release-management-team"
    ```
 
-2. **Configure Hybrid Batch Processing Workflow**:
+3. **Implement Health Checks**:
 
-   Create `batch-processing-workflow.json`:
-   ```json
-   {
-     "properties": {
-       "state": "Enabled",
-       "definition": {
-         "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-         "contentVersion": "1.0.0.0",
-         "parameters": {
-           "mainframeJobName": {
-             "type": "string",
-             "defaultValue": "DAILYBAT"
-           },
-           "mainframeSubsystem": {
-             "type": "string",
-             "defaultValue": "JES2"
-           }
-         },
-         "triggers": {
-           "schedule": {
-             "type": "Recurrence",
-             "recurrence": {
-               "frequency": "Day",
-               "interval": 1,
-               "schedule": {
-                 "hours": [22],
-                 "minutes": [0]
-               }
-             }
-           }
-         },
-         "actions": {
-           "CheckPrerequisites": {
-             "type": "Http",
-             "inputs": {
-               "method": "GET",
-               "uri": "https://ai-foundry-api.example.com/api/mainframe-operations/prerequisites",
-               "queries": {
-                 "jobName": "@parameters('mainframeJobName')"
-               }
-             },
-             "runAfter": {}
-           },
-           "SubmitMainframeJob": {
-             "type": "Http",
-             "inputs": {
-               "method": "POST",
-               "uri": "https://ai-foundry-api.example.com/api/mainframe-operations/jobs",
-               "body": {
-                 "jobName": "@parameters('mainframeJobName')",
-                 "subsystem": "@parameters('mainframeSubsystem')",
-                 "parameters": {
-                   "DATE": "@utcNow('yyyy-MM-dd')"
-                 }
-               }
-             },
-             "runAfter": {
-               "CheckPrerequisites": [
-                 "Succeeded"
-               ]
-             }
-           },
-           "MonitorJobExecution": {
-             "type": "Until",
-             "actions": {
-               "GetJobStatus": {
-                 "type": "Http",
-                 "inputs": {
-                   "method": "GET",
-                   "uri": "https://ai-foundry-api.example.com/api/mainframe-operations/jobs/@{body('SubmitMainframeJob').jobId}/status"
-                 }
-               },
-               "WaitForNextCheck": {
-                 "type": "Wait",
-                 "inputs": {
-                   "interval": {
-                     "count": 30,
-                     "unit": "Second"
-                   }
-                 },
-                 "runAfter": {
-                   "GetJobStatus": [
-                     "Succeeded"
-                   ]
-                 }
-               }
-             },
-             "expression": "@equals(body('GetJobStatus').status, 'COMPLETED')",
-             "limit": {
-               "count": 60,
-               "timeout": "PT1H"
-             },
-             "runAfter": {
-               "SubmitMainframeJob": [
-                 "Succeeded"
-               ]
-             }
-           },
-           "ProcessResults": {
-             "type": "Http",
-             "inputs": {
-               "method": "POST",
-               "uri": "https://ai-foundry-api.example.com/api/mainframe-operations/jobs/@{body('SubmitMainframeJob').jobId}/results",
-               "body": {
-                 "destinationStorage": "mainframeresults",
-                 "processType": "DataTransformation"
-               }
-             },
-             "runAfter": {
-               "MonitorJobExecution": [
-                 "Succeeded"
-               ]
-             }
-           },
-           "RunDataAnalytics": {
-             "type": "AzureFunction",
-             "inputs": {
-               "function": {
-                 "id": "[resourceId('Microsoft.Web/sites/functions', variables('functionAppName'), 'ProcessMainframeData')]"
-               },
-               "body": {
-                 "jobId": "@body('SubmitMainframeJob').jobId",
-                 "executionDate": "@utcNow('yyyy-MM-dd')",
-                 "storageContainer": "mainframeresults"
-               }
-             },
-             "runAfter": {
-               "ProcessResults": [
-                 "Succeeded"
-               ]
-             }
-           },
-           "UpdateOperationalDashboard": {
-             "type": "Http",
-             "inputs": {
-               "method": "PATCH",
-               "uri": "https://ai-foundry-api.example.com/api/dashboards/hybrid-operations",
-               "body": {
-                 "lastBatchRun": "@utcNow()",
-                 "jobId": "@body('SubmitMainframeJob').jobId",
-                 "processingResults": "@body('RunDataAnalytics')"
-               }
-             },
-             "runAfter": {
-               "RunDataAnalytics": [
-                 "Succeeded"
-               ]
-             }
-           }
-         },
-         "outputs": {}
+   ```java
+   @RestController
+   @RequestMapping("/health")
+   public class HybridHealthController {
+       
+       private final MainframeConnectionService mainframeService;
+       private final CloudServicesHealthService cloudService;
+       private final DataSyncHealthService dataSyncService;
+       
+       @GetMapping("/status")
+       public ResponseEntity<HealthStatus> getHealthStatus() {
+           HealthStatus status = new HealthStatus();
+           
+           // Check mainframe connectivity
+           boolean mainframeHealth = mainframeService.checkConnectivity();
+           status.setMainframeConnectivity(mainframeHealth);
+           
+           // Check cloud services
+           Map<String, Boolean> cloudServicesHealth = cloudService.checkAllServices();
+           status.setCloudServices(cloudServicesHealth);
+           
+           // Check data synchronization
+           DataSyncHealth syncHealth = dataSyncService.checkSynchronization();
+           status.setDataSync(syncHealth);
+           
+           // Calculate overall health
+           boolean overallHealth = calculateOverallHealth(mainframeHealth, cloudServicesHealth, syncHealth);
+           status.setHealthy(overallHealth);
+           
+           HttpStatus httpStatus = overallHealth ? HttpStatus.OK : HttpStatus.SERVICE_UNAVAILABLE;
+           return new ResponseEntity<>(status, httpStatus);
        }
-     }
-   }
-   ```
-
-### 4. Capacity Intelligence
-
-Implement AI-powered capacity management across platforms:
-
-1. **Deploy Capacity Intelligence Service**:
-
-   ```bash
-   az ai-foundry capacity create \
-     --resource-group mainframe-modernization-rg \
-     --aifoundry-name mainframe-ai-foundry \
-     --configuration-file capacity-intelligence-config.json
-   ```
-
-2. **Configure Capacity Intelligence**:
-
-   Create `capacity-intelligence-config.json`:
-   ```json
-   {
-     "capacityIntelligence": {
-       "data": {
-         "sources": [
-           {
-             "type": "mainframe",
-             "metrics": [
-               "CPU_UTILIZATION",
-               "MEMORY_UTILIZATION",
-               "IO_RATE",
-               "WORKLOAD_ACTIVITY"
-             ],
-             "collectionInterval": 300
-           },
-           {
-             "type": "azure",
-             "metrics": [
-               "Percentage CPU",
-               "Memory Available",
-               "Disk Operations/Sec",
-               "Network In/Out"
-             ],
-             "collectionInterval": 60
-           }
-         ],
-         "historicalPeriod": 90,
-         "retentionPeriod": 365
-       },
-       "analysis": {
-         "forecastingHorizon": 90,
-         "seasonalityDetection": true,
-         "anomalyDetection": true,
-         "correlationAnalysis": true,
-         "workloadPatternIdentification": true
-       },
-       "optimization": {
-         "recommendations": {
-           "enabled": true,
-           "types": [
-             "RESOURCE_ALLOCATION",
-             "WORKLOAD_SCHEDULING",
-             "COST_OPTIMIZATION"
-           ],
-           "autoImplementation": false
-         },
-         "simulationEnabled": true
-       },
-       "reporting": {
-         "dashboards": ["CAPACITY_OVERVIEW", "TREND_ANALYSIS", "FORECAST_VIEW"],
-         "alerting": {
-           "enabled": true,
-           "thresholds": {
-             "CPU_UTILIZATION": 85,
-             "MEMORY_UTILIZATION": 90,
-             "FORECAST_CAPACITY_BREACH": 30
-           }
-         }
+       
+       private boolean calculateOverallHealth(boolean mainframeHealth, 
+                                            Map<String, Boolean> cloudServicesHealth,
+                                            DataSyncHealth syncHealth) {
+           // Critical services must be operational
+           if (!mainframeHealth) return false;
+           
+           // Check critical cloud services
+           if (!cloudServicesHealth.getOrDefault("customer-service", false)) return false;
+           if (!cloudServicesHealth.getOrDefault("account-service", false)) return false;
+           
+           // Check data sync health
+           if (syncHealth.getLatencySeconds() > 600) return false; // 10 minutes max acceptable latency
+           if (syncHealth.getInconsistencyRate() > 0.05) return false; // 5% max inconsistency
+           
+           return true;
        }
-     }
    }
    ```
 
-3. **Create Capacity Forecasting Job**:
+### Step 6: Traffic Shifting Implementation
 
-   ```bash
-   az ai-foundry job create \
-     --resource-group mainframe-modernization-rg \
-     --aifoundry-name mainframe-ai-foundry \
-     --name CapacityForecast \
-     --job-type forecast \
-     --schedule "0 0 * * 0" \
-     --parameters @capacity-forecast-params.json
-   ```
+1. **Progressive Traffic Shifting Plan**:
 
-   Create `capacity-forecast-params.json`:
    ```json
    {
-     "forecastingParameters": {
-       "timeHorizon": 90,
-       "confidenceInterval": 95,
-       "granularity": "DAILY",
-       "metrics": [
-         "CPU_UTILIZATION",
-         "MEMORY_UTILIZATION",
-         "IO_RATE",
-         "WORKLOAD_ACTIVITY"
-       ],
-       "scenarios": [
-         {
-           "name": "BaselineGrowth",
-           "growthRate": 0.05
-         },
-         {
-           "name": "AcceleratedGrowth",
-           "growthRate": 0.15
-         },
-         {
-           "name": "ModernizationImpact",
-           "customModel": "MODERNIZATION_SHIFT"
-         }
-       ],
-       "outputFormat": "DASHBOARD_AND_REPORT",
-       "notificationRecipients": ["capacity-planning@example.com"]
-     }
-   }
-   ```
-
-### 5. Security Operations
-
-Implement unified security operations across hybrid environments:
-
-1. **Deploy Security Operations Integration**:
-
-   ```bash
-   az ai-foundry security create \
-     --resource-group mainframe-modernization-rg \
-     --aifoundry-name mainframe-ai-foundry \
-     --configuration-file security-operations-config.json
-   ```
-
-2. **Configure Security Operations**:
-
-   Create `security-operations-config.json`:
-   ```json
-   {
-     "securityOperations": {
-       "dataSources": {
-         "mainframe": {
-           "racfLogs": true,
-           "acfLogs": true,
-           "topSecretLogs": true,
-           "smfSecurityRecords": true,
-           "systemLogs": true
-         },
-         "azure": {
-           "azureActivityLogs": true,
-           "azureSecurityCenter": true,
-           "azureSentinel": true,
-           "microsoftDefender": true
+     "serviceName": "CustomerManagement",
+     "phases": [
+       {
+         "phase": 1,
+         "description": "Initial testing",
+         "mainframePercentage": 95,
+         "cloudPercentage": 5,
+         "duration": "2 weeks",
+         "successCriteria": {
+           "errorRate": "< 0.5%",
+           "responseTime": "< 500ms",
+           "functionalEquivalence": "100%"
          }
        },
-       "threatDetection": {
-         "enabled": true,
-         "analysisRules": [
-           "PRIVILEGED_ACCESS_ANOMALY",
-           "UNUSUAL_ACCESS_PATTERN",
-           "CREDENTIAL_MISUSE",
-           "DATA_EXFILTRATION",
-           "CROSS_PLATFORM_THREATS"
-         ]
-       },
-       "complianceMonitoring": {
-         "frameworks": [
-           "PCI-DSS",
-           "HIPAA",
-           "SOX",
-           "GDPR",
-           "NIST"
-         ],
-         "automatedAssessment": true,
-         "reportingFrequency": "WEEKLY"
-       },
-       "responseAutomation": {
-         "enabled": true,
-         "playbooks": [
-           "ACCOUNT_LOCKOUT",
-           "SUSPICIOUS_ACCESS_INVESTIGATION",
-           "MALWARE_CONTAINMENT"
-         ]
-       },
-       "securityDashboard": {
-         "components": [
-           "THREAT_OVERVIEW",
-           "COMPLIANCE_STATUS",
-           "VULNERABILITY_SUMMARY",
-           "INCIDENT_TRACKER"
-         ],
-         "updateFrequency": 300
-       }
-     }
-   }
-   ```
-
-3. **Configure Security Alerts Integration**:
-
-   ```bash
-   az monitor activity-log alert create \
-     --name MainframeSecurityAlerts \
-     --resource-group mainframe-modernization-rg \
-     --condition category=Security \
-     --action-group /subscriptions/{subscriptionId}/resourceGroups/mainframe-modernization-rg/providers/Microsoft.Insights/actionGroups/SecurityResponseTeam
-   ```
-
-## Hybrid Operations Console
-
-Implement a unified operations console for hybrid environments:
-
-1. **Deploy Hybrid Operations Console**:
-
-   ```bash
-   az deployment group create \
-     --resource-group mainframe-modernization-rg \
-     --template-file templates/hybrid-operations-console.json \
-     --parameters @console-parameters.json
-   ```
-
-2. **Configure Console Components**:
-
-   Create `console-parameters.json`:
-   ```json
-   {
-     "consoleName": {
-       "value": "MainframeHybridOps"
-     },
-     "consoleComponents": {
-       "value": [
-         "MONITORING_DASHBOARD",
-         "ALERT_MANAGER",
-         "INCIDENT_RESPONSE",
-         "CAPACITY_INSIGHTS",
-         "SECURITY_OPERATIONS",
-         "AUTOMATION_CONTROL"
-       ]
-     },
-     "userRoles": {
-       "value": [
-         {
-           "name": "OperationsEngineer",
-           "permissions": [
-             "VIEW_ALL",
-             "MANAGE_INCIDENTS",
-             "RUN_AUTOMATIONS"
-           ]
-         },
-         {
-           "name": "SecurityAnalyst",
-           "permissions": [
-             "VIEW_SECURITY",
-             "MANAGE_SECURITY_INCIDENTS",
-             "VIEW_AUDITS"
-           ]
-         },
-         {
-           "name": "MainframeSpecialist",
-           "permissions": [
-             "VIEW_ALL",
-             "MANAGE_MAINFRAME",
-             "VIEW_CAPACITY"
-           ]
-         }
-       ]
-     },
-     "consoleSettings": {
-       "value": {
-         "refreshInterval": 60,
-         "defaultView": "MONITORING_DASHBOARD",
-         "theme": "CORPORATE",
-         "telemetryEnabled": true
-       }
-     }
-   }
-   ```
-
-## Practical Example: Hybrid Batch Processing Monitoring
-
-This example demonstrates how to set up hybrid monitoring for a mainframe batch process that has dependencies in Azure:
-
-1. **Configure the Monitoring Integration**:
-
-   ```json
-   {
-     "hybridBatchMonitoring": {
-       "batchProcess": {
-         "name": "DAILYACCT",
-         "mainframeJobName": "ACCTPROC",
-         "schedule": "0 22 * * 1-5",
-         "expectedDuration": 7200,
-         "dependencies": [
-           {
-             "type": "mainframe",
-             "name": "DB2.ACCOUNTS.DAILY",
-             "checkCommand": "-DISPLAY DATABASE(ACCOUNTS)",
-             "status": "available"
-           },
-           {
-             "type": "azure",
-             "name": "DataLakeInput",
-             "resource": "StorageAccount",
-             "resourceName": "acctdatalake",
-             "status": "filesAvailable"
-           }
-         ]
-       },
-       "monitoring": {
-         "checkpoints": [
-           {
-             "name": "JobSubmission",
-             "type": "mainframe",
-             "command": "$D J,ACCTPROC",
-             "expectedOutput": "JOB STARTED",
-             "timeout": 300
-           },
-           {
-             "name": "DB2Processing",
-             "type": "mainframe",
-             "command": "SELECT COUNT(*) FROM SYSIBM.SYSPROCS WHERE NAME='ACCTPROC'",
-             "expectedOutput": "> 0",
-             "timeout": 3600
-           },
-           {
-             "name": "DataExport",
-             "type": "hybrid",
-             "mainframeCommand": "$D J,ACCTPROC",
-             "azureCheck": {
-               "type": "Blob",
-               "container": "exports",
-               "filePattern": "ACCT_*.csv"
-             },
-             "timeout": 5400
-           },
-           {
-             "name": "DataLakeProcessing",
-             "type": "azure",
-             "resource": "DataFactory",
-             "pipelineName": "ProcessAccountExport",
-             "status": "Succeeded",
-             "timeout": 1800
-           }
-         ],
-         "alerts": {
-           "delayThreshold": 900,
-           "failureNotification": {
-             "channels": ["email", "teams"],
-             "recipients": ["batch-ops@example.com"]
-           }
+       {
+         "phase": 2,
+         "description": "Limited production",
+         "mainframePercentage": 80,
+         "cloudPercentage": 20,
+         "duration": "2 weeks",
+         "successCriteria": {
+           "errorRate": "< 0.5%",
+           "responseTime": "< 400ms",
+           "functionalEquivalence": "100%"
          }
        },
-       "remediation": {
-         "autoRetry": {
-           "enabled": true,
-           "maxRetries": 3,
-           "retryInterval": 600
-         },
-         "playbooks": [
-           {
-             "trigger": "DB2Processing.Timeout",
-             "playbook": "RestartDB2Process"
-           },
-           {
-             "trigger": "DataExport.Failure",
-             "playbook": "RecoverExportProcess"
-           }
-         ]
+       {
+         "phase": 3,
+         "description": "Scaled production",
+         "mainframePercentage": 50,
+         "cloudPercentage": 50,
+         "duration": "2 weeks",
+         "successCriteria": {
+           "errorRate": "< 0.5%",
+           "responseTime": "< 300ms",
+           "functionalEquivalence": "100%"
+         }
+       },
+       {
+         "phase": 4,
+         "description": "Primary production",
+         "mainframePercentage": 20,
+         "cloudPercentage": 80,
+         "duration": "2 weeks",
+         "successCriteria": {
+           "errorRate": "< 0.5%",
+           "responseTime": "< 300ms",
+           "functionalEquivalence": "100%"
+         }
+       },
+       {
+         "phase": 5,
+         "description": "Full production",
+         "mainframePercentage": 0,
+         "cloudPercentage": 100,
+         "duration": "Final",
+         "successCriteria": {
+           "errorRate": "< 0.5%",
+           "responseTime": "< 300ms",
+           "functionalEquivalence": "100%"
+         }
        }
+     ],
+     "rollbackCriteria": {
+       "errorRate": "> 1.0%",
+       "responseTime": "> 800ms",
+       "functionalEquivalence": "< 99.9%"
      }
    }
    ```
 
-2. **Implement the Monitoring Dashboard**:
+2. **Implement Feature Flag Updates**:
 
-   ```bash
-   az portal dashboard create \
-     --name HybridBatchMonitoring \
-     --resource-group mainframe-modernization-rg \
-     --location eastus \
-     --template-file templates/dashboards/hybrid-batch-dashboard.json
+   ```powershell
+   # PowerShell script to update feature flags
+   param(
+       [string]$ConfigName,
+       [int]$MainframePercentage,
+       [int]$CloudPercentage
+   )
+   
+   # Get feature flag configuration
+   $config = Get-AzAppConfigurationKeyValue -Name $ConfigName -Key "feature-management"
+   
+   # Parse configuration
+   $featureConfig = $config | ConvertFrom-Json
+   
+   # Update percentages
+   $featureConfig.'use-mainframe-customer-service'.'enabled-for'[0].parameters.value = $MainframePercentage
+   $featureConfig.'use-cloud-customer-service'.'enabled-for'[0].parameters.value = $CloudPercentage
+   
+   # Convert back to JSON
+   $updatedConfig = $featureConfig | ConvertTo-Json -Depth 10
+   
+   # Update configuration
+   Set-AzAppConfigurationKeyValue -Name $ConfigName -Key "feature-management" -Value $updatedConfig -ContentType "application/json"
+   
+   Write-Host "Feature flags updated: Mainframe = $MainframePercentage%, Cloud = $CloudPercentage%"
    ```
 
-## Validation Steps
+3. **Implement Automated Validation**:
 
-After implementing hybrid operations management, validate the implementation using these steps:
+   ```java
+   @Service
+   public class FunctionalEquivalenceValidator {
+       
+       private final MainframeService mainframeService;
+       private final CloudService cloudService;
+       private final MetricsService metricsService;
+       
+       public ValidationResult validateEquivalence(String transactionType, int sampleSize) {
+           ValidationResult result = new ValidationResult();
+           List<TestCase> testCases = generateTestCases(transactionType, sampleSize);
+           
+           for (TestCase testCase : testCases) {
+               try {
+                   // Call mainframe implementation
+                   long mainframeStart = System.currentTimeMillis();
+                   Object mainframeResponse = mainframeService.executeTransaction(
+                       testCase.getTransactionType(), testCase.getInputData());
+                   long mainframeDuration = System.currentTimeMillis() - mainframeStart;
+                   
+                   // Call cloud implementation
+                   long cloudStart = System.currentTimeMillis();
+                   Object cloudResponse = cloudService.executeTransaction(
+                       testCase.getTransactionType(), testCase.getInputData());
+                   long cloudDuration = System.currentTimeMillis() - cloudStart;
+                   
+                   // Compare responses
+                   boolean equivalent = compareResponses(mainframeResponse, cloudResponse);
+                   
+                   // Record result
+                   TestResult testResult = new TestResult();
+                   testResult.setTestCase(testCase);
+                   testResult.setMainframeResponse(mainframeResponse);
+                   testResult.setCloudResponse(cloudResponse);
+                   testResult.setEquivalent(equivalent);
+                   testResult.setMainframeDuration(mainframeDuration);
+                   testResult.setCloudDuration(cloudDuration);
+                   
+                   result.addTestResult(testResult);
+                   
+                   // Report metrics
+                   metricsService.recordEquivalenceTest(
+                       testCase.getTransactionType(), 
+                       equivalent, 
+                       mainframeDuration, 
+                       cloudDuration);
+                   
+               } catch (Exception e) {
+                   // Record error
+                   TestResult testResult = new TestResult();
+                   testResult.setTestCase(testCase);
+                   testResult.setError(e.getMessage());
+                   result.addTestResult(testResult);
+                   
+                   // Report error metric
+                   metricsService.recordEquivalenceError(
+                       testCase.getTransactionType(), 
+                       e.getClass().getSimpleName());
+               }
+           }
+           
+           return result;
+       }
+       
+       private List<TestCase> generateTestCases(String transactionType, int sampleSize) {
+           // Generate representative test cases
+           // ...
+       }
+       
+       private boolean compareResponses(Object mainframeResponse, Object cloudResponse) {
+           // Compare responses for functional equivalence
+           // ...
+       }
+   }
+   ```
 
-1. **Validate Unified Monitoring**:
-   - Confirm metric collection from both mainframe and Azure sources
-   - Verify proper visualization in dashboards
-   - Check alert generation and correlation across platforms
+## Best Practices for Hybrid Operations
 
-2. **Test Incident Management**:
-   - Simulate a hybrid incident (e.g., DB2 issue affecting Azure services)
-   - Verify proper detection, correlation, and notification
-   - Confirm playbook execution and remediation steps
+### 1. Architecture and Design
 
-3. **Verify Automated Operations**:
-   - Test end-to-end automation of hybrid workflows
-   - Confirm proper error handling and notification
-   - Validate cross-platform coordination
+- **Design for Coexistence**: Plan for long-term coexistence between mainframe and cloud systems
+- **Minimize Integration Complexity**: Use standardized integration patterns and protocols
+- **Favor Asynchronous Communication**: Reduce dependencies and improve resilience with event-driven patterns
+- **Implement Service Abstraction**: Hide implementation details behind consistent interfaces
+- **Design for Gradual Migration**: Enable component-by-component migration without major disruptions
 
-4. **Check Capacity Intelligence**:
-   - Verify data collection and analysis across platforms
-   - Test forecasting accuracy with historical data
-   - Review recommendation quality and relevance
+### 2. Data Management
 
-5. **Validate Security Operations**:
-   - Test threat detection across platforms
-   - Verify security playbook execution
-   - Confirm compliance monitoring and reporting
+- **Establish Clear Ownership**: Define authoritative sources for each data domain
+- **Implement Robust Synchronization**: Ensure reliable and consistent data replication
+- **Monitor Data Consistency**: Implement ongoing verification of data integrity
+- **Plan for Conflict Resolution**: Define clear processes for handling data conflicts
+- **Implement Data Governance**: Maintain data quality and compliance across platforms
+
+### 3. Operational Practices
+
+- **Unified Monitoring**: Implement cross-platform monitoring and alerting
+- **Coordinated Release Management**: Synchronize changes across mainframe and cloud
+- **Comprehensive Testing**: Test end-to-end scenarios across hybrid environments
+- **Progressive Deployment**: Gradually shift traffic to validate modernized components
+- **Disaster Recovery Planning**: Ensure business continuity across hybrid environment
+
+### 4. Team and Skills
+
+- **Cross-Platform Knowledge**: Develop team members with both mainframe and cloud skills
+- **Collaborative Operations**: Establish joint operations between mainframe and cloud teams
+- **Knowledge Transfer**: Document mainframe knowledge and business rules
+- **Training and Development**: Upskill mainframe staff on cloud technologies
+- **Clear Responsibilities**: Define ownership for hybrid components and interfaces
 
 ## Troubleshooting
 
-| Issue | Resolution |
-|-------|------------|
-| Missing mainframe metrics | Verify mainframe agent installation and permissions; check SMF record types configuration |
-| Alert correlation failure | Adjust correlation rules and timeframe; check for clock synchronization issues |
-| Automation playbook failures | Verify mainframe command permissions; check network connectivity between platforms |
-| Capacity forecast inaccuracy | Increase historical data period; adjust seasonality detection parameters |
-| Cross-platform security alerting delays | Check log ingestion frequency; optimize security agent configuration |
+| Issue | Symptoms | Resolution |
+|-------|----------|------------|
+| Integration Gateway Failures | Intermittent communication errors between systems | Check network connectivity, verify credential management, validate protocol compatibility, ensure message format correctness |
+| Data Synchronization Delays | Increasing latency in data propagation between systems | Optimize change data capture configuration, review network bandwidth, check for database bottlenecks, implement parallel synchronization |
+| Data Inconsistencies | Differing values between mainframe and cloud data stores | Run reconciliation processes, verify synchronization triggers, check for application bypassing synchronization, validate transformation logic |
+| Performance Degradation | Increased response times during hybrid operations | Identify bottlenecks with distributed tracing, optimize integration points, implement caching strategies, review resource allocation |
+| Integration Errors | Functionality works in one system but fails in hybrid mode | Verify error handling consistency, check data type compatibility, validate business rule implementation, ensure transaction boundary consistency |
+
+## Case Studies
+
+For real-world examples of successful hybrid operations implementation during mainframe modernization, refer to the [Case Studies and Examples](../12-case-studies/README.md) chapter.
 
 ## Next Steps
 
-After implementing hybrid operations management, continue to:
+After implementing hybrid operations:
 
-1. [Case Studies and Examples](../12-case-studies/README.md) - Real-world examples and lessons learned
+1. Continuously monitor and optimize your hybrid environment
+2. Progressively shift more workloads to modernized systems
+3. Refine your integration patterns based on operational feedback
+4. Plan for eventual decommissioning of mainframe components
+5. Document lessons learned for future modernization phases
 
-## Additional Resources
+## References
 
-- [Mainframe Monitoring Best Practices](../resources/guides/mainframe-monitoring-best-practices.md)
-- [Hybrid Incident Response Playbooks](../resources/templates/incident-response-playbooks.md)
-- [Capacity Planning Guidelines](../resources/guides/hybrid-capacity-planning.md)
-- [Security Operations Reference Architecture](../resources/architecture/security-operations-architecture.md) 
+- [Modernization Strategy Guide](../03-foundation/modernization-strategy.md)
+- [Dependency Mapping Guide](../02-discovery/dependency-mapping.md)
+- [AI-Powered Transformation](../08-ai-transformation/README.md)
+- [CI/CD Implementation](../09-cicd-implementation/README.md)
+- [Risk Management](../10-risk-management/README.md) 
