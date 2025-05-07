@@ -141,6 +141,7 @@ The reference architecture supports these application patterns:
 - Modern frontends accessing mainframe services
 - Retain core business logic on mainframe
 - Implementation: z/OS Connect + Azure API Management
+- [Detailed Pattern Documentation](patterns/api-enabled-pattern.md)
 
 #### Pattern 2: Hybrid Data Processing
 
@@ -150,6 +151,7 @@ The reference architecture supports these application patterns:
 - Process data in cloud while maintaining mainframe source
 - Enable cloud analytics on mainframe data
 - Implementation: CDC tools + Azure Data Factory + Azure Synapse
+- [Detailed Pattern Documentation](patterns/hybrid-data-pattern.md)
 
 #### Pattern 3: Incremental Refactoring
 
@@ -159,6 +161,7 @@ The reference architecture supports these application patterns:
 - Maintain interoperability with remaining mainframe components
 - Phased migration approach
 - Implementation: AI-powered code transformation + Azure Functions/App Service
+- [Detailed Pattern Documentation](patterns/incremental-refactoring-pattern.md)
 
 #### Pattern 4: Containerized Rehosting
 
@@ -168,6 +171,7 @@ The reference architecture supports these application patterns:
 - Maintain application logic with minimal changes
 - Enable DevOps practices and horizontal scaling
 - Implementation: Containerization tools + Azure Kubernetes Service
+- [Detailed Pattern Documentation](patterns/containerized-rehosting-pattern.md)
 
 ## Network Architecture
 

@@ -11,9 +11,11 @@ Before implementing technical components, a solid foundation must be established
 This chapter covers the following foundational components:
 
 - [Modernization Strategy](modernization-strategy.md) - Comprehensive approaches for mainframe modernization (rehost, refactor, rearchitect, replace, and hybrid)
-- Governance Framework (Coming Soon) - Establishing controls, processes, and decision structures for modernization
-- Reference Architecture (Coming Soon) - Technical architecture patterns for mainframe modernization
-- Team Organization (Coming Soon) - Structuring teams and roles for modernization success
+- [Hybrid Strategy](hybrid-strategy.md) - Portfolio approach for applying different modernization strategies based on business value and complexity
+- [Modernization Patterns](patterns/README.md) - Detailed implementation patterns for mainframe modernization
+- [Governance Framework](governance-framework.md) - Establishing controls, processes, and decision structures for modernization
+- [Reference Architecture](reference-architecture.md) - Technical architecture patterns for mainframe modernization
+- [Team Organization](team-organization.md) - Structuring teams and roles for modernization success
 
 ## Objectives
 
@@ -36,10 +38,12 @@ Before implementing the foundation components:
 ## Implementation Steps
 
 1. Review the [Modernization Strategy Guide](modernization-strategy.md) and select appropriate approaches for your applications
-2. Develop a phased implementation roadmap based on application dependencies
-3. Establish your governance framework with clear decision-making structures
-4. Define your reference architecture patterns for implementation
-5. Organize your teams according to the modernization approach selected
+2. Apply the [Hybrid Strategy](hybrid-strategy.md) to categorize applications in your portfolio
+3. Select appropriate [Modernization Patterns](patterns/README.md) for each application or component
+4. Develop a phased implementation roadmap based on application dependencies
+5. Establish your [governance framework](governance-framework.md) with clear decision-making structures
+6. Define your [reference architecture](reference-architecture.md) patterns for implementation
+7. Organize your [teams](team-organization.md) according to the modernization approach selected
 
 ## Next Steps
 
