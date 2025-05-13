@@ -92,6 +92,7 @@ Azure AI Foundry implements a defense-in-depth approach for mainframe integratio
 | Accelerated Migration | Automated translation services for code conversion |
 | Knowledge Extraction | Business rule identification and documentation generation |
 | Hybrid Operations | Cross-platform monitoring and management |
+| Agent-Based Modernization | Specialized AI agents collaborating to modernize complex systems |
 
 ## Azure AI Core Capabilities
 
@@ -134,6 +135,16 @@ Operational Intelligence provides:
 - Capacity planning and forecasting
 - Problem pattern recognition
 - Incident root cause analysis
+
+### Agent-Based Intelligence
+
+Agent-Based Intelligence enables:
+
+- Collaborative multi-agent modernization
+- Specialized agent teams with domain expertise
+- Enhanced context management for complex transformations
+- Knowledge preservation and institutional memory capture
+- Secure, compliant transformation for regulated industries
 
 ## Next Steps
 

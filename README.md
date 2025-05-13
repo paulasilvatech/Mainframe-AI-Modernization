@@ -57,6 +57,14 @@ Follow these chapters in sequence to implement your IBM z/OS mainframe moderniza
 10. [AI-Powered Risk Management](docs/10-risk-management/README.md)
 11. [Hybrid Operations Management](docs/11-hybrid-operations/README.md)
 12. [Agent-Based Mainframe Modernization](docs/12-agent-based-modernization/README.md)
+    - Understanding Agent-Based Modernization
+    - Agent Architecture and Roles
+    - Implementing Agent-Based Modernization on Azure
+    - Agent Personas and Prompt Engineering
+    - Integration with GitHub and DevOps
+    - Measuring Success and Continuous Improvement
+    - Case Studies and Success Stories
+    - Advanced Topics and Future Directions
 
 ## Implementation Resources
 
@@ -67,6 +75,7 @@ This repository contains working code examples and templates to accelerate your 
 - [AI Foundry Examples](code/ai-foundry/) - Implementation examples for Azure AI Foundry components
 - [Mainframe Examples](code/mainframe/) - Sample IBM z/OS code with integration points
 - [Hybrid Examples](code/hybrid/) - Examples of hybrid implementations and patterns
+- [Agent Framework Examples](code/agent-framework/) - Implementation examples for agent-based modernization
 
 ## Templates
 

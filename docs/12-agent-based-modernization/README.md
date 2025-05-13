@@ -590,6 +590,36 @@ Designing workflows that combine human expertise with AI capabilities:
 - Knowledge transfer between human experts and AI agents
 - Collaborative refinement of modernization approaches
 
+## Prerequisites
+
+Before implementing the agent-based architecture described in this chapter, ensure you have:
+
+- Completed the foundation setup described in Chapter 3
+- Configured your development environment as outlined in Chapter 4
+- Set up GitHub or Azure DevOps integration as detailed in Chapters 6 or 7
+- An Azure subscription with appropriate permissions to create resources
+- Azure OpenAI Service with GPT-4 model deployments configured
+- Familiarity with Python development for Azure Functions
+
+## Troubleshooting
+
+If you encounter issues during implementation, refer to these common solutions:
+
+### Rate Limiting Issues
+- Implement exponential backoff in agent code
+- Reduce the number of parallel agent operations
+- Consider using a higher tier of Azure OpenAI Service
+
+### Context Length Limitations
+- Implement the chunking strategy described in section 12.3.2
+- Use the KnowledgeRepository to store intermediate results
+- Consider implementing a hierarchical agent approach for extremely large codebases
+
+### Agent Communication Errors
+- Check service principal permissions for cross-service communication
+- Validate Logic Apps workflow JSON syntax
+- Ensure consistent data structures between agent messages
+
 ## Summary
 
 The agent-based approach to mainframe modernization represents a powerful enhancement to your modernization toolkit. By leveraging specialized AI agents working collaboratively, you can address the most challenging aspects of mainframe modernization while maintaining control, security, and quality.
@@ -598,6 +628,7 @@ This chapter has provided a comprehensive framework for implementing agent-based
 
 ## Next Steps
 
-With your agent-based modernization framework in place, proceed to the next chapter to learn about implementing comprehensive CI/CD pipelines that incorporate both traditional and agent-based components of your modernization strategy.
+With your agent-based modernization framework in place, revisit [Chapter 9: CI/CD Implementation](../09-cicd-implementation/README.md) to integrate your agent-based components into your continuous integration and delivery pipelines. This integration will enable automated code analysis, transformation, and testing using the agent framework you've established.
 
-[Proceed to Chapter 13: Comprehensive CI/CD Implementation →](../13-cicd-implementation/README.md) 
+For risk management considerations specific to agent-based approaches, proceed to [Chapter 10: AI-Powered Risk Management](../10-risk-management/README.md) where you'll learn how to assess and mitigate risks in your modernization journey.
+

@@ -259,6 +259,15 @@ Azure AI Foundry can be implemented with different approaches based on organizat
 - Can be expanded incrementally
 - Typical duration: 2-3 months per component
 
+### Option 4: Agent-Based Implementation
+
+- Leverages specialized AI agent teams for complex modernization scenarios
+- Ideal for highly regulated industries with data sovereignty requirements
+- Enables secure, controlled modernization with institutional knowledge preservation
+- Provides enhanced specialization and context management
+- Typical duration: 4-8 months, with accelerated results for complex systems
+- See [Chapter 12: Agent-Based Modernization](../12-agent-based-modernization/README.md) for detailed implementation
+
 ## Implementation Considerations
 
 ### Technical Prerequisites
