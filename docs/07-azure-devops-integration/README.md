@@ -1,24 +1,24 @@
-# Azure DevOps Integration
+# 🔄 Azure DevOps Integration
 
 This chapter provides technical guidance for integrating IBM z/OS mainframe modernization with Azure DevOps using Azure AI Foundry.
 
-## Overview
+## 📋 Overview
 
 Azure DevOps integration enables comprehensive project management, build automation, testing, and deployment capabilities for mainframe modernization initiatives. By connecting mainframe development with modern DevOps tools, organizations can achieve greater agility, transparency, and collaboration throughout the modernization lifecycle.
 
-## Objectives
+## 🎯 Objectives
 
-- Set up Azure DevOps project structure for mainframe modernization
-- Configure repositories for mainframe code management
-- Implement Azure Pipelines for mainframe CI/CD
-- Establish work item tracking for modernization activities
-- Integrate AI-powered capabilities with Azure DevOps workflows
+- 🛠️ Set up Azure DevOps project structure for mainframe modernization
+- 📂 Configure repositories for mainframe code management
+- 📦 Implement Azure Pipelines for mainframe CI/CD
+- 📊 Establish work item tracking for modernization activities
+- 🧠 Integrate AI-powered capabilities with Azure DevOps workflows
 
-## Azure DevOps Project Setup
+## 🏗️ Azure DevOps Project Setup
 
 ### Project Structure
 
-1. **Create a New Azure DevOps Project**:
+1. **🆕 Create a New Azure DevOps Project**:
 
    Navigate to https://dev.azure.com and create a new project:
    - Name: `Mainframe-Modernization`
@@ -27,7 +27,7 @@ Azure DevOps integration enables comprehensive project management, build automat
    - Version control: Git
    - Work item process: Agile (recommended for modernization projects)
 
-2. **Configure Project Settings**:
+2. **⚙️ Configure Project Settings**:
 
    - Enable Azure Boards for work tracking
    - Enable Azure Repos for source code management
@@ -37,7 +37,7 @@ Azure DevOps integration enables comprehensive project management, build automat
 
 ### Repository Setup
 
-1. **Create Repositories**:
+1. **📂 Create Repositories**:
 
    ```bash
    # Initialize a local repository
@@ -72,7 +72,7 @@ Azure DevOps integration enables comprehensive project management, build automat
    git push -u origin main
    ```
 
-2. **Branch Policies**:
+2. **🔒 Branch Policies**:
 
    In Azure DevOps, navigate to Repos > Branches and set up policies for the main branch:
    - Require a minimum number of reviewers
@@ -80,11 +80,11 @@ Azure DevOps integration enables comprehensive project management, build automat
    - Check for comment resolution
    - Build validation
 
-## Azure Pipelines for Mainframe Development
+## 📦 Azure Pipelines for Mainframe Development
 
 ### YAML Pipeline Setup
 
-1. **Create a Basic CI Pipeline**:
+1. **🔄 Create a Basic CI Pipeline**:
 
    Create `azure-pipelines.yml` in the root of your repository:
 
@@ -151,7 +151,7 @@ Azure DevOps integration enables comprehensive project management, build automat
                  artifactName: 'compiled-programs'
    ```
 
-2. **Set Up Release Pipeline**:
+2. **🚀 Set Up Release Pipeline**:
 
    Create a release pipeline in Azure DevOps:
    
@@ -164,7 +164,7 @@ Azure DevOps integration enables comprehensive project management, build automat
       - Production
    5. Configure tasks for each stage
 
-## Integration with AI Foundry
+## 🧠 Integration with AI Foundry
 
 ### AI-Powered Code Analysis
 
@@ -183,7 +183,7 @@ steps:
     generateDocs: true
 ```
 
-### Automated Test Generation
+### 🧪 Automated Test Generation
 
 Generate tests based on code analysis:
 
@@ -199,13 +199,13 @@ steps:
     coverage: 'high'
 ```
 
-## Work Item Tracking for Modernization
+## 📋 Work Item Tracking for Modernization
 
 ### Work Item Types
 
 Configure work item tracking for modernization:
 
-1. **Create Custom Work Item Types**:
+1. **📝 Create Custom Work Item Types**:
 
    Customize the Agile process to include:
    
@@ -213,7 +213,7 @@ Configure work item tracking for modernization:
    - **Mainframe Component**: Represents a mainframe application or component
    - **Migration Task**: Specific migration/modernization tasks
 
-2. **Set Up Migration Backlog**:
+2. **📊 Set Up Migration Backlog**:
 
    Create a dedicated backlog for migration tasks with appropriate states:
    - Discovery
@@ -223,7 +223,7 @@ Configure work item tracking for modernization:
    - Testing
    - Production Validation
 
-## Example: End-to-End Modernization Pipeline
+## 💡 Example: End-to-End Modernization Pipeline
 
 ```yaml
 trigger:
@@ -335,26 +335,26 @@ stages:
                     package: '$(System.ArtifactsDirectory)/java-package/*.jar'
 ```
 
-## Best Practices
+## ✅ Best Practices
 
-1. **Standardized Pipelines**: Create reusable templates for common mainframe operations
-2. **Infrastructure as Code**: Manage all pipeline configurations in YAML
-3. **Security-First Approach**: Use secure practices for mainframe credentials
-4. **Work Item Tracking**: Link all code changes to work items for traceability
-5. **Artifact Management**: Maintain consistent artifact management across environments
+1. **📋 Standardized Pipelines**: Create reusable templates for common mainframe operations
+2. **📝 Infrastructure as Code**: Manage all pipeline configurations in YAML
+3. **🔒 Security-First Approach**: Use secure practices for mainframe credentials
+4. **🔄 Work Item Tracking**: Link all code changes to work items for traceability
+5. **📦 Artifact Management**: Maintain consistent artifact management across environments
 
-## Next Steps
+## ➡️ Next Steps
 
 After setting up Azure DevOps integration:
 
-1. Implement [AI-Powered Transformation](../08-ai-transformation/README.md) processes
-2. Set up comprehensive [CI/CD Implementation](../09-cicd-implementation/README.md)
-3. Implement [AI-Powered Risk Management](../10-risk-management/README.md)
-4. Establish [Hybrid Operations Management](../11-hybrid-operations/README.md)
+1. Implement [🧠 AI-Powered Transformation](../08-ai-transformation/README.md) processes
+2. Set up comprehensive [📦 CI/CD Implementation](../09-cicd-implementation/README.md)
+3. Implement [⚠️ AI-Powered Risk Management](../10-risk-management/README.md)
+4. Establish [🔄 Hybrid Operations Management](../11-hybrid-operations/README.md)
 
-## References
+## 📚 References
 
-- [Azure DevOps Documentation](https://docs.microsoft.com/azure/devops)
-- [Azure Pipelines YAML Reference](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema)
-- [Mainframe DevOps Best Practices](https://learn.microsoft.com/azure/mainframe-migration/devops-best-practices)
-- [Azure AI Foundry Documentation](https://docs.microsoft.com/azure/ai-foundry) 
+- [📖 Azure DevOps Documentation](https://docs.microsoft.com/azure/devops)
+- [📝 Azure Pipelines YAML Reference](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema)
+- [📋 Mainframe DevOps Best Practices](https://learn.microsoft.com/azure/mainframe-migration/devops-best-practices)
+- [🧠 Azure AI Foundry Documentation](https://docs.microsoft.com/azure/ai-foundry) 

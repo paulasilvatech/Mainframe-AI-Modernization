@@ -1,20 +1,20 @@
-# GitHub Integration
+# 🐙 GitHub Integration
 
 This chapter provides technical guidance for integrating IBM z/OS mainframe modernization workflows with GitHub using Azure AI Foundry.
 
-## Overview
+## 📋 Overview
 
 GitHub integration enables modern DevOps practices for mainframe application development, providing version control, collaboration tools, automated workflows, and continuous integration capabilities. Azure AI Foundry enhances this integration with AI-powered capabilities specifically designed for mainframe code.
 
-## Objectives
+## 🎯 Objectives
 
-- Set up GitHub repositories for mainframe code management
-- Configure appropriate Git settings for mainframe code files
-- Implement GitHub Actions workflows for mainframe CI/CD
-- Enable collaborative development practices for mainframe teams
-- Integrate AI-powered code analysis and transformation with GitHub
+- 📂 Set up GitHub repositories for mainframe code management
+- ⚙️ Configure appropriate Git settings for mainframe code files
+- 🔄 Implement GitHub Actions workflows for mainframe CI/CD
+- 👥 Enable collaborative development practices for mainframe teams
+- 🧠 Integrate AI-powered code analysis and transformation with GitHub
 
-## GitHub Repository Setup
+## 📦 GitHub Repository Setup
 
 A well-structured repository helps organize mainframe code effectively:
 
@@ -45,7 +45,7 @@ Configure Git for mainframe files by creating a `.gitattributes` file:
 *.jcl text eol=lf working-tree-encoding=ibm1047 zos-working-tree-encoding=ibm1047
 ```
 
-## GitHub Actions Workflows
+## 🔄 GitHub Actions Workflows
 
 Create a basic mainframe CI workflow (`.github/workflows/mainframe-ci.yml`):
 
@@ -83,24 +83,24 @@ jobs:
         mainframe-test-runner ./tests
 ```
 
-## Best Practices
+## ✅ Best Practices
 
-1. **Incremental Migration**: Start with small, well-bounded components
-2. **Consistent Environments**: Use development containers for consistent experiences
-3. **Comprehensive Testing**: Implement automated testing for mainframe code
-4. **Security First**: Protect mainframe credentials with secure practices
-5. **Knowledge Sharing**: Document mainframe-specific workflows and considerations
+1. **🔍 Incremental Migration**: Start with small, well-bounded components
+2. **🔄 Consistent Environments**: Use development containers for consistent experiences
+3. **🧪 Comprehensive Testing**: Implement automated testing for mainframe code
+4. **🔒 Security First**: Protect mainframe credentials with secure practices
+5. **📚 Knowledge Sharing**: Document mainframe-specific workflows and considerations
 
-## Next Steps
+## ➡️ Next Steps
 
 After setting up GitHub integration:
 
-1. Implement [Azure DevOps Integration](../07-azure-devops-integration/README.md) for project management
-2. Set up [AI-Powered Transformation](../08-ai-transformation/README.md) workflows
-3. Establish comprehensive [CI/CD Implementation](../09-cicd-implementation/README.md)
+1. Implement [🔄 Azure DevOps Integration](../07-azure-devops-integration/README.md) for project management
+2. Set up [🧠 AI-Powered Transformation](../08-ai-transformation/README.md) workflows
+3. Establish comprehensive [📦 CI/CD Implementation](../09-cicd-implementation/README.md)
 
-## References
+## 📚 References
 
-- [Azure AI Foundry Documentation](https://docs.microsoft.com/azure/ai-foundry)
-- [GitHub Actions Documentation](https://docs.github.com/actions)
-- [Mainframe DevOps Best Practices](https://learn.microsoft.com/azure/mainframe-migration/devops-best-practices)
+- [📖 Azure AI Foundry Documentation](https://docs.microsoft.com/azure/ai-foundry)
+- [🔄 GitHub Actions Documentation](https://docs.github.com/actions)
+- [📋 Mainframe DevOps Best Practices](https://learn.microsoft.com/azure/mainframe-migration/devops-best-practices)

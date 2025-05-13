@@ -1,81 +1,81 @@
-# Development Environment Configuration
+# 💻 Development Environment Configuration
 
 This chapter provides technical guidance for setting up development environments for IBM z/OS mainframe modernization using Azure AI Foundry.
 
-## Overview
+## 📋 Overview
 
 An effective development environment is crucial for mainframe modernization success. It enables developers to work efficiently with both legacy mainframe code and modern cloud technologies. This chapter outlines the setup and configuration of development environments that support the entire modernization lifecycle.
 
-## Objectives
+## 🎯 Objectives
 
-- Establish development environments for mainframe code
-- Configure modern IDE tooling with mainframe language support
-- Set up local testing capabilities for mainframe applications
-- Implement consistent development environments across teams
-- Integrate Azure AI Foundry tools into the development workflow
+- 🛠️ Establish development environments for mainframe code
+- 🔧 Configure modern IDE tooling with mainframe language support
+- ✅ Set up local testing capabilities for mainframe applications
+- 🔄 Implement consistent development environments across teams
+- 🧠 Integrate Azure AI Foundry tools into the development workflow
 
-## Development Environment Types
+## 🖥️ Development Environment Types
 
 ### 1. Local Development Environment
 
 **Description**: Developer workstation with all necessary tools and extensions
 
 **Components**:
-- Modern IDE (VS Code, Eclipse, etc.)
-- Mainframe language extensions
-- Local compilation and testing tools
-- Source control client
-- Cloud development tools
-- Azure AI Foundry CLI/extensions
+- 🧰 Modern IDE (VS Code, Eclipse, etc.)
+- 💾 Mainframe language extensions
+- 🧪 Local compilation and testing tools
+- 📦 Source control client
+- ☁️ Cloud development tools
+- 🧠 Azure AI Foundry CLI/extensions
 
 **Best for**:
-- Individual developer productivity
-- Offline development scenarios
-- Lightweight development tasks
+- 👤 Individual developer productivity
+- 🔌 Offline development scenarios
+- 🚀 Lightweight development tasks
 
 ### 2. Containerized Development Environment
 
 **Description**: Docker containers with preconfigured development tools
 
 **Components**:
-- Base development container
-- Language-specific extensions
-- Preconfigured tool chains
-- Volume mounts for local code
-- Network configuration for mainframe access
-- CI/CD integration
+- 📦 Base development container
+- 🧩 Language-specific extensions
+- ⚙️ Preconfigured tool chains
+- 💾 Volume mounts for local code
+- 🔌 Network configuration for mainframe access
+- 🔄 CI/CD integration
 
 **Best for**:
-- Consistent developer experiences
-- Onboarding new team members
-- Avoiding "works on my machine" issues
+- 🔄 Consistent developer experiences
+- 🚀 Onboarding new team members
+- 🛡️ Avoiding "works on my machine" issues
 
 ### 3. Cloud-Based Development Environment
 
 **Description**: Development environments hosted in Azure
 
 **Components**:
-- Azure DevBox
-- GitHub Codespaces
-- Virtual machine-based development
-- Preconfigured extensions and tools
-- Persistent storage
-- Network connectivity to mainframe
+- ☁️ Azure DevBox
+- 🐙 GitHub Codespaces
+- 💻 Virtual machine-based development
+- 🧩 Preconfigured extensions and tools
+- 💾 Persistent storage
+- 🔌 Network connectivity to mainframe
 
 **Best for**:
-- Distributed teams
-- High-performance requirements
-- Secure mainframe access
+- 🌐 Distributed teams
+- ⚡ High-performance requirements
+- 🔒 Secure mainframe access
 
-## Local Development Environment Setup
+## 💻 Local Development Environment Setup
 
 ### Visual Studio Code Setup
 
-1. **Install Visual Studio Code**:
+1. **📥 Install Visual Studio Code**:
 
    Download and install from [https://code.visualstudio.com/](https://code.visualstudio.com/)
 
-2. **Install Required Extensions**:
+2. **🧩 Install Required Extensions**:
 
    ```bash
    # Install VS Code extensions for mainframe development
@@ -86,7 +86,7 @@ An effective development environment is crucial for mainframe modernization succ
    code --install-extension GitHub.vscode-github-actions
    ```
 
-3. **Configure Mainframe Language Settings**:
+3. **⚙️ Configure Mainframe Language Settings**:
 
    Create `.vscode/settings.json` in your project:
 
@@ -120,7 +120,7 @@ An effective development environment is crucial for mainframe modernization succ
    }
    ```
 
-4. **Install COBOL Compiler**:
+4. **📥 Install COBOL Compiler**:
 
    For Windows:
    - Download GnuCOBOL from [https://gnucobol.sourceforge.io/](https://gnucobol.sourceforge.io/)
@@ -138,7 +138,7 @@ An effective development environment is crucial for mainframe modernization succ
    sudo apt-get install -y gnucobol
    ```
 
-5. **Install Azure AI Foundry CLI**:
+5. **📥 Install Azure AI Foundry CLI**:
 
    ```bash
    npm install -g @azure/ai-foundry-cli
@@ -151,38 +151,38 @@ An effective development environment is crucial for mainframe modernization succ
 
 ### Eclipse Setup
 
-1. **Install Eclipse**:
+1. **📥 Install Eclipse**:
 
    Download and install Eclipse IDE from [https://www.eclipse.org/downloads/](https://www.eclipse.org/downloads/)
 
-2. **Install IBM Z Open Editor**:
+2. **🧩 Install IBM Z Open Editor**:
 
    1. In Eclipse, go to Help > Eclipse Marketplace
    2. Search for "IBM Z Open Editor"
    3. Install the plugin
    4. Restart Eclipse when prompted
 
-3. **Configure Z Open Editor**:
+3. **⚙️ Configure Z Open Editor**:
 
    1. Go to Window > Preferences > IBM Z Open Editor
    2. Set paths for copybooks and include directories
    3. Configure COBOL syntax highlighting preferences
 
-4. **Install Local Compiler**:
+4. **📥 Install Local Compiler**:
 
    Follow the same steps as for VS Code to install GnuCOBOL
 
-5. **Configure Launch Configurations**:
+5. **🚀 Configure Launch Configurations**:
 
    1. Right-click project > Run As > Run Configurations
    2. Create a new configuration for COBOL applications
    3. Set compiler path and arguments
 
-## Containerized Development Environment
+## 📦 Containerized Development Environment
 
 ### Development Container Setup
 
-1. **Create Dockerfile**:
+1. **📝 Create Dockerfile**:
 
    Create `devcontainer/Dockerfile`:
 
@@ -236,7 +236,7 @@ An effective development environment is crucial for mainframe modernization succ
    USER $USERNAME
    ```
 
-2. **Create devcontainer.json**:
+2. **📝 Create devcontainer.json**:
 
    Create `devcontainer/devcontainer.json`:
 
@@ -279,7 +279,7 @@ An effective development environment is crucial for mainframe modernization succ
    }
    ```
 
-3. **Use with Visual Studio Code**:
+3. **🚀 Use with Visual Studio Code**:
 
    1. Install the Remote - Containers extension
    2. Open the folder containing your devcontainer configuration
@@ -289,7 +289,7 @@ An effective development environment is crucial for mainframe modernization succ
 
 For more complex environments with multiple services:
 
-1. **Create docker-compose.yml**:
+1. **📝 Create docker-compose.yml**:
 
    ```yaml
    version: '3'
@@ -321,18 +321,18 @@ For more complex environments with multiple services:
      db2data:
    ```
 
-2. **Start the Environment**:
+2. **🚀 Start the Environment**:
 
    ```bash
    docker-compose up -d
    docker-compose exec dev bash
    ```
 
-## Cloud-Based Development Environment
+## ☁️ Cloud-Based Development Environment
 
 ### Azure DevBox Setup
 
-1. **Create DevBox Definition**:
+1. **📝 Create DevBox Definition**:
 
    In Azure Portal:
    1. Navigate to Azure DevBox
@@ -347,13 +347,13 @@ For more complex environments with multiple services:
       - Java JDK 11
       - Docker Desktop
 
-2. **Create DevBox Pool**:
+2. **📝 Create DevBox Pool**:
 
    1. Create a new pool using the definition
    2. Set appropriate network settings
    3. Configure access controls
 
-3. **Provision DevBox for Developers**:
+3. **🚀 Provision DevBox for Developers**:
 
    1. Assign DevBox to team members
    2. Set up auto-shutdown and scaling policies
@@ -361,7 +361,7 @@ For more complex environments with multiple services:
 
 ### GitHub Codespaces Setup
 
-1. **Create Codespaces Configuration**:
+1. **📝 Create Codespaces Configuration**:
 
    Add `.devcontainer/devcontainer.json` to your repository:
 
@@ -398,18 +398,18 @@ For more complex environments with multiple services:
    }
    ```
 
-2. **Use Codespaces**:
+2. **🚀 Use Codespaces**:
 
    1. Navigate to your repository on GitHub
    2. Click the "Code" button
    3. Select "Open with Codespaces"
    4. Create a new codespace
 
-## Mainframe Connectivity Setup
+## 🔌 Mainframe Connectivity Setup
 
 ### Secure Credential Management
 
-1. **Set Up Azure Key Vault**:
+1. **🔒 Set Up Azure Key Vault**:
 
    ```bash
    # Create a Key Vault
@@ -420,7 +420,7 @@ For more complex environments with multiple services:
    az keyvault secret set --vault-name mainframe-credentials --name mainframe-password --value "your-password"
    ```
 
-2. **Access Credentials in Development**:
+2. **🔑 Access Credentials in Development**:
 
    ```javascript
    // Example: Accessing credentials in Node.js
@@ -446,7 +446,7 @@ For more complex environments with multiple services:
 
 ### Secure Connectivity Configuration
 
-1. **Set Up Azure Private Link**:
+1. **🔒 Set Up Azure Private Link**:
 
    Configure secure connectivity to on-premises mainframe:
    
@@ -455,7 +455,7 @@ For more complex environments with multiple services:
    3. Configure Private Endpoint for secure connectivity
    4. Set up network security rules
 
-2. **Configure Local Development Connection**:
+2. **⚙️ Configure Local Development Connection**:
 
    Create a connection profile in `.mainframe-connection.json`:
 
@@ -482,11 +482,11 @@ For more complex environments with multiple services:
    }
    ```
 
-## Azure AI Foundry Integration
+## 🧠 Azure AI Foundry Integration
 
 ### Local AI Foundry Tools Setup
 
-1. **Install AI Foundry CLI**:
+1. **📥 Install AI Foundry CLI**:
 
    ```bash
    npm install -g @azure/ai-foundry-cli
@@ -497,7 +497,7 @@ For more complex environments with multiple services:
    ai-foundry configure
    ```
 
-2. **Initialize a Project**:
+2. **🚀 Initialize a Project**:
 
    ```bash
    # Initialize a new AI Foundry project
@@ -509,7 +509,7 @@ For more complex environments with multiple services:
    ai-foundry config set analysis.generateDocumentation true
    ```
 
-3. **Set Up VS Code Integration**:
+3. **🚀 Set Up VS Code Integration**:
 
    Install the Azure AI Foundry extension from the VS Code marketplace
 
