@@ -1,0 +1,111 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Agent-Based Modernization Architecture</text>
+  
+  <!-- Workflow Manager -->
+  <rect x="325" y="80" width="150" height="60" rx="10" fill="#4472c4" />
+  <text x="400" y="115" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Workflow Manager</text>
+  
+  <!-- Connection lines from Workflow Manager -->
+  <line x1="400" y1="140" x2="400" y2="160" stroke="#666" stroke-width="2" />
+  <line x1="400" y1="160" x2="200" y2="160" stroke="#666" stroke-width="2" />
+  <line x1="400" y1="160" x2="600" y2="160" stroke="#666" stroke-width="2" />
+  <line x1="200" y1="160" x2="200" y2="180" stroke="#666" stroke-width="2" />
+  <line x1="400" y1="160" x2="400" y2="180" stroke="#666" stroke-width="2" />
+  <line x1="600" y1="160" x2="600" y2="180" stroke="#666" stroke-width="2" />
+  
+  <!-- Domain Expert -->
+  <rect x="125" y="180" width="150" height="60" rx="10" fill="#70ad47" />
+  <text x="200" y="215" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Domain Expert</text>
+  
+  <!-- COBOL/Mainframe Expert -->
+  <rect x="325" y="180" width="150" height="60" rx="10" fill="#70ad47" />
+  <text x="400" y="215" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">COBOL Expert</text>
+  
+  <!-- Target Expert -->
+  <rect x="525" y="180" width="150" height="60" rx="10" fill="#70ad47" />
+  <text x="600" y="215" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Target Expert</text>
+  
+  <!-- Connection lines to second row -->
+  <line x1="200" y1="240" x2="200" y2="270" stroke="#666" stroke-width="2" />
+  <line x1="400" y1="240" x2="400" y2="260" stroke="#666" stroke-width="2" />
+  <line x1="600" y1="240" x2="600" y2="260" stroke="#666" stroke-width="2" />
+  
+  <line x1="200" y1="270" x2="100" y2="270" stroke="#666" stroke-width="2" />
+  <line x1="200" y1="270" x2="300" y2="270" stroke="#666" stroke-width="2" />
+  <line x1="400" y1="260" x2="400" y2="270" stroke="#666" stroke-width="2" />
+  <line x1="600" y1="260" x2="500" y2="270" stroke="#666" stroke-width="2" />
+  <line x1="600" y1="260" x2="700" y2="270" stroke="#666" stroke-width="2" />
+  
+  <line x1="100" y1="270" x2="100" y2="290" stroke="#666" stroke-width="2" />
+  <line x1="300" y1="270" x2="300" y2="290" stroke="#666" stroke-width="2" />
+  <line x1="400" y1="270" x2="400" y2="290" stroke="#666" stroke-width="2" />
+  <line x1="500" y1="270" x2="500" y2="290" stroke="#666" stroke-width="2" />
+  <line x1="700" y1="270" x2="700" y2="290" stroke="#666" stroke-width="2" />
+  
+  <!-- Second row specialists -->
+  <rect x="25" y="290" width="150" height="60" rx="10" fill="#ed7d31" />
+  <text x="100" y="325" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Business Rule Expert</text>
+  
+  <rect x="225" y="290" width="150" height="60" rx="10" fill="#ed7d31" />
+  <text x="300" y="325" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Data Structure Expert</text>
+  
+  <rect x="325" y="290" width="150" height="60" rx="10" fill="#ed7d31" />
+  <text x="400" y="325" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Database Expert</text>
+  
+  <rect x="425" y="290" width="150" height="60" rx="10" fill="#ed7d31" />
+  <text x="500" y="325" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Test Engineer</text>
+  
+  <rect x="625" y="290" width="150" height="60" rx="10" fill="#ed7d31" />
+  <text x="700" y="325" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Documentation Expert</text>
+  
+  <!-- Connection lines to knowledge repository -->
+  <line x1="100" y1="350" x2="100" y2="380" stroke="#666" stroke-width="2" />
+  <line x1="300" y1="350" x2="300" y2="380" stroke="#666" stroke-width="2" />
+  <line x1="400" y1="350" x2="400" y2="380" stroke="#666" stroke-width="2" />
+  <line x1="500" y1="350" x2="500" y2="380" stroke="#666" stroke-width="2" />
+  <line x1="700" y1="350" x2="700" y2="380" stroke="#666" stroke-width="2" />
+  
+  <line x1="100" y1="380" x2="400" y2="380" stroke="#666" stroke-width="2" />
+  <line x1="300" y1="380" x2="400" y2="380" stroke="#666" stroke-width="2" />
+  <line x1="500" y1="380" x2="400" y2="380" stroke="#666" stroke-width="2" />
+  <line x1="700" y1="380" x2="400" y2="380" stroke="#666" stroke-width="2" />
+  
+  <line x1="400" y1="380" x2="400" y2="400" stroke="#666" stroke-width="2" />
+  
+  <!-- Knowledge Repository -->
+  <rect x="225" y="400" width="350" height="60" rx="10" fill="#5b9bd5" />
+  <text x="400" y="435" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Shared Knowledge Repository</text>
+  
+  <!-- Connection to output -->
+  <line x1="400" y1="460" x2="400" y2="480" stroke="#666" stroke-width="2" />
+  
+  <!-- Output Elements -->
+  <rect x="125" y="480" width="150" height="60" rx="10" fill="#a5a5a5" />
+  <text x="200" y="515" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Modern Codebase</text>
+  
+  <rect x="325" y="480" width="150" height="60" rx="10" fill="#a5a5a5" />
+  <text x="400" y="515" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Test Suites</text>
+  
+  <rect x="525" y="480" width="150" height="60" rx="10" fill="#a5a5a5" />
+  <text x="600" y="515" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Documentation</text>
+  
+  <!-- Legend -->
+  <rect x="50" y="560" width="20" height="20" fill="#4472c4" />
+  <text x="75" y="575" font-family="Arial" font-size="12" text-anchor="start">Orchestration</text>
+  
+  <rect x="200" y="560" width="20" height="20" fill="#70ad47" />
+  <text x="225" y="575" font-family="Arial" font-size="12" text-anchor="start">Primary Experts</text>
+  
+  <rect x="350" y="560" width="20" height="20" fill="#ed7d31" />
+  <text x="375" y="575" font-family="Arial" font-size="12" text-anchor="start">Specialist Agents</text>
+  
+  <rect x="500" y="560" width="20" height="20" fill="#5b9bd5" />
+  <text x="525" y="575" font-family="Arial" font-size="12" text-anchor="start">Knowledge Hub</text>
+  
+  <rect x="650" y="560" width="20" height="20" fill="#a5a5a5" />
+  <text x="675" y="575" font-family="Arial" font-size="12" text-anchor="start">Deliverables</text>
+</svg> 

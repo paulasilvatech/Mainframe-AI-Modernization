@@ -56,6 +56,7 @@ Follow these chapters in sequence to implement your IBM z/OS mainframe moderniza
 9. [CI/CD Implementation](docs/09-cicd-implementation/README.md)
 10. [AI-Powered Risk Management](docs/10-risk-management/README.md)
 11. [Hybrid Operations Management](docs/11-hybrid-operations/README.md)
+12. [Agent-Based Mainframe Modernization](docs/12-agent-based-modernization/README.md)
 
 ## Implementation Resources
 

@@ -1,0 +1,283 @@
+# Agent-Based Mainframe Analysis Workflow
+# This workflow is used to analyze mainframe code files (COBOL, PL/I, JCL, etc.)
+# using the agent-based modernization approach.
+
+name: Agent-Based Mainframe Analysis
+
+on:
+  push:
+    paths:
+      - '**.cbl'
+      - '**.cpy'
+      - '**.jcl'
+      - '**.pli'
+      - '**.asm'
+  pull_request:
+    paths:
+      - '**.cbl'
+      - '**.cpy'
+      - '**.jcl'
+      - '**.pli'
+      - '**.asm'
+  workflow_dispatch:
+    inputs:
+      program_id:
+        description: 'Optional specific program ID to analyze'
+        required: false
+        type: string
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      program_ids: ${{ steps.find-programs.outputs.program_ids }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Find mainframe programs
+        id: find-programs
+        run: |
+          if [ -n "${{ github.event.inputs.program_id }}" ]; then
+            echo "Processing specific program: ${{ github.event.inputs.program_id }}"
+            PROGRAM_IDS="${{ github.event.inputs.program_id }}"
+          else
+            echo "Finding all COBOL programs..."
+            PROGRAM_IDS=$(find . -name "*.cbl" | xargs -n 1 basename | sed 's/\.cbl$//' | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          fi
+          echo "program_ids=${PROGRAM_IDS}" >> $GITHUB_OUTPUT
+  
+  analyze:
+    needs: setup
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        program_id: ${{ fromJson(needs.setup.outputs.program_ids) }}
+      max-parallel: 5  # Limit parallel executions to avoid rate limits
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install azure-identity azure-ai-openai azure-cosmos
+      
+      - name: Prepare program content
+        id: prepare-content
+        run: |
+          PROGRAM_PATH=$(find . -name "${{ matrix.program_id }}.cbl")
+          echo "PROGRAM_PATH=${PROGRAM_PATH}" >> $GITHUB_ENV
+          
+          # Create directory for outputs
+          mkdir -p analysis_results
+          
+          # Find related copybooks
+          COPYBOOKS=$(grep -i 'COPY ' ${PROGRAM_PATH} | sed -E 's/.*COPY\s+([A-Za-z0-9]+).*/\1/' | xargs -I{} find . -name "{}.cpy")
+          echo "Found related copybooks: ${COPYBOOKS}"
+          
+          # Create program package with the main program and all copybooks
+          PROGRAM_CONTENT=$(cat ${PROGRAM_PATH})
+          echo "PROGRAM_CONTENT<<EOF" >> $GITHUB_ENV
+          echo "${PROGRAM_CONTENT}" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+          
+          # Create copybook content dictionary
+          COPYBOOK_CONTENT="{}"
+          for copybook in ${COPYBOOKS}; do
+            COPYBOOK_NAME=$(basename ${copybook} .cpy)
+            CONTENT=$(cat ${copybook})
+            COPYBOOK_CONTENT=$(echo ${COPYBOOK_CONTENT} | jq --arg name "${COPYBOOK_NAME}" --arg content "${CONTENT}" '. + {($name): $content}')
+          done
+          echo "COPYBOOK_CONTENT=${COPYBOOK_CONTENT}" >> $GITHUB_ENV
+      
+      - name: Run agent-based analysis
+        id: agent-analysis
+        run: |
+          # Create agent configuration file
+          cat > agent_config.json << EOF
+          {
+            "program_id": "${{ matrix.program_id }}",
+            "azure_openai_endpoint": "${{ secrets.AZURE_OPENAI_ENDPOINT }}",
+            "agent_deployments": {
+              "workflow_manager": "gpt-4",
+              "cobol_expert": "gpt-4",
+              "domain_expert": "gpt-4",
+              "java_expert": "gpt-4",
+              "test_expert": "gpt-4"
+            }
+          }
+          EOF
+          
+          # Create analysis script
+          cat > run_analysis.py << EOF
+          import os
+          import json
+          import sys
+          import asyncio
+          from azure.identity import DefaultAzureCredential
+          from azure.ai.openai import AzureOpenAI
+          
+          async def analyze_program():
+              # Load configuration
+              with open('agent_config.json', 'r') as f:
+                  config = json.load(f)
+              
+              # Set environment variables
+              os.environ["AZURE_OPENAI_ENDPOINT"] = config["azure_openai_endpoint"]
+              
+              # Initialize OpenAI client
+              credential = DefaultAzureCredential()
+              client = AzureOpenAI(
+                  azure_endpoint=config["azure_openai_endpoint"],
+                  credential=credential,
+                  api_version="2023-12-01-preview"
+              )
+              
+              # Program info
+              program_id = config["program_id"]
+              program_content = os.environ.get("PROGRAM_CONTENT", "")
+              copybook_content = json.loads(os.environ.get("COPYBOOK_CONTENT", "{}"))
+              
+              # Prepare analysis context
+              analysis_context = {
+                  "program_id": program_id,
+                  "program_content": program_content,
+                  "copybooks": copybook_content
+              }
+              
+              # Run workflow manager to orchestrate analysis
+              system_prompt = """
+              You are the Workflow Manager responsible for orchestrating the modernization of mainframe applications.
+              Your task is to analyze the provided COBOL program and generate a comprehensive modernization plan.
+              Focus on understanding the program structure, business logic, and identifying components for modernization.
+              """
+              
+              user_prompt = f"""
+              Please analyze this COBOL program:
+              
+              Program ID: {program_id}
+              
+              Program Content:
+              {program_content}
+              
+              The following copybooks are used by this program:
+              {json.dumps(copybook_content, indent=2)}
+              
+              Provide a comprehensive analysis including:
+              1. Program overview and purpose
+              2. Key business functions
+              3. Data structures and external dependencies
+              4. Modernization strategy recommendations
+              5. Potential risks and challenges
+              
+              Format your response as a markdown document with clear sections.
+              """
+              
+              print(f"Analyzing program {program_id}...")
+              try:
+                  response = client.chat.completions.create(
+                      model=config["agent_deployments"]["workflow_manager"],
+                      messages=[
+                          {"role": "system", "content": system_prompt},
+                          {"role": "user", "content": user_prompt}
+                      ],
+                      temperature=0.1
+                  )
+                  
+                  analysis_result = response.choices[0].message.content
+                  
+                  # Save analysis results
+                  with open(f"analysis_results/{program_id}_analysis.md", "w") as f:
+                      f.write(analysis_result)
+                  
+                  print(f"Analysis complete for {program_id}")
+                  return analysis_result
+              except Exception as e:
+                  print(f"Error analyzing {program_id}: {str(e)}")
+                  return f"Error: {str(e)}"
+          
+          if __name__ == "__main__":
+              asyncio.run(analyze_program())
+          EOF
+          
+          # Run analysis
+          python run_analysis.py
+      
+      - name: Upload analysis results
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.program_id }}-analysis
+          path: analysis_results/${{ matrix.program_id }}_analysis.md
+  
+  summarize:
+    needs: analyze
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Download all analysis results
+        uses: actions/download-artifact@v3
+        with:
+          path: all_analysis_results
+      
+      - name: Generate summary report
+        run: |
+          echo "# Mainframe Modernization Analysis Summary" > summary_report.md
+          echo "" >> summary_report.md
+          echo "Analysis completed on $(date)" >> summary_report.md
+          echo "" >> summary_report.md
+          echo "## Programs Analyzed" >> summary_report.md
+          echo "" >> summary_report.md
+          
+          # List all programs analyzed
+          for program_dir in all_analysis_results/*; do
+            program_id=$(basename $program_dir)
+            if [ -d "$program_dir" ]; then
+              program_id=${program_id%-analysis}
+              echo "- ${program_id}" >> summary_report.md
+            fi
+          done
+          
+          echo "" >> summary_report.md
+          echo "## Next Steps" >> summary_report.md
+          echo "" >> summary_report.md
+          echo "1. Review individual program analyses" >> summary_report.md
+          echo "2. Identify modernization priorities based on analysis" >> summary_report.md
+          echo "3. Create detailed modernization plan for each program" >> summary_report.md
+          echo "4. Implement modernization using the agent framework" >> summary_report.md
+      
+      - name: Upload summary report
+        uses: actions/upload-artifact@v3
+        with:
+          name: modernization-summary-report
+          path: summary_report.md
+      
+      - name: Create GitHub Issue with results
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const summaryContent = fs.readFileSync('summary_report.md', 'utf8');
+            
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Mainframe Modernization Analysis Results',
+              body: summaryContent,
+              labels: ['modernization', 'analysis', 'agent-based']
+            });
+            
+            console.log(`Created issue #${issue.data.number}`); 
