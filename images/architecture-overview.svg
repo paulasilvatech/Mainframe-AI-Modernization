@@ -1,98 +1,110 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
-  <!-- Title -->
-  <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold" font-family="Arial, sans-serif">Azure AI Foundry for IBM z/OS Mainframe Modernization</text>
+  <!-- Background Styles -->
+  <defs>
+    <linearGradient id="mainframeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#1E3A8A" stopOpacity="0.9" />
+      <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.9" />
+    </linearGradient>
+    
+    <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#0E7490" stopOpacity="0.9" />
+      <stop offset="100%" stopColor="#06B6D4" stopOpacity="0.9" />
+    </linearGradient>
+    
+    <linearGradient id="githubGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#4B5563" stopOpacity="0.9" />
+      <stop offset="100%" stopColor="#9CA3AF" stopOpacity="0.9" />
+    </linearGradient>
+    
+    <linearGradient id="pipelineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.9" />
+      <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.9" />
+    </linearGradient>
+    
+    <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#059669" stopOpacity="0.9" />
+      <stop offset="100%" stopColor="#10B981" stopOpacity="0.9" />
+    </linearGradient>
+  </defs>
   
-  <!-- Cloud Environment -->
-  <rect x="100" y="70" width="600" height="280" rx="15" ry="15" fill="#f0f0ff" stroke="#3333cc" stroke-width="2" />
-  <text x="400" y="95" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#3333cc">Azure Cloud Environment</text>
+  <!-- Mainframe Platforms -->
+  <rect x="100" y="50" width="600" height="120" rx="8" fill="url(#mainframeGradient)" />
+  <text x="400" y="85" text-anchor="middle" fill="white" font-size="18" font-weight="bold">MAINFRAME PLATFORMS</text>
   
-  <!-- AI Foundry Platform -->
-  <rect x="150" y="110" width="500" height="100" rx="10" ry="10" fill="#ccd9ff" stroke="#0066cc" stroke-width="2" />
-  <text x="400" y="130" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#0066cc">Azure AI Foundry</text>
+  <!-- Mainframe Types -->
+  <rect x="130" y="100" width="120" height="50" rx="4" fill="white" fill-opacity="0.2" />
+  <text x="190" y="130" text-anchor="middle" fill="white" font-size="14">IBM z/OS</text>
   
-  <!-- AI Foundry Components -->
-  <rect x="170" y="145" width="100" height="50" rx="5" ry="5" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
-  <text x="220" y="175" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Code Intelligence</text>
+  <rect x="270" y="100" width="120" height="50" rx="4" fill="white" fill-opacity="0.2" />
+  <text x="330" y="130" text-anchor="middle" fill="white" font-size="14">Unisys ClearPath</text>
   
-  <rect x="290" y="145" width="100" height="50" rx="5" ry="5" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
-  <text x="340" y="175" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Translation Services</text>
+  <rect x="410" y="100" width="120" height="50" rx="4" fill="white" fill-opacity="0.2" />
+  <text x="470" y="130" text-anchor="middle" fill="white" font-size="14">Bull GCOS</text>
   
-  <rect x="410" y="145" width="100" height="50" rx="5" ry="5" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
-  <text x="460" y="175" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Risk Intelligence</text>
+  <rect x="550" y="100" width="120" height="50" rx="4" fill="white" fill-opacity="0.2" />
+  <text x="610" y="130" text-anchor="middle" fill="white" font-size="14">NEC ACOS</text>
   
-  <rect x="530" y="145" width="100" height="50" rx="5" ry="5" fill="#0078D4" stroke="#005999" stroke-width="1.5" />
-  <text x="580" y="175" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Operational Intelligence</text>
+  <!-- Connecting Arrow -->
+  <path d="M400,170 L400,210" stroke="#94A3B8" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
   
-  <!-- DevOps Integration -->
-  <rect x="150" y="225" width="230" height="100" rx="10" ry="10" fill="#d0f0d0" stroke="#008000" stroke-width="2" />
-  <text x="265" y="245" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#008000">GitHub Integration</text>
+  <!-- AI Platform -->
+  <rect x="100" y="210" width="600" height="80" rx="8" fill="url(#aiGradient)" />
+  <text x="400" y="240" text-anchor="middle" fill="white" font-size="18" font-weight="bold">MULTIVENDOR AI PLATFORM</text>
   
-  <rect x="170" y="260" width="90" height="40" rx="5" ry="5" fill="#107C10" stroke="#005500" stroke-width="1.5" />
-  <text x="215" y="282" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Source Control</text>
+  <!-- AI Capabilities -->
+  <rect x="130" y="260" width="120" height="20" rx="3" fill="white" fill-opacity="0.2" />
+  <text x="190" y="275" text-anchor="middle" fill="white" font-size="12">Code Analysis</text>
   
-  <rect x="270" y="260" width="90" height="40" rx="5" ry="5" fill="#107C10" stroke="#005500" stroke-width="1.5" />
-  <text x="315" y="282" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">CI/CD Pipelines</text>
+  <rect x="270" y="260" width="120" height="20" rx="3" fill="white" fill-opacity="0.2" />
+  <text x="330" y="275" text-anchor="middle" fill="white" font-size="12">Transformation</text>
   
-  <!-- Azure DevOps Integration -->
-  <rect x="420" y="225" width="230" height="100" rx="10" ry="10" fill="#f0d0f0" stroke="#800080" stroke-width="2" />
-  <text x="535" y="245" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#800080">Azure DevOps Integration</text>
+  <rect x="410" y="260" width="120" height="20" rx="3" fill="white" fill-opacity="0.2" />
+  <text x="470" y="275" text-anchor="middle" fill="white" font-size="12">Rule Extraction</text>
   
-  <rect x="440" y="260" width="90" height="40" rx="5" ry="5" fill="#8961AA" stroke="#550055" stroke-width="1.5" />
-  <text x="485" y="282" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Work Management</text>
+  <rect x="550" y="260" width="120" height="20" rx="3" fill="white" fill-opacity="0.2" />
+  <text x="610" y="275" text-anchor="middle" fill="white" font-size="12">Risk Assessment</text>
   
-  <rect x="540" y="260" width="90" height="40" rx="5" ry="5" fill="#8961AA" stroke="#550055" stroke-width="1.5" />
-  <text x="585" y="282" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Release Management</text>
+  <!-- Connecting Arrow -->
+  <path d="M400,290 L400,330" stroke="#94A3B8" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
   
-  <!-- Mainframe Environment -->
-  <rect x="100" y="380" width="600" height="160" rx="15" ry="15" fill="#f0f8ff" stroke="#0050C5" stroke-width="2" />
-  <text x="400" y="405" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#0050C5">IBM z/OS Mainframe Environment</text>
+  <!-- GitHub -->
+  <rect x="100" y="330" width="600" height="80" rx="8" fill="url(#githubGradient)" />
+  <text x="400" y="365" text-anchor="middle" fill="white" font-size="18" font-weight="bold">GITHUB / DEVOPS</text>
+  <text x="250" y="395" text-anchor="middle" fill="white" font-size="12">Code Repository</text>
+  <text x="550" y="395" text-anchor="middle" fill="white" font-size="12">CI/CD Pipelines</text>
   
-  <!-- Mainframe Components -->
-  <rect x="140" y="425" width="120" height="90" rx="8" ry="8" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
-  <text x="200" y="450" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">Applications</text>
-  <text x="200" y="470" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">COBOL, PL/I,</text>
-  <text x="200" y="485" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">Assembler, JCL</text>
+  <!-- Connecting Arrow -->
+  <path d="M400,410 L400,450" stroke="#94A3B8" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
   
-  <rect x="290" y="425" width="120" height="90" rx="8" ry="8" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
-  <text x="350" y="450" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">Data</text>
-  <text x="350" y="470" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">DB2, VSAM,</text>
-  <text x="350" y="485" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">IMS, Physical Files</text>
+  <!-- CI/CD Pipeline -->
+  <rect x="100" y="450" width="600" height="60" rx="8" fill="url(#pipelineGradient)" />
+  <text x="400" y="485" text-anchor="middle" fill="white" font-size="16" font-weight="bold">AUTOMATED MODERNIZATION PIPELINE</text>
   
-  <rect x="440" y="425" width="120" height="90" rx="8" ry="8" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
-  <text x="500" y="450" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">Transactions</text>
-  <text x="500" y="470" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">CICS, IMS</text>
-  <text x="500" y="485" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">Batch Processing</text>
+  <!-- Connecting Arrow -->
+  <path d="M400,510 L400,550" stroke="#94A3B8" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
   
-  <rect x="590" y="425" width="80" height="90" rx="8" ry="8" fill="#4D81BF" stroke="#0050C5" stroke-width="1.5" />
-  <text x="630" y="450" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">System</text>
-  <text x="630" y="470" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">z/OS</text>
-  <text x="630" y="485" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="white">Security</text>
+  <!-- Cloud Platforms -->
+  <rect x="100" y="550" width="600" height="80" rx="8" fill="url(#cloudGradient)" />
+  <text x="400" y="580" text-anchor="middle" fill="white" font-size="18" font-weight="bold">CLOUD PLATFORMS</text>
   
-  <!-- Modernized Applications -->
-  <rect x="100" y="550" width="600" height="35" rx="5" ry="5" fill="#ecf0ff" stroke="#0066cc" stroke-width="2" />
-  <text x="400" y="572" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#0066cc">Modernized Applications and Services</text>
+  <!-- Cloud Options -->
+  <rect x="130" y="600" width="120" height="20" rx="3" fill="white" fill-opacity="0.2" />
+  <text x="190" y="615" text-anchor="middle" fill="white" font-size="12">Azure</text>
   
-  <!-- Connection Lines -->
-  <line x1="200" y1="195" x2="200" y2="425" stroke="#333" stroke-width="2" stroke-dasharray="5,3" />
-  <line x1="350" y1="195" x2="350" y2="425" stroke="#333" stroke-width="2" stroke-dasharray="5,3" />
-  <line x1="500" y1="195" x2="500" y2="425" stroke="#333" stroke-width="2" stroke-dasharray="5,3" />
+  <rect x="270" y="600" width="120" height="20" rx="3" fill="white" fill-opacity="0.2" />
+  <text x="330" y="615" text-anchor="middle" fill="white" font-size="12">AWS</text>
   
-  <line x1="265" y1="325" x2="265" y2="425" stroke="#008000" stroke-width="2" stroke-dasharray="5,3" />
-  <line x1="535" y1="325" x2="535" y2="425" stroke="#800080" stroke-width="2" stroke-dasharray="5,3" />
+  <rect x="410" y="600" width="120" height="20" rx="3" fill="white" fill-opacity="0.2" />
+  <text x="470" y="615" text-anchor="middle" fill="white" font-size="12">Google Cloud</text>
   
-  <line x1="400" y1="490" x2="400" y2="550" stroke="#0050C5" stroke-width="2" />
+  <rect x="550" y="600" width="120" height="20" rx="3" fill="white" fill-opacity="0.2" />
+  <text x="610" y="615" text-anchor="middle" fill="white" font-size="12">On-Premises</text>
   
-  <!-- Legend -->
-  <rect x="640" y="10" width="20" height="15" fill="#0078D4" stroke="#333" stroke-width="1" />
-  <text x="665" y="22" font-size="10" font-family="Arial, sans-serif">AI Components</text>
-  
-  <rect x="640" y="30" width="20" height="15" fill="#107C10" stroke="#333" stroke-width="1" />
-  <text x="665" y="42" font-size="10" font-family="Arial, sans-serif">GitHub</text>
-  
-  <rect x="640" y="50" width="20" height="15" fill="#8961AA" stroke="#333" stroke-width="1" />
-  <text x="665" y="62" font-size="10" font-family="Arial, sans-serif">Azure DevOps</text>
-  
-  <rect x="640" y="70" width="20" height="15" fill="#4D81BF" stroke="#333" stroke-width="1" />
-  <text x="665" y="82" font-size="10" font-family="Arial, sans-serif">Mainframe</text>
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94A3B8" />
+    </marker>
+  </defs>
 </svg> 
