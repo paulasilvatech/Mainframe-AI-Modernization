@@ -7,7 +7,7 @@ This document provides a comprehensive reference architecture for IBM z/OS mainf
 The reference architecture establishes a blueprint for implementing a hybrid modernization approach that enables organizations to modernize IBM z/OS mainframe applications while maintaining operational integrity and business continuity.
 
 <div align="center">
-  <img src="../../images/reference-architecture.svg" alt="Reference Architecture" width="1000" height="800" />
+  <img src="../../images/reference-architecture.svg" alt="Reference Architecture" width="1130" height="800" />
 </div>
 
 This architecture is designed to support multiple modernization patterns, including:
