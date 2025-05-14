@@ -1,99 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 950" width="1500" height="950">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" width="1800" height="1100">
   <!-- Main Background -->
-  <rect x="50" y="50" width="1400" height="850" rx="20" fill="#e6f2ff" stroke="#0066cc" stroke-width="3"/>
+  <rect x="50" y="50" width="1700" height="1000" rx="20" fill="#e6f2ff" stroke="#0066cc" stroke-width="4"/>
   
   <!-- Title -->
-  <text x="750" y="100" font-size="36" font-weight="bold" text-anchor="middle">Agent-Based Modernization Framework (Cross-Platform)</text>
+  <text x="900" y="120" font-size="46" font-weight="bold" text-anchor="middle">Agent-Based Modernization Framework (Cross-Platform)</text>
   
   <!-- Human Expertise Box -->
-  <rect x="625" y="130" width="250" height="80" rx="10" fill="#4d4d4d" stroke="#333333" stroke-width="2"/>
-  <text x="750" y="165" font-size="22" font-weight="bold" fill="white" text-anchor="middle">Human Expertise</text>
-  <text x="750" y="195" font-size="18" fill="white" text-anchor="middle">In-the-Loop Integration</text>
+  <rect x="775" y="160" width="300" height="100" rx="15" fill="#4d4d4d" stroke="#333333" stroke-width="3"/>
+  <text x="925" y="205" font-size="26" font-weight="bold" fill="white" text-anchor="middle">Human Expertise</text>
+  <text x="925" y="240" font-size="22" fill="white" text-anchor="middle">In-the-Loop Integration</text>
   
   <!-- Pipeline Header -->
-  <text x="750" y="260" font-size="30" font-weight="bold" text-anchor="middle" fill="#0066cc">Mainframe Modernization Pipeline</text>
+  <text x="900" y="310" font-size="38" font-weight="bold" text-anchor="middle" fill="#0066cc">Mainframe Modernization Pipeline</text>
   
   <!-- Discovery & Assessment Box -->
-  <rect x="150" y="290" width="1200" height="120" rx="10" fill="#cce6ff" stroke="#0066cc" stroke-width="2"/>
-  <text x="750" y="325" font-size="24" font-weight="bold" text-anchor="middle">Discovery &amp; Assessment</text>
-  <text x="750" y="360" font-size="18" text-anchor="middle">Inventory, Complexity Analysis, Dependency Mapping</text>
+  <rect x="150" y="340" width="1500" height="150" rx="15" fill="#cce6ff" stroke="#0066cc" stroke-width="3"/>
+  <text x="900" y="385" font-size="32" font-weight="bold" text-anchor="middle">Discovery &amp; Assessment</text>
+  <text x="900" y="430" font-size="24" text-anchor="middle">Inventory, Complexity Analysis, Dependency Mapping</text>
   
   <!-- Discovery Agents -->
-  <rect x="200" y="320" width="250" height="70" rx="5" fill="#1a75ff" stroke="#003d99" stroke-width="2"/>
-  <text x="325" y="350" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Inventory Agent</text>
-  <text x="325" y="375" font-size="16" fill="white" text-anchor="middle">Code Discovery</text>
+  <rect x="250" y="380" width="300" height="90" rx="10" fill="#1a75ff" stroke="#003d99" stroke-width="2.5"/>
+  <text x="400" y="420" font-size="26" font-weight="bold" fill="white" text-anchor="middle">Inventory Agent</text>
+  <text x="400" y="450" font-size="20" fill="white" text-anchor="middle">Code Discovery</text>
   
-  <rect x="1050" y="320" width="250" height="70" rx="5" fill="#1a75ff" stroke="#003d99" stroke-width="2"/>
-  <text x="1175" y="350" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Analysis Agent</text>
-  <text x="1175" y="375" font-size="16" fill="white" text-anchor="middle">Complexity Assessment</text>
+  <rect x="1250" y="380" width="300" height="90" rx="10" fill="#1a75ff" stroke="#003d99" stroke-width="2.5"/>
+  <text x="1400" y="420" font-size="26" font-weight="bold" fill="white" text-anchor="middle">Analysis Agent</text>
+  <text x="1400" y="450" font-size="20" fill="white" text-anchor="middle">Complexity Assessment</text>
   
   <!-- Transformation Box -->
-  <rect x="150" y="450" width="1200" height="120" rx="10" fill="#cce6ff" stroke="#0066cc" stroke-width="2"/>
-  <text x="750" y="480" font-size="24" font-weight="bold" text-anchor="middle">Transformation</text>
-  <text x="750" y="515" font-size="18" text-anchor="middle">Business Rules Extraction, Code Conversion, Schema Transformation</text>
+  <rect x="150" y="530" width="1500" height="150" rx="15" fill="#cce6ff" stroke="#0066cc" stroke-width="3"/>
+  <text x="900" y="575" font-size="32" font-weight="bold" text-anchor="middle">Transformation</text>
+  <text x="900" y="620" font-size="24" text-anchor="middle">Business Rules Extraction, Code Conversion, Schema Transformation</text>
   
   <!-- Transformation Agents - with much better spacing -->
-  <rect x="90" y="480" width="220" height="70" rx="5" fill="#1a75ff" stroke="#003d99" stroke-width="2"/>
-  <text x="200" y="510" font-size="18" font-weight="bold" fill="white" text-anchor="middle">Platform Expert</text>
-  <text x="200" y="535" font-size="16" fill="white" text-anchor="middle">System Integration</text>
+  <rect x="100" y="570" width="260" height="90" rx="10" fill="#1a75ff" stroke="#003d99" stroke-width="2.5"/>
+  <text x="230" y="610" font-size="24" font-weight="bold" fill="white" text-anchor="middle">Platform Expert</text>
+  <text x="230" y="640" font-size="20" fill="white" text-anchor="middle">System Integration</text>
   
-  <rect x="320" y="480" width="240" height="70" rx="5" fill="#1a75ff" stroke="#003d99" stroke-width="2"/>
-  <text x="440" y="510" font-size="18" font-weight="bold" fill="white" text-anchor="middle">Language Expert</text>
-  <text x="440" y="535" font-size="16" fill="white" text-anchor="middle">Code Structure Analysis</text>
+  <rect x="400" y="570" width="280" height="90" rx="10" fill="#1a75ff" stroke="#003d99" stroke-width="2.5"/>
+  <text x="540" y="610" font-size="24" font-weight="bold" fill="white" text-anchor="middle">Language Expert</text>
+  <text x="540" y="640" font-size="20" fill="white" text-anchor="middle">Code Structure Analysis</text>
   
-  <rect x="570" y="480" width="220" height="70" rx="5" fill="#1a75ff" stroke="#003d99" stroke-width="2"/>
-  <text x="680" y="510" font-size="18" font-weight="bold" fill="white" text-anchor="middle">Domain Expert</text>
-  <text x="680" y="535" font-size="16" fill="white" text-anchor="middle">Business Rules</text>
+  <rect x="720" y="570" width="260" height="90" rx="10" fill="#1a75ff" stroke="#003d99" stroke-width="2.5"/>
+  <text x="850" y="610" font-size="24" font-weight="bold" fill="white" text-anchor="middle">Domain Expert</text>
+  <text x="850" y="640" font-size="20" fill="white" text-anchor="middle">Business Rules</text>
   
-  <rect x="800" y="480" width="220" height="70" rx="5" fill="#1a75ff" stroke="#003d99" stroke-width="2"/>
-  <text x="910" y="510" font-size="18" font-weight="bold" fill="white" text-anchor="middle">Target Expert</text>
-  <text x="910" y="535" font-size="16" fill="white" text-anchor="middle">Code Conversion</text>
+  <rect x="1020" y="570" width="260" height="90" rx="10" fill="#1a75ff" stroke="#003d99" stroke-width="2.5"/>
+  <text x="1150" y="610" font-size="24" font-weight="bold" fill="white" text-anchor="middle">Target Expert</text>
+  <text x="1150" y="640" font-size="20" fill="white" text-anchor="middle">Code Conversion</text>
   
-  <rect x="1030" y="480" width="220" height="70" rx="5" fill="#1a75ff" stroke="#003d99" stroke-width="2"/>
-  <text x="1140" y="510" font-size="18" font-weight="bold" fill="white" text-anchor="middle">DB Expert</text>
-  <text x="1140" y="535" font-size="16" fill="white" text-anchor="middle">Data Migration</text>
+  <rect x="1320" y="570" width="260" height="90" rx="10" fill="#1a75ff" stroke="#003d99" stroke-width="2.5"/>
+  <text x="1450" y="610" font-size="24" font-weight="bold" fill="white" text-anchor="middle">DB Expert</text>
+  <text x="1450" y="640" font-size="20" fill="white" text-anchor="middle">Data Migration</text>
   
   <!-- Testing & Deployment Box -->
-  <rect x="150" y="610" width="1200" height="120" rx="10" fill="#cce6ff" stroke="#0066cc" stroke-width="2"/>
-  <text x="750" y="640" font-size="24" font-weight="bold" text-anchor="middle">Testing &amp; Deployment</text>
-  <text x="750" y="675" font-size="18" text-anchor="middle">Test Generation, Validation, Risk Assessment, Deployment</text>
+  <rect x="150" y="720" width="1500" height="150" rx="15" fill="#cce6ff" stroke="#0066cc" stroke-width="3"/>
+  <text x="900" y="765" font-size="32" font-weight="bold" text-anchor="middle">Testing &amp; Deployment</text>
+  <text x="900" y="810" font-size="24" text-anchor="middle">Test Generation, Validation, Risk Assessment, Deployment</text>
   
   <!-- Testing & Deployment Agents -->
-  <rect x="400" y="640" width="250" height="70" rx="5" fill="#1a75ff" stroke="#003d99" stroke-width="2"/>
-  <text x="525" y="670" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Test Engineer</text>
-  <text x="525" y="695" font-size="16" fill="white" text-anchor="middle">Test Generation</text>
+  <rect x="500" y="760" width="300" height="90" rx="10" fill="#1a75ff" stroke="#003d99" stroke-width="2.5"/>
+  <text x="650" y="800" font-size="26" font-weight="bold" fill="white" text-anchor="middle">Test Engineer</text>
+  <text x="650" y="830" font-size="20" fill="white" text-anchor="middle">Test Generation</text>
   
-  <rect x="850" y="640" width="250" height="70" rx="5" fill="#1a75ff" stroke="#003d99" stroke-width="2"/>
-  <text x="975" y="670" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Risk Assessor</text>
-  <text x="975" y="695" font-size="16" fill="white" text-anchor="middle">Deployment Risk</text>
+  <rect x="1000" y="760" width="300" height="90" rx="10" fill="#1a75ff" stroke="#003d99" stroke-width="2.5"/>
+  <text x="1150" y="800" font-size="26" font-weight="bold" fill="white" text-anchor="middle">Risk Assessor</text>
+  <text x="1150" y="830" font-size="20" fill="white" text-anchor="middle">Deployment Risk</text>
   
   <!-- Workflow Manager -->
-  <ellipse cx="750" cy="840" rx="200" ry="50" fill="#389738" stroke="#2e762e" stroke-width="3"/>
-  <text x="750" y="848" font-size="26" font-weight="bold" fill="white" text-anchor="middle">Workflow Manager</text>
+  <ellipse cx="900" cy="970" rx="240" ry="60" fill="#389738" stroke="#2e762e" stroke-width="4"/>
+  <text x="900" y="980" font-size="32" font-weight="bold" fill="white" text-anchor="middle">Workflow Manager</text>
   
   <!-- Connecting Lines - adjusted for better spacing -->
-  <line x1="750" y1="210" x2="750" y2="290" stroke="#4d4d4d" stroke-width="3" stroke-dasharray="8,8"/>
+  <line x1="925" y1="260" x2="900" y2="340" stroke="#4d4d4d" stroke-width="4" stroke-dasharray="12,12"/>
   
   <!-- Discovery to Transformation Connections -->
-  <line x1="325" y1="390" x2="440" y2="480" stroke="#003d99" stroke-width="2" stroke-dasharray="8,8"/>
-  <line x1="325" y1="390" x2="680" y2="480" stroke="#003d99" stroke-width="2" stroke-dasharray="8,8"/>
-  <line x1="1175" y1="390" x2="910" y2="480" stroke="#003d99" stroke-width="2" stroke-dasharray="8,8"/>
-  <line x1="1175" y1="390" x2="1140" y2="480" stroke="#003d99" stroke-width="2" stroke-dasharray="8,8"/>
+  <line x1="400" y1="470" x2="540" y2="570" stroke="#003d99" stroke-width="3" stroke-dasharray="10,10"/>
+  <line x1="400" y1="470" x2="850" y2="570" stroke="#003d99" stroke-width="3" stroke-dasharray="10,10"/>
+  <line x1="1400" y1="470" x2="1150" y2="570" stroke="#003d99" stroke-width="3" stroke-dasharray="10,10"/>
+  <line x1="1400" y1="470" x2="1450" y2="570" stroke="#003d99" stroke-width="3" stroke-dasharray="10,10"/>
   
   <!-- Transformation to Testing Connections -->
-  <line x1="200" y1="550" x2="525" y2="640" stroke="#003d99" stroke-width="2" stroke-dasharray="8,8"/>
-  <line x1="680" y1="550" x2="525" y2="640" stroke="#003d99" stroke-width="2" stroke-dasharray="8,8"/>
-  <line x1="910" y1="550" x2="975" y2="640" stroke="#003d99" stroke-width="2" stroke-dasharray="8,8"/>
-  <line x1="1140" y1="550" x2="975" y2="640" stroke="#003d99" stroke-width="2" stroke-dasharray="8,8"/>
+  <line x1="230" y1="660" x2="650" y2="760" stroke="#003d99" stroke-width="3" stroke-dasharray="10,10"/>
+  <line x1="850" y1="660" x2="650" y2="760" stroke="#003d99" stroke-width="3" stroke-dasharray="10,10"/>
+  <line x1="1150" y1="660" x2="1150" y2="760" stroke="#003d99" stroke-width="3" stroke-dasharray="10,10"/>
+  <line x1="1450" y1="660" x2="1150" y2="760" stroke="#003d99" stroke-width="3" stroke-dasharray="10,10"/>
   
   <!-- Platform Expert connections -->
-  <line x1="200" y1="480" x2="200" y2="390" stroke="#003d99" stroke-width="2" stroke-dasharray="8,8"/>
+  <line x1="230" y1="570" x2="250" y2="470" stroke="#003d99" stroke-width="3" stroke-dasharray="10,10"/>
   
   <!-- Workflow Manager connections -->
-  <line x1="525" y1="710" x2="675" y2="830" stroke="#2e762e" stroke-width="3"/>
-  <line x1="975" y1="710" x2="825" y2="830" stroke="#2e762e" stroke-width="3"/>
-  <line x1="440" y1="550" x2="675" y2="820" stroke="#2e762e" stroke-width="3"/>
-  <line x1="910" y1="550" x2="825" y2="820" stroke="#2e762e" stroke-width="3"/>
-  <line x1="200" y1="550" x2="620" y2="820" stroke="#2e762e" stroke-width="3"/>
+  <line x1="650" y1="850" x2="800" y2="955" stroke="#2e762e" stroke-width="4"/>
+  <line x1="1150" y1="850" x2="1000" y2="955" stroke="#2e762e" stroke-width="4"/>
+  <line x1="540" y1="660" x2="800" y2="940" stroke="#2e762e" stroke-width="4"/>
+  <line x1="1150" y1="660" x2="1000" y2="940" stroke="#2e762e" stroke-width="4"/>
+  <line x1="230" y1="660" x2="750" y2="940" stroke="#2e762e" stroke-width="4"/>
 </svg> 
