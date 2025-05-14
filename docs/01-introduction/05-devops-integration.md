@@ -1,13 +1,13 @@
 # 🚀 GitHub & Azure DevOps Integration for Mainframe Modernization
 
-This document provides detailed implementation guidance for setting up GitHub or Azure DevOps for mainframe modernization with Azure AI Foundry.
+This document provides detailed implementation guidance for setting up GitHub or Azure DevOps for mainframe modernization with Azure AI Foundry. The approach supports multiple mainframe platforms including IBM z/OS, Unisys ClearPath, Bull GCOS, NEC ACOS, and others.
 
 ## Integration Overview
 
 The following diagram illustrates the DevOps integration architecture for mainframe modernization:
 
 <div align="center">
-  <img src="../../images/devops-integration-architecture.svg" alt="DevOps Integration Architecture" width="950" height="600" />
+  <img src="../../images/devops-integration-architecture.svg" alt="DevOps Integration Architecture" width="950" height="650" />
 </div>
 
 ## GitHub Integration Setup
