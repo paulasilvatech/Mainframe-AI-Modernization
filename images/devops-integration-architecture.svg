@@ -4,6 +4,13 @@
   <text x="475" y="40" text-anchor="middle" font-size="24" font-weight="bold" font-family="Arial, sans-serif">DevOps Integration Architecture</text>
   <text x="475" y="70" text-anchor="middle" font-size="18" font-family="Arial, sans-serif">Azure AI Foundry for Mainframe Modernization</text>
   
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9.5" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666666" />
+    </marker>
+  </defs>
+  
   <!-- GitHub or Azure DevOps Container -->
   <rect x="180" y="120" width="590" height="320" rx="10" ry="10" fill="#f0f0ff" stroke="#3333cc" stroke-width="2" />
   <text x="475" y="145" text-anchor="middle" font-size="20" font-weight="bold" font-family="Arial, sans-serif" fill="#3333cc">GITHUB OR AZURE DEVOPS</text>
@@ -48,28 +55,12 @@
   <text x="850" y="260" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#8961aa">Azure AI</text>
   <text x="850" y="280" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#8961aa">Foundry</text>
   
-  <!-- Connection Lines -->
-  <line x1="160" y1="280" x2="230" y2="280" stroke="#666666" stroke-width="2" />
-  <line x1="350" y1="220" x2="410" y2="220" stroke="#666666" stroke-width="2" />
-  <line x1="530" y1="220" x2="590" y2="220" stroke="#666666" stroke-width="2" />
-  <line x1="710" y1="220" x2="790" y2="220" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)" />
-  <line x1="710" y1="280" x2="790" y2="280" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)" />
-  
-  <!-- Arrow marker definition -->
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="7" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#666666" />
-    </marker>
-  </defs>
-  
-  <!-- Flow arrows -->
-  <marker id="arrow" markerWidth="10" markerHeight="7" refX="7" refY="3.5" orient="auto">
-    <polygon points="0 0, 10 3.5, 0 7" fill="#666666" />
-  </marker>
+  <!-- Connection Lines with Arrows -->
   <line x1="160" y1="280" x2="225" y2="280" stroke="#666666" stroke-width="2" marker-end="url(#arrow)" />
   <line x1="350" y1="220" x2="405" y2="220" stroke="#666666" stroke-width="2" marker-end="url(#arrow)" />
   <line x1="530" y1="220" x2="585" y2="220" stroke="#666666" stroke-width="2" marker-end="url(#arrow)" />
   <line x1="710" y1="220" x2="785" y2="220" stroke="#666666" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="710" y1="280" x2="785" y2="280" stroke="#666666" stroke-width="2" marker-end="url(#arrow)" />
   
   <!-- Legend - moved down -->
   <rect x="40" y="520" width="870" height="100" rx="5" ry="5" fill="#f5f5f5" stroke="#666666" stroke-width="1.5" />
