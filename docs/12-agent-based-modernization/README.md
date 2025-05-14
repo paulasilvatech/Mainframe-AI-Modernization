@@ -548,29 +548,9 @@ As your modernization initiative grows, consider these scaling strategies:
 | Custom Model Fine-tuning | Develop custom models trained on your specific mainframe codebase |
 | Hybrid Processing | Combine cloud-based and on-premises agent deployment for sensitive applications |
 
-## 12.7 📚 Case Studies and Success Stories
 
-### Financial Services: Regional Bank Modernization
 
-A regional bank with over 2 million lines of COBOL code implemented the agent-based approach with impressive results:
-
-| Aspect | Details |
-|--------|---------|
-| Challenge | Strict regulations prevented sharing code with external vendors |
-| Solution | On-premises deployment of the agent framework integrated with existing CI/CD |
-| Results | • 75% reduction in analysis time<br>• 85% of business rules automatically extracted and documented<br>• 60% reduction in overall modernization timeline<br>• 92% of generated code passed testing without modification |
-
-### Insurance: Policy Management System Transformation
-
-A major insurance company used agent-based modernization to transform their policy management system:
-
-| Aspect | Details |
-|--------|---------|
-| Challenge | Complex business rules embedded in 30+ year old code with minimal documentation |
-| Solution | Domain-focused agent team specialized in insurance terminology and regulations |
-| Results | • Recovered business rules dating back to 1980s<br>• Identified and eliminated 140+ obsolete processes<br>• Reduced transformed codebase size by 65%<br>• Increased performance by 300% in key transactions |
-
-## 12.8 🔮 Advanced Topics and Future Directions
+## 12.7 🔮 Advanced Topics and Future Directions
 
 ### Multi-Language and Multi-Target Modernization
 

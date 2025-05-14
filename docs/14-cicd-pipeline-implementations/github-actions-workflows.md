@@ -960,4 +960,4 @@ jobs:
 
 ## 11. 💾 Sample Files Repository
 
-Find all these workflow examples and more in our [GitHub Workflow Templates Repository](https://github.com/example/mainframe-github-workflows) where you can download and customize them for your specific modernization needs. 
+Find all these workflow examples in our [GitHub Workflow Templates Repository](https://github.com/example/mainframe-github-workflows) where you can download and customize them for your specific modernization needs. 

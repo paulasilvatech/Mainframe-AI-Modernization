@@ -65,14 +65,13 @@ Follow these chapters in sequence to implement your IBM z/OS mainframe moderniza
     - 🧠 Agent Personas and Prompt Engineering
     - 🔄 Integration with GitHub and DevOps
     - 📊 Measuring Success and Continuous Improvement
-    - 📚 Case Studies and Success Stories
     - 🔮 Advanced Topics and Future Directions
 13. [🌐 Comprehensive Mainframe Modernization with AI and GitHub](docs/13-comprehensive-mainframe-modernization/README.md)
     - 🖥️ Multi-Platform Mainframe Support (IBM z/OS, Unisys ClearPath, Bull GCOS, NEC ACOS)
     - 💻 Programming Language Modernization (COBOL, PL/I, Assembler, Natural)
     - ☁️ Cloud Integration Approaches (Azure, AWS, Google Cloud)
     - 🧠 Benefits of AI-Driven Modernization
-    - 🛠️ Implementation Strategy and Case Studies
+    - 🛠️ Implementation Strategy
 14. [🔄 CI/CD Pipeline Implementations](docs/14-cicd-pipeline-implementations/README.md)
     - 🐙 GitHub Actions Workflows for Different Mainframe Platforms
     - 🔄 Azure DevOps Pipeline Examples and Templates
