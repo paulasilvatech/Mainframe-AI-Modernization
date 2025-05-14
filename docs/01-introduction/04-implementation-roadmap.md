@@ -59,7 +59,7 @@ The implementation of Azure AI Foundry follows a structured approach with define
 **Duration:** 2-3 weeks
 
 **Objectives:**
-- Establish secure connectivity between Azure and z/OS
+- Establish secure connectivity between Azure and mainframe systems
 - Deploy core Azure AI Foundry components
 - Configure authentication and authorization
 - Set up monitoring and logging infrastructure
@@ -286,13 +286,13 @@ Before beginning implementation, ensure the following prerequisites are met:
 
 2. **Access Permissions**
    - Administrative access to Azure subscription
-   - Access to z/OS system for tool installation
+   - Access to mainframe systems for tool installation
    - Source code repository access
    - Database schema access
 
 3. **Skill Requirements**
-   - IBM z/OS administration
-   - COBOL, PL/I, JCL expertise
+   - Mainframe administration
+   - Knowledge of mainframe languages (COBOL, PL/I, Assembler, etc.)
    - Azure cloud architecture
    - DevOps practices
    - API design and implementation

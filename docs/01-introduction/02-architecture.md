@@ -21,7 +21,7 @@ Key architectural goals include:
 
 ## Reference Architecture
 
-The following diagram illustrates the comprehensive reference architecture for Azure AI Foundry integration with IBM z/OS:
+The following diagram illustrates the comprehensive reference architecture for Azure AI Foundry integration with mainframe systems:
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -80,7 +80,7 @@ The following diagram illustrates the comprehensive reference architecture for A
                                                          │ (ExpressRoute/Private Link)
                                                          │
 ┌───────────────────────────────────────────────────────┴───────────────────────────────────────────────────┐
-│                                    IBM z/OS ENVIRONMENT                                                    │
+│                                 MAINFRAME ENVIRONMENT                                                      │
 ├───────────────────────────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                                           │
 │  ┌─────────────────────────────────┐   ┌────────────────────────────────┐   ┌─────────────────────────┐   │
@@ -88,22 +88,22 @@ The following diagram illustrates the comprehensive reference architecture for A
 │  │                                 │   │                                │   │                         │   │
 │  │  ┌─────────────┐ ┌────────────┐ │   │  ┌─────────────┐ ┌───────────┐ │   │  ┌─────────────────┐   │   │
 │  │  │             │ │            │ │   │  │             │ │           │ │   │  │                 │   │   │
-│  │  │ Enterprise  │ │ Enterprise │ │   │  │ DB2         │ │ VSAM      │ │   │  │ IBM Connect:    │   │   │
-│  │  │ COBOL       │ │ PL/I       │ │   │  │ Databases   │ │ Files     │ │   │  │ Direct          │   │   │
+│  │  │ COBOL       │ │ PL/I       │ │   │  │ Relational  │ │ File      │ │   │  │ Secure File     │   │   │
+│  │  │ Programs    │ │ Programs   │ │   │  │ Databases   │ │ Systems   │ │   │  │ Transfer        │   │   │
 │  │  │             │ │            │ │   │  │             │ │           │ │   │  │                 │   │   │
 │  │  └─────────────┘ └────────────┘ │   │  └─────────────┘ └───────────┘ │   │  └─────────────────┘   │   │
 │  │                                 │   │                                │   │                         │   │
 │  │  ┌─────────────┐ ┌────────────┐ │   │  ┌─────────────┐ ┌───────────┐ │   │  ┌─────────────────┐   │   │
 │  │  │             │ │            │ │   │  │             │ │           │ │   │  │                 │   │   │
-│  │  │ Assembler   │ │ JCL        │ │   │  │ IMS         │ │ QSAM/BDAM │ │   │  │ IBM Host        │   │   │
-│  │  │ Programs    │ │ Procedures │ │   │  │ Databases   │ │ Files     │ │   │  │ Access Transform│   │   │
+│  │  │ Assembler   │ │ Job Control│ │   │  │ Hierarchical│ │ Record    │ │   │  │ Host            │   │   │
+│  │  │ Programs    │ │ Language   │ │   │  │ Databases   │ │ Systems   │ │   │  │ Integration     │   │   │
 │  │  │             │ │            │ │   │  │             │ │           │ │   │  │                 │   │   │
 │  │  └─────────────┘ └────────────┘ │   │  └─────────────┘ └───────────┘ │   │  └─────────────────┘   │   │
 │  │                                 │   │                                │   │                         │   │
 │  │  ┌─────────────┐ ┌────────────┐ │   │  ┌─────────────────────────┐   │   │  ┌─────────────────┐   │   │
 │  │  │             │ │            │ │   │  │                         │   │   │  │                 │   │   │
-│  │  │ CICS        │ │ IMS        │ │   │  │ System Catalogs and     │   │   │  │ MQ Series       │   │   │
-│  │  │ Transactions│ │ Applications│ │   │  │ Metadata                │   │   │  │                 │   │   │
+│  │  │ Transaction │ │ Batch      │ │   │  │ System Catalogs and     │   │   │  │ Messaging       │   │   │
+│  │  │ Systems     │ │ Processing │ │   │  │ Metadata                │   │   │  │ Systems         │   │   │
 │  │  │             │ │            │ │   │  │                         │   │   │  │                 │   │   │
 │  │  └─────────────┘ └────────────┘ │   │  └─────────────────────────┘   │   │  └─────────────────┘   │   │
 │  │                                 │   │                                │   │                         │   │
@@ -118,15 +118,15 @@ The following diagram illustrates the comprehensive reference architecture for A
 
 #### 1. Code Intelligence
 
-The Code Intelligence component provides deep analysis of IBM z/OS mainframe code:
+The Code Intelligence component provides deep analysis of mainframe code across platforms:
 
 | Feature | Technical Capabilities |
 |---------|------------------------|
-| COBOL Analysis | - Enterprise COBOL syntax parsing<br>- Variable and data structure tracking<br>- Control flow analysis<br>- Procedure division mapping<br>- Copybook resolution and linking |
-| PL/I Analysis | - Enterprise PL/I syntax parsing<br>- Structure and procedure mapping<br>- Include file resolution<br>- External call tracking |
-| Assembler Analysis | - IBM High-Level Assembler support<br>- Macro expansion tracking<br>- Register usage analysis<br>- System services mapping |
-| JCL Analysis | - JCL procedure parsing<br>- Step dependencies tracking<br>- Dataset usage mapping<br>- Symbolic parameter resolution |
-| CICS/IMS Analysis | - CICS command identification<br>- CICS program flow analysis<br>- IMS segment and PCB mapping<br>- Screen mapping identification |
+| COBOL Analysis | - COBOL syntax parsing for multiple dialects<br>- Variable and data structure tracking<br>- Control flow analysis<br>- Procedure division mapping<br>- Copybook resolution and linking |
+| PL/I Analysis | - PL/I syntax parsing<br>- Structure and procedure mapping<br>- Include file resolution<br>- External call tracking |
+| Assembler Analysis | - Mainframe assembler support<br>- Macro expansion tracking<br>- Register usage analysis<br>- System services mapping |
+| JCL & WFL Analysis | - Job control language parsing<br>- Step dependencies tracking<br>- Dataset and file usage mapping<br>- Symbolic parameter resolution |
+| Transaction Processing Analysis | - Transaction monitor command identification<br>- Program flow analysis<br>- Database access mapping<br>- Screen/interface mapping |
 
 Implementation technologies:
 - Custom language parsers built on ANTLR
@@ -175,14 +175,14 @@ The Operational Intelligence component provides monitoring and optimization for 
 
 | Feature | Technical Capabilities |
 |---------|------------------------|
-| Performance Monitoring | - z/OS RMF/SMF data integration<br>- Cross-platform transaction tracking<br>- Response time breakdown analysis<br>- Resource utilization correlation |
+| Performance Monitoring | - Mainframe performance data integration<br>- Cross-platform transaction tracking<br>- Response time breakdown analysis<br>- Resource utilization correlation |
 | Anomaly Detection | - Baseline deviation detection<br>- Pattern-based anomaly identification<br>- Multi-dimensional analysis<br>- Auto-correlation of related metrics |
 | Capacity Planning | - Workload growth prediction<br>- Resource requirement forecasting<br>- Batch window optimization<br>- Cost optimization recommendations |
 | Incident Management | - Root cause analysis assistance<br>- Problem pattern recognition<br>- Resolution recommendation<br>- Knowledge base integration |
 
 Implementation technologies:
 - Azure Monitor custom metrics integration
-- Azure Log Analytics with SMF log ingestion
+- Azure Log Analytics with mainframe log ingestion
 - Azure Application Insights for transaction tracking
 - Machine learning for anomaly detection
 
@@ -190,13 +190,13 @@ Implementation technologies:
 
 #### 1. Host Integration Server
 
-Host Integration Server (HIS) provides connectivity between Azure and IBM z/OS:
+Host Integration Server (HIS) provides connectivity between Azure and various mainframe platforms:
 
 | Feature | Technical Implementation |
 |---------|--------------------------|
-| TN3270 Integration | - TN3270 terminal emulation<br>- Screen scraping with pattern recognition<br>- Session management and pooling<br>- SSL/TLS encryption support |
-| Data Integration | - DB2 for z/OS direct access<br>- VSAM record retrieval and update<br>- Transaction coordination (2PC)<br>- Schema mapping and transformation |
-| Transaction Integration | - CICS transaction invocation<br>- IMS transaction processing<br>- Security credential mapping<br>- Transaction integrity management |
+| Terminal Integration | - Terminal emulation (TN3270, TN5250, etc.)<br>- Screen scraping with pattern recognition<br>- Session management and pooling<br>- SSL/TLS encryption support |
+| Data Integration | - Direct database access<br>- Record retrieval and update<br>- Transaction coordination<br>- Schema mapping and transformation |
+| Transaction Integration | - Transaction invocation for various platforms<br>- Transaction processing<br>- Security credential mapping<br>- Transaction integrity management |
 
 #### 2. Azure Logic Apps and Functions
 
@@ -204,7 +204,7 @@ These serverless components enable workflow automation and event processing:
 
 | Feature | Technical Implementation |
 |---------|--------------------------|
-| Mainframe Process Orchestration | - JCL-like workflow orchestration<br>- Conditional processing support<br>- Parallel step execution<br>- Error handling and recovery |
+| Mainframe Process Orchestration | - Workflow orchestration<br>- Conditional processing support<br>- Parallel step execution<br>- Error handling and recovery |
 | Event-Driven Processing | - Mainframe event detection<br>- Real-time processing triggers<br>- Custom connector integration<br>- Stateful process execution |
 | Integration Automation | - File transfer automation<br>- Format conversion processing<br>- Validation and verification<br>- Notification and alerting |
 
@@ -214,39 +214,68 @@ API Management provides a modern API façade for mainframe services:
 
 | Feature | Technical Implementation |
 |---------|--------------------------|
-| Mainframe API Façade | - REST API for CICS/IMS services<br>- JSON transformation of legacy data formats<br>- OpenAPI (Swagger) definition generation<br>- API versioning and lifecycle management |
+| Mainframe API Façade | - REST API for legacy transactions<br>- JSON transformation of legacy data formats<br>- OpenAPI (Swagger) definition generation<br>- API versioning and lifecycle management |
 | API Security | - OAuth/OIDC integration<br>- JWT validation and claims mapping<br>- Rate limiting and quota enforcement<br>- IP filtering and network isolation |
 | API Gateway | - Request/response transformation<br>- Protocol conversion<br>- Caching for performance optimization<br>- Logging and monitoring integration |
 
-### IBM z/OS Integration Components
+### Platform-Specific Integration Components
 
-#### 1. IBM Connect:Direct
+Each mainframe platform has specific integration components that connect with Azure services:
 
-Connect:Direct enables secure, reliable file transfer between z/OS and Azure:
+#### 1. File Transfer Components
 
-| Feature | Technical Implementation |
-|---------|--------------------------|
-| Secure File Transfer | - Checkpoint/restart capability<br>- Compression and encryption<br>- Secure+ protocol support<br>- Transfer validation and verification |
-| Scheduled Transfers | - Event-driven transfer initiation<br>- Calendar-based scheduling<br>- Prerequisite dependency support<br>- Completion notification and alerting |
-| Data Format Handling | - EBCDIC to ASCII conversion<br>- Record format preservation<br>- Unicode transformation<br>- Code page mapping |
+These components enable secure, reliable file transfer between mainframe systems and Azure:
 
-#### 2. IBM Host Access Transformation Services (HATS)
+| Platform | Components |
+|----------|------------|
+| IBM z/OS | Connect:Direct, FTPS, NJE over IP |
+| Unisys ClearPath | File Transfer, Data Exchange |
+| Bull GCOS | File Transfer Facility |
+| NEC ACOS | ACOS-specific transfer utilities |
 
-HATS helps modernize terminal-based applications:
+Key capabilities across platforms include:
+- Checkpoint/restart capability
+- Compression and encryption
+- Secure protocol support
+- Transfer validation and verification
+- Scheduled transfers
+- Format and encoding conversion
 
-| Feature | Technical Implementation |
-|---------|--------------------------|
-| Screen Transformation | - 3270 screen to HTML/JSON conversion<br>- Screen pattern recognition<br>- Macro recording and playback<br>- Screen customization and styling |
-| Web Service Creation | - Terminal interaction as services<br>- Session state management<br>- SOAP and REST interface generation<br>- Transaction integration |
+#### 2. Terminal Access and Modernization
 
-#### 3. IBM MQ Series
+These components help modernize terminal-based applications:
 
-MQ provides message queuing between z/OS and Azure:
+| Platform | Components |
+|----------|------------|
+| IBM z/OS | Host Access Transformation Services (HATS) |
+| Unisys ClearPath | ClearPath ePortal |
+| Bull GCOS | Web Access Server |
+| NEC ACOS | iPackage |
 
-| Feature | Technical Implementation |
-|---------|--------------------------|
-| Queue Management | - Queue definition and configuration<br>- Message persistence and durability<br>- Transaction coordination<br>- Dead letter queue handling |
-| Channel Security | - TLS channel encryption<br>- Mutual authentication<br>- Channel exit support<br>- Certificate management |
+Common capabilities include:
+- Terminal screen to web/mobile conversion
+- Screen pattern recognition
+- Macro recording and playback
+- Screen customization and styling
+- Web service creation
+
+#### 3. Messaging and Integration
+
+Messaging systems provide asynchronous communication between mainframes and Azure:
+
+| Platform | Components |
+|----------|------------|
+| IBM z/OS | MQ Series, CICS Events |
+| Unisys ClearPath | MQSeries Bridge, JMS |
+| Bull GCOS | Message Queue Manager |
+| NEC ACOS | AIM Message Queue |
+
+Key features include:
+- Queue management
+- Message persistence
+- Transaction coordination
+- Channel security
+- Dead letter handling
 
 ## Security Architecture
 
@@ -282,7 +311,7 @@ Identity and access management integrates Azure AD with mainframe security:
    - Privileged Identity Management
 
 2. **Mainframe Security Integration**
-   - RACF/ACF2/Top Secret user mapping
+   - Security service integration (RACF/ACF2/Top Secret/others)
    - Security credential propagation
    - Enterprise certificate management
    - Secure password vaulting
@@ -332,7 +361,7 @@ Azure AI Foundry deployment follows a hub-and-spoke model:
    - Purpose-specific NSGs
 
 3. **Cross-Premises Connectivity**
-   - ExpressRoute for z/OS connectivity
+   - ExpressRoute for mainframe connectivity
    - VPN backup options
    - BGP route exchange
    - Traffic filtering
@@ -374,5 +403,64 @@ Azure AI Foundry deployment follows a hub-and-spoke model:
 
 For detailed implementation steps, continue to:
 - [Installation Prerequisites](03-prerequisites.md)
-- [IBM z/OS Integration Setup](04-zos-integration.md)
-- [GitHub & Azure DevOps Integration](05-devops-integration.md) 
+- [Mainframe Integration Setup](04-platform-integration.md)
+- [GitHub & Azure DevOps Integration](05-devops-integration.md)
+
+### Platform-Specific Integration Components
+
+Each mainframe platform has specific integration components that connect with Azure services:
+
+#### 1. File Transfer Components
+
+These components enable secure, reliable file transfer between mainframe systems and Azure:
+
+| Platform | Components |
+|----------|------------|
+| IBM z/OS | Connect:Direct, FTPS, NJE over IP |
+| Unisys ClearPath | File Transfer, Data Exchange |
+| Bull GCOS | File Transfer Facility |
+| NEC ACOS | ACOS-specific transfer utilities |
+
+Key capabilities across platforms include:
+- Checkpoint/restart capability
+- Compression and encryption
+- Secure protocol support
+- Transfer validation and verification
+- Scheduled transfers
+- Format and encoding conversion
+
+#### 2. Terminal Access and Modernization
+
+These components help modernize terminal-based applications:
+
+| Platform | Components |
+|----------|------------|
+| IBM z/OS | Host Access Transformation Services (HATS) |
+| Unisys ClearPath | ClearPath ePortal |
+| Bull GCOS | Web Access Server |
+| NEC ACOS | iPackage |
+
+Common capabilities include:
+- Terminal screen to web/mobile conversion
+- Screen pattern recognition
+- Macro recording and playback
+- Screen customization and styling
+- Web service creation
+
+#### 3. Messaging and Integration
+
+Messaging systems provide asynchronous communication between mainframes and Azure:
+
+| Platform | Components |
+|----------|------------|
+| IBM z/OS | MQ Series, CICS Events |
+| Unisys ClearPath | MQSeries Bridge, JMS |
+| Bull GCOS | Message Queue Manager |
+| NEC ACOS | AIM Message Queue |
+
+Key features include:
+- Queue management
+- Message persistence
+- Transaction coordination
+- Channel security
+- Dead letter handling 
