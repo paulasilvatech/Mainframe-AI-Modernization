@@ -75,19 +75,20 @@
   <rect x="40" y="520" width="870" height="100" rx="5" ry="5" fill="#f5f5f5" stroke="#666666" stroke-width="1.5" />
   <text x="475" y="545" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif">Integration Components</text>
   
-  <!-- Legend Items - reorganized in two rows -->
-  <rect x="90" y="570" width="20" height="15" fill="#4D81BF" stroke="#000000" stroke-width="0.5" />
-  <text x="180" y="583" font-size="14" font-family="Arial, sans-serif">Mainframe Environment</text>
+  <!-- Legend Items - reorganized with better spacing -->
+  <rect x="100" y="570" width="20" height="15" fill="#4D81BF" stroke="#333333" stroke-width="0.8" />
+  <text x="130" y="583" font-size="14" font-family="Arial, sans-serif">Mainframe Environment</text>
   
-  <rect x="320" y="570" width="20" height="15" fill="#3373cc" stroke="#000000" stroke-width="0.5" />
-  <text x="410" y="583" font-size="14" font-family="Arial, sans-serif">DevOps Platform</text>
+  <rect x="320" y="570" width="20" height="15" fill="#3373cc" stroke="#333333" stroke-width="0.8" />
+  <text x="350" y="583" font-size="14" font-family="Arial, sans-serif">DevOps Platform</text>
   
-  <rect x="550" y="570" width="20" height="15" fill="#deeafc" stroke="#000000" stroke-width="0.5" />
-  <text x="640" y="583" font-size="14" font-family="Arial, sans-serif">Platform Services</text>
+  <rect x="520" y="570" width="20" height="15" fill="#deeafc" stroke="#333333" stroke-width="0.8" />
+  <text x="550" y="583" font-size="14" font-family="Arial, sans-serif">Platform Services</text>
   
-  <rect x="780" y="570" width="20" height="15" fill="#8961aa" stroke="#000000" stroke-width="0.5" />
-  <text x="870" y="583" font-size="14" font-family="Arial, sans-serif">AI Services</text>
+  <rect x="720" y="570" width="20" height="15" fill="#8961aa" stroke="#333333" stroke-width="0.8" />
+  <text x="750" y="583" font-size="14" font-family="Arial, sans-serif">AI Services</text>
   
-  <!-- Supports for various mainframe -->
-  <text x="475" y="480" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif">Supports IBM z/OS, Unisys, Bull GCOS, NEC ACOS, and other mainframe platforms</text>
+  <!-- Supports for various mainframe - improved note -->
+  <rect x="110" y="475" width="730" height="30" rx="5" ry="5" fill="#fafafa" stroke="#dddddd" stroke-width="1" />
+  <text x="475" y="495" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif">Supports IBM z/OS, Unisys, Bull GCOS, NEC ACOS, and other mainframe platforms</text>
 </svg> 
