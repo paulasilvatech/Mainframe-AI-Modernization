@@ -112,9 +112,9 @@ jobs:
         # Platform-specific compilation commands
         if [ -d "src/cobol" ]; then
           echo "Compiling COBOL programs..."
-          for file in src/cobol/*.cbl; do
-            cobol-compiler "$file" -I src/copybooks -o "$(basename "$file" .cbl).so"
-          done
+        for file in src/cobol/*.cbl; do
+          cobol-compiler "$file" -I src/copybooks -o "$(basename "$file" .cbl).so"
+        done
         fi
         
         if [ -d "src/pl1" ]; then

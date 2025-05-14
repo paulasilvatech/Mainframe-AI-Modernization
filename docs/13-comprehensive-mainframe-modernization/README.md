@@ -237,7 +237,7 @@ The hybrid approach enables gradual evolution without disruption, allowing organ
 
 - Explore [🧪 Code Analysis](../05-code-analysis/README.md) for AI-powered application assessment
 - Learn about [🐙 GitHub Integration](../06-github-integration/README.md) for mainframe modernization
-- Implement [🧠 AI-Powered Transformation](../08-ai-transformation/README.md) for your applications
+- Implement [🧠 AI-Powered Transformation](../08-ai-transformation/README.md) for your applications 
 
 ## 📊 Modernization Strategies
 

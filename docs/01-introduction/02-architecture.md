@@ -404,7 +404,7 @@ Azure AI Foundry deployment follows a hub-and-spoke model:
 For detailed implementation steps, continue to:
 - [Installation Prerequisites](03-prerequisites.md)
 - [Mainframe Integration Setup](04-platform-integration.md)
-- [GitHub & Azure DevOps Integration](05-devops-integration.md)
+- [GitHub & Azure DevOps Integration](05-devops-integration.md) 
 
 ### Platform-Specific Integration Components
 
