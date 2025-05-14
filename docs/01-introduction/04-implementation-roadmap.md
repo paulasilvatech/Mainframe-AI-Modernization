@@ -1,6 +1,6 @@
-# Implementation Roadmap for Azure AI Foundry
+# 🛣️ Implementation Roadmap for Mainframe Modernization
 
-This document provides a comprehensive implementation roadmap for Azure AI Foundry with IBM z/OS mainframe environments. It outlines the step-by-step process, technical considerations, and best practices for a successful implementation.
+This document provides a comprehensive implementation roadmap for Azure AI Foundry with various mainframe environments (IBM z/OS, Unisys ClearPath, Bull GCOS, NEC ACOS). It outlines the step-by-step process, technical considerations, and best practices for a successful implementation.
 
 ## Implementation Phases
 
@@ -34,10 +34,14 @@ The implementation of Azure AI Foundry follows a structured approach with define
 - Build initial mainframe knowledge graph
 
 **Technical Activities:**
-1. Deploy discovery tools on z/OS environment
-2. Extract program information using catalog exploration
-3. Analyze SMF records for application usage patterns
-4. Perform initial COBOL, PL/I, and JCL code scans
+1. Deploy discovery tools on mainframe environment
+2. Extract program information using platform-specific techniques
+   - z/OS: Catalog exploration and SMF records
+   - Unisys ClearPath: MCP Explorer or OS 2200 toolsets
+   - Bull GCOS: GCOS Administration Tools
+   - NEC ACOS: ACOS System Manager
+3. Analyze system usage patterns and application workloads
+4. Perform initial code scans (COBOL, PL/I, Assembler, Natural, etc.)
 5. Document database schemas and access patterns
 6. Map application transaction flows
 7. Identify integration points with other systems
@@ -48,6 +52,7 @@ The implementation of Azure AI Foundry follows a structured approach with define
 - Complexity assessment report
 - Initial modernization strategy
 - Resource requirements projection
+- Platform-specific migration considerations
 
 ### Phase 2: Foundation Setup
 

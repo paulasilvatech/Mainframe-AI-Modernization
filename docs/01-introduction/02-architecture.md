@@ -1,6 +1,21 @@
-# Technical Architecture: Azure AI Foundry for IBM z/OS Integration
+# 🏗️ Architecture Overview: Mainframe Modernization with Azure AI Foundry
 
-This document provides a detailed technical architecture for Azure AI Foundry integration with IBM z/OS environments.
+This technical architecture document provides a comprehensive overview of the Azure AI Foundry architecture for mainframe modernization across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, NEC ACOS).
+
+## 📋 Introduction
+
+The Azure AI Foundry architecture is designed to facilitate the modernization of mainframe applications across different platforms while leveraging advanced AI capabilities. This multi-platform approach addresses the diverse needs of organizations with heterogeneous mainframe environments, providing a flexible and comprehensive modernization framework.
+
+Key architectural goals include:
+
+| Architectural Goal | Description |
+|-------------------|-------------|
+| Platform Flexibility | Support for multiple mainframe platforms with platform-specific adapters |
+| AI-Powered Analysis | Deep understanding of mainframe code, data structures, and business rules |
+| Secure Integration | Secure connectivity between mainframe environments and Azure services |
+| Hybrid Operations | Support for hybrid operational models during the transition period |
+| DevOps Integration | Seamless integration with modern CI/CD tools and processes |
+| Scalability | Ability to handle large-scale modernization initiatives |
 
 ![Architecture Overview](../../images/architecture-overview.svg)
 

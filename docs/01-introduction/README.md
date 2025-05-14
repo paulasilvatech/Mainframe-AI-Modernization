@@ -1,6 +1,6 @@
-# 🌟 Introduction to Azure AI Foundry for IBM z/OS Mainframe
+# 🌟 Introduction to Mainframe Modernization with Azure AI Foundry
 
-This chapter provides a comprehensive introduction to modernizing IBM z/OS mainframe applications using Azure AI Foundry with GitHub and Azure DevOps integration.
+This chapter provides a comprehensive introduction to modernizing mainframe applications across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, NEC ACOS) using Azure AI Foundry with GitHub and Azure DevOps integration.
 
 ## 📋 Overview
 
@@ -16,7 +16,7 @@ This chapter covers the following introductory topics:
 | [Architecture Overview](02-architecture.md) | Technical architecture of the Azure AI Foundry platform and integration patterns |
 | [AI Foundry Components](03-ai-foundry-components.md) | Detailed exploration of the core AI components and their capabilities |
 | [Installation Prerequisites](03-prerequisites.md) | Requirements and prerequisites for implementing Azure AI Foundry |
-| [IBM z/OS Integration Setup](04-zos-integration.md) | Detailed setup instructions for IBM z/OS integration |
+| [Mainframe Integration Setup](04-platform-integration.md) | Detailed setup instructions for various mainframe platform integrations |
 | [GitHub & Azure DevOps Integration](05-devops-integration.md) | Setup instructions for GitHub and Azure DevOps integration |
 | [Implementation Roadmap](04-implementation-roadmap.md) | Phased approach to implementing mainframe modernization with Azure AI Foundry |
 

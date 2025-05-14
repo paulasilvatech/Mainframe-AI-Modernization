@@ -6,8 +6,8 @@ This playbook provides a comprehensive, step-by-step technical guide for moderni
 
 This technical implementation guide serves as a complete resource for IT professionals undertaking mainframe modernization initiatives. Azure AI Foundry functions as the central intelligence layer in the modernization ecosystem, providing:
 
-- 🔍 Deep analysis of complex COBOL, PL/I, and Assembler code bases
-- 🧠 Knowledge extraction from legacy IBM z/OS systems
+- 🔍 Deep analysis of complex COBOL, PL/I, Assembler, and Natural code bases
+- 🧠 Knowledge extraction from legacy mainframe systems
 - 🤖 Intelligent decision-making throughout the modernization process
 - 📊 Predictive insights for risk assessment and optimization
 - ⚙️ Automation of routine tasks to accelerate development and deployment
@@ -18,7 +18,7 @@ The playbook offers detailed implementation guidance for both GitHub and Azure D
 
 ![Architecture Overview](images/architecture-overview.svg)
 
-This diagram illustrates the high-level architecture of the IBM z/OS mainframe modernization approach using Azure AI Foundry with GitHub integration.
+This diagram illustrates the high-level architecture of the mainframe modernization approach using Azure AI Foundry with GitHub integration.
 
 ## 👥 Who is this playbook for?
 
@@ -45,9 +45,9 @@ This technical playbook is organized as a sequential implementation guide. Each 
 
 ## 📖 Implementation Chapters
 
-Follow these chapters in sequence to implement your IBM z/OS mainframe modernization:
+Follow these chapters in sequence to implement your mainframe modernization:
 
-1. [🌟 Introduction to Azure AI Foundry for IBM z/OS](docs/01-introduction/README.md)
+1. [🌟 Introduction to Mainframe Modernization with Azure AI Foundry](docs/01-introduction/README.md)
 2. [🔍 Discovery and Assessment Phase](docs/02-discovery/README.md) 
 3. [🏗️ Foundation Setup](docs/03-foundation/README.md)
 4. [💻 Development Environment Configuration](docs/04-development-environment/README.md)
@@ -88,7 +88,7 @@ This repository contains working code examples and templates to accelerate your 
 | GitHub Integration | Configuration files, workflows, templates, and scripts for GitHub integration |
 | Azure DevOps Examples | Pipeline definitions, templates, extensions, and scripts for Azure DevOps |
 | AI Foundry Examples | Implementation examples for Azure AI Foundry components |
-| Mainframe Examples | Sample IBM z/OS code with integration points |
+| Mainframe Examples | Sample code with integration points for various mainframe platforms |
 | Hybrid Examples | Examples of hybrid implementations and patterns |
 | Agent Framework Examples | Implementation examples for agent-based modernization |
 

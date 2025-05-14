@@ -1,6 +1,24 @@
-# IBM z/OS Integration Setup for Azure AI Foundry
+# 🔄 Mainframe Platform Integration Setup
 
-This document provides detailed technical instructions for setting up integration between IBM z/OS environments and Azure AI Foundry.
+This guide provides detailed implementation instructions for setting up integration with various mainframe platforms using Azure AI Foundry. It covers specific integration requirements and configuration steps for IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS mainframe systems.
+
+## 📋 Overview
+
+Integrating Azure AI Foundry with your mainframe environment requires establishing secure and efficient communication channels between your existing systems and the Azure cloud. This guide covers the setup requirements for different mainframe platforms, including network configuration, security settings, and component installation.
+
+## 1. IBM z/OS Integration
+
+### 1.1 Prerequisites for IBM z/OS Integration
+
+Before setting up z/OS integration with Azure AI Foundry, ensure you have:
+
+| Prerequisite | Description |
+|--------------|-------------|
+| z/OS Version | z/OS V2.2 or later recommended |
+| Security Access | Appropriate security permissions to install and configure components |
+| Network Connectivity | Network connectivity between your z/OS system and Azure |
+| z/OSMF | z/OS Management Facility (if using RESTful API integration) |
+| Git on z/OS | Optional but recommended for source control integration |
 
 ## Integration Architecture Overview
 
@@ -748,3 +766,185 @@ cd /submit,proc=AZURE_FILE_TRANSFER
 After completing the IBM z/OS integration setup, proceed to:
 - [GitHub & Azure DevOps Integration](05-devops-integration.md) to set up continuous integration and deployment
 - [AI-Powered Code Analysis](../05-code-analysis/README.md) to analyze your mainframe codebase 
+
+## 2. Unisys ClearPath Integration
+
+### 2.1 Prerequisites for Unisys ClearPath Integration
+
+Before setting up Unisys ClearPath integration with Azure AI Foundry, ensure you have:
+
+| Prerequisite | Description |
+|--------------|-------------|
+| ClearPath MCP or OS 2200 | Current supported version |
+| ClearPath ePortal | For web and mobile interface integration |
+| ClearPath Forward Connection | For secure communication with Azure |
+| Network Connectivity | Network connectivity between your ClearPath system and Azure |
+
+### 2.2 Configuring ClearPath Integration
+
+#### 2.2.1 MCP Environment Setup
+
+```bash
+# Example MCP environment setup commands
+@CREATE MY_FILE/SETUP/INTEGRATION 
+SET APIS ALLOW
+ENABLE HTTPS
+```
+
+#### 2.2.2 ClearPath ePortal Configuration
+
+1. Access the ClearPath ePortal administration interface
+2. Navigate to "External Connections" section
+3. Add a new Azure connection with the following settings:
+   - Name: AzureAIFoundry
+   - URL: Your Azure AI Foundry endpoint
+   - Authentication: OAuth2
+   - Client ID: Your registered client ID
+   - Client Secret: Your registered client secret
+
+#### 2.2.3 Azure Resource Configuration
+
+Create and configure the necessary Azure resources to connect with your ClearPath system:
+
+```bash
+# Create an Azure App Registration for ClearPath integration
+az ad app create --display-name "ClearPath Integration" \
+  --available-to-other-tenants false \
+  --oauth2-allow-implicit-flow false
+
+# Get the App ID for use in your ClearPath configuration
+APP_ID=$(az ad app list --display-name "ClearPath Integration" --query "[0].appId" -o tsv)
+echo $APP_ID
+```
+
+## 3. Bull GCOS Integration
+
+### 3.1 Prerequisites for Bull GCOS Integration
+
+Before setting up Bull GCOS integration with Azure AI Foundry, ensure you have:
+
+| Prerequisite | Description |
+|--------------|-------------|
+| GCOS Version | GCOS 8 SR10 or later recommended |
+| LiberTP | For transaction processing integration |
+| Web Access Server | For API connectivity |
+| Network Connectivity | Network connectivity between your GCOS system and Azure |
+
+### 3.2 Configuring GCOS Integration
+
+#### 3.2.1 GCOS Environment Setup
+
+Configure your GCOS environment to allow external connectivity:
+
+```
+// Example GCOS configuration
+SET EXTERNALCONNECTION ON
+CONFIGURE APIGATEWAY ADDRESS=<azure_foundry_address>
+```
+
+#### 3.2.2 Azure Configuration for GCOS
+
+```bash
+# Create a resource group for GCOS integration
+az group create --name gcos-integration --location westeurope
+
+# Set up Azure API Management for GCOS communication
+az apim create --name gcos-api-gateway \
+  --resource-group gcos-integration \
+  --publisher-name "Your Organization" \
+  --publisher-email "admin@example.com" \
+  --sku-name Basic
+
+# Configure an API for GCOS communication
+az apim api create --resource-group gcos-integration \
+  --service-name gcos-api-gateway \
+  --api-id gcos-api \
+  --display-name "GCOS Integration API" \
+  --path gcos \
+  --protocols https
+```
+
+## 4. NEC ACOS Integration
+
+### 4.1 Prerequisites for NEC ACOS Integration
+
+Before setting up NEC ACOS integration with Azure AI Foundry, ensure you have:
+
+| Prerequisite | Description |
+|--------------|-------------|
+| ACOS Version | ACOS-4 or later |
+| iPackage | For web integration capabilities |
+| Network Connectivity | Network connectivity between your ACOS system and Azure |
+
+### 4.2 Configuring ACOS Integration
+
+#### 4.2.1 ACOS Environment Setup
+
+```
+// Example ACOS configuration commands
+SET EXTERNAL_SERVICE ON
+CONFIGURE AZURE_CONNECTION ENDPOINT=<azure_foundry_endpoint>
+```
+
+#### 4.2.2 Azure Configuration for ACOS
+
+```bash
+# Create a resource group for ACOS integration
+az group create --name acos-integration --location japaneast
+
+# Set up Azure API Management for ACOS communication
+az apim create --name acos-api-gateway \
+  --resource-group acos-integration \
+  --publisher-name "Your Organization" \
+  --publisher-email "admin@example.com" \
+  --sku-name Basic
+
+# Configure an API for ACOS communication
+az apim api create --resource-group acos-integration \
+  --service-name acos-api-gateway \
+  --api-id acos-api \
+  --display-name "ACOS Integration API" \
+  --path acos \
+  --protocols https
+```
+
+## 5. Common Integration Patterns
+
+Regardless of your mainframe platform, several common integration patterns can be implemented:
+
+### 5.1 API-First Integration
+
+Expose mainframe functionality as REST APIs:
+
+![API Integration Pattern](../../images/api-integration-pattern.svg)
+
+### 5.2 Event-Driven Integration
+
+Use event-driven architecture to integrate mainframe with modern systems:
+
+![Event-Driven Integration](../../images/event-driven-integration.svg)
+
+### 5.3 Batch Integration
+
+For high-volume data processing between mainframe and Azure:
+
+![Batch Integration](../../images/batch-integration-pattern.svg)
+
+## 6. Security Considerations
+
+Implement these security measures regardless of mainframe platform:
+
+| Security Measure | Description |
+|------------------|-------------|
+| Network Security | Secure network connections using VPNs or ExpressRoute |
+| Authentication | Implement OAuth or certificate-based authentication |
+| Data Encryption | Encrypt data in transit and at rest |
+| Access Control | Implement least privilege access controls |
+| Audit Logging | Enable comprehensive audit logging |
+
+## ➡️ Next Steps
+
+Once you've configured the integration with your mainframe platform:
+
+1. Proceed to [GitHub & Azure DevOps Integration](05-devops-integration.md)
+2. Set up your [Development Environment](../04-development-environment/README.md) 

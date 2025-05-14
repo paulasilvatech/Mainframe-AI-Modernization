@@ -4,7 +4,7 @@
 
 Building on our comprehensive approach to mainframe modernization using Azure AI Foundry and GitHub, this chapter introduces an advanced architecture that leverages specialized AI agents to further accelerate and enhance the modernization process. By implementing a collaborative multi-agent system, organizations can address key challenges in mainframe modernization, including regulatory constraints, protection of intellectual property, and the preservation of institutional knowledge.
 
-This agent-based approach complements the tools and methodologies introduced in previous chapters, providing a powerful framework for tackling even the most complex modernization scenarios. Whether you're dealing with millions of lines of COBOL code or need to preserve sensitive business logic without exposing it to external systems, the agent-based architecture offers a solution tailored to enterprise requirements.
+This agent-based approach complements the tools and methodologies introduced in previous chapters, providing a powerful framework for tackling even the most complex modernization scenarios. Whether you're dealing with millions of lines of code (COBOL, PL/I, Assembler, Natural) or need to preserve sensitive business logic without exposing it to external systems, the agent-based architecture offers a solution tailored to enterprise requirements across all major mainframe platforms.
 
 ## 12.1 🔍 Understanding Agent-Based Modernization
 
@@ -22,6 +22,8 @@ Agent-based modernization is an advanced approach that utilizes multiple special
 | Institutional Knowledge Preservation | Capture and codify implicit knowledge embedded in legacy systems |
 | Scalability | Parallel processing of different components for faster modernization |
 | Human-in-the-Loop Integration | Seamless integration of human expertise at critical decision points |
+| Multi-Platform Support | Specialized agents for different mainframe platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, NEC ACOS) |
+| Language Expertise | Dedicated agents for various languages (COBOL, PL/I, Assembler, Natural) |
 
 ### How Agent-Based Modernization Fits into Your Overall Strategy
 
@@ -47,7 +49,8 @@ Our agent-based architecture defines several specialized agents, each with a dis
 |------------|----------------|
 | Workflow Manager Agent | Orchestrates the entire process, manages agent interactions, and ensures cohesive outputs |
 | Domain Expert Agent | Analyzes business rules and domain-specific logic in mainframe applications |
-| COBOL/Mainframe Expert Agent | Specialized in understanding mainframe languages, JCL, and environment specifics |
+| Mainframe Platform Expert Agents | Specialized in understanding platform-specific features and environment details for IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS |
+| Legacy Language Expert Agents | Specialized in understanding COBOL, PL/I, Assembler, and Natural languages |
 | Target Language Expert Agent | Expertise in converting mainframe concepts to modern language patterns |
 | Database Expert Agent | Handles data structure transformations and query conversions |
 | Test Engineer Agent | Creates comprehensive test suites to validate functional equivalence |
@@ -58,7 +61,7 @@ The following diagram illustrates how these agents work together in a hierarchic
 
 ![Detailed Agent-Based Modernization Architecture](../../images/agent-based-architecture.svg)
 
-As shown in the diagram, the Workflow Manager coordinates with primary expert agents (Domain, COBOL, and Target experts), who in turn leverage specialized sub-agents for specific tasks. All agents contribute to and leverage a shared knowledge repository, which then feeds into the final deliverables.
+As shown in the diagram, the Workflow Manager coordinates with primary expert agents (Domain, Platform, and Language experts), who in turn leverage specialized sub-agents for specific tasks. All agents contribute to and leverage a shared knowledge repository, which then feeds into the final deliverables.
 
 ### Agent Interaction Patterns
 
@@ -253,7 +256,7 @@ Create a Logic App workflow to orchestrate agent interactions:
 The following example demonstrates how to implement a specialized agent using Azure Functions:
 
 ```python
-# COBOL Expert Agent
+# Language Expert Agent
 import azure.functions as func
 import logging
 import json
@@ -263,16 +266,17 @@ from azure.ai.openai import AzureOpenAI
 
 app = func.FunctionApp()
 
-@app.function_name("COBOLExpertAgent")
-@app.route(route="cobol-expert")
-def cobol_expert_agent(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('COBOL Expert Agent received a request')
+@app.function_name("LanguageExpertAgent")
+@app.route(route="language-expert")
+def language_expert_agent(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Language Expert Agent received a request')
     
     # Get conversation context
     conversation_context = req.get_json()
     
-    # Extract COBOL code from context
-    cobol_code = conversation_context.get('programContent', '')
+    # Extract code from context
+    code = conversation_context.get('programContent', '')
+    language = conversation_context.get('language', 'COBOL')  # Default to COBOL if not specified
     
     # Connect to Azure OpenAI
     credential = DefaultAzureCredential()
@@ -282,10 +286,10 @@ def cobol_expert_agent(req: func.HttpRequest) -> func.HttpResponse:
         api_version="2023-12-01-preview"
     )
     
-    # Define the COBOL Expert agent persona
-    system_prompt = """
-    You are an expert COBOL developer with 30+ years of experience in mainframe systems.
-    Your task is to analyze COBOL code, understanding its structure, business logic, and dependencies.
+    # Define the Language Expert agent persona based on the language
+    system_prompt = f"""
+    You are an expert {language} developer with 30+ years of experience in mainframe systems.
+    Your task is to analyze {language} code, understanding its structure, business logic, and dependencies.
     Provide a detailed analysis including:
     1. Program structure and organization
     2. Key business functions and their implementation
@@ -299,10 +303,10 @@ def cobol_expert_agent(req: func.HttpRequest) -> func.HttpResponse:
     
     # Call Azure OpenAI
     response = client.chat.completions.create(
-        model="cobol-expert",  # The deployment name
+        model="language-expert",  # The deployment name
         messages=[
             {"role": "system", "content": system_prompt},
-            {"role": "user", "content": f"Analyze this COBOL program:\n\n{cobol_code}"}
+            {"role": "user", "content": f"Analyze this {language} program:\n\n{code}"}
         ],
         temperature=0.1
     )
@@ -311,7 +315,7 @@ def cobol_expert_agent(req: func.HttpRequest) -> func.HttpResponse:
     analysis = response.choices[0].message.content
     
     # Update the conversation context with findings
-    conversation_context["agentFindings"]["cobolExpert"] = json.loads(analysis)
+    conversation_context["agentFindings"]["languageExpert"] = json.loads(analysis)
     
     return func.HttpResponse(
         json.dumps(conversation_context),
@@ -341,19 +345,20 @@ relevant information. Always ensure that the modernization process follows estab
 and meets quality standards.
 ```
 
-#### Domain Expert Agent
+#### Platform Expert Agent
 
 ```
-You are a Domain Expert with deep understanding of business processes implemented in mainframe systems.
+You are a Platform Expert with deep understanding of [PLATFORM_NAME] mainframe systems.
 Your responsibilities include:
-1. Analyzing COBOL code to identify business rules and logic
-2. Extracting implicit domain knowledge embedded in legacy code
-3. Documenting business processes in clear, technology-agnostic language
-4. Identifying critical business requirements that must be preserved during modernization
-5. Recognizing industry-specific patterns and compliance requirements
+1. Analyzing code to identify platform-specific features and constraints
+2. Documenting system interactions and dependencies
+3. Identifying platform-specific APIs and services
+4. Recognizing unique operational characteristics
+5. Providing guidance on platform migration challenges
 
-Focus on the "what" and "why" rather than the "how" of implementations. Document your findings 
-in a structured format that separates business rules from implementation details.
+Focus on the platform-specific aspects of the applications, including JCL, system calls,
+utilities, and unique features. Document these findings in a structured format that
+helps other agents understand platform dependencies.
 ```
 
 ### Prompt Engineering Best Practices
@@ -548,19 +553,18 @@ As your modernization initiative grows, consider these scaling strategies:
 | Custom Model Fine-tuning | Develop custom models trained on your specific mainframe codebase |
 | Hybrid Processing | Combine cloud-based and on-premises agent deployment for sensitive applications |
 
-
-
 ## 12.7 🔮 Advanced Topics and Future Directions
 
 ### Multi-Language and Multi-Target Modernization
 
 Extending the agent approach to handle diverse source and target environments:
 
-- COBOL to Java, C#, Python, or Node.js
-- PL/1 to modern languages
+- Multiple source languages: COBOL, PL/I, Assembler, Natural
+- Multiple target languages: Java, C#, Python, or Node.js
+- Multiple mainframe platforms: IBM z/OS, Unisys ClearPath, Bull GCOS, NEC ACOS
 - JCL to container orchestration
-- CICS to web services and APIs
-- IMS/DB2 to modern databases
+- Legacy transaction processing to web services and APIs
+- Legacy databases to modern database systems
 
 ### Self-Improving Agent Systems
 
@@ -590,6 +594,7 @@ Before implementing the agent-based architecture described in this chapter, ensu
 | Azure Subscription | An Azure subscription with appropriate permissions to create resources |
 | Azure OpenAI Service | Azure OpenAI Service with GPT-4 model deployments configured |
 | Python Development Skills | Familiarity with Python development for Azure Functions |
+| Platform Expertise | Knowledge of the specific mainframe platforms you're working with |
 
 ## ❓ Troubleshooting
 
@@ -605,7 +610,7 @@ If you encounter issues during implementation, refer to these common solutions:
 
 The agent-based approach to mainframe modernization represents a powerful enhancement to your modernization toolkit. By leveraging specialized AI agents working collaboratively, you can address the most challenging aspects of mainframe modernization while maintaining control, security, and quality.
 
-This chapter has provided a comprehensive framework for implementing agent-based modernization within your organization, complementing the Azure AI Foundry and GitHub integration covered in previous chapters. By adopting this approach, you can accelerate your modernization journey, preserve critical institutional knowledge, and ensure a successful transition to modern platforms.
+This chapter has provided a comprehensive framework for implementing agent-based modernization within your organization, complementing the Azure AI Foundry and GitHub integration covered in previous chapters. By adopting this approach, you can accelerate your modernization journey, preserve critical institutional knowledge, and ensure a successful transition to modern platforms across all your mainframe systems.
 
 ## ➡️ Next Steps
 
