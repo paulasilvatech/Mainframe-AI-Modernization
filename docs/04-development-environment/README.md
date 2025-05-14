@@ -8,11 +8,13 @@ An effective development environment is crucial for mainframe modernization succ
 
 ## 🎯 Objectives
 
-- 🛠️ Establish development environments for mainframe code
-- 🔧 Configure modern IDE tooling with mainframe language support
-- ✅ Set up local testing capabilities for mainframe applications
-- 🔄 Implement consistent development environments across teams
-- 🧠 Integrate Azure AI Foundry tools into the development workflow
+| Objective | Description |
+|-----------|-------------|
+| Environments | Establish development environments for mainframe code |
+| IDE Configuration | Configure modern IDE tooling with mainframe language support |
+| Testing | Set up local testing capabilities for mainframe applications |
+| Consistency | Implement consistent development environments across teams |
+| AI Integration | Integrate Azure AI Foundry tools into the development workflow |
 
 ## 🖥️ Development Environment Types
 
@@ -21,61 +23,70 @@ An effective development environment is crucial for mainframe modernization succ
 **Description**: Developer workstation with all necessary tools and extensions
 
 **Components**:
-- 🧰 Modern IDE (VS Code, Eclipse, etc.)
-- 💾 Mainframe language extensions
-- 🧪 Local compilation and testing tools
-- 📦 Source control client
-- ☁️ Cloud development tools
-- 🧠 Azure AI Foundry CLI/extensions
+
+| Component | Description |
+|-----------|-------------|
+| Modern IDE | VS Code, Eclipse, etc. |
+| Language Extensions | Mainframe language support |
+| Testing Tools | Local compilation and testing tools |
+| Source Control | Source control client |
+| Cloud Tools | Cloud development tools |
+| AI Foundry | Azure AI Foundry CLI/extensions |
 
 **Best for**:
-- 👤 Individual developer productivity
-- 🔌 Offline development scenarios
-- 🚀 Lightweight development tasks
+- Individual developer productivity
+- Offline development scenarios
+- Lightweight development tasks
 
 ### 2. Containerized Development Environment
 
 **Description**: Docker containers with preconfigured development tools
 
 **Components**:
-- 📦 Base development container
-- 🧩 Language-specific extensions
-- ⚙️ Preconfigured tool chains
-- 💾 Volume mounts for local code
-- 🔌 Network configuration for mainframe access
-- 🔄 CI/CD integration
+
+| Component | Description |
+|-----------|-------------|
+| Base Container | Base development container |
+| Extensions | Language-specific extensions |
+| Tool Chains | Preconfigured tool chains |
+| Storage | Volume mounts for local code |
+| Networking | Network configuration for mainframe access |
+| CI/CD | CI/CD integration |
 
 **Best for**:
-- 🔄 Consistent developer experiences
-- 🚀 Onboarding new team members
-- 🛡️ Avoiding "works on my machine" issues
+- Consistent developer experiences
+- Onboarding new team members
+- Avoiding "works on my machine" issues
 
 ### 3. Cloud-Based Development Environment
 
 **Description**: Development environments hosted in Azure
 
 **Components**:
-- ☁️ Azure DevBox
-- 🐙 GitHub Codespaces
-- 💻 Virtual machine-based development
-- 🧩 Preconfigured extensions and tools
-- 💾 Persistent storage
-- 🔌 Network connectivity to mainframe
+
+| Component | Description |
+|-----------|-------------|
+| Azure DevBox | Managed developer desktop |
+| GitHub Codespaces | Cloud-based development environments |
+| Virtual Machines | Virtual machine-based development |
+| Extensions | Preconfigured extensions and tools |
+| Storage | Persistent storage |
+| Connectivity | Network connectivity to mainframe |
 
 **Best for**:
-- 🌐 Distributed teams
-- ⚡ High-performance requirements
-- 🔒 Secure mainframe access
+- Distributed teams
+- High-performance requirements
+- Secure mainframe access
 
 ## 💻 Local Development Environment Setup
 
 ### Visual Studio Code Setup
 
-1. **📥 Install Visual Studio Code**:
+1. **Install Visual Studio Code**:
 
    Download and install from [https://code.visualstudio.com/](https://code.visualstudio.com/)
 
-2. **🧩 Install Required Extensions**:
+2. **Install Required Extensions**:
 
    ```bash
    # Install VS Code extensions for mainframe development
@@ -86,7 +97,7 @@ An effective development environment is crucial for mainframe modernization succ
    code --install-extension GitHub.vscode-github-actions
    ```
 
-3. **⚙️ Configure Mainframe Language Settings**:
+3. **Configure Mainframe Language Settings**:
 
    Create `.vscode/settings.json` in your project:
 

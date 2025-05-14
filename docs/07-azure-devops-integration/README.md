@@ -8,17 +8,19 @@ Azure DevOps integration enables comprehensive project management, build automat
 
 ## 🎯 Objectives
 
-- 🛠️ Set up Azure DevOps project structure for mainframe modernization
-- 📂 Configure repositories for mainframe code management
-- 📦 Implement Azure Pipelines for mainframe CI/CD
-- 📊 Establish work item tracking for modernization activities
-- 🧠 Integrate AI-powered capabilities with Azure DevOps workflows
+| Objective | Description |
+|-----------|-------------|
+| Project Structure | Set up Azure DevOps project structure for mainframe modernization |
+| Repository Configuration | Configure repositories for mainframe code management |
+| Pipeline Implementation | Implement Azure Pipelines for mainframe CI/CD |
+| Work Item Tracking | Establish work item tracking for modernization activities |
+| AI Integration | Integrate AI-powered capabilities with Azure DevOps workflows |
 
 ## 🏗️ Azure DevOps Project Setup
 
 ### Project Structure
 
-1. **🆕 Create a New Azure DevOps Project**:
+1. **Create a New Azure DevOps Project**:
 
    Navigate to https://dev.azure.com and create a new project:
    - Name: `Mainframe-Modernization`
@@ -27,7 +29,7 @@ Azure DevOps integration enables comprehensive project management, build automat
    - Version control: Git
    - Work item process: Agile (recommended for modernization projects)
 
-2. **⚙️ Configure Project Settings**:
+2. **Configure Project Settings**:
 
    - Enable Azure Boards for work tracking
    - Enable Azure Repos for source code management
@@ -37,7 +39,7 @@ Azure DevOps integration enables comprehensive project management, build automat
 
 ### Repository Setup
 
-1. **📂 Create Repositories**:
+1. **Create Repositories**:
 
    ```bash
    # Initialize a local repository
@@ -72,7 +74,7 @@ Azure DevOps integration enables comprehensive project management, build automat
    git push -u origin main
    ```
 
-2. **🔒 Branch Policies**:
+2. **Branch Policies**:
 
    In Azure DevOps, navigate to Repos > Branches and set up policies for the main branch:
    - Require a minimum number of reviewers
@@ -84,7 +86,7 @@ Azure DevOps integration enables comprehensive project management, build automat
 
 ### YAML Pipeline Setup
 
-1. **🔄 Create a Basic CI Pipeline**:
+1. **Create a Basic CI Pipeline**:
 
    Create `azure-pipelines.yml` in the root of your repository:
 
@@ -151,7 +153,7 @@ Azure DevOps integration enables comprehensive project management, build automat
                  artifactName: 'compiled-programs'
    ```
 
-2. **🚀 Set Up Release Pipeline**:
+2. **Set Up Release Pipeline**:
 
    Create a release pipeline in Azure DevOps:
    
@@ -183,7 +185,7 @@ steps:
     generateDocs: true
 ```
 
-### 🧪 Automated Test Generation
+### Automated Test Generation
 
 Generate tests based on code analysis:
 
@@ -205,15 +207,17 @@ steps:
 
 Configure work item tracking for modernization:
 
-1. **📝 Create Custom Work Item Types**:
+1. **Create Custom Work Item Types**:
 
    Customize the Agile process to include:
    
-   - **Modernization Epic**: High-level modernization initiative
-   - **Mainframe Component**: Represents a mainframe application or component
-   - **Migration Task**: Specific migration/modernization tasks
+   | Work Item Type | Purpose |
+   |----------------|---------|
+   | Modernization Epic | High-level modernization initiative |
+   | Mainframe Component | Represents a mainframe application or component |
+   | Migration Task | Specific migration/modernization tasks |
 
-2. **📊 Set Up Migration Backlog**:
+2. **Set Up Migration Backlog**:
 
    Create a dedicated backlog for migration tasks with appropriate states:
    - Discovery
@@ -337,11 +341,13 @@ stages:
 
 ## ✅ Best Practices
 
-1. **📋 Standardized Pipelines**: Create reusable templates for common mainframe operations
-2. **📝 Infrastructure as Code**: Manage all pipeline configurations in YAML
-3. **🔒 Security-First Approach**: Use secure practices for mainframe credentials
-4. **🔄 Work Item Tracking**: Link all code changes to work items for traceability
-5. **📦 Artifact Management**: Maintain consistent artifact management across environments
+| Practice | Description |
+|----------|-------------|
+| Standardized Pipelines | Create reusable templates for common mainframe operations |
+| Infrastructure as Code | Manage all pipeline configurations in YAML |
+| Security-First Approach | Use secure practices for mainframe credentials |
+| Work Item Tracking | Link all code changes to work items for traceability |
+| Artifact Management | Maintain consistent artifact management across environments |
 
 ## ➡️ Next Steps
 
@@ -354,7 +360,9 @@ After setting up Azure DevOps integration:
 
 ## 📚 References
 
-- [📖 Azure DevOps Documentation](https://docs.microsoft.com/azure/devops)
-- [📝 Azure Pipelines YAML Reference](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema)
-- [📋 Mainframe DevOps Best Practices](https://learn.microsoft.com/azure/mainframe-migration/devops-best-practices)
-- [🧠 Azure AI Foundry Documentation](https://docs.microsoft.com/azure/ai-foundry) 
+| Resource | Description |
+|----------|-------------|
+| [Azure DevOps Documentation](https://docs.microsoft.com/azure/devops) | Official Azure DevOps documentation |
+| [Azure Pipelines YAML Reference](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema) | Reference for Azure Pipelines YAML schema |
+| [Mainframe DevOps Best Practices](https://learn.microsoft.com/azure/mainframe-migration/devops-best-practices) | Best practices for mainframe DevOps |
+| [Azure AI Foundry Documentation](https://docs.microsoft.com/azure/ai-foundry) | Documentation for Azure AI Foundry | 

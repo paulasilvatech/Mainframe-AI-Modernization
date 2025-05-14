@@ -10,38 +10,44 @@ Azure AI Foundry offers groundbreaking capabilities specifically designed for ma
 
 This chapter covers the following introductory topics:
 
-- [🏢 Overview and Business Value](01-overview.md) - Introduction to mainframe modernization with Azure AI Foundry and the business case for transformation
-- [🏗️ Architecture Overview](02-architecture.md) - Technical architecture of the Azure AI Foundry platform and integration patterns
-- [🧠 AI Foundry Components](03-ai-foundry-components.md) - Detailed exploration of the core AI components and their capabilities
-- [✅ Installation Prerequisites](03-prerequisites.md) - Requirements and prerequisites for implementing Azure AI Foundry
-- [💾 IBM z/OS Integration Setup](04-zos-integration.md) - Detailed setup instructions for IBM z/OS integration
-- [🔄 GitHub & Azure DevOps Integration](05-devops-integration.md) - Setup instructions for GitHub and Azure DevOps integration
-- [🗺️ Implementation Roadmap](04-implementation-roadmap.md) - Phased approach to implementing mainframe modernization with Azure AI Foundry
+| Topic | Description |
+|-------|-------------|
+| [Overview and Business Value](01-overview.md) | Introduction to mainframe modernization with Azure AI Foundry and the business case for transformation |
+| [Architecture Overview](02-architecture.md) | Technical architecture of the Azure AI Foundry platform and integration patterns |
+| [AI Foundry Components](03-ai-foundry-components.md) | Detailed exploration of the core AI components and their capabilities |
+| [Installation Prerequisites](03-prerequisites.md) | Requirements and prerequisites for implementing Azure AI Foundry |
+| [IBM z/OS Integration Setup](04-zos-integration.md) | Detailed setup instructions for IBM z/OS integration |
+| [GitHub & Azure DevOps Integration](05-devops-integration.md) | Setup instructions for GitHub and Azure DevOps integration |
+| [Implementation Roadmap](04-implementation-roadmap.md) | Phased approach to implementing mainframe modernization with Azure AI Foundry |
 
 ## 🎯 Objectives
 
-- 📚 Understand the Azure AI Foundry approach to mainframe modernization
-- 🏗️ Explore the technical architecture and integration patterns
-- 🧠 Learn about the AI capabilities that accelerate modernization
-- 📋 Establish a high-level implementation roadmap for your organization
-- 💰 Build the business case for AI-powered mainframe modernization
+| Objective | Description |
+|-----------|-------------|
+| Understanding | Understand the Azure AI Foundry approach to mainframe modernization |
+| Architecture | Explore the technical architecture and integration patterns |
+| AI Capabilities | Learn about the AI capabilities that accelerate modernization |
+| Implementation | Establish a high-level implementation roadmap for your organization |
+| Business Case | Build the business case for AI-powered mainframe modernization |
 
 ## 👥 Intended Audience
 
 This introduction is designed for:
 
-- 👔 IT Leaders and Executives considering mainframe modernization
-- 🏗️ Enterprise Architects planning transformation initiatives
-- 💾 Mainframe Technical Leads exploring modernization options
-- 🔄 DevOps Engineers implementing modern practices
-- 👨‍💻 Development Teams working on mainframe applications
+| Role | Description |
+|------|-------------|
+| IT Leaders | Executives considering mainframe modernization |
+| Enterprise Architects | Professionals planning transformation initiatives |
+| Mainframe Technical Leads | Engineers exploring modernization options |
+| DevOps Engineers | Teams implementing modern practices |
+| Development Teams | Developers working on mainframe applications |
 
 ## 📚 How to Use This Chapter
 
-1. Start with the [🏢 Overview and Business Value](01-overview.md) to understand the foundational concepts
-2. Review the [🏗️ Architecture Overview](02-architecture.md) to understand the technical approach
-3. Explore the [🧠 AI Foundry Components](03-ai-foundry-components.md) to learn about specific AI capabilities
-4. Study the [🗺️ Implementation Roadmap](04-implementation-roadmap.md) to plan your modernization journey
+1. Start with the [Overview and Business Value](01-overview.md) to understand the foundational concepts
+2. Review the [Architecture Overview](02-architecture.md) to understand the technical approach
+3. Explore the [AI Foundry Components](03-ai-foundry-components.md) to learn about specific AI capabilities
+4. Study the [Implementation Roadmap](04-implementation-roadmap.md) to plan your modernization journey
 
 ## ➡️ Next Steps
 

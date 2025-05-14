@@ -10,68 +10,80 @@ This chapter outlines a comprehensive risk management framework that integrates 
 
 ## 🎯 Objectives
 
-- 🧠 Implement AI-powered risk assessment for mainframe code changes
-- 📈 Establish automated risk scoring for deployment decisions
-- 🔍 Create intelligent monitoring for post-deployment issues
-- 🔮 Develop predictive analytics for proactive risk management
-- 🔄 Integrate risk mitigation strategies into CI/CD pipelines
+| Objective | Description |
+|-----------|-------------|
+| Risk Assessment | Implement AI-powered risk assessment for mainframe code changes |
+| Risk Scoring | Establish automated risk scoring for deployment decisions |
+| Monitoring | Create intelligent monitoring for post-deployment issues |
+| Predictive Analytics | Develop predictive analytics for proactive risk management |
+| CI/CD Integration | Integrate risk mitigation strategies into CI/CD pipelines |
 
 ## 🧩 Risk Management Framework
 
 The AI-powered risk management framework consists of five key components:
 
-### 1. 🔍 Risk Assessment
+### 1. Risk Assessment
 
 Automated analysis of code changes to identify potential risks:
 
-- **📏 Impact Analysis**: AI-powered assessment of the scope and impact of changes
-- **🔗 Dependency Mapping**: Identification of affected components and systems
-- **🔬 Pattern Recognition**: Detection of risky code patterns and anti-patterns
-- **📜 Historical Analysis**: Evaluation based on past deployment outcomes
+| Component | Description |
+|-----------|-------------|
+| Impact Analysis | AI-powered assessment of the scope and impact of changes |
+| Dependency Mapping | Identification of affected components and systems |
+| Pattern Recognition | Detection of risky code patterns and anti-patterns |
+| Historical Analysis | Evaluation based on past deployment outcomes |
 
-### 2. 🌡️ Risk Scoring
+### 2. Risk Scoring
 
 Quantitative risk measurement to enable data-driven decisions:
 
-- **📊 Multi-dimensional Scoring**: Evaluation across security, performance, reliability, and business impact dimensions
-- **⚖️ Contextual Weighting**: Dynamic adjustment of risk factors based on deployment context
-- **🚧 Threshold Management**: Environment-specific risk acceptance thresholds
-- **📉 Trend Analysis**: Tracking of risk scores over time to identify patterns
+| Component | Description |
+|-----------|-------------|
+| Multi-dimensional Scoring | Evaluation across security, performance, reliability, and business impact dimensions |
+| Contextual Weighting | Dynamic adjustment of risk factors based on deployment context |
+| Threshold Management | Environment-specific risk acceptance thresholds |
+| Trend Analysis | Tracking of risk scores over time to identify patterns |
 
-### 3. 🛠️ Risk Mitigation
+### 3. Risk Mitigation
 
 Automated and guided approaches to reduce identified risks:
 
-- **🩹 Remediation Suggestions**: AI-generated code improvements to reduce risk
-- **🧪 Test Amplification**: Intelligent expansion of test coverage for risky areas
-- **🚀 Deployment Strategies**: Selection of appropriate deployment approaches based on risk profile
-- **✅ Approval Workflows**: Risk-based approval routing and documentation
+| Component | Description |
+|-----------|-------------|
+| Remediation Suggestions | AI-generated code improvements to reduce risk |
+| Test Amplification | Intelligent expansion of test coverage for risky areas |
+| Deployment Strategies | Selection of appropriate deployment approaches based on risk profile |
+| Approval Workflows | Risk-based approval routing and documentation |
 
-### 4. 📡 Risk Monitoring
+### 4. Risk Monitoring
 
 Real-time and post-deployment monitoring for risk manifestation:
 
-- **🔔 Anomaly Detection**: AI-powered identification of abnormal behavior
-- **⚡ Performance Impact**: Monitoring of system performance relative to baseline
-- **🐞 Error Pattern Detection**: Recognition of error signatures related to deployment
-- **💼 Business Impact Assessment**: Measurement of effect on business KPIs
+| Component | Description |
+|-----------|-------------|
+| Anomaly Detection | AI-powered identification of abnormal behavior |
+| Performance Impact | Monitoring of system performance relative to baseline |
+| Error Pattern Detection | Recognition of error signatures related to deployment |
+| Business Impact Assessment | Measurement of effect on business KPIs |
 
-### 5. 🧠 Risk Learning
+### 5. Risk Learning
 
 Continuous improvement of risk assessment through machine learning:
 
-- **📝 Deployment Outcome Tracking**: Recording success and failure patterns
-- **⚙️ Risk Model Calibration**: Automatic adjustment of risk models based on outcomes
-- **📚 Knowledge Capture**: Preservation of risk patterns and mitigation strategies
-- **🔮 Predictive Improvement**: Enhanced ability to predict risks over time
+| Component | Description |
+|-----------|-------------|
+| Deployment Outcome Tracking | Recording success and failure patterns |
+| Risk Model Calibration | Automatic adjustment of risk models based on outcomes |
+| Knowledge Capture | Preservation of risk patterns and mitigation strategies |
+| Predictive Improvement | Enhanced ability to predict risks over time |
 
 ## 💻 Technical Implementation
 
-### 🔧 Risk Assessment Configuration
+### Risk Assessment Configuration
 
 Implement AI-powered risk assessment by configuring Azure AI Foundry:
 
-1. **📄 Create Risk Profile Configuration**:
+1. **Create Risk Profile Configuration**:
 
    ```json
    {
@@ -113,7 +125,7 @@ Implement AI-powered risk assessment by configuring Azure AI Foundry:
    }
    ```
 
-2. **⚙️ Configure Risk Assessment API**:
+2. **Configure Risk Assessment API**:
 
    ```bash
    az ai-foundry risk-assessment create \
@@ -125,7 +137,7 @@ Implement AI-powered risk assessment by configuring Azure AI Foundry:
      --model-version latest
    ```
 
-3. **🔄 Integrate with CI/CD Pipelines**:
+3. **Integrate with CI/CD Pipelines**:
 
    For GitHub Actions:
    ```yaml
@@ -153,11 +165,11 @@ Implement AI-powered risk assessment by configuring Azure AI Foundry:
        outputFile: '$(Build.ArtifactStagingDirectory)/risk-assessment.json'
    ```
 
-### 🚦 Risk-Based Deployment Decisions
+### Risk-Based Deployment Decisions
 
 Implement automated deployment decision making based on risk scores:
 
-1. **🔍 Risk Gate Configuration**:
+1. **Risk Gate Configuration**:
 
    ```yaml
    - name: Evaluate Risk Score
@@ -177,7 +189,7 @@ Implement automated deployment decision making based on risk scores:
        echo "riskScore=$RISK_SCORE" >> $GITHUB_OUTPUT
    ```
 
-2. **🧩 Deployment Strategy Selection**:
+2. **Deployment Strategy Selection**:
 
    ```yaml
    - name: Select Deployment Strategy
@@ -194,7 +206,7 @@ Implement automated deployment decision making based on risk scores:
        fi
    ```
 
-3. **✅ Approval Workflow Integration**:
+3. **Approval Workflow Integration**:
 
    ```yaml
    - name: Notify Approvers
@@ -215,11 +227,11 @@ Implement automated deployment decision making based on risk scores:
          });
    ```
 
-### 📡 Intelligent Monitoring Configuration
+### Intelligent Monitoring Configuration
 
 Implement AI-powered monitoring for deployed applications:
 
-1. **🔔 Anomaly Detection Setup**:
+1. **Anomaly Detection Setup**:
 
    ```bash
    az ai-foundry monitoring create \
@@ -232,7 +244,7 @@ Implement AI-powered monitoring for deployed applications:
      --alert-threshold 0.7
    ```
 
-2. **🔍 Post-Deployment Monitoring**:
+2. **Post-Deployment Monitoring**:
 
    ```yaml
    - name: Setup Post-Deployment Monitoring
@@ -246,7 +258,7 @@ Implement AI-powered monitoring for deployed applications:
        alert-recipients: operations@example.com
    ```
 
-3. **↩️ Automated Rollback Configuration**:
+3. **Automated Rollback Configuration**:
 
    ```yaml
    - name: Configure Intelligent Rollback

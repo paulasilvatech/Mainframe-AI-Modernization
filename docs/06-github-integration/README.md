@@ -8,11 +8,13 @@ GitHub integration enables modern DevOps practices for mainframe application dev
 
 ## 🎯 Objectives
 
-- 📂 Set up GitHub repositories for mainframe code management
-- ⚙️ Configure appropriate Git settings for mainframe code files
-- 🔄 Implement GitHub Actions workflows for mainframe CI/CD
-- 👥 Enable collaborative development practices for mainframe teams
-- 🧠 Integrate AI-powered code analysis and transformation with GitHub
+| Objective | Description |
+|-----------|-------------|
+| Repository Setup | Set up GitHub repositories for mainframe code management |
+| Git Configuration | Configure appropriate Git settings for mainframe code files |
+| Workflows | Implement GitHub Actions workflows for mainframe CI/CD |
+| Collaboration | Enable collaborative development practices for mainframe teams |
+| AI Integration | Integrate AI-powered code analysis and transformation with GitHub |
 
 ## 📦 GitHub Repository Setup
 
@@ -85,11 +87,13 @@ jobs:
 
 ## ✅ Best Practices
 
-1. **🔍 Incremental Migration**: Start with small, well-bounded components
-2. **🔄 Consistent Environments**: Use development containers for consistent experiences
-3. **🧪 Comprehensive Testing**: Implement automated testing for mainframe code
-4. **🔒 Security First**: Protect mainframe credentials with secure practices
-5. **📚 Knowledge Sharing**: Document mainframe-specific workflows and considerations
+| Practice | Description |
+|----------|-------------|
+| Incremental Migration | Start with small, well-bounded components |
+| Consistent Environments | Use development containers for consistent experiences |
+| Comprehensive Testing | Implement automated testing for mainframe code |
+| Security First | Protect mainframe credentials with secure practices |
+| Knowledge Sharing | Document mainframe-specific workflows and considerations |
 
 ## ➡️ Next Steps
 
@@ -101,6 +105,8 @@ After setting up GitHub integration:
 
 ## 📚 References
 
-- [📖 Azure AI Foundry Documentation](https://docs.microsoft.com/azure/ai-foundry)
-- [🔄 GitHub Actions Documentation](https://docs.github.com/actions)
-- [📋 Mainframe DevOps Best Practices](https://learn.microsoft.com/azure/mainframe-migration/devops-best-practices)
+| Resource | Description |
+|----------|-------------|
+| [Azure AI Foundry Documentation](https://docs.microsoft.com/azure/ai-foundry) | Official documentation for Azure AI Foundry |
+| [GitHub Actions Documentation](https://docs.github.com/actions) | Documentation for GitHub Actions |
+| [Mainframe DevOps Best Practices](https://learn.microsoft.com/azure/mainframe-migration/devops-best-practices) | Best practices for mainframe DevOps |

@@ -32,14 +32,16 @@ This diagram illustrates the high-level architecture of the IBM z/OS mainframe m
 
 This technical playbook is organized as a sequential implementation guide. Each chapter provides detailed steps with:
 
-- 🎯 Clear technical objectives
-- ✅ Implementation prerequisites 
-- 📝 Step-by-step implementation instructions
-- 💡 Detailed code examples and configuration settings
-- 📊 Architecture and workflow diagrams
-- ❓ Troubleshooting guidance for common issues
-- ✓ Validation steps to verify successful implementation
-- ➡️ "Next Steps" guidance to progress through the implementation
+| Component | Description |
+|-----------|-------------|
+| Objectives | Clear technical objectives |
+| Prerequisites | Implementation prerequisites |
+| Instructions | Step-by-step implementation instructions |
+| Code Examples | Detailed code examples and configuration settings |
+| Diagrams | Architecture and workflow diagrams |
+| Troubleshooting | Guidance for common issues |
+| Validation | Steps to verify successful implementation |
+| Next Steps | Guidance to progress through the implementation |
 
 ## 📖 Implementation Chapters
 
@@ -82,21 +84,25 @@ Follow these chapters in sequence to implement your IBM z/OS mainframe moderniza
 
 This repository contains working code examples and templates to accelerate your implementation:
 
-- [🐙 GitHub Integration Examples](code/github/) - Configuration files, workflows, templates, and scripts for GitHub integration
-- [🔄 Azure DevOps Examples](code/azure-devops/) - Pipeline definitions, templates, extensions, and scripts for Azure DevOps
-- [🤖 AI Foundry Examples](code/ai-foundry/) - Implementation examples for Azure AI Foundry components
-- [💾 Mainframe Examples](code/mainframe/) - Sample IBM z/OS code with integration points
-- [🔄 Hybrid Examples](code/hybrid/) - Examples of hybrid implementations and patterns
-- [🧠 Agent Framework Examples](code/agent-framework/) - Implementation examples for agent-based modernization
+| Resource Type | Description |
+|---------------|-------------|
+| GitHub Integration | Configuration files, workflows, templates, and scripts for GitHub integration |
+| Azure DevOps Examples | Pipeline definitions, templates, extensions, and scripts for Azure DevOps |
+| AI Foundry Examples | Implementation examples for Azure AI Foundry components |
+| Mainframe Examples | Sample IBM z/OS code with integration points |
+| Hybrid Examples | Examples of hybrid implementations and patterns |
+| Agent Framework Examples | Implementation examples for agent-based modernization |
 
 ## 📋 Templates
 
 Reusable templates to streamline your implementation:
 
-- [🔧 Git Configuration Templates](templates/gitattributes/) - For proper mainframe code handling
-- [🔄 GitHub Workflow Templates](templates/workflows/) - GitHub Actions workflow templates
-- [📦 Azure Pipeline Templates](templates/pipelines/) - Azure Pipelines templates
-- [🚀 Deployment Templates](templates/deployment/) - Deployment automation templates
+| Template Type | Description |
+|---------------|-------------|
+| Git Configuration | Templates for proper mainframe code handling |
+| GitHub Workflow | GitHub Actions workflow templates |
+| Azure Pipeline | Azure Pipelines templates |
+| Deployment | Deployment automation templates |
 
 ## 📄 License
 

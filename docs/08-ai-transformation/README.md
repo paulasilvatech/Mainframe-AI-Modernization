@@ -10,82 +10,96 @@ This guide outlines the technical approaches, tools, and best practices for tran
 
 ## 🎯 Objectives
 
-- 🔄 Implement automated transformation of mainframe code to modern platforms
-- 🛡️ Preserve business logic integrity during transformation
-- ⚡ Apply AI-powered optimizations to modernized code
-- ✅ Validate functional equivalence between legacy and transformed applications
-- 📝 Automate documentation generation for transformed code
+| Objective | Description |
+|-----------|-------------|
+| Transformation | Implement automated transformation of mainframe code to modern platforms |
+| Logic Preservation | Preserve business logic integrity during transformation |
+| Optimization | Apply AI-powered optimizations to modernized code |
+| Validation | Validate functional equivalence between legacy and transformed applications |
+| Documentation | Automate documentation generation for transformed code |
 
 ## 🔄 Transformation Approaches
 
 Azure AI Foundry supports multiple transformation approaches:
 
-### 1. 📝 Code Conversion
+### 1. Code Conversion
 
 **Description**: Direct translation of mainframe code to modern languages (Java, C#, .NET, etc.)
 
 **Capabilities**:
-- COBOL to Java/C#/.NET conversion
-- JCL to PowerShell/Bash/YAML conversion
-- Assembler to C/C++ conversion
-- PL/I to Java/C# conversion
-- CICS to REST API conversion
-- SQL translation and optimization
+
+| Capability | Description |
+|------------|-------------|
+| COBOL Conversion | COBOL to Java/C#/.NET conversion |
+| JCL Conversion | JCL to PowerShell/Bash/YAML conversion |
+| Assembler Conversion | Assembler to C/C++ conversion |
+| PL/I Conversion | PL/I to Java/C# conversion |
+| CICS Conversion | CICS to REST API conversion |
+| SQL Translation | SQL translation and optimization |
 
 **Best for**:
-- 🚀 Applications requiring minimal business logic changes
-- ⏱️ Scenarios prioritizing rapid migration
-- 👤 Maintaining familiar structure for mainframe developers
+- Applications requiring minimal business logic changes
+- Scenarios prioritizing rapid migration
+- Maintaining familiar structure for mainframe developers
 
-### 2. 🔧 Code Refactoring
+### 2. Code Refactoring
 
 **Description**: Restructure and optimize code during translation to improve maintainability and performance
 
 **Capabilities**:
-- Dead code elimination
-- Control flow simplification
-- Data structure modernization
-- Algorithm optimization
-- Error handling enhancement
-- Cloud-native pattern integration
+
+| Capability | Description |
+|------------|-------------|
+| Dead Code Elimination | Remove unused or unreachable code |
+| Control Flow Simplification | Simplify complex control flow structures |
+| Data Structure Modernization | Update data structures to modern equivalents |
+| Algorithm Optimization | Improve algorithm efficiency |
+| Error Handling Enhancement | Implement robust error handling |
+| Cloud Pattern Integration | Integrate cloud-native patterns |
 
 **Best for**:
-- 🧰 Applications requiring improved maintainability
-- ⚡ Performance-critical systems
-- 📈 Long-term supportability requirements
+- Applications requiring improved maintainability
+- Performance-critical systems
+- Long-term supportability requirements
 
-### 3. 🧩 Service Extraction
+### 3. Service Extraction
 
 **Description**: Extract business logic into discrete, reusable services with modern APIs
 
 **Capabilities**:
-- Business function identification
-- Service boundary definition
-- API design and generation
-- Domain model extraction
-- Integration pattern implementation
-- Microservice decomposition
+
+| Capability | Description |
+|------------|-------------|
+| Function Identification | Business function identification |
+| Service Boundaries | Service boundary definition |
+| API Design | API design and generation |
+| Domain Model Extraction | Domain model extraction |
+| Integration Patterns | Integration pattern implementation |
+| Microservice Decomposition | Microservice decomposition |
 
 **Best for**:
-- 🚀 Strategic applications requiring future flexibility
-- 🔌 Systems needing API-first approaches
-- 🔄 Integration with modern application ecosystems
+- Strategic applications requiring future flexibility
+- Systems needing API-first approaches
+- Integration with modern application ecosystems
 
-### 4. 🔀 Hybrid Transformation
+### 4. Hybrid Transformation
 
 **Description**: Combine multiple approaches based on component characteristics
 
 **Capabilities**:
-- Component-specific transformation strategies
-- Phased transformation implementation
-- Integration between transformed and legacy components
-- Progressive modernization roadmap
-- Risk-based transformation prioritization
+
+| Capability | Description |
+|------------|-------------|
+| Component Strategies | Component-specific transformation strategies |
+| Phased Implementation | Phased transformation implementation |
+| Integration | Integration between transformed and legacy components |
+| Progressive Modernization | Progressive modernization roadmap |
+| Risk-based Prioritization | Risk-based transformation prioritization |
 
 **Best for**:
-- 🧩 Complex application landscapes
-- ⚠️ Scenarios requiring risk mitigation
-- 📈 Incremental transformation approaches
+- Complex application landscapes
+- Scenarios requiring risk mitigation
+- Incremental transformation approaches
 
 ## 🛠️ Implementation Steps
 

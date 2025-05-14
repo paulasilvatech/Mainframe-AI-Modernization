@@ -8,69 +8,83 @@ Code analysis is a critical step in mainframe modernization, enabling teams to u
 
 ## 🎯 Objectives
 
-- 🔍 Implement automated analysis of mainframe code (COBOL, JCL, Assembler, and more)
-- 📝 Extract business rules and logic from legacy applications
-- 📊 Identify code complexity, quality issues, and modernization challenges
-- 📄 Generate comprehensive documentation from legacy code
-- 🔗 Map data structures and relationships
+| Objective | Description |
+|-----------|-------------|
+| Code Analysis | Implement automated analysis of mainframe code (COBOL, JCL, Assembler, and more) |
+| Business Rules | Extract business rules and logic from legacy applications |
+| Quality Assessment | Identify code complexity, quality issues, and modernization challenges |
+| Documentation | Generate comprehensive documentation from legacy code |
+| Data Mapping | Map data structures and relationships |
 
 ## 💡 Analysis Capabilities
 
 Azure AI Foundry provides the following code analysis capabilities:
 
-### 1. 🔍 Syntax and Structure Analysis
+### 1. Syntax and Structure Analysis
 
-- Parsing and tokenization of mainframe languages
-- Abstract Syntax Tree (AST) generation
-- Control flow analysis
-- Data flow tracking
-- Dead code identification
+| Capability | Description |
+|------------|-------------|
+| Parsing | Parsing and tokenization of mainframe languages |
+| AST Generation | Abstract Syntax Tree (AST) generation |
+| Control Flow | Control flow analysis |
+| Data Flow | Data flow tracking |
+| Dead Code | Dead code identification |
 
-### 2. 📝 Business Logic Extraction
+### 2. Business Logic Extraction
 
-- Business rule identification and extraction
-- Domain-specific language pattern recognition
-- Decision logic mapping
-- Calculation and algorithm identification
-- Business process modeling
+| Capability | Description |
+|------------|-------------|
+| Business Rules | Business rule identification and extraction |
+| Pattern Recognition | Domain-specific language pattern recognition |
+| Decision Logic | Decision logic mapping |
+| Algorithms | Calculation and algorithm identification |
+| Process Modeling | Business process modeling |
 
-### 3. 🗃️ Data Structure Analysis
+### 3. Data Structure Analysis
 
-- Data definition extraction
-- File and database schema mapping
-- Record layout analysis
-- Data lineage tracking
-- Data dependency identification
+| Capability | Description |
+|------------|-------------|
+| Data Definitions | Data definition extraction |
+| Schema Mapping | File and database schema mapping |
+| Layout Analysis | Record layout analysis |
+| Data Lineage | Data lineage tracking |
+| Dependencies | Data dependency identification |
 
-### 4. 🔗 Dependency Mapping
+### 4. Dependency Mapping
 
-- Program-to-program dependencies
-- Program-to-data dependencies
-- JCL job dependencies
-- External system interface identification
-- Component relationship visualization
+| Capability | Description |
+|------------|-------------|
+| Program Dependencies | Program-to-program dependencies |
+| Data Dependencies | Program-to-data dependencies |
+| JCL Dependencies | JCL job dependencies |
+| External Interfaces | External system interface identification |
+| Visualization | Component relationship visualization |
 
-### 5. ✅ Quality Assessment
+### 5. Quality Assessment
 
-- Complexity measurement
-- Maintainability analysis
-- Duplicated code detection
-- Error handling examination
-- Performance hotspot identification
+| Capability | Description |
+|------------|-------------|
+| Complexity | Complexity measurement |
+| Maintainability | Maintainability analysis |
+| Code Duplication | Duplicated code detection |
+| Error Handling | Error handling examination |
+| Performance | Performance hotspot identification |
 
 ## 🛠️ Setup and Configuration
 
-### ✅ Prerequisites
+### Prerequisites
 
 Before using the AI-powered code analysis tools, ensure you have:
 
-- Access to mainframe source code (COBOL, JCL, Copybooks, etc.)
-- Azure AI Foundry environment configured
-- Development environment setup (see [💻 Development Environment Configuration](../04-development-environment/README.md))
+| Prerequisite | Description |
+|--------------|-------------|
+| Source Code | Access to mainframe source code (COBOL, JCL, Copybooks, etc.) |
+| AI Foundry | Azure AI Foundry environment configured |
+| Development Environment | Development environment setup (see [💻 Development Environment Configuration](../04-development-environment/README.md)) |
 
-### ⚙️ Configuration Steps
+### Configuration Steps
 
-1. **📂 Prepare Source Code Repository**:
+1. **Prepare Source Code Repository**:
 
    ```bash
    # Create a directory for your mainframe code
@@ -80,7 +94,7 @@ Before using the AI-powered code analysis tools, ensure you have:
    cp -R /path/to/source/* mainframe-source/
    ```
 
-2. **📝 Configure Analysis Settings**:
+2. **Configure Analysis Settings**:
 
    Create a configuration file for your analysis:
 
@@ -105,7 +119,7 @@ Before using the AI-powered code analysis tools, ensure you have:
    }
    ```
 
-3. **🚀 Initialize AI Foundry Analysis**:
+3. **Initialize AI Foundry Analysis**:
 
    ```bash
    az ai-foundry code-analysis init --config code-analysis-config.json
@@ -113,7 +127,7 @@ Before using the AI-powered code analysis tools, ensure you have:
 
 ## 🔍 Running Code Analysis
 
-### 🔄 Basic Analysis
+### Basic Analysis
 
 To run a basic analysis of your mainframe code:
 
@@ -121,7 +135,7 @@ To run a basic analysis of your mainframe code:
 az ai-foundry code-analysis run --source-dir ./mainframe-source --output-dir ./analysis-results
 ```
 
-### 🔬 Advanced Analysis Options
+### Advanced Analysis Options
 
 For more targeted analysis:
 
@@ -136,7 +150,7 @@ az ai-foundry code-analysis run \
   --dependency-depth 3
 ```
 
-### 🔄 Integration with CI/CD
+### Integration with CI/CD
 
 Integrate code analysis into GitHub Actions:
 
@@ -164,18 +178,20 @@ Integrate code analysis into Azure DevOps:
 
 ## 📊 Analyzing Results
 
-### 📑 Key Analysis Reports
+### Key Analysis Reports
 
 The code analysis generates several reports:
 
-1. **📋 Executive Summary**: High-level overview of the codebase
-2. **📝 Business Rules Catalog**: Extracted business rules and logic
-3. **🗃️ Data Dictionary**: Compilation of data structures and relationships
-4. **📊 Quality Metrics Dashboard**: Code quality and complexity metrics
-5. **🔗 Dependency Network**: Visualization of component relationships
-6. **🔍 Modernization Recommendations**: Suggested approaches for transformation
+| Report | Description |
+|--------|-------------|
+| Executive Summary | High-level overview of the codebase |
+| Business Rules Catalog | Extracted business rules and logic |
+| Data Dictionary | Compilation of data structures and relationships |
+| Quality Metrics Dashboard | Code quality and complexity metrics |
+| Dependency Network | Visualization of component relationships |
+| Modernization Recommendations | Suggested approaches for transformation |
 
-### 📝 Business Rules Extraction
+### Business Rules Extraction
 
 The business rules extraction capability identifies and documents business logic:
 
@@ -203,7 +219,7 @@ The business rules extraction capability identifies and documents business logic
 }
 ```
 
-### 📊 Quality Metrics
+### Quality Metrics
 
 Code quality metrics help identify areas for improvement:
 
@@ -218,7 +234,7 @@ Program: CUSTMGMT.cbl
 - Error Handling Coverage: 63%
 ```
 
-### 🔗 Dependency Visualization
+### Dependency Visualization
 
 Dependency visualization helps understand component relationships:
 
@@ -238,7 +254,7 @@ Executed By: CUSTJOB.jcl (STEP010)
 
 This example demonstrates analyzing a customer management COBOL program:
 
-1. **🚀 Run Targeted Analysis**:
+1. **Run Targeted Analysis**:
 
    ```bash
    az ai-foundry code-analysis run \
@@ -248,7 +264,7 @@ This example demonstrates analyzing a customer management COBOL program:
      --output ./analysis-results/custmgmt
    ```
 
-2. **📝 Review Extracted Business Rules**:
+2. **Review Extracted Business Rules**:
 
    ```
    Business Rule: BR-CUST-001 (Customer Eligibility Verification)
@@ -264,7 +280,7 @@ This example demonstrates analyzing a customer management COBOL program:
         SET PREMIUM-ELIGIBLE TO FALSE
    ```
 
-3. **🗃️ Review Data Structures**:
+3. **Review Data Structures**:
 
    ```
    Data Structure: CUSTOMER-RECORD
@@ -285,7 +301,7 @@ This example demonstrates analyzing a customer management COBOL program:
 
 This example demonstrates analyzing a more complex transaction processing system:
 
-1. **🚀 Run Comprehensive Analysis**:
+1. **Run Comprehensive Analysis**:
 
    ```bash
    az ai-foundry code-analysis run \
@@ -296,7 +312,7 @@ This example demonstrates analyzing a more complex transaction processing system
      --output ./analysis-results/transaction-system
    ```
 
-2. **🔗 Review Dependency Map**:
+2. **Review Dependency Map**:
 
    The analysis generates a visual dependency map showing relationships between components:
 
@@ -316,7 +332,7 @@ This example demonstrates analyzing a more complex transaction processing system
    Executed By: TRANJOB.jcl (STEP020)
    ```
 
-3. **📊 Review Quality Assessment**:
+3. **Review Quality Assessment**:
 
    ```
    Component: TRANSACT.cbl
@@ -354,20 +370,22 @@ The integrated analysis provides a comprehensive view of the application, combin
 
 | Issue | Resolution |
 |-------|------------|
-| 🚫 Parsing errors in COBOL code | Verify that the code follows standard COBOL syntax or specify compiler dialect with `--dialect` option |
-| 🔍 Missing copybook references | Ensure all copybooks are available and specify include directories with `--include-copybooks` |
-| 📝 Incomplete business rule extraction | Adjust sensitivity with `--rule-sensitivity` parameter or annotate complex business rules in code comments |
-| ⚠️ High resource usage during analysis | Analyze code in smaller batches or adjust `--memory-optimization` setting |
-| ⌛ Dependency mapping timeout | Increase timeout with `--timeout` option or reduce scope with `--dependency-depth` |
+| Parsing errors in COBOL code | Verify that the code follows standard COBOL syntax or specify compiler dialect with `--dialect` option |
+| Missing copybook references | Ensure all copybooks are available and specify include directories with `--include-copybooks` |
+| Incomplete business rule extraction | Adjust sensitivity with `--rule-sensitivity` parameter or annotate complex business rules in code comments |
+| High resource usage during analysis | Analyze code in smaller batches or adjust `--memory-optimization` setting |
+| Dependency mapping timeout | Increase timeout with `--timeout` option or reduce scope with `--dependency-depth` |
 
 ## ✅ Best Practices
 
-1. **🔍 Start with Focused Analysis**: Begin by analyzing core business-critical programs
-2. **👥 Validate Extracted Rules**: Have domain experts review extracted business rules
-3. **📊 Prioritize Based on Metrics**: Use quality metrics to prioritize modernization efforts
-4. **📝 Document Insights**: Maintain documentation of insights gained from analysis
-5. **🔄 Regular Analysis**: Run analysis regularly to track modernization progress
-6. **🧪 Combine with Testing**: Use extracted business rules to generate test cases
+| Practice | Description |
+|----------|-------------|
+| Focused Analysis | Start by analyzing core business-critical programs |
+| Rule Validation | Have domain experts review extracted business rules |
+| Metric-Based Prioritization | Use quality metrics to prioritize modernization efforts |
+| Documentation | Maintain documentation of insights gained from analysis |
+| Regular Analysis | Run analysis regularly to track modernization progress |
+| Test Integration | Use extracted business rules to generate test cases |
 
 ## ➡️ Next Steps
 
