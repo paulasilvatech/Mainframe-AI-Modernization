@@ -1,6 +1,6 @@
-# 🚀 Azure AI Foundry Mainframe Modernization Playbook for IBM z/OS
+# 🚀 Mainframe CI/CD Modernization Playbook
 
-This playbook provides a comprehensive, step-by-step technical guide for modernizing IBM z/OS mainframe applications using Azure AI Foundry integrated with GitHub and Azure DevOps. It follows a hybrid approach that preserves existing investments while enabling modern DevOps practices and AI capabilities.
+This playbook provides a comprehensive, step-by-step technical guide for modernizing mainframe applications (IBM z/OS, Unisys ClearPath, Bull GCOS, NEC ACOS) using Azure AI Foundry integrated with GitHub and Azure DevOps. It follows a hybrid approach that preserves existing investments while enabling modern DevOps practices and AI capabilities.
 
 ## 📋 Overview
 
