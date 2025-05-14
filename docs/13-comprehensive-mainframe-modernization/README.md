@@ -227,38 +227,6 @@ Manage the hybrid environment:
 | Monitoring and Management | Implement cross-platform visibility |
 | Gradual Decommissioning | Retire legacy components progressively |
 
-## 📊 Case Studies
-
-### 1. Financial Services Transformation
-
-A major banking institution modernized their IBM z/OS core banking system:
-
-| Aspect | Details |
-|--------|---------|
-| Challenge | 15M lines of COBOL with minimal documentation |
-| Solution | Hybrid architecture with GitHub and AI-powered analysis |
-| Results | 65% MIPS reduction, 40% faster development, 72% performance improvement |
-
-### 2. Government Agency Modernization
-
-A government agency transformed their tax processing system from Bull GCOS:
-
-| Aspect | Details |
-|--------|---------|
-| Challenge | Complex business rules and compliance requirements |
-| Solution | AI-extracted business rules with systematic roadmap |
-| Results | $12M annual cost reduction, processing time from 8hrs to 45min |
-
-### 3. Insurance Industry Modernization
-
-An insurance provider modernized their Unisys ClearPath claims system:
-
-| Aspect | Details |
-|--------|---------|
-| Challenge | Multiple legacy languages and complex integrations |
-| Solution | Cloud microservices with hybrid operations |
-| Results | Processing from days to minutes, real-time partner integration |
-
 ## 📋 Conclusion
 
 Mainframe modernization with AI and GitHub represents a transformative approach that balances innovation with stability. By leveraging artificial intelligence for analysis, transformation, and risk management, organizations can accelerate modernization while preserving valuable business logic and institutional knowledge.

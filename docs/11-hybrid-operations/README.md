@@ -245,9 +245,9 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
              shadowMode: true
    ```
 
-### Step 2: 🏗️ Infrastructure Setup
+### Step 2: Infrastructure Setup
 
-1. **🌉 Deploy Integration Gateway**:
+1. **Deploy Integration Gateway**:
 
    ```bash
    # Deploy using Azure CLI
@@ -257,7 +257,7 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
      --parameters @./parameters/integration-gateway.parameters.json
    ```
 
-2. **🔄 Configure Data Synchronization Services**:
+2. **Configure Data Synchronization Services**:
 
    ```bash
    # Deploy data sync services
@@ -267,7 +267,7 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
      --parameters @./parameters/data-sync.parameters.json
    ```
 
-3. **📊 Implement Monitoring Infrastructure**:
+3. **Implement Monitoring Infrastructure**:
 
    ```bash
    # Deploy cross-platform monitoring
@@ -284,9 +284,9 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
      --destinations workspaces=/subscriptions/{subId}/resourceGroups/mainframe-modernization/providers/Microsoft.Monitor/workspaces/hybrid-operations
    ```
 
-### Step 3: 🔄 Initial Integration Implementation
+### Step 3: Initial Integration Implementation
 
-1. **🧩 Implement Mainframe Connectors**:
+1. **Implement Mainframe Connectors**:
 
    ```java
    // Example connector code for mainframe IMS transactions
@@ -333,7 +333,7 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
    }
    ```
 
-2. **🚪 Implement API Gateway Routes**:
+2. **Implement API Gateway Routes**:
 
    ```yaml
    # API Gateway configuration
@@ -369,7 +369,7 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
              operation: getCustomer
    ```
 
-3. **🚩 Set Up Feature Flags**:
+3. **Set Up Feature Flags**:
 
    ```json
    {
@@ -400,9 +400,9 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
    }
    ```
 
-### Step 4: 🔄 Data Synchronization Implementation
+### Step 4: Data Synchronization Implementation
 
-1. **📥 Configure Change Data Capture**:
+1. **Configure Change Data Capture**:
 
    ```json
    {
@@ -433,7 +433,7 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
    }
    ```
 
-2. **✅ Implement Data Consistency Checks**:
+2. **Implement Data Consistency Checks**:
 
    ```python
    #!/usr/bin/env python3
@@ -533,7 +533,7 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
        check_data_consistency(sys.argv[1])
    ```
 
-3. **🔄 Implement Reconciliation Procedures**:
+3. **Implement Reconciliation Procedures**:
 
    ```bash
    #!/bin/bash
@@ -565,7 +565,7 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
 
 ### Step 5: Operational Monitoring
 
-1. **🚩 Set Up Cross-Platform Dashboards**:
+1. **Set Up Cross-Platform Dashboards**:
 
    ```json
    {
@@ -635,7 +635,7 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
    }
    ```
 
-2. **🔄 Configure Alerting Rules**:
+2. **Configure Alerting Rules**:
 
    ```yaml
    # Alert configuration
@@ -674,7 +674,7 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
          - "release-management-team"
    ```
 
-3. **🛡️ Implement Health Checks**:
+3. **Implement Health Checks**:
 
    ```java
    @RestController
@@ -730,7 +730,7 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
 
 ### Step 6: Traffic Shifting Implementation
 
-1. **📈 Progressive Traffic Shifting Plan**:
+1. **Progressive Traffic Shifting Plan**:
 
    ```json
    {
@@ -805,7 +805,7 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
    }
    ```
 
-2. **🚩 Implement Feature Flag Updates**:
+2. **Implement Feature Flag Updates**:
 
    ```powershell
    # PowerShell script to update feature flags
@@ -834,7 +834,7 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
    Write-Host "Feature flags updated: Mainframe = $MainframePercentage%, Cloud = $CloudPercentage%"
    ```
 
-3. **🧪 Implement Automated Validation**:
+3. **Implement Automated Validation**:
 
    ```java
    @Service
@@ -914,23 +914,23 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
 
 ## 🔍 Validation Strategy
 
-### 1. 🧪 Testing Approaches
+### 1. Testing Approaches
 
-- **🔄 Shadow Testing**: Run workloads in both environments and compare results
-- **📊 Performance Benchmarking**: Compare performance metrics between platforms
-- **🔬 Data Consistency Validation**: Verify data synchronization accuracy
-- **🧪 Transaction Tracing**: Follow transactions through the hybrid environment
-- **⏱️ Latency Measurements**: Measure and optimize cross-platform communication
+- **Shadow Testing**: Run workloads in both environments and compare results
+- **Performance Benchmarking**: Compare performance metrics between platforms
+- **Data Consistency Validation**: Verify data synchronization accuracy
+- **Transaction Tracing**: Follow transactions through the hybrid environment
+- **Latency Measurements**: Measure and optimize cross-platform communication
 
-### 2. 📊 Monitoring Requirements
+### 2. Monitoring Requirements
 
-- **📈 End-to-End Visibility**: Track operations across both environments
-- **🔔 Cross-Platform Alerting**: Unified alerting for hybrid operations
-- **📉 Performance Dashboards**: Compare key metrics between platforms
-- **📊 Data Sync Monitoring**: Track synchronization status and latency
-- **🔍 Transaction Insights**: Visualize transaction flows across platforms
+- **End-to-End Visibility**: Track operations across both environments
+- **Cross-Platform Alerting**: Unified alerting for hybrid operations
+- **Performance Dashboards**: Compare key metrics between platforms
+- **Data Sync Monitoring**: Track synchronization status and latency
+- **Transaction Insights**: Visualize transaction flows across platforms
 
-### 3. 🔔 Early Warning System
+### 3. Early Warning System
 
 ```java
 @Component
@@ -990,63 +990,63 @@ public class HybridOperationMonitor {
 
 ## 🛣️ Migration Pathways
 
-### 1. 🔄 Phased Approach
+### 1. Phased Approach
 
-- **📋 Documentation and Planning**
+- **Documentation and Planning**
   - Document current system functionality and dependencies
   - Prioritize components for migration
   - Create detailed migration roadmap
 
-- **🧪 Proof of Concept**
+- **Proof of Concept**
   - Implement small, low-risk component
   - Establish integration patterns
   - Validate technical approach
 
-- **🏗️ Foundational Infrastructure**
+- **Foundational Infrastructure**
   - Deploy core integration components
   - Implement data synchronization framework
   - Set up monitoring and operational tools
 
-- **🔄 Incremental Migration**
+- **Incremental Migration**
   - Migrate components in order of priority
   - Validate each component in production
   - Gradually shift traffic from mainframe to cloud
 
-- **⚙️ Optimization and Scale**
+- **Optimization and Scale**
   - Optimize performance and cost
   - Scale cloud resources as needed
   - Refine operational procedures
 
-- **🧹 Decommissioning**
+- **Decommissioning**
   - Reduce mainframe footprint
   - Archive historical data
   - Document lessons learned
 
-### 2. 💼 Business Function Approach
+### 2. Business Function Approach
 
 Organize migration by business function rather than technical components:
 
-1. **📋 Step 1: Identify Business Functions**
+1. **Step 1: Identify Business Functions**
    - Map business functions to technical components
    - Assess business impact and risk
    - Determine logical migration units
 
-2. **🏗️ Step 2: Create Business Function Roadmap**
+2. **Step 2: Create Business Function Roadmap**
    - Prioritize based on business value and technical complexity
    - Account for dependencies between functions
    - Align with business calendar and critical periods
 
-3. **🧩 Step 3: Design Hybrid Operations for Each Function**
+3. **Step 3: Design Hybrid Operations for Each Function**
    - Determine integration patterns for each function
    - Design data synchronization strategy
    - Implement feature flags for progressive migration
 
-4. **🔄 Step 4: Execute Function-by-Function Migration**
+4. **Step 4: Execute Function-by-Function Migration**
    - Migrate complete business functions
    - Validate with business users
    - Implement business-focused monitoring
 
-### 3. 📊 Workload Analysis
+### 3. Workload Analysis
 
 Conduct detailed workload analysis to inform migration strategy:
 
@@ -1061,108 +1061,12 @@ az ai-foundry analyze-workload \
 
 Analysis parameters:
 
-- **⏱️ Transaction Timing**: Peak periods and distribution
-- **📊 Volume Patterns**: Daily, weekly, and seasonal patterns
-- **📈 Growth Trends**: Historical growth and projections
-- **🔄 Transaction Types**: Distribution of transaction types
-- **📶 Resource Utilization**: CPU, memory, and I/O utilization
-- **🔗 Dependencies**: Transaction dependencies and flows
-
-## 📚 Case Study: Financial Services Hybrid Operations
-
-### 🏦 Background
-
-A large financial institution needed to modernize their core banking system while maintaining 24/7 operations. The approach involved creating a hybrid environment that allowed gradual migration from mainframe to Azure cloud services.
-
-### 🌉 Integration Architecture
-
-The hybrid architecture implemented:
-
-- **🔄 Real-time Synchronization**: Two-way replication of customer and account data
-- **🚪 API Gateway**: Unified interface for mainframe and cloud services
-- **🔀 Transaction Routing**: Intelligence routing based on migration status
-- **📊 Unified Monitoring**: Cross-platform visibility and alerting
-
-### 📈 Migration Strategy
-
-1. **🔍 Phase 1: Inquiry Functions (Read-only)**
-   - Customer information queries
-   - Account balance and history
-   - Statement generation
-
-2. **💼 Phase 2: Non-financial Transactions**
-   - Address changes
-   - Statement preferences
-   - Communication preferences
-
-3. **💰 Phase 3: Financial Transactions**
-   - Internal transfers
-   - Bill payments
-   - Scheduled payments
-
-4. **💳 Phase 4: Core Banking Functions**
-   - New account creation
-   - Loan processing
-   - Credit facilities
-
-### 🛠️ Technical Implementation
-
-Key components of the implementation:
-
-```yaml
-# Integration Gateway Configuration
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: banking-integration-config
-data:
-  routingRules.json: |
-    {
-      "customerInquiry": {
-        "service": "cloud",
-        "fallback": "mainframe",
-        "featureFlag": "use-cloud-customer-inquiry",
-        "timeout": 2000
-      },
-      "accountInquiry": {
-        "service": "cloud",
-        "fallback": "mainframe",
-        "featureFlag": "use-cloud-account-inquiry",
-        "timeout": 2000
-      },
-      "addressChange": {
-        "service": "cloud",
-        "fallback": "mainframe",
-        "featureFlag": "use-cloud-address-change",
-        "timeout": 3000,
-        "validation": true
-      },
-      "internalTransfer": {
-        "service": "mainframe",
-        "fallback": "none",
-        "featureFlag": "use-cloud-internal-transfer",
-        "timeout": 5000,
-        "shadowMode": true
-      },
-      "billPayment": {
-        "service": "mainframe",
-        "fallback": "none",
-        "featureFlag": "use-cloud-bill-payment",
-        "timeout": 5000,
-        "shadowMode": true
-      }
-    }
-```
-
-### 📊 Results
-
-The phased hybrid approach delivered significant benefits:
-
-- **🚀 90% Success Rate**: Successful migration with minimal disruption
-- **📉 60% Cost Reduction**: After complete migration
-- **⏱️ 40% Performance Improvement**: For customer-facing transactions
-- **🧩 Legacy Knowledge Preserved**: Through documentation and knowledge transfer
-- **🚧 Risk Mitigation**: Ability to roll back to mainframe if needed
+- **Transaction Timing**: Peak periods and distribution
+- **Volume Patterns**: Daily, weekly, and seasonal patterns
+- **Growth Trends**: Historical growth and projections
+- **Transaction Types**: Distribution of transaction types
+- **Resource Utilization**: CPU, memory, and I/O utilization
+- **Dependencies**: Transaction dependencies and flows
 
 ## 📝 Conclusion
 
@@ -1170,11 +1074,11 @@ Hybrid operations management is a critical success factor for mainframe moderniz
 
 The key takeaways for successful hybrid operations include:
 
-- **🌉 Integration is Critical**: Robust integration between mainframe and cloud is the foundation of hybrid operations
-- **🔄 Data Consistency Matters**: Ensuring consistent data across platforms prevents business disruptions
-- **📊 Monitoring Drives Success**: Comprehensive monitoring across platforms enables proactive management
-- **👥 People and Process**: Technical solutions must be accompanied by organizational alignment
-- **🔄 Progressive Approach**: Incremental migration with continuous validation reduces risk
+- **Integration is Critical**: Robust integration between mainframe and cloud is the foundation of hybrid operations
+- **Data Consistency Matters**: Ensuring consistent data across platforms prevents business disruptions
+- **Monitoring Drives Success**: Comprehensive monitoring across platforms enables proactive management
+- **People and Process**: Technical solutions must be accompanied by organizational alignment
+- **Progressive Approach**: Incremental migration with continuous validation reduces risk
 
 By following the guidance in this chapter, organizations can implement a successful hybrid operations strategy that enables a smooth, controlled migration from mainframe to cloud.
 
