@@ -106,3 +106,7 @@ Reusable templates to streamline your implementation:
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Credits
+
+This Mainframe CI/CD Modernization Playbook was developed by [@paulanunes85](https://github.com/paulanunes85).
