@@ -1,4 +1,6 @@
-![Modernization Strategy](../../images/modernization-strategy.svg)
+<div align="center">
+  <img src="../../images/modernization-strategy.svg" alt="Modernization Strategy" width="800" height="600" />
+</div>
 
 # Mainframe Modernization Strategy Guide
 
