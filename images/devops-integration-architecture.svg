@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="950" height="600" viewBox="0 0 950 600">
+  <!-- Title -->
+  <text x="475" y="40" text-anchor="middle" font-size="24" font-weight="bold" font-family="Arial, sans-serif">DevOps Integration Architecture</text>
+  <text x="475" y="70" text-anchor="middle" font-size="18" font-family="Arial, sans-serif">Azure AI Foundry for IBM z/OS Modernization</text>
+  
+  <!-- GitHub or Azure DevOps Container -->
+  <rect x="180" y="120" width="590" height="320" rx="10" ry="10" fill="#f0f0ff" stroke="#3333cc" stroke-width="2" />
+  <text x="475" y="145" text-anchor="middle" font-size="20" font-weight="bold" font-family="Arial, sans-serif" fill="#3333cc">GITHUB OR AZURE DEVOPS</text>
+  
+  <!-- IBM z/OS Environment -->
+  <rect x="40" y="220" width="120" height="120" rx="8" ry="8" fill="#4D81BF" stroke="#0050C5" stroke-width="2" />
+  <text x="100" y="250" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="white">IBM z/OS</text>
+  <text x="100" y="270" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="white">Environment</text>
+  
+  <!-- Source Repository -->
+  <rect x="230" y="180" width="120" height="80" rx="8" ry="8" fill="#deeafc" stroke="#3373cc" stroke-width="1.5" />
+  <text x="290" y="210" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">Source</text>
+  <text x="290" y="230" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">Repository</text>
+  
+  <!-- CI/CD Pipelines -->
+  <rect x="410" y="180" width="120" height="80" rx="8" ry="8" fill="#deeafc" stroke="#3373cc" stroke-width="1.5" />
+  <text x="470" y="210" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">CI/CD</text>
+  <text x="470" y="230" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">Pipelines</text>
+  
+  <!-- Automated Testing -->
+  <rect x="590" y="180" width="120" height="80" rx="8" ry="8" fill="#deeafc" stroke="#3373cc" stroke-width="1.5" />
+  <text x="650" y="210" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">Automated</text>
+  <text x="650" y="230" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">Testing</text>
+  
+  <!-- Work Item Management -->
+  <rect x="230" y="300" width="120" height="80" rx="8" ry="8" fill="#deeafc" stroke="#3373cc" stroke-width="1.5" />
+  <text x="290" y="330" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">Work Item</text>
+  <text x="290" y="350" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">Management</text>
+  
+  <!-- Code Review System -->
+  <rect x="410" y="300" width="120" height="80" rx="8" ry="8" fill="#deeafc" stroke="#3373cc" stroke-width="1.5" />
+  <text x="470" y="330" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">Code Review</text>
+  <text x="470" y="350" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">System</text>
+  
+  <!-- Artifact Registry -->
+  <rect x="590" y="300" width="120" height="80" rx="8" ry="8" fill="#deeafc" stroke="#3373cc" stroke-width="1.5" />
+  <text x="650" y="330" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">Artifact</text>
+  <text x="650" y="350" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">Registry</text>
+  
+  <!-- Azure AI Foundry -->
+  <rect x="790" y="220" width="120" height="120" rx="8" ry="8" fill="#e6e6fa" stroke="#8961aa" stroke-width="2" />
+  <text x="850" y="260" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#8961aa">Azure AI</text>
+  <text x="850" y="280" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#8961aa">Foundry</text>
+  
+  <!-- Connection Lines -->
+  <line x1="160" y1="280" x2="230" y2="280" stroke="#666666" stroke-width="2" />
+  <line x1="350" y1="220" x2="410" y2="220" stroke="#666666" stroke-width="2" />
+  <line x1="530" y1="220" x2="590" y2="220" stroke="#666666" stroke-width="2" />
+  <line x1="710" y1="220" x2="790" y2="220" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)" />
+  <line x1="710" y1="280" x2="790" y2="280" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)" />
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="7" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666666" />
+    </marker>
+  </defs>
+  
+  <!-- Flow arrows -->
+  <marker id="arrow" markerWidth="10" markerHeight="7" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#666666" />
+  </marker>
+  <line x1="160" y1="280" x2="225" y2="280" stroke="#666666" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="350" y1="220" x2="405" y2="220" stroke="#666666" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="530" y1="220" x2="585" y2="220" stroke="#666666" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="710" y1="220" x2="785" y2="220" stroke="#666666" stroke-width="2" marker-end="url(#arrow)" />
+  
+  <!-- Legend -->
+  <rect x="40" y="480" width="870" height="80" rx="5" ry="5" fill="#f5f5f5" stroke="#666666" stroke-width="1.5" />
+  <text x="475" y="505" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif">Integration Components</text>
+  
+  <!-- Legend Items -->
+  <rect x="70" y="525" width="20" height="15" fill="#4D81BF" stroke="#000000" stroke-width="0.5" />
+  <text x="160" y="538" font-size="14" font-family="Arial, sans-serif">Mainframe Environment</text>
+  
+  <rect x="270" y="525" width="20" height="15" fill="#3373cc" stroke="#000000" stroke-width="0.5" />
+  <text x="360" y="538" font-size="14" font-family="Arial, sans-serif">DevOps Platform</text>
+  
+  <rect x="470" y="525" width="20" height="15" fill="#deeafc" stroke="#000000" stroke-width="0.5" />
+  <text x="560" y="538" font-size="14" font-family="Arial, sans-serif">Platform Services</text>
+  
+  <rect x="670" y="525" width="20" height="15" fill="#8961aa" stroke="#000000" stroke-width="0.5" />
+  <text x="760" y="538" font-size="14" font-family="Arial, sans-serif">AI Services</text>
+</svg> 
