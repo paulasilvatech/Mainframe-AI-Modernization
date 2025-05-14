@@ -15,7 +15,7 @@ Effective mainframe modernization requires a carefully designed team structure t
 ## Team Structure Overview
 
 <div align="center">
-  <img src="../../images/team-organization.svg" alt="Team Organization Model" width="800" height="600" />
+  <img src="../../images/team-organization-model.svg" alt="Team Organization Model" width="800" height="600" />
 </div>
 
 The recommended team structure includes key organizational groups as shown in the diagram above:
