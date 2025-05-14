@@ -1,6 +1,6 @@
-<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
   <!-- Background -->
-  <rect x="0" y="0" width="800" height="600" fill="#f8f9fa" />
+  <rect x="0" y="0" width="1000" height="700" fill="#f8f9fa" />
   
   <!-- Title -->
   <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Agent-Based Modernization Architecture</text>
@@ -47,19 +47,19 @@
   <line x1="700" y1="270" x2="700" y2="290" stroke="#666" stroke-width="2" />
   
   <!-- Second row specialists -->
-  <rect x="25" y="290" width="150" height="60" rx="10" fill="#ed7d31" />
+  <rect x="15" y="290" width="170" height="60" rx="10" fill="#ed7d31" />
   <text x="100" y="325" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Business Rule Expert</text>
   
-  <rect x="225" y="290" width="150" height="60" rx="10" fill="#ed7d31" />
+  <rect x="215" y="290" width="170" height="60" rx="10" fill="#ed7d31" />
   <text x="300" y="325" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Data Structure Expert</text>
   
-  <rect x="325" y="290" width="150" height="60" rx="10" fill="#ed7d31" />
+  <rect x="315" y="290" width="170" height="60" rx="10" fill="#ed7d31" />
   <text x="400" y="325" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Database Expert</text>
   
-  <rect x="425" y="290" width="150" height="60" rx="10" fill="#ed7d31" />
+  <rect x="415" y="290" width="170" height="60" rx="10" fill="#ed7d31" />
   <text x="500" y="325" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Test Engineer</text>
   
-  <rect x="625" y="290" width="150" height="60" rx="10" fill="#ed7d31" />
+  <rect x="615" y="290" width="170" height="60" rx="10" fill="#ed7d31" />
   <text x="700" y="325" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Documentation Expert</text>
   
   <!-- Connection lines to knowledge repository -->

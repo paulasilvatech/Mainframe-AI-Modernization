@@ -98,7 +98,9 @@ Our agent-based architecture defines several specialized agents, each with a dis
 
 The following diagram illustrates how these agents work together in a hierarchical architecture with specialized sub-agents:
 
-![Detailed Agent-Based Modernization Architecture](../../images/agent-based-architecture.svg)
+<div align="center">
+  <img src="../../images/agent-based-architecture.svg" alt="Detailed Agent-Based Modernization Architecture" width="1000" />
+</div>
 
 As shown in the diagram, the Workflow Manager coordinates with primary expert agents (Domain, Platform, and Language experts), who in turn leverage specialized sub-agents for specific tasks. All agents contribute to and leverage a shared knowledge repository, which then feeds into the final deliverables.
 
