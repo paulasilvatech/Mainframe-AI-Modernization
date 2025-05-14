@@ -29,7 +29,43 @@ Agent-based modernization is an advanced approach that utilizes multiple special
 
 The agent-based approach is not a replacement for the methodologies discussed in previous chapters, but rather an enhancement that can be integrated at various points in your modernization journey:
 
-![Agent-Based Modernization in the Overall Framework (Cross-Platform)](../../images/agent-modernization-framework.svg)
+![Agent-Based Modernization Framework (Cross-Platform)](../../images/agent-modernization-framework.svg)
+
+<!-- If the image above doesn't display properly, here's a text representation:
+```
++------------------------------------------------------------------+
+|                   AGENT-BASED MODERNIZATION FRAMEWORK            |
+|                                                                  |
+|              +----------------+                                  |
+|              | Human Expertise|                                  |
+|              +-------+--------+                                  |
+|                      |                                           |
+|                      v                                           |
+| +------------------+ +------------------+ +------------------+   |
+| |                  | |                  | |                  |   |
+| | Discovery Agents | | Analysis Agents  | | Business Rule    |   |
+| |                  | |                  | | Extraction Agents|   |
+| +--------+---------+ +--------+---------+ +--------+---------+   |
+|          |                    |                    |             |
+|          |                    |                    |             |
+|          v                    v                    v             |
+| +------------------+ +------------------+ +------------------+   |
+| |                  | |                  | |                  |   |
+| | Code Translation | | Testing Agents   | | Deployment       |   |
+| | Agents           | |                  | | Verification     |   |
+| +--------+---------+ +--------+---------+ +--------+---------+   |
+|          |                    |                    |             |
+|          |                    |                    |             |
+|          +---------+---------+---------+-----------+             |
+|                    |                                             |
+|                    v                                             |
+|            +----------------+                                    |
+|            | Workflow       |                                    |
+|            | Manager        |                                    |
+|            +----------------+                                    |
++------------------------------------------------------------------+
+```
+-->
 
 As illustrated above, agent-based systems can be particularly valuable during:
 
