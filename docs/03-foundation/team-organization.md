@@ -1,4 +1,4 @@
-# Team Organization
+# 👥 Team Organization
 
 This document outlines the recommended team organization and structure for implementing IBM z/OS mainframe modernization using Azure AI Foundry.
 
@@ -14,31 +14,18 @@ Effective mainframe modernization requires a carefully designed team structure t
 
 ## Team Structure Overview
 
-![Team Organization Model](../../images/team-organization.svg)
+<div align="center">
+  <img src="../../images/team-organization.svg" alt="Team Organization Model" width="800" height="600" />
+</div>
 
-The recommended team structure includes:
+The recommended team structure includes key organizational groups as shown in the diagram above:
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│                 Modernization Leadership Team                 │
-└──────────────────────────────┬───────────────────────────────┘
-                               │
-    ┌───────────────┬──────────┴───────────┬───────────────┐
-    │               │                      │               │
-    ▼               ▼                      ▼               ▼
-┌────────────┐ ┌────────────┐       ┌────────────┐  ┌────────────┐
-│Platform    │ │Application │       │Integration │  │Operations  │
-│Team        │ │Teams       │       │Team        │  │Team        │
-└────────────┘ └────────────┘       └────────────┘  └────────────┘
-                     │
-     ┌───────────────┼───────────────┐
-     │               │               │
-     ▼               ▼               ▼
-┌────────────┐ ┌────────────┐ ┌────────────┐
-│App Team 1  │ │App Team 2  │ │App Team N  │
-│(Product A) │ │(Product B) │ │(Product X) │
-└────────────┘ └────────────┘ └────────────┘
-```
+- **Leadership Layer** - Executive sponsorship and strategic direction
+- **Core Modernization Team** - Technical specialists leading the transformation
+- **Extended Team** - Supporting specialists and domain experts
+- **Business Stakeholders** - Users and business owners
+
+Each team has distinct responsibilities while working collaboratively toward the modernization goals.
 
 ## Team Roles and Responsibilities
 
@@ -139,15 +126,12 @@ Mainframe modernization requires ongoing skills development. The recommended app
 
 ### Skills Assessment
 
-Conduct a skills assessment to identify gaps:
+Conduct a skills assessment to identify gaps in the following areas:
 
-```bash
-# Create Skills Assessment Template
-az boards work-item create --title "Skills Assessment Template" --type "Template" --org https://dev.azure.com/contoso
-
-# Configure Skills Dashboard
-az boards dashboard create --name skills-transformation --org https://dev.azure.com/contoso
-```
+1. **Technical Skills** - Mainframe technologies, cloud platforms, modern development
+2. **Process Skills** - Agile methodologies, DevOps practices, automation
+3. **Domain Knowledge** - Business processes, industry regulations, data models
+4. **Soft Skills** - Collaboration, change management, problem-solving
 
 ### Learning Paths
 
@@ -242,43 +226,28 @@ As modernization progresses:
 To implement this team organization:
 
 1. **Assess Current Organization**
-   ```bash
-   # Create Organization Assessment Template
-   az boards work-item create --title "Organization Assessment" --type "Assessment" --org https://dev.azure.com/contoso
-   
-   # Analyze Skills Gaps
-   az boards work-item create --title "Skills Gap Analysis" --type "Analysis" --org https://dev.azure.com/contoso
-   ```
+   - Conduct organizational capability assessment
+   - Analyze existing skills, roles, and team structures
+   - Identify gaps and transformation needs
+   - Create skills inventory and competency matrix
 
 2. **Define Team Structure**
-   ```bash
-   # Create Team Structure Definition
-   az boards work-item create --title "Team Structure Definition" --type "Epic" --org https://dev.azure.com/contoso
-   
-   # Define Core Teams
-   az boards work-item create --title "Platform Team Definition" --type "Feature" --org https://dev.azure.com/contoso
-   az boards work-item create --title "Application Teams Definition" --type "Feature" --org https://dev.azure.com/contoso
-   ```
+   - Develop detailed team organization chart
+   - Create role descriptions and responsibilities
+   - Define reporting relationships and coordination mechanisms
+   - Establish team size and allocation guidelines
 
 3. **Implement Skills Transformation**
-   ```bash
-   # Create Learning Paths
-   az boards work-item create --title "Learning Paths Definition" --type "Epic" --org https://dev.azure.com/contoso
-   
-   # Define Training Programs
-   az boards work-item create --title "Mainframe to Cloud Training" --type "Feature" --org https://dev.azure.com/contoso
-   az boards work-item create --title "Cloud to Mainframe Training" --type "Feature" --org https://dev.azure.com/contoso
-   ```
+   - Create personalized learning paths for team members
+   - Develop training curriculum and materials
+   - Schedule cross-training sessions and knowledge transfers
+   - Implement mentoring and coaching programs
 
 4. **Establish Collaboration Framework**
-   ```bash
-   # Create Collaboration Framework
-   az boards work-item create --title "Collaboration Framework" --type "Epic" --org https://dev.azure.com/contoso
-   
-   # Define Ceremonies
-   az boards work-item create --title "Agile Ceremonies Definition" --type "Feature" --org https://dev.azure.com/contoso
-   az boards work-item create --title "Communities of Practice" --type "Feature" --org https://dev.azure.com/contoso
-   ```
+   - Define agile ceremonies and practices
+   - Set up collaboration tools and platforms
+   - Create communities of practice
+   - Establish information sharing mechanisms
 
 ## Next Steps
 
