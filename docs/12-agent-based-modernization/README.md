@@ -30,7 +30,7 @@ Agent-based modernization is an advanced approach that utilizes multiple special
 The agent-based approach is not a replacement for the methodologies discussed in previous chapters, but rather an enhancement that can be integrated at various points in your modernization journey:
 
 <div align="center">
-  <img src="../../images/agent-modernization-framework.svg" alt="Agent-Based Modernization Framework (Cross-Platform)" width="1700" />
+  <img src="../../images/agent-based-mainframe.png" alt="Agent-Based Modernization Framework (Cross-Platform)" width="1700" />
 </div>
 
 <!-- If the image above doesn't display properly, here's a text representation:
