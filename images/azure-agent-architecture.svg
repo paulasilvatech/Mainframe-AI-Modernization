@@ -1,75 +1,75 @@
-<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 1200 750" xmlns="http://www.w3.org/2000/svg">
   <!-- Background -->
-  <rect x="0" y="0" width="1000" height="600" fill="#f8f9fa" />
+  <rect x="0" y="0" width="1200" height="750" fill="#f8f9fa" />
   
   <!-- Title -->
-  <text x="500" y="30" font-family="Arial" font-size="28" text-anchor="middle" font-weight="bold">Azure Architecture for Agent-Based Modernization</text>
+  <text x="600" y="36" font-family="Arial" font-size="34" text-anchor="middle" font-weight="bold">Azure Architecture for Agent-Based Modernization</text>
   
   <!-- Azure Cloud Border -->
-  <rect x="60" y="80" width="880" height="470" rx="15" fill="#f0f8ff" stroke="#0078d4" stroke-width="2" />
-  <text x="500" y="110" font-family="Arial" font-size="22" text-anchor="middle" fill="#0078d4" font-weight="bold">Azure Cloud</text>
+  <rect x="70" y="100" width="1060" height="580" rx="18" fill="#f0f8ff" stroke="#0078d4" stroke-width="3" />
+  <text x="600" y="135" font-family="Arial" font-size="26" text-anchor="middle" fill="#0078d4" font-weight="bold">Azure Cloud</text>
   
   <!-- Azure OpenAI Service -->
-  <rect x="120" y="140" width="220" height="100" rx="10" fill="#0078d4" />
-  <text x="230" y="180" font-family="Arial" font-size="18" text-anchor="middle" fill="white" font-weight="bold">Azure OpenAI Service</text>
-  <text x="230" y="210" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Agent Intelligence</text>
+  <rect x="140" y="170" width="270" height="120" rx="12" fill="#0078d4" />
+  <text x="275" y="220" font-family="Arial" font-size="22" text-anchor="middle" fill="white" font-weight="bold">Azure OpenAI Service</text>
+  <text x="275" y="255" font-family="Arial" font-size="18" text-anchor="middle" fill="white">Agent Intelligence</text>
   
   <!-- Azure Cosmos DB -->
-  <rect x="650" y="140" width="220" height="100" rx="10" fill="#589632" />
-  <text x="760" y="180" font-family="Arial" font-size="18" text-anchor="middle" fill="white" font-weight="bold">Azure Cosmos DB</text>
-  <text x="760" y="210" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Knowledge Repository</text>
+  <rect x="780" y="170" width="270" height="120" rx="12" fill="#589632" />
+  <text x="915" y="220" font-family="Arial" font-size="22" text-anchor="middle" fill="white" font-weight="bold">Azure Cosmos DB</text>
+  <text x="915" y="255" font-family="Arial" font-size="18" text-anchor="middle" fill="white">Knowledge Repository</text>
   
   <!-- Azure Functions -->
-  <rect x="120" y="280" width="220" height="100" rx="10" fill="#0078d4" />
-  <text x="230" y="320" font-family="Arial" font-size="18" text-anchor="middle" fill="white" font-weight="bold">Azure Functions</text>
-  <text x="230" y="350" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Agent Hosts</text>
+  <rect x="140" y="340" width="270" height="120" rx="12" fill="#0078d4" />
+  <text x="275" y="390" font-family="Arial" font-size="22" text-anchor="middle" fill="white" font-weight="bold">Azure Functions</text>
+  <text x="275" y="425" font-family="Arial" font-size="18" text-anchor="middle" fill="white">Agent Hosts</text>
   
   <!-- Azure Logic Apps -->
-  <rect x="390" y="280" width="220" height="100" rx="10" fill="#0078d4" />
-  <text x="500" y="320" font-family="Arial" font-size="18" text-anchor="middle" fill="white" font-weight="bold">Azure Logic Apps</text>
-  <text x="500" y="350" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Workflow Orchestration</text>
+  <rect x="465" y="340" width="270" height="120" rx="12" fill="#0078d4" />
+  <text x="600" y="390" font-family="Arial" font-size="22" text-anchor="middle" fill="white" font-weight="bold">Azure Logic Apps</text>
+  <text x="600" y="425" font-family="Arial" font-size="18" text-anchor="middle" fill="white">Workflow Orchestration</text>
   
   <!-- Azure API Management -->
-  <rect x="650" y="280" width="220" height="100" rx="10" fill="#0078d4" />
-  <text x="760" y="320" font-family="Arial" font-size="18" text-anchor="middle" fill="white" font-weight="bold">Azure API Management</text>
-  <text x="760" y="350" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Secure Access</text>
+  <rect x="780" y="340" width="270" height="120" rx="12" fill="#0078d4" />
+  <text x="915" y="390" font-family="Arial" font-size="22" text-anchor="middle" fill="white" font-weight="bold">Azure API Management</text>
+  <text x="915" y="425" font-family="Arial" font-size="18" text-anchor="middle" fill="white">Secure Access</text>
   
   <!-- Azure Monitor -->
-  <rect x="390" y="420" width="220" height="100" rx="10" fill="#0078d4" />
-  <text x="500" y="460" font-family="Arial" font-size="18" text-anchor="middle" fill="white" font-weight="bold">Azure Monitor</text>
-  <text x="500" y="490" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Observability</text>
+  <rect x="465" y="510" width="270" height="120" rx="12" fill="#0078d4" />
+  <text x="600" y="560" font-family="Arial" font-size="22" text-anchor="middle" fill="white" font-weight="bold">Azure Monitor</text>
+  <text x="600" y="595" font-family="Arial" font-size="18" text-anchor="middle" fill="white">Observability</text>
   
   <!-- Connection lines -->
   <!-- OpenAI to Functions -->
-  <line x1="230" y1="240" x2="230" y2="280" stroke="#666" stroke-width="2.5" />
+  <line x1="275" y1="290" x2="275" y2="340" stroke="#666" stroke-width="3" />
   
   <!-- Functions to Logic Apps -->
-  <line x1="340" y1="330" x2="390" y2="330" stroke="#666" stroke-width="2.5" />
+  <line x1="410" y1="400" x2="465" y2="400" stroke="#666" stroke-width="3" />
   
   <!-- Logic Apps to Functions (bidirectional) -->
-  <line x1="390" y1="310" x2="340" y2="310" stroke="#666" stroke-width="2.5" />
+  <line x1="465" y1="375" x2="410" y2="375" stroke="#666" stroke-width="3" />
   
   <!-- Logic Apps to Cosmos DB -->
-  <line x1="610" y1="330" x2="650" y2="330" stroke="#666" stroke-width="2.5" />
+  <line x1="735" y1="400" x2="780" y2="400" stroke="#666" stroke-width="3" />
   
   <!-- Functions to Cosmos DB -->
-  <line x1="230" y1="380" x2="230" y2="400" stroke="#666" stroke-width="2.5" />
-  <line x1="230" y1="400" x2="650" y2="400" stroke="#666" stroke-width="2.5" />
-  <line x1="650" y1="400" x2="650" y2="240" stroke="#666" stroke-width="2.5" />
+  <line x1="275" y1="460" x2="275" y2="485" stroke="#666" stroke-width="3" />
+  <line x1="275" y1="485" x2="780" y2="485" stroke="#666" stroke-width="3" />
+  <line x1="780" y1="485" x2="780" y2="290" stroke="#666" stroke-width="3" />
   
   <!-- API Management to Logic Apps -->
-  <line x1="650" y1="330" x2="610" y2="330" stroke="#666" stroke-width="2.5" />
+  <line x1="780" y1="400" x2="735" y2="400" stroke="#666" stroke-width="3" />
   
   <!-- Monitor to All (simplified) -->
-  <line x1="500" y1="420" x2="500" y2="380" stroke="#666" stroke-width="2.5" />
+  <line x1="600" y1="510" x2="600" y2="460" stroke="#666" stroke-width="3" />
   
   <!-- External Systems -->
-  <rect x="390" y="40" width="220" height="50" rx="10" fill="#505050" />
-  <text x="500" y="65" font-family="Arial" font-size="16" text-anchor="middle" fill="white" font-weight="bold">External Systems</text>
-  <text x="500" y="85" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Mainframe, GitHub, DevOps</text>
+  <rect x="465" y="45" width="270" height="60" rx="12" fill="#505050" />
+  <text x="600" y="75" font-family="Arial" font-size="20" text-anchor="middle" fill="white" font-weight="bold">External Systems</text>
+  <text x="600" y="100" font-family="Arial" font-size="16" text-anchor="middle" fill="white">Mainframe, GitHub, DevOps</text>
   
   <!-- External to API Management -->
-  <line x1="500" y1="90" x2="500" y2="120" stroke="#666" stroke-width="2.5" />
-  <line x1="500" y1="120" x2="760" y2="120" stroke="#666" stroke-width="2.5" />
-  <line x1="760" y1="120" x2="760" y2="280" stroke="#666" stroke-width="2.5" />
+  <line x1="600" y1="105" x2="600" y2="135" stroke="#666" stroke-width="3" />
+  <line x1="600" y1="135" x2="915" y2="135" stroke="#666" stroke-width="3" />
+  <line x1="915" y1="135" x2="915" y2="340" stroke="#666" stroke-width="3" />
 </svg> 

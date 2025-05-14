@@ -144,7 +144,7 @@ For agents to collaborate effectively, they need structured communication protoc
 To implement the agent-based modernization approach on Azure, we leverage a combination of Azure OpenAI Service, Azure Functions, and supporting services:
 
 <div align="center">
-  <img src="../../images/azure-agent-architecture.svg" alt="Azure Architecture for Agent-Based Modernization" width="1000" />
+  <img src="../../images/azure-agent-architecture.svg" alt="Azure Architecture for Agent-Based Modernization" width="1200" />
 </div>
 
 Key components include:
