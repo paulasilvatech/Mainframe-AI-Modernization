@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="1000" height="750" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="1000" height="850" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <style>
     .box {
       fill: #f0f6ff;
@@ -65,13 +65,13 @@
     </marker>
   </defs>
   
-  <!-- Azure Cloud (Outer Container) -->
-  <rect x="40" y="40" width="920" height="670" class="outer-container" />
+  <!-- Azure Cloud (Outer Container) - Now taller -->
+  <rect x="40" y="40" width="920" height="770" class="outer-container" />
   <rect x="40" y="40" width="920" height="50" class="header-box" />
   <text x="500" y="72" class="title">AZURE CLOUD</text>
   
-  <!-- Azure AI Foundry Container -->
-  <rect x="65" y="110" width="870" height="580" class="container" />
+  <!-- Azure AI Foundry Container - Now taller -->
+  <rect x="65" y="110" width="870" height="680" class="container" />
   <rect x="65" y="110" width="870" height="50" class="header-box" />
   <text x="500" y="142" class="title">AZURE AI FOUNDRY</text>
   
@@ -93,54 +93,54 @@
   <text x="790" y="245" class="box-title">Intelligence</text>
   
   <!-- Arrows from Intelligence Services to AI Foundation Services -->
-  <path d="M 190 280 L 190 330 L 500 330 L 500 350" class="arrow" />
-  <path d="M 390 280 L 390 330 L 500 330 L 500 350" class="arrow" />
-  <path d="M 590 280 L 590 330 L 500 330 L 500 350" class="arrow" />
-  <path d="M 790 280 L 790 330 L 500 330 L 500 350" class="arrow" />
+  <path d="M 190 280 L 190 330 L 500 330 L 500 360" class="arrow" />
+  <path d="M 390 280 L 390 330 L 500 330 L 500 360" class="arrow" />
+  <path d="M 590 280 L 590 330 L 500 330 L 500 360" class="arrow" />
+  <path d="M 790 280 L 790 330 L 500 330 L 500 360" class="arrow" />
   
   <!-- AI Foundation Services Container -->
-  <rect x="100" y="350" width="780" height="190" class="container" />
-  <rect x="100" y="350" width="780" height="50" class="header-box" />
-  <text x="500" y="382" class="title">AI FOUNDATION SERVICES</text>
+  <rect x="100" y="360" width="780" height="190" class="container" />
+  <rect x="100" y="360" width="780" height="50" class="header-box" />
+  <text x="500" y="392" class="title">AI FOUNDATION SERVICES</text>
   
-  <rect x="130" y="420" width="200" height="100" class="box" />
-  <text x="230" y="460" class="box-title">Azure OpenAI</text>
-  <text x="230" y="485" class="box-title">Service</text>
+  <rect x="130" y="430" width="200" height="100" class="box" />
+  <text x="230" y="470" class="box-title">Azure OpenAI</text>
+  <text x="230" y="495" class="box-title">Service</text>
   
-  <rect x="390" y="420" width="200" height="100" class="box" />
-  <text x="490" y="460" class="box-title">Azure Cognitive</text>
-  <text x="490" y="485" class="box-title">Services</text>
+  <rect x="390" y="430" width="200" height="100" class="box" />
+  <text x="490" y="470" class="box-title">Azure Cognitive</text>
+  <text x="490" y="495" class="box-title">Services</text>
   
-  <rect x="650" y="420" width="200" height="100" class="box" />
-  <text x="750" y="460" class="box-title">Azure Machine</text>
-  <text x="750" y="485" class="box-title">Learning Service</text>
+  <rect x="650" y="430" width="200" height="100" class="box" />
+  <text x="750" y="470" class="box-title">Azure Machine</text>
+  <text x="750" y="495" class="box-title">Learning Service</text>
   
   <!-- Integration and Platform Services Row -->
-  <rect x="100" y="560" width="380" height="200" class="container" />
-  <rect x="100" y="560" width="380" height="50" class="header-box" />
-  <text x="290" y="592" class="title">INTEGRATION SERVICES</text>
+  <rect x="100" y="580" width="380" height="190" class="container" />
+  <rect x="100" y="580" width="380" height="50" class="header-box" />
+  <text x="290" y="612" class="title">INTEGRATION SERVICES</text>
   
-  <rect x="125" y="620" width="100" height="120" class="box" />
-  <text x="175" y="670" class="box-title">Azure</text>
-  <text x="175" y="695" class="box-title">Functions</text>
+  <rect x="125" y="640" width="100" height="110" class="box" />
+  <text x="175" y="685" class="box-title">Azure</text>
+  <text x="175" y="710" class="box-title">Functions</text>
   
-  <rect x="240" y="620" width="100" height="120" class="box" />
-  <text x="290" y="670" class="box-title">Azure</text>
-  <text x="290" y="695" class="box-title">Logic Apps</text>
+  <rect x="240" y="640" width="100" height="110" class="box" />
+  <text x="290" y="685" class="box-title">Azure</text>
+  <text x="290" y="710" class="box-title">Logic Apps</text>
   
-  <rect x="355" y="620" width="100" height="120" class="box" />
-  <text x="405" y="670" class="box-title">Azure API</text>
-  <text x="405" y="695" class="box-title">Management</text>
+  <rect x="355" y="640" width="100" height="110" class="box" />
+  <text x="405" y="685" class="box-title">Azure API</text>
+  <text x="405" y="710" class="box-title">Management</text>
   
-  <rect x="500" y="560" width="380" height="200" class="container" />
-  <rect x="500" y="560" width="380" height="50" class="header-box" />
-  <text x="690" y="592" class="title">PLATFORM SERVICES</text>
+  <rect x="500" y="580" width="380" height="190" class="container" />
+  <rect x="500" y="580" width="380" height="50" class="header-box" />
+  <text x="690" y="612" class="title">PLATFORM SERVICES</text>
   
-  <rect x="525" y="620" width="150" height="120" class="box" />
-  <text x="600" y="670" class="box-title">GitHub or</text>
-  <text x="600" y="695" class="box-title">Azure DevOps</text>
+  <rect x="525" y="640" width="150" height="110" class="box" />
+  <text x="600" y="685" class="box-title">GitHub or</text>
+  <text x="600" y="710" class="box-title">Azure DevOps</text>
   
-  <rect x="700" y="620" width="150" height="120" class="box" />
-  <text x="775" y="670" class="box-title">Azure</text>
-  <text x="775" y="695" class="box-title">Monitor</text>
+  <rect x="700" y="640" width="150" height="110" class="box" />
+  <text x="775" y="685" class="box-title">Azure</text>
+  <text x="775" y="710" class="box-title">Monitor</text>
 </svg> 
