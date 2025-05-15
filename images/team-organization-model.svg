@@ -7,71 +7,71 @@
   <!-- Main container -->
   <rect x="50" y="80" width="700" height="490" rx="10" ry="10" fill="#f5f5f5" stroke="#666" stroke-width="2" />
  
-  <!-- Leadership Layer -->
-  <rect x="100" y="110" width="600" height="80" rx="8" ry="8" fill="#deeafc" stroke="#3373cc" stroke-width="1.5" />
-  <text x="400" y="140" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">Leadership Layer</text>
-  <text x="400" y="165" text-anchor="middle" font-size="14" font-family="Arial, sans-serif" fill="#333">Strategic direction, governance, and executive sponsorship</text>
+  <!-- Leadership Layer - Increased height from 80 to 120 -->
+  <rect x="100" y="110" width="600" height="120" rx="8" ry="8" fill="#deeafc" stroke="#3373cc" stroke-width="1.5" />
+  <text x="400" y="135" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#2952a3">Leadership Layer</text>
+  <text x="400" y="160" text-anchor="middle" font-size="14" font-family="Arial, sans-serif" fill="#333">Strategic direction, governance, and executive sponsorship</text>
  
-  <!-- Leadership Roles -->
-  <rect x="120" y="145" width="120" height="30" rx="5" ry="5" fill="#4285f4" stroke="#2952a3" stroke-width="1" />
-  <text x="180" y="165" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Executive Sponsor</text>
+  <!-- Leadership Roles - Repositioned to y=180 instead of 145 -->
+  <rect x="120" y="180" width="120" height="30" rx="5" ry="5" fill="#4285f4" stroke="#2952a3" stroke-width="1" />
+  <text x="180" y="200" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Executive Sponsor</text>
  
-  <rect x="260" y="145" width="120" height="30" rx="5" ry="5" fill="#4285f4" stroke="#2952a3" stroke-width="1" />
-  <text x="320" y="165" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Program Director</text>
+  <rect x="260" y="180" width="120" height="30" rx="5" ry="5" fill="#4285f4" stroke="#2952a3" stroke-width="1" />
+  <text x="320" y="200" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Program Director</text>
  
-  <rect x="400" y="145" width="120" height="30" rx="5" ry="5" fill="#4285f4" stroke="#2952a3" stroke-width="1" />
-  <text x="460" y="165" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">CTO / CIO</text>
+  <rect x="400" y="180" width="120" height="30" rx="5" ry="5" fill="#4285f4" stroke="#2952a3" stroke-width="1" />
+  <text x="460" y="200" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">CTO / CIO</text>
  
-  <rect x="540" y="145" width="140" height="30" rx="5" ry="5" fill="#4285f4" stroke="#2952a3" stroke-width="1" />
-  <text x="610" y="165" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Steering Committee</text>
+  <rect x="540" y="180" width="140" height="30" rx="5" ry="5" fill="#4285f4" stroke="#2952a3" stroke-width="1" />
+  <text x="610" y="200" text-anchor="middle" font-size="12" font-family="Arial, sans-serif" fill="white">Steering Committee</text>
  
-  <!-- Core Team Layer -->
-  <rect x="100" y="210" width="600" height="140" rx="8" ry="8" fill="#d4e8d5" stroke="#38761d" stroke-width="1.5" />
-  <text x="400" y="230" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#274e13">Core Modernization Team</text>
+  <!-- Core Team Layer - Moved down by 40 pixels -->
+  <rect x="100" y="250" width="600" height="140" rx="8" ry="8" fill="#d4e8d5" stroke="#38761d" stroke-width="1.5" />
+  <text x="400" y="270" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#274e13">Core Modernization Team</text>
  
-  <!-- Core Team Roles -->
-  <rect x="120" y="250" width="150" height="80" rx="5" ry="5" fill="#57bb8a" stroke="#274e13" stroke-width="1" />
-  <text x="195" y="275" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="white">Mainframe Experts</text>
-  <text x="195" y="295" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">• COBOL/PL/I Developers</text>
-  <text x="195" y="315" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">• z/OS System Admins</text>
+  <!-- Core Team Roles - Moved down by 40 pixels -->
+  <rect x="120" y="290" width="150" height="80" rx="5" ry="5" fill="#57bb8a" stroke="#274e13" stroke-width="1" />
+  <text x="195" y="315" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="white">Mainframe Experts</text>
+  <text x="195" y="335" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">• COBOL/PL/I Developers</text>
+  <text x="195" y="355" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">• z/OS System Admins</text>
  
-  <rect x="290" y="250" width="150" height="80" rx="5" ry="5" fill="#57bb8a" stroke="#274e13" stroke-width="1" />
-  <text x="365" y="275" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="white">Cloud Architects</text>
-  <text x="365" y="295" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">• Azure Specialists</text>
-  <text x="365" y="315" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">• Solution Architects</text>
+  <rect x="290" y="290" width="150" height="80" rx="5" ry="5" fill="#57bb8a" stroke="#274e13" stroke-width="1" />
+  <text x="365" y="315" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="white">Cloud Architects</text>
+  <text x="365" y="335" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">• Azure Specialists</text>
+  <text x="365" y="355" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">• Solution Architects</text>
  
-  <rect x="460" y="250" width="220" height="80" rx="5" ry="5" fill="#57bb8a" stroke="#274e13" stroke-width="1" />
-  <text x="570" y="275" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="white">AI &amp; Modernization Engineers</text>
-  <text x="570" y="295" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">• Code Transformation Specialists</text>
-  <text x="570" y="315" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">• AI Foundry Platform Engineers</text>
+  <rect x="460" y="290" width="220" height="80" rx="5" ry="5" fill="#57bb8a" stroke="#274e13" stroke-width="1" />
+  <text x="570" y="315" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="white">AI &amp; Modernization Engineers</text>
+  <text x="570" y="335" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">• Code Transformation Specialists</text>
+  <text x="570" y="355" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">• AI Foundry Platform Engineers</text>
  
-  <!-- Extended Team Layer -->
-  <rect x="100" y="370" width="600" height="120" rx="8" ry="8" fill="#fce5cd" stroke="#a64d00" stroke-width="1.5" />
-  <text x="400" y="390" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#783f04">Extended Team</text>
+  <!-- Extended Team Layer - Moved down by 40 pixels -->
+  <rect x="100" y="410" width="600" height="120" rx="8" ry="8" fill="#fce5cd" stroke="#a64d00" stroke-width="1.5" />
+  <text x="400" y="430" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial, sans-serif" fill="#783f04">Extended Team</text>
  
-  <!-- Extended Team Roles -->
-  <rect x="120" y="410" width="110" height="60" rx="5" ry="5" fill="#f4b183" stroke="#783f04" stroke-width="1" />
-  <text x="175" y="435" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">DevOps</text>
-  <text x="175" y="455" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Engineers</text>
+  <!-- Extended Team Roles - Moved down by 40 pixels -->
+  <rect x="120" y="450" width="110" height="60" rx="5" ry="5" fill="#f4b183" stroke="#783f04" stroke-width="1" />
+  <text x="175" y="475" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">DevOps</text>
+  <text x="175" y="495" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Engineers</text>
  
-  <rect x="250" y="410" width="110" height="60" rx="5" ry="5" fill="#f4b183" stroke="#783f04" stroke-width="1" />
-  <text x="305" y="435" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">QA / Testing</text>
-  <text x="305" y="455" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Specialists</text>
+  <rect x="250" y="450" width="110" height="60" rx="5" ry="5" fill="#f4b183" stroke="#783f04" stroke-width="1" />
+  <text x="305" y="475" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">QA / Testing</text>
+  <text x="305" y="495" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Specialists</text>
  
-  <rect x="380" y="410" width="110" height="60" rx="5" ry="5" fill="#f4b183" stroke="#783f04" stroke-width="1" />
-  <text x="435" y="435" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">Security</text>
-  <text x="435" y="455" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Specialists</text>
+  <rect x="380" y="450" width="110" height="60" rx="5" ry="5" fill="#f4b183" stroke="#783f04" stroke-width="1" />
+  <text x="435" y="475" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">Security</text>
+  <text x="435" y="495" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Specialists</text>
  
-  <rect x="510" y="410" width="110" height="60" rx="5" ry="5" fill="#f4b183" stroke="#783f04" stroke-width="1" />
-  <text x="565" y="435" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">Business</text>
-  <text x="565" y="455" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Analysts</text>
+  <rect x="510" y="450" width="110" height="60" rx="5" ry="5" fill="#f4b183" stroke="#783f04" stroke-width="1" />
+  <text x="565" y="475" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial, sans-serif" fill="white">Business</text>
+  <text x="565" y="495" text-anchor="middle" font-size="11" font-family="Arial, sans-serif" fill="white">Analysts</text>
  
-  <!-- Stakeholders -->
-  <rect x="100" y="510" width="600" height="40" rx="8" ry="8" fill="#e8eaf6" stroke="#3f51b5" stroke-width="1.5" />
-  <text x="400" y="535" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#3f51b5">Business Stakeholders &amp; End Users</text>
+  <!-- Stakeholders - Moved down to fit in container -->
+  <rect x="100" y="540" width="600" height="40" rx="8" ry="8" fill="#e8eaf6" stroke="#3f51b5" stroke-width="1.5" />
+  <text x="400" y="565" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial, sans-serif" fill="#3f51b5">Business Stakeholders &amp; End Users</text>
  
-  <!-- Connection Lines -->
-  <line x1="400" y1="190" x2="400" y2="210" stroke="#666" stroke-width="2" />
-  <line x1="400" y1="350" x2="400" y2="370" stroke="#666" stroke-width="2" />
-  <line x1="400" y1="490" x2="400" y2="510" stroke="#666" stroke-width="2" />
+  <!-- Connection Lines - Adjusted to match new positions -->
+  <line x1="400" y1="230" x2="400" y2="250" stroke="#666" stroke-width="2" />
+  <line x1="400" y1="390" x2="400" y2="410" stroke="#666" stroke-width="2" />
+  <line x1="400" y1="530" x2="400" y2="540" stroke="#666" stroke-width="2" />
 </svg>
