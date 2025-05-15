@@ -19,6 +19,44 @@ This chapter covers the following foundational components:
 | [Reference Architecture](reference-architecture.md) | Technical architecture patterns for modernization across mainframe platforms |
 | [Team Organization](team-organization.md) | Structuring teams and roles for modernization success with platform-specific expertise |
 
+```mermaid
+graph TD
+    subgraph "Foundation Components"
+        MS["Modernization Strategy"]
+        HS["Hybrid Strategy"]
+        MP["Modernization Patterns"]
+        GF["Governance Framework"]
+        RA["Reference Architecture"]
+        TO["Team Organization"]
+    end
+    
+    subgraph "Implementation Steps"
+        I1["Strategy Selection"]
+        I2["Application Categorization"]
+        I3["Pattern Selection"]
+        I4["Roadmap Development"]
+        I5["Governance Establishment"]
+        I6["Architecture Definition"]
+        I7["Team Organization"]
+    end
+    
+    MS --> I1
+    HS --> I2
+    MP --> I3
+    MS --> I4
+    GF --> I5
+    RA --> I6
+    TO --> I7
+    
+    I1 --> NX["Next Steps"]
+    I2 --> NX
+    I3 --> NX
+    I4 --> NX
+    I5 --> NX
+    I6 --> NX
+    I7 --> NX
+```
+
 ## 🎯 Objectives
 
 | Objective | Description |

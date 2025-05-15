@@ -2,7 +2,36 @@
 
 This document outlines the technical governance framework for mainframe modernization initiatives across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS) using Azure AI Foundry.
 
-![Governance Framework](../../images/governance-framework.svg)
+```mermaid
+flowchart TD
+    subgraph "Technical Steering Committee"
+        EA["Enterprise Architect"]
+        PTL["Platform Technical Leads"]
+        CPA["Cloud Platform Architect"]
+        DL["DevOps Lead"]
+        SL["Security Lead"]
+        BDE["Business Domain Expert"]
+    end
+    
+    subgraph "Working Groups"
+        AWG["Architecture Working Group"]
+        DWG["DevOps Working Group"] 
+        SWG["Security Working Group"]
+        AIWG["AI and Analytics Working Group"]
+    end
+    
+    subgraph "Decision Framework"
+        DR["Decision Request"] --> IA["Impact Analysis"]
+        IA --> DA["Decision Approval"]
+        DR --> OE["Options Evaluation"]
+        OE --> IP["Implementation Planning"]
+        IP --> VR["Validation & Review"]
+        DA --> VR
+    end
+    
+    Technical Steering Committee --> Working Groups
+    Working Groups --> Decision Framework
+```
 
 ## Governance Overview
 
@@ -66,17 +95,14 @@ Specialized working groups focus on specific aspects of the modernization:
 
 The governance framework implements a structured decision-making process:
 
-```
-┌────────────────┐     ┌─────────────────┐     ┌──────────────────┐
-│ Decision       │────▶│ Impact          │────▶│ Decision         │
-│ Request        │     │ Analysis        │     │ Approval         │
-└────────────────┘     └─────────────────┘     └──────────────────┘
-        │                                               │
-        ▼                                               ▼
-┌────────────────┐     ┌─────────────────┐     ┌──────────────────┐
-│   Options      │────▶│ Implementation  │────▶│   Validation     │
-│   Evaluation   │     │  Planning       │     │    & Review      │
-└────────────────┘     └─────────────────┘     └──────────────────┘
+```mermaid
+graph LR
+    DR["Decision\nRequest"] --> IA["Impact\nAnalysis"]
+    IA --> DA["Decision\nApproval"]
+    DR --> OE["Options\nEvaluation"]
+    OE --> IP["Implementation\nPlanning"]
+    IP --> VR["Validation\n& Review"]
+    DA --> VR
 ```
 
 ### Decision Levels

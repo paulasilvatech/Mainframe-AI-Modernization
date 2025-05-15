@@ -24,6 +24,26 @@ The discovery and assessment phase is the crucial first step in your mainframe m
 | [Dependency Mapping with AI Foundry](02-dependency-mapping.md) | AI-assisted mapping of application dependencies across platforms |
 | [AI-Powered Assessment Criteria](03-assessment-criteria.md) | Using AI to assess modernization complexity and priority for different platforms |
 
+## Discovery Process Workflow
+
+```mermaid
+flowchart TD
+    A[Deploy Discovery Tools] --> B[Execute Application Inventory]
+    B --> C[Analyze Application Usage]
+    C --> D[Map Dependencies]
+    D --> E[Assess Modernization Potential]
+    
+    subgraph "Platform-Specific Analysis"
+        P1[IBM z/OS]
+        P2[Unisys ClearPath]
+        P3[Bull GCOS]
+        P4[NEC ACOS]
+    end
+    
+    B --> Platform-Specific Analysis
+    E --> F[Generate Deliverables]
+```
+
 ## ✅ Technical Prerequisites
 
 Before beginning this phase, ensure you have platform-specific access and information:

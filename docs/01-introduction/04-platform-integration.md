@@ -24,37 +24,27 @@ Before setting up z/OS integration with Azure AI Foundry, ensure you have:
 
 The following diagram illustrates the key components involved in the z/OS integration architecture:
 
-```
-┌─────────────────────────┐                   ┌──────────────────────────┐
-│   IBM z/OS ENVIRONMENT  │                   │      AZURE CLOUD         │
-│                         │                   │                          │
-│  ┌─────────────────┐    │  ExpressRoute/    │  ┌──────────────────┐    │
-│  │ z/OS Connect    │    │  Private Link     │  │                  │    │
-│  │ Enterprise      ├────┼───────────────────┼──┤  Azure API       │    │
-│  │ Edition         │    │                   │  │  Management      │    │
-│  └─────────────────┘    │                   │  │                  │    │
-│                         │                   │  └──────────────────┘    │
-│  ┌─────────────────┐    │                   │                          │
-│  │ IBM MQ          ├────┼───────────────────┼─┐                        │
-│  │                 │    │                   │ │                        │
-│  └─────────────────┘    │                   │ │                        │
-│                         │                   │ │ ┌──────────────────┐   │
-│  ┌─────────────────┐    │                   │ │ │                  │   │
-│  │ Connect:Direct  ├────┼───────────────────┼─┼─┤  Azure Logic     │   │
-│  │                 │    │                   │ │ │  Apps/Functions  │   │
-│  └─────────────────┘    │                   │ │ │                  │   │
-│                         │                   │ │ └──────────────────┘   │
-│  ┌─────────────────┐    │                   │ │                        │
-│  │ TN3270 Services ├────┼───────────────────┼─┘                        │
-│  │                 │    │                   │                          │
-│  └─────────────────┘    │                   │                          │
-│                         │                   │  ┌──────────────────┐    │
-│  ┌─────────────────┐    │                   │  │                  │    │
-│  │ CICS/IMS/DB2    │    │                   │  │  Azure AI        │    │
-│  │ Native Services ├────┼───────────────────┼──┤  Foundry         │    │
-│  │                 │    │                   │  │                  │    │
-│  └─────────────────┘    │                   │  └──────────────────┘    │
-└─────────────────────────┘                   └──────────────────────────┘
+```mermaid
+graph LR
+    subgraph "IBM z/OS ENVIRONMENT"
+        ZC["z/OS Connect\nEnterprise Edition"]
+        MQ["IBM MQ"]
+        CD["Connect:Direct"]
+        TN["TN3270 Services"]
+        NV["CICS/IMS/DB2\nNative Services"]
+    end
+
+    subgraph "AZURE CLOUD"
+        APIM["Azure API\nManagement"]
+        LA["Azure Logic\nApps/Functions"]
+        AIF["Azure AI\nFoundry"]
+    end
+
+    ZC -- "ExpressRoute/\nPrivate Link" --> APIM
+    MQ --> LA
+    CD --> LA
+    TN --> LA
+    NV --> AIF
 ```
 
 ### 1.3 Integration Component Setup

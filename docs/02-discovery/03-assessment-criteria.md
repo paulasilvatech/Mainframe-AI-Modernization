@@ -2,7 +2,35 @@
 
 This document details the technical assessment criteria used by Azure AI Foundry to evaluate mainframe applications across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS) for modernization.
 
-![Assessment Framework](../../images/assessment-framework.svg)
+```mermaid
+graph TB
+    subgraph "Multi-Platform Code Analysis Engine"
+        CA1["Lexical & Syntactic Parsing"]
+        CA2["Control Flow Analysis"]
+        CA3["Pattern Recognition"]
+        CA4["Technical Debt Quantification"]
+    end
+    
+    subgraph "Platform-Specific Analytics"
+        PA1["z/OS: SMF Records"]
+        PA2["ClearPath: CPMS Data"]
+        PA3["GCOS: GM3/GM8 Monitoring"]
+        PA4["ACOS: ACOSMON Data"]
+    end
+    
+    subgraph "Business Impact Analyzer"
+        BI1["Business Criticality"]
+        BI2["Revenue/Cost Impact"]
+        BI3["Regulatory Compliance"]
+        BI4["Strategic Alignment"]
+    end
+    
+    Multi-Platform Code Analysis Engine --> MCI["Modernization Complexity Index"]
+    Platform-Specific Analytics --> MCI
+    Business Impact Analyzer --> MCI
+    
+    MCI --> MOD["Modernization Approach"]
+```
 
 ## Assessment Framework
 

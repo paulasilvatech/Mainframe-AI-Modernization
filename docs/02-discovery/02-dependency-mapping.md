@@ -157,6 +157,40 @@ The dependency graph represents relationships between mainframe components:
 - **Direction**: Source component depends on target component
 - **Cross-Platform Edges**: Dependencies between components on different platforms
 
+```mermaid
+graph TD
+    subgraph "Dependency Types"
+        Z["IBM z/OS"] --> Z1["Calls"]
+        Z --> Z2["Includes"]
+        Z --> Z3["Executes"]
+        Z --> Z4["Reads/Writes"]
+        
+        C["Unisys ClearPath"] --> C1["Calls"]
+        C --> C2["Includes"]
+        C --> C3["Executes"]
+        C --> C4["Accesses"]
+        
+        G["Bull GCOS"] --> G1["Calls"]
+        G --> G2["Includes"]
+        G --> G3["Executes"]
+        G --> G4["Accesses"]
+        
+        A["NEC ACOS"] --> A1["Calls"]
+        A --> A2["Includes"]
+        A --> A3["Executes"]
+        A --> A4["Accesses"]
+    end
+    
+    subgraph "Cross-Platform Interfaces"
+        I["Integration Points"]
+    end
+    
+    Z -.-> I
+    C -.-> I
+    G -.-> I
+    A -.-> I
+```
+
 ### Dependency Types
 
 The tool identifies various types of dependencies across platforms:

@@ -37,17 +37,14 @@ The inventory process uses a secure agent-based architecture:
 
 The inventory process follows this technical workflow:
 
-```
-┌────────────────┐     ┌─────────────────┐     ┌──────────────────┐
-│System Resources│────▶│ AI Foundry Agent│────▶│ Discovery Service│
-│   Extraction   │     │   Processing    │     │     Analysis     │
-└────────────────┘     └─────────────────┘     └──────────────────┘
-        │                                               │
-        ▼                                               ▼
-┌────────────────┐     ┌─────────────────┐     ┌──────────────────┐
-│   Source Code  │────▶│  Source Analysis│────▶│  Knowledge Base  │
-│   Repository   │     │    Processing   │     │    Generation    │
-└────────────────┘     └─────────────────┘     └──────────────────┘
+```mermaid
+flowchart LR
+    A["System Resources\nExtraction"] --> B["AI Foundry Agent\nProcessing"]
+    B --> C["Discovery Service\nAnalysis"]
+    A --> D["Source Code\nRepository"]
+    D --> E["Source Analysis\nProcessing"] 
+    E --> F["Knowledge Base\nGeneration"]
+    C --> F
 ```
 
 #### Platform Resource Analysis
