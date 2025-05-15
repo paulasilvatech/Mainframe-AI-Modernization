@@ -23,7 +23,7 @@ Key architectural goals include:
 
 The following diagram illustrates the comprehensive reference architecture for Azure AI Foundry integration with mainframe systems:
 
-![Reference Architecture](../../images/reference-architecture.svg)
+<img src="../../images/reference-architecture.svg" alt="Reference Architecture" width="900" style="background-color: white; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" />
 
 ## Component Details
 
