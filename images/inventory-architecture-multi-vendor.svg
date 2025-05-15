@@ -12,8 +12,7 @@
       fill: #0078d4;
       stroke: #0078d4;
       stroke-width: 1;
-      rx:
-      8;
+      rx: 8;
       ry: 8;
     }
     .section-box {
