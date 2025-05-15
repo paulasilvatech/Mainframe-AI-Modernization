@@ -947,7 +947,7 @@ jobs:
 7. **🔄 Incremental Approach**: Use canary deployments for high-risk changes
 8. **📝 Comprehensive Logging**: Ensure detailed logging for troubleshooting
 
-## 10. 🛠️ Troubleshooting Common GitHub Workflow Issues
+## 10. 🔧 Troubleshooting Common GitHub Workflow Issues
 
 | Issue | Solution |
 |-------|----------|
@@ -956,8 +956,4 @@ jobs:
 | Artifact upload/download issues | Check file paths and permissions |
 | Matrix jobs failing | Debug specific matrix combination with specific parameters |
 | Timeouts | Optimize workflow to reduce execution time or increase timeout limits |
-| Deployment failures | Check for environment-specific configuration issues |
-
-## 11. 💾 Sample Files Repository
-
-Find all these workflow examples in our [GitHub Workflow Templates Repository](https://github.com/example/mainframe-github-workflows) where you can download and customize them for your specific modernization needs. 
+| Deployment failures | Check for environment-specific configuration issues | 
