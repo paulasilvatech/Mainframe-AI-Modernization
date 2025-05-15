@@ -1,6 +1,6 @@
 # 📦 Mainframe Inventory Process
 
-![Inventory Architecture](../../images/inventory-architecture.svg)
+<img src="../../images/inventory-architecture-multi-vendor.svg" alt="Multi-Vendor Mainframe Inventory Architecture" width="900" style="background-color: white; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" />
 
 This document outlines the technical process for creating a comprehensive inventory of mainframe applications and components across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS) using Azure AI Foundry.
 
