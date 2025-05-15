@@ -1,9 +1,12 @@
-# .gitattributes template for IBM z/OS mainframe code repositories
-# This file ensures proper handling of mainframe code in Git
+# .gitattributes template for multi-platform mainframe code repositories
+# This file ensures proper handling of mainframe code in Git (IBM z/OS, Unisys ClearPath, Bull GCOS, NEC ACOS)
 
 # Default behavior for all files
 * text=auto
 
+#--------------------------------------
+# IBM z/OS files
+#--------------------------------------
 # COBOL source files
 *.cbl text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
 *.cob text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
@@ -28,7 +31,56 @@
 # DCLGEN files
 *.dclgen text eol=lf working-tree-encoding=IBM-1047 zos-working-tree-encoding=utf-8
 
-# Binary files (no conversion)
+#--------------------------------------
+# Unisys ClearPath files
+#--------------------------------------
+# COBOL source files
+*.cob-unisys text eol=lf working-tree-encoding=utf-8
+*.cpb text eol=lf working-tree-encoding=utf-8
+*.cpy-unisys text eol=lf working-tree-encoding=utf-8
+
+# Algol source files
+*.alg text eol=lf working-tree-encoding=utf-8
+
+# WFL files
+*.wfl text eol=lf working-tree-encoding=utf-8
+
+# DMSII files
+*.dmsiischema text eol=lf working-tree-encoding=utf-8
+*.dasdl text eol=lf working-tree-encoding=utf-8
+
+#--------------------------------------
+# Bull GCOS files
+#--------------------------------------
+# COBOL source files
+*.cob-gcos text eol=lf working-tree-encoding=utf-8
+*.gcos-cpy text eol=lf working-tree-encoding=utf-8
+
+# JCL procedures
+*.gcl text eol=lf working-tree-encoding=utf-8
+*.gcos-jcl text eol=lf working-tree-encoding=utf-8
+
+# TP8 files
+*.tp8 text eol=lf working-tree-encoding=utf-8
+*.tds text eol=lf working-tree-encoding=utf-8
+
+#--------------------------------------
+# NEC ACOS files
+#--------------------------------------
+# COBOL source files
+*.cob-acos text eol=lf working-tree-encoding=utf-8
+*.acos-cpy text eol=lf working-tree-encoding=utf-8
+
+# NCL procedures
+*.ncl text eol=lf working-tree-encoding=utf-8
+
+# AIM database
+*.aim text eol=lf working-tree-encoding=utf-8
+*.aimdefs text eol=lf working-tree-encoding=utf-8
+
+#--------------------------------------
+# Common binary files (no conversion)
+#--------------------------------------
 *.load binary
 *.so binary
 *.dll binary
@@ -36,7 +88,9 @@
 *.bin binary
 *.obj binary
 
+#--------------------------------------
 # Documentation and configuration files
+#--------------------------------------
 *.md text
 *.txt text
 *.json text
@@ -49,10 +103,27 @@
 *.bat text eol=crlf
 *.cmd text eol=crlf
 
-# Special attribute for GitHub user experience
+#--------------------------------------
+# Language detection for GitHub
+#--------------------------------------
+# IBM z/OS
 *.cbl linguist-language=COBOL
 *.cob linguist-language=COBOL
 *.pli linguist-language=PLI
 *.jcl linguist-language=JCL
 *.asm linguist-language=Assembly
-*.rexx linguist-language=REXX 
+*.rexx linguist-language=REXX
+
+# Unisys ClearPath
+*.cob-unisys linguist-language=COBOL
+*.alg linguist-language=Algol
+*.wfl linguist-language=WFL
+
+# Bull GCOS
+*.cob-gcos linguist-language=COBOL
+*.gcl linguist-language=JCL
+*.gcos-jcl linguist-language=JCL
+
+# NEC ACOS
+*.cob-acos linguist-language=COBOL
+*.ncl linguist-language=NCL 

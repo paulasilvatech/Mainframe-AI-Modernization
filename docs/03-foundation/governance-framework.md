@@ -1,12 +1,12 @@
 # Governance Framework
 
-This document outlines the technical governance framework for IBM z/OS mainframe modernization initiatives using Azure AI Foundry.
+This document outlines the technical governance framework for mainframe modernization initiatives across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS) using Azure AI Foundry.
 
 ![Governance Framework](../../images/governance-framework.svg)
 
 ## Governance Overview
 
-The governance framework establishes the structure, processes, and controls needed to manage the mainframe modernization journey efficiently. It defines the decision-making processes, roles and responsibilities, risk management approaches, and compliance considerations specific to Azure AI Foundry implementation.
+The governance framework establishes the structure, processes, and controls needed to manage the multi-platform mainframe modernization journey efficiently. It defines the decision-making processes, roles and responsibilities, risk management approaches, and compliance considerations specific to Azure AI Foundry implementation across different mainframe environments.
 
 ## Governance Structure
 
@@ -17,45 +17,50 @@ The Technical Steering Committee (TSC) provides overall technical governance:
 | Role | Responsibility |
 |------|----------------|
 | Enterprise Architect | Ensures architectural standards and alignment with enterprise strategy |
-| Mainframe Technical Lead | Represents mainframe technical considerations and constraints |
+| Platform Technical Leads | Represent platform-specific technical considerations (IBM z/OS, Unisys ClearPath, Bull GCOS, NEC ACOS) |
 | Cloud Platform Architect | Ensures cloud platform compatibility and integration |
 | DevOps Lead | Oversees CI/CD and automation processes |
 | Security Lead | Ensures security and compliance requirements are met |
 | Business Domain Expert | Represents business priorities and requirements |
 
 The TSC meets bi-weekly to:
-- Review modernization progress against technical milestones
-- Address technical blocking issues and risks
-- Approve architectural decisions and changes
+- Review modernization progress against technical milestones across all platforms
+- Address technical blocking issues and platform-specific risks
+- Approve architectural decisions and changes with cross-platform considerations
 - Resolve cross-team dependencies and conflicts
+- Coordinate integration approaches between platforms
 
 ### Technical Working Groups
 
 Specialized working groups focus on specific aspects of the modernization:
 
 1. **Architecture Working Group**
-   - Platform architecture decisions
-   - Integration patterns and standards
+   - Platform architecture decisions for each mainframe environment
+   - Cross-platform integration patterns and standards
    - Technical debt management
    - Performance and scalability standards
+   - Platform-specific considerations and adaptations
 
 2. **DevOps Working Group**
-   - CI/CD pipeline implementation
-   - Automation standards and practices
+   - Multi-platform CI/CD pipeline implementation
+   - Automation standards and practices for each mainframe platform
    - Environment management
-   - Deployment strategies
+   - Platform-specific deployment strategies
+   - Cross-platform build and release orchestration
 
 3. **Security Working Group**
-   - Security architecture and controls
-   - Compliance validation
-   - Access management
-   - Data protection standards
+   - Security architecture and controls for each platform
+   - Platform-specific compliance validation
+   - Cross-platform access management
+   - Data protection standards across environments
+   - Security integration between legacy and modern systems
 
 4. **AI and Analytics Working Group**
-   - AI implementation standards
+   - AI implementation standards for diverse mainframe codebases
    - Analytics framework and practices
-   - Knowledge extraction methodologies
-   - ML model management
+   - Platform-specific knowledge extraction methodologies
+   - ML model management for different language and platform contexts
+   - Cross-platform data correlation and analysis
 
 ## Decision-Making Framework
 
@@ -80,9 +85,20 @@ Decisions are categorized into three levels:
 
 | Decision Level | Description | Approval Authority | Examples |
 |----------------|-------------|-------------------|----------|
-| Strategic | Affects overall modernization approach | TSC | Platform selection, modernization approach |
-| Tactical | Affects specific implementation areas | Working Group + TSC review | Tool selection, integration patterns |
-| Operational | Day-to-day implementation decisions | Implementation Team | Specific implementation techniques |
+| Strategic | Affects overall modernization approach | TSC | Platform modernization prioritization, cross-platform integration approach |
+| Tactical | Affects specific implementation areas | Working Group + TSC review | Platform-specific tool selection, integration patterns |
+| Operational | Day-to-day implementation decisions | Implementation Team | Specific implementation techniques for each platform |
+
+### Platform-Specific Considerations
+
+Each platform requires specific governance considerations:
+
+| Platform | Governance Considerations |
+|----------|--------------------------|
+| IBM z/OS | IBM software licensing, RACF security integration, CICS/IMS transaction governance |
+| Unisys ClearPath | ClearPath Forward licensing, DMSII data governance, MCP/OS 2200 security integration |
+| Bull GCOS | GCOS licensing, TPR governance, Bull security integration |
+| NEC ACOS | ACOS-4 licensing, AIM data governance, ACOS security frameworks |
 
 ### Decision Documentation
 
@@ -97,8 +113,14 @@ All significant decisions are documented using the Architecture Decision Record 
 ## Context
 [Technical context and problem statement]
 
+## Platform Scope
+[IBM z/OS | Unisys ClearPath | Bull GCOS | NEC ACOS | Cross-Platform]
+
 ## Decision
 [Decision description and justification]
+
+## Platform-Specific Implications
+[How this decision affects each relevant platform]
 
 ## Consequences
 [Positive and negative consequences of this decision]
@@ -121,33 +143,48 @@ The governance framework includes a comprehensive risk management process:
 
 | Risk Category | Description | Examples |
 |--------------|-------------|----------|
-| Technical | Risks related to technology implementation | Integration failures, performance issues |
+| Technical | Risks related to technology implementation | Integration failures, performance issues, platform compatibility |
 | Process | Risks related to process changes | Deployment disruptions, testing inadequacies |
-| People | Risks related to skills and organization | Knowledge gaps, resistance to change |
-| Security | Risks related to security and compliance | Data protection issues, compliance gaps |
+| People | Risks related to skills and organization | Platform-specific knowledge gaps, resistance to change |
+| Security | Risks related to security and compliance | Platform-specific security integration, compliance gaps |
 | Business | Risks related to business impact | Service disruptions, functionality gaps |
+| Cross-Platform | Risks related to interactions between platforms | Integration failures, data synchronization issues |
+
+### Platform-Specific Risk Factors
+
+Each mainframe platform introduces specific risk factors:
+
+| Platform | Key Risk Factors |
+|----------|-----------------|
+| IBM z/OS | COBOL/PL1 transformation accuracy, CICS/IMS compatibility, DB2 data migration |
+| Unisys ClearPath | COBOL/Algol translation, DMSII to relational mapping, COMS transaction integrity |
+| Bull GCOS | GCOS COBOL dialect translation, IDS/II data migration, TP8 compatibility |
+| NEC ACOS | ACOS COBOL compatibility, AIM database migration, ACOS transaction processing |
 
 ### Risk Assessment Process
 
 1. **Risk Identification**
-   - Regular risk assessment workshops
+   - Regular risk assessment workshops for each platform
    - Automated risk detection through AI Foundry
-   - Risk registry maintenance
+   - Platform-specific risk registry maintenance
+   - Cross-platform risk analysis
 
 2. **Risk Analysis**
    - Impact and probability assessment
-   - Risk scoring and prioritization
-   - Dependency analysis
+   - Platform-specific risk scoring and prioritization
+   - Dependency analysis across platforms
+   - Cross-platform risk correlation
 
 3. **Risk Mitigation**
-   - Mitigation strategy development
+   - Platform-appropriate mitigation strategy development
    - Implementation planning
    - Residual risk acceptance
+   - Cross-platform mitigation coordination
 
 4. **Risk Monitoring**
-   - Regular review of risk status
+   - Regular review of risk status across all platforms
    - Trigger-based reassessment
-   - Risk trend analysis
+   - Risk trend analysis by platform and cross-platform
 
 ## Policy Framework
 
@@ -155,30 +192,32 @@ The governance framework establishes these core policies:
 
 ### Code Management Policies
 
-- Source control management standards
-- Branching and merging strategies
-- Code review requirements
-- Quality gate criteria
+- Platform-specific source control management standards
+- Branching and merging strategies for each mainframe codebase
+- Code review requirements with platform expertise
+- Platform-specific quality gate criteria
+- Cross-platform change coordination
 
 ### Deployment Policies
 
-- Deployment approval process
-- Environment promotion criteria
-- Rollback procedures
-- Production deployment windows
+- Platform-specific deployment approval processes
+- Environment promotion criteria for each environment
+- Platform-appropriate rollback procedures
+- Production deployment windows coordinated across platforms
+- Cross-platform deployment orchestration
 
 ### Security Policies
 
-- Security testing requirements
-- Credential management
-- Access control standards
-- Data protection requirements
+- Platform-specific security testing requirements
+- Credential management across environments
+- Access control standards for each platform
+- Data protection requirements with platform context
 
 ### Compliance Policies
 
-- Audit logging requirements
-- Regulatory compliance validation
-- Documentation standards
+- Platform-specific audit logging requirements
+- Regulatory compliance validation for each environment
+- Documentation standards with platform context
 - Evidence collection and retention
 
 ## Metrics and Reporting
@@ -189,10 +228,11 @@ The governance framework defines key metrics to track modernization progress:
 
 | Metric | Description | Target |
 |--------|-------------|--------|
-| Code Coverage | Percentage of code covered by automated tests | >80% |
-| Deployment Frequency | Number of successful deployments per week | >3 |
-| Mean Time to Recovery | Average time to recover from failures | <30 minutes |
-| Technical Debt Ratio | Ratio of technical debt to total effort | <15% |
+| Code Coverage | Percentage of code covered by automated tests (by platform) | >80% |
+| Deployment Frequency | Number of successful deployments per week (by platform) | >3 |
+| Mean Time to Recovery | Average time to recover from failures (by platform) | <30 minutes |
+| Technical Debt Ratio | Ratio of technical debt to total effort (by platform) | <15% |
+| Cross-Platform Integration | Success rate of cross-platform integrations | >95% |
 
 ### Process Metrics
 

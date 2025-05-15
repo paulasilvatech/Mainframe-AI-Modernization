@@ -1,6 +1,7 @@
 name: Reusable Mainframe CI/CD Workflow
 
-# Reusable workflow template for IBM z/OS mainframe CI/CD with Azure AI Foundry
+# Reusable workflow template for multi-platform mainframe CI/CD with Azure AI Foundry
+# Supports IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS mainframe platforms
 # This template can be called from other workflows to standardize mainframe CI/CD processes
 
 on:
@@ -11,6 +12,11 @@ on:
         required: true
         type: string
         default: 'src'
+      platform:
+        description: 'Mainframe platform (zos, clearpath, gcos, acos)'
+        required: true
+        type: string
+        default: 'zos'
       environment:
         description: 'Target deployment environment'
         required: false
@@ -46,6 +52,7 @@ env:
   MAINFRAME_AGENT_PORT: ${{ secrets.MAINFRAME_PORT }}
   MAINFRAME_AGENT_USER: ${{ secrets.MAINFRAME_USER }}
   MAINFRAME_AGENT_PASSWORD: ${{ secrets.MAINFRAME_PASSWORD }}
+  MAINFRAME_PLATFORM: ${{ inputs.platform }}
 
 # Workflow jobs
 jobs:
@@ -71,6 +78,7 @@ jobs:
           aifoundry-name: ${{ env.AZURE_AIFOUNDRY_NAME }}
           source-dir: ${{ inputs.source-dir }}
           analysis-type: 'impact'
+          platform: ${{ env.MAINFRAME_PLATFORM }}
           include-business-rules: true
           output-file: 'analysis-results.json'
       
@@ -101,8 +109,11 @@ jobs:
           agent-port: ${{ env.MAINFRAME_AGENT_PORT }}
           agent-user: ${{ env.MAINFRAME_AGENT_USER }}
           agent-password: ${{ env.MAINFRAME_AGENT_PASSWORD }}
+          platform: ${{ env.MAINFRAME_PLATFORM }}
       
-      - name: Compile COBOL Programs
+      # IBM z/OS specific build steps
+      - name: Compile COBOL Programs (z/OS)
+        if: ${{ env.MAINFRAME_PLATFORM == 'zos' }}
         uses: mainframe-tools/compile-cobol@v1
         with:
           source-dir: ${{ inputs.source-dir }}/cobol
@@ -111,8 +122,10 @@ jobs:
           build-list-file: 'build-list.txt'
           use-ai-results: true
           ai-results-file: 'analysis-results.json'
+          platform: 'zos'
       
-      - name: Compile PL/I Programs
+      - name: Compile PL/I Programs (z/OS)
+        if: ${{ env.MAINFRAME_PLATFORM == 'zos' }}
         uses: mainframe-tools/compile-pli@v1
         with:
           source-dir: ${{ inputs.source-dir }}/pl1
@@ -121,19 +134,111 @@ jobs:
           build-list-file: 'build-list.txt'
           use-ai-results: true
           ai-results-file: 'analysis-results.json'
+          platform: 'zos'
       
-      - name: Validate JCL
+      - name: Validate JCL (z/OS)
+        if: ${{ env.MAINFRAME_PLATFORM == 'zos' }}
         uses: mainframe-tools/validate-jcl@v1
         with:
           source-dir: ${{ inputs.source-dir }}/jcl
           substitution-vars: './config/jcl-vars.json'
+          platform: 'zos'
       
+      # Unisys ClearPath specific build steps
+      - name: Compile COBOL Programs (ClearPath)
+        if: ${{ env.MAINFRAME_PLATFORM == 'clearpath' }}
+        uses: mainframe-tools/compile-cobol@v1
+        with:
+          source-dir: ${{ inputs.source-dir }}/cobol
+          copybook-dir: ${{ inputs.source-dir }}/copybook
+          compiler-options: 'ANSI85,XREF'
+          build-list-file: 'build-list.txt'
+          use-ai-results: true
+          ai-results-file: 'analysis-results.json'
+          platform: 'clearpath'
+      
+      - name: Compile Algol Programs (ClearPath)
+        if: ${{ env.MAINFRAME_PLATFORM == 'clearpath' }}
+        uses: mainframe-tools/compile-algol@v1
+        with:
+          source-dir: ${{ inputs.source-dir }}/algol
+          build-list-file: 'build-list.txt'
+          use-ai-results: true
+          ai-results-file: 'analysis-results.json'
+      
+      - name: Validate WFL (ClearPath)
+        if: ${{ env.MAINFRAME_PLATFORM == 'clearpath' }}
+        uses: mainframe-tools/validate-wfl@v1
+        with:
+          source-dir: ${{ inputs.source-dir }}/wfl
+          substitution-vars: './config/wfl-vars.json'
+      
+      # Bull GCOS specific build steps
+      - name: Compile COBOL Programs (GCOS)
+        if: ${{ env.MAINFRAME_PLATFORM == 'gcos' }}
+        uses: mainframe-tools/compile-cobol@v1
+        with:
+          source-dir: ${{ inputs.source-dir }}/cobol
+          copybook-dir: ${{ inputs.source-dir }}/copybook
+          compiler-options: 'CLIST,MAP'
+          build-list-file: 'build-list.txt'
+          use-ai-results: true
+          ai-results-file: 'analysis-results.json'
+          platform: 'gcos'
+      
+      - name: Validate GCL (GCOS)
+        if: ${{ env.MAINFRAME_PLATFORM == 'gcos' }}
+        uses: mainframe-tools/validate-gcl@v1
+        with:
+          source-dir: ${{ inputs.source-dir }}/gcl
+          substitution-vars: './config/gcl-vars.json'
+      
+      # NEC ACOS specific build steps
+      - name: Compile COBOL Programs (ACOS)
+        if: ${{ env.MAINFRAME_PLATFORM == 'acos' }}
+        uses: mainframe-tools/compile-cobol@v1
+        with:
+          source-dir: ${{ inputs.source-dir }}/cobol
+          copybook-dir: ${{ inputs.source-dir }}/copybook
+          compiler-options: 'LIST'
+          build-list-file: 'build-list.txt'
+          use-ai-results: true
+          ai-results-file: 'analysis-results.json'
+          platform: 'acos'
+      
+      - name: Validate NCL (ACOS)
+        if: ${{ env.MAINFRAME_PLATFORM == 'acos' }}
+        uses: mainframe-tools/validate-ncl@v1
+        with:
+          source-dir: ${{ inputs.source-dir }}/ncl
+          substitution-vars: './config/ncl-vars.json'
+      
+      # Common packaging steps
       - name: Package Build Artifacts
         run: |
           mkdir -p ./build-output
-          cp -r ${{ inputs.source-dir }}/cobol/*.load ./build-output/
-          cp -r ${{ inputs.source-dir }}/pl1/*.load ./build-output/
-          cp -r ${{ inputs.source-dir }}/jcl/*.jcl ./build-output/
+          
+          # Platform-specific artifact handling
+          case "${{ env.MAINFRAME_PLATFORM }}" in
+            zos)
+              cp -r ${{ inputs.source-dir }}/cobol/*.load ./build-output/
+              cp -r ${{ inputs.source-dir }}/pl1/*.load ./build-output/
+              cp -r ${{ inputs.source-dir }}/jcl/*.jcl ./build-output/
+              ;;
+            clearpath)
+              cp -r ${{ inputs.source-dir }}/cobol/*.o ./build-output/
+              cp -r ${{ inputs.source-dir }}/algol/*.o ./build-output/
+              cp -r ${{ inputs.source-dir }}/wfl/*.wfl ./build-output/
+              ;;
+            gcos)
+              cp -r ${{ inputs.source-dir }}/cobol/*.obj ./build-output/
+              cp -r ${{ inputs.source-dir }}/gcl/*.gcl ./build-output/
+              ;;
+            acos)
+              cp -r ${{ inputs.source-dir }}/cobol/*.obj ./build-output/
+              cp -r ${{ inputs.source-dir }}/ncl/*.ncl ./build-output/
+              ;;
+          esac
       
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
@@ -164,6 +269,7 @@ jobs:
           agent-user: ${{ env.MAINFRAME_AGENT_USER }}
           agent-password: ${{ env.MAINFRAME_AGENT_PASSWORD }}
           test-environment: ${{ inputs.environment }}
+          platform: ${{ env.MAINFRAME_PLATFORM }}
       
       - name: Run Unit Tests
         uses: mainframe-tools/run-unit-tests@v1
@@ -171,6 +277,7 @@ jobs:
           load-modules: './build-output'
           test-scripts: './test/unit'
           report-output: './test-results/unit'
+          platform: ${{ env.MAINFRAME_PLATFORM }}
       
       - name: Run Integration Tests
         uses: mainframe-tools/run-integration-tests@v1
@@ -178,6 +285,7 @@ jobs:
           load-modules: './build-output'
           test-scripts: './test/integration'
           report-output: './test-results/integration'
+          platform: ${{ env.MAINFRAME_PLATFORM }}
       
       - name: Upload Test Results
         uses: actions/upload-artifact@v3
@@ -201,36 +309,28 @@ jobs:
           name: mainframe-build-output
           path: ./build-output
       
-      - name: Login to Azure
-        uses: azure/login@v1
+      - name: Run Security Analysis
+        uses: mainframe-tools/security-analysis@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-      
-      - name: Run Security Scan
-        uses: azure/ai-foundry-security-scan@v1
-        with:
-          resource-group: ${{ env.AZURE_RESOURCE_GROUP }}
-          aifoundry-name: ${{ env.AZURE_AIFOUNDRY_NAME }}
           source-dir: ${{ inputs.source-dir }}
-          build-output: ./build-output
-          scan-type: 'comprehensive'
-          output-file: 'security-results.json'
+          build-artifacts: './build-output'
+          scan-level: 'comprehensive'
+          platform: ${{ env.MAINFRAME_PLATFORM }}
+          output-file: './security-report.json'
       
-      - name: Upload Security Results
+      - name: Upload Security Report
         uses: actions/upload-artifact@v3
         with:
-          name: security-results
-          path: security-results.json
+          name: security-report
+          path: './security-report.json'
 
-  # Job 5: Package for Deployment
-  package:
-    name: Package for Deployment
+  # Job 5: Deploy
+  deploy:
+    name: Deploy to ${{ inputs.environment }}
     runs-on: ubuntu-latest
     needs: [test, security-scan]
-    if: |
-      always() && 
-      needs.test.result == 'success' && 
-      (needs.security-scan.result == 'success' || needs.security-scan.result == 'skipped')
+    if: ${{ always() && needs.test.result == 'success' && (needs.security-scan.result == 'success' || inputs.perform-security-scan == false) }}
+    environment: ${{ inputs.environment }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -239,97 +339,71 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: mainframe-build-output
-          path: ./build-output
-      
-      - name: Download Test Results
-        uses: actions/download-artifact@v3
-        with:
-          name: test-results
-          path: ./test-results
-      
-      - name: Download Security Results
-        uses: actions/download-artifact@v3
-        with:
-          name: security-results
-          path: ./security-results
-        continue-on-error: true
-          
-      - name: Generate Deployment Package
-        run: |
-          mkdir -p ./deployment-package
-          cp -r ./build-output/* ./deployment-package/
-          
-          # Create deployment manifest
-          cat > ./deployment-package/manifest.json << EOF
-          {
-            "version": "${{ github.sha }}",
-            "buildTime": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
-            "repository": "${{ github.repository }}",
-            "branch": "${{ github.ref_name }}",
-            "components": {
-              "cobol": $(find ./build-output -name "*.load" | grep -v "pl1" | jq -R -s -c 'split("\n") | map(select(length > 0))'),
-              "pl1": $(find ./build-output -name "*.load" | grep "pl1" | jq -R -s -c 'split("\n") | map(select(length > 0))'),
-              "jcl": $(find ./build-output -name "*.jcl" | jq -R -s -c 'split("\n") | map(select(length > 0))')
-            }
-          }
-          EOF
-      
-      - name: Upload Deployment Package
-        uses: actions/upload-artifact@v3
-        with:
-          name: deployment-package
-          path: ./deployment-package
-
-  # Job 6: Deploy to Environment
-  deploy:
-    name: Deploy to Environment
-    runs-on: ubuntu-latest
-    needs: package
-    environment:
-      name: ${{ inputs.environment }}
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-      
-      - name: Download Deployment Package
-        uses: actions/download-artifact@v3
-        with:
-          name: deployment-package
-          path: ./deployment-package
+          path: './build-output'
       
       - name: Login to Azure
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       
-      - name: AI-Powered Deployment Risk Assessment
-        uses: azure/ai-foundry-risk-assessment@v1
-        with:
-          resource-group: ${{ env.AZURE_RESOURCE_GROUP }}
-          aifoundry-name: ${{ env.AZURE_AIFOUNDRY_NAME }}
-          deployment-package: './deployment-package'
-          target-environment: ${{ inputs.environment }}
-          output-file: 'deployment-risk.json'
-      
-      - name: Deploy to Mainframe
-        uses: mainframe-tools/deploy@v1
+      - name: Setup Deployment Agent
+        uses: mainframe-tools/setup-deployment@v1
         with:
           agent-host: ${{ env.MAINFRAME_AGENT_HOST }}
           agent-port: ${{ env.MAINFRAME_AGENT_PORT }}
           agent-user: ${{ env.MAINFRAME_AGENT_USER }}
           agent-password: ${{ env.MAINFRAME_AGENT_PASSWORD }}
-          deployment-package: './deployment-package'
+          platform: ${{ env.MAINFRAME_PLATFORM }}
           environment: ${{ inputs.environment }}
           deployment-strategy: ${{ inputs.deployment-strategy }}
-          rollback-on-failure: true
+      
+      # Platform-specific deployment steps
+      - name: Deploy to IBM z/OS
+        if: ${{ env.MAINFRAME_PLATFORM == 'zos' }}
+        uses: mainframe-tools/deploy-zos@v1
+        with:
+          build-artifacts: './build-output'
+          deployment-config: './config/deployment/zos-config.json'
+          environment: ${{ inputs.environment }}
+          strategy: ${{ inputs.deployment-strategy }}
+      
+      - name: Deploy to Unisys ClearPath
+        if: ${{ env.MAINFRAME_PLATFORM == 'clearpath' }}
+        uses: mainframe-tools/deploy-clearpath@v1
+        with:
+          build-artifacts: './build-output'
+          deployment-config: './config/deployment/clearpath-config.json'
+          environment: ${{ inputs.environment }}
+          strategy: ${{ inputs.deployment-strategy }}
+      
+      - name: Deploy to Bull GCOS
+        if: ${{ env.MAINFRAME_PLATFORM == 'gcos' }}
+        uses: mainframe-tools/deploy-gcos@v1
+        with:
+          build-artifacts: './build-output'
+          deployment-config: './config/deployment/gcos-config.json'
+          environment: ${{ inputs.environment }}
+          strategy: ${{ inputs.deployment-strategy }}
+      
+      - name: Deploy to NEC ACOS
+        if: ${{ env.MAINFRAME_PLATFORM == 'acos' }}
+        uses: mainframe-tools/deploy-acos@v1
+        with:
+          build-artifacts: './build-output'
+          deployment-config: './config/deployment/acos-config.json'
+          environment: ${{ inputs.environment }}
+          strategy: ${{ inputs.deployment-strategy }}
       
       - name: Verify Deployment
         uses: mainframe-tools/verify-deployment@v1
         with:
-          agent-host: ${{ env.MAINFRAME_AGENT_HOST }}
-          agent-port: ${{ env.MAINFRAME_AGENT_PORT }}
-          agent-user: ${{ env.MAINFRAME_AGENT_USER }}
-          agent-password: ${{ env.MAINFRAME_AGENT_PASSWORD }}
-          deployment-package: './deployment-package'
           environment: ${{ inputs.environment }}
-          verification-tests: './test/verification' 
+          platform: ${{ env.MAINFRAME_PLATFORM }}
+          verification-scripts: './test/verification'
+          report-output: './verification-report.json'
+      
+      - name: Upload Verification Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: verification-report
+          path: './verification-report.json' 

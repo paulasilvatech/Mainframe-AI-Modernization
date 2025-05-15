@@ -1,6 +1,7 @@
 {
   "$schema": "https://schema.azure-ai-foundry.com/mainframe-deployment-v1.0.json",
-  "description": "Mainframe deployment configuration template for IBM z/OS applications",
+  "description": "Mainframe deployment configuration template for multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, NEC ACOS)",
+  "platform": "{{platform}}",
   "deploymentStrategy": {
     "type": "{{deploymentStrategy}}",
     "options": {
@@ -29,11 +30,36 @@
     "development": {
       "mainframeHost": "{{mainframe_dev_host}}",
       "mainframePort": "{{mainframe_dev_port}}",
-      "loadLibrary": "DEV.LOADLIB",
-      "copyLibrary": "DEV.COPYLIB",
-      "jclLibrary": "DEV.PROCLIB",
-      "databaseName": "DEVDB01",
-      "transactionPrefix": "DEV",
+      "platformSpecific": {
+        "zos": {
+          "loadLibrary": "DEV.LOADLIB",
+          "copyLibrary": "DEV.COPYLIB",
+          "jclLibrary": "DEV.PROCLIB",
+          "databaseName": "DEVDB01",
+          "transactionPrefix": "DEV"
+        },
+        "clearpath": {
+          "objectLibrary": "DEV/OBJECTLIB",
+          "sourceLibrary": "DEV/SOURCELIB",
+          "wflLibrary": "DEV/WFLPROC",
+          "databaseName": "DEVDMSII",
+          "transactionPrefix": "DEV"
+        },
+        "gcos": {
+          "objectLibrary": "DEV.OBJLIB",
+          "sourceLibrary": "DEV.SRCLIB",
+          "gclLibrary": "DEV.GCLPROC",
+          "databaseName": "DEVIDSII",
+          "transactionPrefix": "DEV"
+        },
+        "acos": {
+          "objectLibrary": "DEV_OBJLIB",
+          "sourceLibrary": "DEV_SRCLIB",
+          "nclLibrary": "DEV_NCLPROC",
+          "databaseName": "DEVAIMDB",
+          "transactionPrefix": "DEV"
+        }
+      },
       "requiresApproval": false,
       "approvers": [],
       "notifications": {
@@ -44,11 +70,36 @@
     "test": {
       "mainframeHost": "{{mainframe_test_host}}",
       "mainframePort": "{{mainframe_test_port}}",
-      "loadLibrary": "TEST.LOADLIB",
-      "copyLibrary": "TEST.COPYLIB",
-      "jclLibrary": "TEST.PROCLIB",
-      "databaseName": "TESTDB01",
-      "transactionPrefix": "TST",
+      "platformSpecific": {
+        "zos": {
+          "loadLibrary": "TEST.LOADLIB",
+          "copyLibrary": "TEST.COPYLIB",
+          "jclLibrary": "TEST.PROCLIB",
+          "databaseName": "TESTDB01",
+          "transactionPrefix": "TST"
+        },
+        "clearpath": {
+          "objectLibrary": "TEST/OBJECTLIB",
+          "sourceLibrary": "TEST/SOURCELIB",
+          "wflLibrary": "TEST/WFLPROC",
+          "databaseName": "TESTDMSII",
+          "transactionPrefix": "TST"
+        },
+        "gcos": {
+          "objectLibrary": "TEST.OBJLIB",
+          "sourceLibrary": "TEST.SRCLIB",
+          "gclLibrary": "TEST.GCLPROC",
+          "databaseName": "TESTIDSII",
+          "transactionPrefix": "TST"
+        },
+        "acos": {
+          "objectLibrary": "TEST_OBJLIB",
+          "sourceLibrary": "TEST_SRCLIB",
+          "nclLibrary": "TEST_NCLPROC",
+          "databaseName": "TESTAIMDB",
+          "transactionPrefix": "TST"
+        }
+      },
       "requiresApproval": true,
       "approvers": ["test-manager"],
       "notifications": {
@@ -59,11 +110,36 @@
     "staging": {
       "mainframeHost": "{{mainframe_staging_host}}",
       "mainframePort": "{{mainframe_staging_port}}",
-      "loadLibrary": "STAGING.LOADLIB",
-      "copyLibrary": "STAGING.COPYLIB",
-      "jclLibrary": "STAGING.PROCLIB",
-      "databaseName": "STGDB01",
-      "transactionPrefix": "STG",
+      "platformSpecific": {
+        "zos": {
+          "loadLibrary": "STAGING.LOADLIB",
+          "copyLibrary": "STAGING.COPYLIB",
+          "jclLibrary": "STAGING.PROCLIB",
+          "databaseName": "STGDB01",
+          "transactionPrefix": "STG"
+        },
+        "clearpath": {
+          "objectLibrary": "STAGING/OBJECTLIB",
+          "sourceLibrary": "STAGING/SOURCELIB",
+          "wflLibrary": "STAGING/WFLPROC",
+          "databaseName": "STAGINGDMSII",
+          "transactionPrefix": "STG"
+        },
+        "gcos": {
+          "objectLibrary": "STAGING.OBJLIB",
+          "sourceLibrary": "STAGING.SRCLIB",
+          "gclLibrary": "STAGING.GCLPROC",
+          "databaseName": "STAGINGIDSII",
+          "transactionPrefix": "STG"
+        },
+        "acos": {
+          "objectLibrary": "STAGING_OBJLIB",
+          "sourceLibrary": "STAGING_SRCLIB",
+          "nclLibrary": "STAGING_NCLPROC",
+          "databaseName": "STAGINGAIMDB",
+          "transactionPrefix": "STG"
+        }
+      },
       "requiresApproval": true,
       "approvers": ["release-manager", "qa-lead"],
       "notifications": {
@@ -74,11 +150,36 @@
     "production": {
       "mainframeHost": "{{mainframe_prod_host}}",
       "mainframePort": "{{mainframe_prod_port}}",
-      "loadLibrary": "PROD.LOADLIB",
-      "copyLibrary": "PROD.COPYLIB",
-      "jclLibrary": "PROD.PROCLIB",
-      "databaseName": "PRODDB01",
-      "transactionPrefix": "PRD",
+      "platformSpecific": {
+        "zos": {
+          "loadLibrary": "PROD.LOADLIB",
+          "copyLibrary": "PROD.COPYLIB",
+          "jclLibrary": "PROD.PROCLIB",
+          "databaseName": "PRODDB01",
+          "transactionPrefix": "PRD"
+        },
+        "clearpath": {
+          "objectLibrary": "PROD/OBJECTLIB",
+          "sourceLibrary": "PROD/SOURCELIB",
+          "wflLibrary": "PROD/WFLPROC",
+          "databaseName": "PRODDMSII",
+          "transactionPrefix": "PRD"
+        },
+        "gcos": {
+          "objectLibrary": "PROD.OBJLIB",
+          "sourceLibrary": "PROD.SRCLIB",
+          "gclLibrary": "PROD.GCLPROC",
+          "databaseName": "PRODIDSII",
+          "transactionPrefix": "PRD"
+        },
+        "acos": {
+          "objectLibrary": "PROD_OBJLIB",
+          "sourceLibrary": "PROD_SRCLIB",
+          "nclLibrary": "PROD_NCLPROC",
+          "databaseName": "PRODAIMDB",
+          "transactionPrefix": "PRD"
+        }
+      },
       "requiresApproval": true,
       "approvers": ["release-manager", "operations-lead", "business-owner"],
       "notifications": {
@@ -92,32 +193,104 @@
     }
   },
   "components": {
-    "cobol": {
-      "deploymentType": "load-module",
-      "sourceExtension": ".cbl",
-      "objectExtension": ".load",
-      "verificationMethod": "runtime-test"
+    "zos": {
+      "cobol": {
+        "deploymentType": "load-module",
+        "sourceExtension": ".cbl",
+        "objectExtension": ".load",
+        "verificationMethod": "runtime-test"
+      },
+      "pli": {
+        "deploymentType": "load-module",
+        "sourceExtension": ".pli",
+        "objectExtension": ".load",
+        "verificationMethod": "runtime-test"
+      },
+      "jcl": {
+        "deploymentType": "procedure",
+        "sourceExtension": ".jcl",
+        "verificationMethod": "syntax-check"
+      },
+      "copybook": {
+        "deploymentType": "source",
+        "sourceExtension": ".cpy",
+        "verificationMethod": "reference-check"
+      },
+      "dclgen": {
+        "deploymentType": "source",
+        "sourceExtension": ".dclgen",
+        "verificationMethod": "reference-check"
+      }
     },
-    "pli": {
-      "deploymentType": "load-module",
-      "sourceExtension": ".pli",
-      "objectExtension": ".load",
-      "verificationMethod": "runtime-test"
+    "clearpath": {
+      "cobol": {
+        "deploymentType": "object-code",
+        "sourceExtension": ".cob",
+        "objectExtension": ".o",
+        "verificationMethod": "runtime-test"
+      },
+      "algol": {
+        "deploymentType": "object-code",
+        "sourceExtension": ".alg",
+        "objectExtension": ".o",
+        "verificationMethod": "runtime-test"
+      },
+      "wfl": {
+        "deploymentType": "procedure",
+        "sourceExtension": ".wfl",
+        "verificationMethod": "syntax-check"
+      },
+      "copybook": {
+        "deploymentType": "source",
+        "sourceExtension": ".cpy",
+        "verificationMethod": "reference-check"
+      },
+      "dmsdl": {
+        "deploymentType": "source",
+        "sourceExtension": ".dmsdl",
+        "verificationMethod": "reference-check"
+      }
     },
-    "jcl": {
-      "deploymentType": "procedure",
-      "sourceExtension": ".jcl",
-      "verificationMethod": "syntax-check"
+    "gcos": {
+      "cobol": {
+        "deploymentType": "object-code",
+        "sourceExtension": ".cob",
+        "objectExtension": ".obj",
+        "verificationMethod": "runtime-test"
+      },
+      "gcl": {
+        "deploymentType": "procedure",
+        "sourceExtension": ".gcl",
+        "verificationMethod": "syntax-check"
+      },
+      "copybook": {
+        "deploymentType": "source",
+        "sourceExtension": ".cpy",
+        "verificationMethod": "reference-check"
+      }
     },
-    "copybook": {
-      "deploymentType": "source",
-      "sourceExtension": ".cpy",
-      "verificationMethod": "reference-check"
-    },
-    "dclgen": {
-      "deploymentType": "source",
-      "sourceExtension": ".dclgen",
-      "verificationMethod": "reference-check"
+    "acos": {
+      "cobol": {
+        "deploymentType": "object-code",
+        "sourceExtension": ".cob",
+        "objectExtension": ".obj",
+        "verificationMethod": "runtime-test"
+      },
+      "ncl": {
+        "deploymentType": "procedure",
+        "sourceExtension": ".ncl",
+        "verificationMethod": "syntax-check"
+      },
+      "copybook": {
+        "deploymentType": "source",
+        "sourceExtension": ".cpy",
+        "verificationMethod": "reference-check"
+      },
+      "aimdefs": {
+        "deploymentType": "source",
+        "sourceExtension": ".aim",
+        "verificationMethod": "reference-check"
+      }
     }
   },
   "verificationTests": {
@@ -167,10 +340,30 @@
     "vulnerabilityThreshold": "medium",
     "complianceChecks": ["PCI-DSS", "HIPAA", "SOX"],
     "securityGroups": {
-      "development": ["DEV-ACCESS"],
-      "test": ["TEST-ACCESS"],
-      "staging": ["STAGING-ACCESS"],
-      "production": ["PROD-ACCESS", "PROD-ADMIN"]
+      "zos": {
+        "development": ["Z-DEV-ACCESS"],
+        "test": ["Z-TEST-ACCESS"],
+        "staging": ["Z-STAGING-ACCESS"],
+        "production": ["Z-PROD-ACCESS", "Z-PROD-ADMIN"]
+      },
+      "clearpath": {
+        "development": ["CP-DEV-ACCESS"],
+        "test": ["CP-TEST-ACCESS"],
+        "staging": ["CP-STAGING-ACCESS"],
+        "production": ["CP-PROD-ACCESS", "CP-PROD-ADMIN"]
+      },
+      "gcos": {
+        "development": ["G-DEV-ACCESS"],
+        "test": ["G-TEST-ACCESS"],
+        "staging": ["G-STAGING-ACCESS"],
+        "production": ["G-PROD-ACCESS", "G-PROD-ADMIN"]
+      },
+      "acos": {
+        "development": ["A-DEV-ACCESS"],
+        "test": ["A-TEST-ACCESS"],
+        "staging": ["A-STAGING-ACCESS"],
+        "production": ["A-PROD-ACCESS", "A-PROD-ADMIN"]
+      }
     }
   },
   "monitoring": {
@@ -203,6 +396,24 @@
       "enabled": true,
       "sensitivity": "medium",
       "learningPeriod": 7
+    },
+    "platformSpecificConfiguration": {
+      "zos": {
+        "codeAnalysisTechniques": ["static", "runtime"],
+        "transformationStrategies": ["rehost", "refactor", "rearchitect"]
+      },
+      "clearpath": {
+        "codeAnalysisTechniques": ["static", "runtime"],
+        "transformationStrategies": ["rehost", "refactor", "rearchitect"]
+      },
+      "gcos": {
+        "codeAnalysisTechniques": ["static", "runtime"],
+        "transformationStrategies": ["rehost", "refactor", "replace"]
+      },
+      "acos": {
+        "codeAnalysisTechniques": ["static", "runtime"],
+        "transformationStrategies": ["rehost", "refactor", "rearchitect"]
+      }
     }
   }
 } 

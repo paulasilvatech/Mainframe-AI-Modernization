@@ -20,7 +20,7 @@ Before setting up z/OS integration with Azure AI Foundry, ensure you have:
 | z/OSMF | z/OS Management Facility (if using RESTful API integration) |
 | Git on z/OS | Optional but recommended for source control integration |
 
-## Integration Architecture Overview
+### 1.2 Integration Architecture Overview
 
 The following diagram illustrates the key components involved in the z/OS integration architecture:
 
@@ -57,13 +57,13 @@ The following diagram illustrates the key components involved in the z/OS integr
 └─────────────────────────┘                   └──────────────────────────┘
 ```
 
-## Integration Component Setup
+### 1.3 Integration Component Setup
 
-### 1. IBM z/OS Connect Enterprise Edition
+#### 1.3.1 IBM z/OS Connect Enterprise Edition
 
 IBM z/OS Connect EE serves as a primary integration point for RESTful API access to z/OS services.
 
-#### Installation Procedure
+**Installation Procedure**
 
 1. **Prepare JCL for Installation**
 
@@ -135,7 +135,7 @@ IBM z/OS Connect EE serves as a primary integration point for RESTful API access
 }
 ```
 
-#### Security Configuration
+**Security Configuration**
 
 1. **Configure SAF-based Authentication**
 
@@ -166,9 +166,9 @@ PERMIT BBGZDFLT.ZOSCONNECT.APIREQUESTER CLASS(FACILITY) ID(ZCSAPIREQ) ACCESS(REA
 SETROPTS RACLIST(FACILITY) REFRESH
 ```
 
-### 2. IBM MQ Integration
+#### 1.3.2 IBM MQ Integration
 
-#### MQ Channel Configuration
+**MQ Channel Configuration**
 
 1. **Create MQ QMgr Definition**
 
@@ -200,9 +200,9 @@ DEFINE QLOCAL(AZURE.RESPONSE.QUEUE) MAXDEPTH(999999999)
 DEFINE QLOCAL(AZURE.BACKOUT.QUEUE) MAXDEPTH(999999999)
 ```
 
-#### Azure-Side Integration
+**Azure-Side Integration**
 
-1. **Create Azure Logic App Connector**
+1. **Create Azure Logic App Connector for IBM MQ**
 
 ```json
 {
@@ -255,156 +255,70 @@ DEFINE QLOCAL(AZURE.BACKOUT.QUEUE) MAXDEPTH(999999999)
         "type": "string",
         "uiDefinition": {
           "displayName": "Queue Name",
-          "description": "The name of the queue to use",
-          "tooltip": "Provide the MQ Queue name",
+          "tooltip": "The queue name to connect to",
           "constraints": {
             "required": "true"
           }
         }
       },
-      "username": {
-        "type": "securestring",
-        "uiDefinition": {
-          "displayName": "Username",
-          "tooltip": "The username to authenticate to MQ (if needed)",
-          "constraints": {
-            "required": "false"
+      "authentication": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["Basic", "None"],
+            "default": "Basic"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "securestring"
           }
-        }
-      },
-      "password": {
-        "type": "securestring",
-        "uiDefinition": {
-          "displayName": "Password",
-          "tooltip": "The password to authenticate to MQ (if needed)",
-          "constraints": {
-            "required": "false"
-          }
-        }
+        },
+        "required": ["type"]
       }
     }
   }
 }
 ```
 
-### 3. Connect:Direct Integration
+#### 1.3.3 TN3270 Integration
 
-#### z/OS Setup
+**Host Configuration**
 
-1. **Configure Connect:Direct Secure Plus**
+1. **Configure TN3270 Server**
 
-```
-set secure.pnode=yes
-set secure.parameters=(TLSV12,CIPHER64)
-set secure.dsn=CD.SECURE.PARMS
-```
-
-2. **Create Process to Transfer Files**
+Here is a sample TN3270 server configuration:
 
 ```
-PROCESS AZURE_FILE_TRANSFER
-  SNODE=AZURE_NODE
-  STEP01 COPY FROM (
-    PNODE
-    DSN=PROD.CUSTOMER.EXTRACT
-    DISP=SHR
-  ) TO (
-    SNODE
-    FILE=/inbound/customer/extract.dat
-    DISP=REPLACE
-  )
-  PEND
-```
+TELNETPARMS
+  PORT 23
+  SECUREPORT 992
+  KEYRING TCPIP/TELNET
+  INACTIVE 0
+  TIMEMARK 600
+  SCANINTERVAL 120
+  FULLDATATRACE
+  SMFINIT 0  SMFTERM 0
+  SNAEXT
+  MSG07
+ENDTELNETPARMS
 
-#### Azure Integration Setup
+BEGINVTAM
+  PORT 23 992
+  DEFAULTLUS
+    TCP00001..TCP99999
+  ENDDEFAULTLUS
 
-1. **Azure Storage Account Configuration**
+  DEFAULTAPPL TSO
 
-   Create a dedicated storage account for mainframe file transfers:
-   - Name: stmainframeintegration
-   - Performance: Standard
-   - Replication: ZRS (Zone-redundant storage)
-   - Access tier: Hot
-   - Enable secure transfer
-   - Deploy in the same region as your Azure AI Foundry resources
+  ALLOWAPPL TSO* DISCONNECTABLE
+  ALLOWAPPL CICS* DISCONNECTABLE
+  ALLOWAPPL IMS* DISCONNECTABLE
 
-2. **Azure Logic App for File Processing**
-
-```json
-{
-  "definition": {
-    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "triggers": {
-      "When_a_blob_is_added_or_modified": {
-        "type": "ApiConnection",
-        "inputs": {
-          "host": {
-            "connection": {
-              "name": "@parameters('$connections')['azureblob']['connectionId']"
-            }
-          },
-          "method": "get",
-          "path": "/datasets/default/triggers/batch/onupdatedfile",
-          "queries": {
-            "folderId": "/inbound/customer",
-            "maxFileCount": 10
-          }
-        },
-        "recurrence": {
-          "frequency": "Minute",
-          "interval": 5
-        },
-        "splitOn": "@triggerBody()",
-        "metadata": {
-          "JTF_DESIGNER_SPLITON_EXPRESSION": "@triggerBody()"
-        }
-      }
-    },
-    "actions": {
-      "Process_Mainframe_File": {
-        "type": "Function",
-        "inputs": {
-          "function": {
-            "id": "[resourceId('Microsoft.Web/sites/functions', variables('functionAppName'), 'ProcessMainframeFile')]"
-          },
-          "body": {
-            "blobName": "@triggerBody()?['Name']",
-            "containerName": "inbound"
-          }
-        },
-        "runAfter": {}
-      }
-    }
-  }
-}
-```
-
-### 4. TN3270 Integration
-
-#### Installation and Configuration
-
-1. **IBM Host On-Demand Configuration**
-
-```xml
-<HOD-Config version="9.5">
-  <SessionList>
-    <Session name="CICS Production" type="Display">
-      <Property name="HostName" value="mainframe.example.com"/>
-      <Property name="Port" value="23"/>
-      <Property name="HostCodePage" value="037"/>
-      <Property name="SecurityType" value="TLS"/>
-      <Property name="ConnectionType" value="TN3270"/>
-      <Property name="MacroPath" value="/macros"/>
-      <AutoSignOn>
-        <Property name="UserId" value="${userid}"/>
-        <Property name="Password" value="${password}"/>
-        <Property name="InitialCommand" value="CESN"/>
-      </AutoSignOn>
-    </Session>
-  </SessionList>
-</HOD-Config>
+  USSTCP USSTTCP1
+ENDVTAM
 ```
 
 2. **Automation Macro Configuration**
@@ -441,7 +355,7 @@ function inquireCustomer(customerId) {
 }
 ```
 
-#### Azure Integration
+**Azure Integration**
 
 1. **Azure Function App for TN3270 Integration**
 
@@ -535,9 +449,9 @@ public static class TN3270Integration
 }
 ```
 
-### 5. DB2 Direct Integration
+#### 1.3.4 DB2 Direct Integration
 
-#### z/OS Configuration
+**z/OS Configuration**
 
 1. **Configure DB2 Distributed Data Facility (DDF)**
 
@@ -585,7 +499,7 @@ BEGIN
 END;
 ```
 
-#### Azure Integration
+**Azure Integration**
 
 1. **Configure Azure Key Vault for Credentials**
 
@@ -703,7 +617,7 @@ public static class DB2Integration
 }
 ```
 
-## End-to-End Testing
+### 1.4 End-to-End Testing
 
 After configuring the integration components, perform end-to-end testing:
 
@@ -735,7 +649,7 @@ amqsget AZURE.RESPONSE.QUEUE MQ01
 cd /submit,proc=AZURE_FILE_TRANSFER
 ```
 
-## Troubleshooting
+### 1.5 Troubleshooting
 
 | Issue | Diagnostic Steps | Resolution |
 |-------|-----------------|------------|
@@ -744,7 +658,7 @@ cd /submit,proc=AZURE_FILE_TRANSFER
 | File Transfer Failures | Check Connect:Direct logs<br>Verify storage permissions<br>Check network connectivity | Fix process definitions<br>Update Azure Storage permissions<br>Test network path |
 | DB2 Connection Timeouts | Review DB2 connection limits<br>Check thread usage<br>Verify network latency | Increase MAXDBAT parameter<br>Optimize queries<br>Implement connection pooling |
 
-## Performance Optimization
+### 1.6 Performance Optimization
 
 1. **Connection Pooling**
    - Implement DB2 connection pooling in Azure Functions
@@ -760,12 +674,6 @@ cd /submit,proc=AZURE_FILE_TRANSFER
    - Implement Azure Redis Cache for frequently accessed data
    - Configure API Management caching policies
    - Use Azure Front Door for edge caching
-
-## Next Steps
-
-After completing the IBM z/OS integration setup, proceed to:
-- [GitHub & Azure DevOps Integration](05-devops-integration.md) to set up continuous integration and deployment
-- [AI-Powered Code Analysis](../05-code-analysis/README.md) to analyze your mainframe codebase 
 
 ## 2. Unisys ClearPath Integration
 
