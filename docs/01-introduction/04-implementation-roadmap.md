@@ -2,6 +2,8 @@
 
 This document provides a comprehensive implementation roadmap for Azure AI Foundry with various mainframe environments (IBM z/OS, Unisys ClearPath, Bull GCOS, NEC ACOS). It outlines the step-by-step process, technical considerations, and best practices for a successful implementation.
 
+For a detailed comparison of traditional mainframe environments versus modern Azure environments, see the [Modernization Comparison](modernization-comparison.md) document.
+
 ## Implementation Phases
 
 The implementation of Azure AI Foundry follows a structured approach with defined phases:

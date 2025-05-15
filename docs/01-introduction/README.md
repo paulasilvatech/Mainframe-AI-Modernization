@@ -19,6 +19,7 @@ This chapter covers the following introductory topics:
 | [Mainframe Integration Setup](04-platform-integration.md) | Detailed setup instructions for various mainframe platform integrations |
 | [GitHub & Azure DevOps Integration](05-devops-integration.md) | Setup instructions for GitHub and Azure DevOps integration |
 | [Implementation Roadmap](04-implementation-roadmap.md) | Phased approach to implementing mainframe modernization with Azure AI Foundry |
+| [Modernization Comparison](modernization-comparison.md) | Before and after comparison of traditional mainframe and modern cloud environments |
 
 ## 🎯 Objectives
 

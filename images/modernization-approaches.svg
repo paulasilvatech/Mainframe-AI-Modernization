@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1000" height="700" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <style>
+    .box {
+      fill: #f0f6ff;
+      stroke: #0078d4;
+      stroke-width: 2;
+      rx: 8;
+      ry: 8;
+    }
+    .header {
+      fill: #0078d4;
+      stroke: #0078d4;
+      stroke-width: 1;
+      rx: 8;
+      ry: 8;
+    }
+    .rehost-box {
+      fill: #e3f2fd;
+      stroke: #2196f3;
+      stroke-width: 1.5;
+      rx: 6;
+      ry: 6;
+    }
+    .refactor-box {
+      fill: #e8f5e9;
+      stroke: #4caf50;
+      stroke-width: 1.5;
+      rx: 6;
+      ry: 6;
+    }
+    .rearchitect-box {
+      fill: #fff3e0;
+      stroke: #ff9800;
+      stroke-width: 1.5;
+      rx: 6;
+      ry: 6;
+    }
+    .replace-box {
+      fill: #f3e5f5;
+      stroke: #9c27b0;
+      stroke-width: 1.5;
+      rx: 6;
+      ry: 6;
+    }
+    .hybrid-box {
+      fill: #e0f7fa;
+      stroke: #00bcd4;
+      stroke-width: 1.5;
+      rx: 6;
+      ry: 6;
+    }
+    .rehost-header {
+      fill: #2196f3;
+      stroke: #2196f3;
+      stroke-width: 1;
+      rx: 6;
+      ry: 6;
+    }
+    .refactor-header {
+      fill: #4caf50;
+      stroke: #4caf50;
+      stroke-width: 1;
+      rx: 6;
+      ry: 6;
+    }
+    .rearchitect-header {
+      fill: #ff9800;
+      stroke: #ff9800;
+      stroke-width: 1;
+      rx: 6;
+      ry: 6;
+    }
+    .replace-header {
+      fill: #9c27b0;
+      stroke: #9c27b0;
+      stroke-width: 1;
+      rx: 6;
+      ry: 6;
+    }
+    .hybrid-header {
+      fill: #00bcd4;
+      stroke: #00bcd4;
+      stroke-width: 1;
+      rx: 6;
+      ry: 6;
+    }
+    .arrow {
+      stroke: #0078d4;
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+    .dashed-box {
+      fill: none;
+      stroke: #666;
+      stroke-width: 1.5;
+      stroke-dasharray: 5,3;
+      rx: 4;
+      ry: 4;
+    }
+    .micro-box {
+      fill: #ffffff;
+      stroke: #666;
+      stroke-width: 1;
+      rx: 3;
+      ry: 3;
+    }
+    .text-title {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      fill: #333;
+      text-anchor: middle;
+    }
+    .text-subtitle {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 16px;
+      fill: #666;
+      text-anchor: middle;
+    }
+    .header-text {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      fill: white;
+      text-anchor: middle;
+    }
+    .strategy-title {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      fill: #333;
+      text-anchor: middle;
+    }
+    .strategy-subtitle {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 14px;
+      fill: #666;
+      text-anchor: middle;
+    }
+    .item-text {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 12px;
+      fill: #333;
+      text-anchor: middle;
+    }
+    .attribute-text {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      fill: #333;
+      text-anchor: middle;
+    }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0078d4" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="500" y="40" class="text-title">Mainframe Modernization Approaches</text>
+  <text x="500" y="65" class="text-subtitle">Azure AI Foundry-Powered Transformation Strategies</text>
+  
+  <!-- Rehost (Lift and Shift) -->
+  <rect x="40" y="100" width="170" height="530" class="rehost-box" />
+  <rect x="40" y="100" width="170" height="40" class="rehost-header" />
+  <text x="125" y="125" class="header-text">REHOST</text>
+  <text x="125" y="155" class="strategy-subtitle">"Lift and Shift"</text>
+  
+  <!-- Rehost Diagram -->
+  <rect x="60" y="180" width="130" height="120" class="dashed-box" />
+  <rect x="70" y="195" width="110" height="90" fill="#dddddd" stroke="#666" />
+  <text x="125" y="240" class="item-text">Mainframe</text>
+  <text x="125" y="255" class="item-text">Application</text>
+  
+  <path d="M 125 300 L 125 330" class="arrow" />
+  
+  <rect x="60" y="330" width="130" height="120" class="dashed-box" />
+  <rect x="70" y="345" width="110" height="90" fill="#e6f0ff" stroke="#0078d4" />
+  <text x="125" y="390" class="item-text">Emulated</text>
+  <text x="125" y="405" class="item-text">Environment</text>
+  
+  <!-- Rehost Attributes -->
+  <text x="125" y="480" class="attribute-text">ATTRIBUTES:</text>
+  <text x="125" y="500" class="item-text">• Minimal Code Changes</text>
+  <text x="125" y="520" class="item-text">• Fastest Timeline</text>
+  <text x="125" y="540" class="item-text">• Lowest Initial Cost</text>
+  <text x="125" y="560" class="item-text">• Limited Cloud Benefits</text>
+  <text x="125" y="580" class="item-text">• Temporary Solution</text>
+  <text x="125" y="600" class="item-text">• Legacy Skill Retention</text>
+  
+  <!-- Refactor (Code Transformation) -->
+  <rect x="230" y="100" width="170" height="530" class="refactor-box" />
+  <rect x="230" y="100" width="170" height="40" class="refactor-header" />
+  <text x="315" y="125" class="header-text">REFACTOR</text>
+  <text x="315" y="155" class="strategy-subtitle">"Code Transformation"</text>
+  
+  <!-- Refactor Diagram -->
+  <rect x="250" y="180" width="130" height="120" class="dashed-box" />
+  <text x="315" y="200" class="item-text">COBOL/PL/I Code</text>
+  <rect x="260" y="210" width="110" height="80" fill="#dddddd" stroke="#666" />
+  <text x="315" y="240" style="font-family: monospace; font-size: 10px; fill: #333; text-anchor: middle;">PERFORM UNTIL</text>
+  <text x="315" y="254" style="font-family: monospace; font-size: 10px; fill: #333; text-anchor: middle;">MOVE A TO B</text>
+  <text x="315" y="268" style="font-family: monospace; font-size: 10px; fill: #333; text-anchor: middle;">COMPUTE X = Y + Z</text>
+  
+  <path d="M 315 300 L 315 330" class="arrow" />
+  
+  <rect x="250" y="330" width="130" height="120" class="dashed-box" />
+  <text x="315" y="350" class="item-text">Modern Code</text>
+  <rect x="260" y="360" width="110" height="80" fill="#e6f0ff" stroke="#0078d4" />
+  <text x="315" y="390" style="font-family: monospace; font-size: 10px; fill: #333; text-anchor: middle;">while (condition) {</text>
+  <text x="315" y="404" style="font-family: monospace; font-size: 10px; fill: #333; text-anchor: middle;">  b = a;</text>
+  <text x="315" y="418" style="font-family: monospace; font-size: 10px; fill: #333; text-anchor: middle;">  x = y + z;</text>
+  <text x="315" y="432" style="font-family: monospace; font-size: 10px; fill: #333; text-anchor: middle;">}</text>
+  
+  <!-- Refactor Attributes -->
+  <text x="315" y="480" class="attribute-text">ATTRIBUTES:</text>
+  <text x="315" y="500" class="item-text">• Preserves Business Logic</text>
+  <text x="315" y="520" class="item-text">• Moderate Timeline</text>
+  <text x="315" y="540" class="item-text">• Medium Investment</text>
+  <text x="315" y="560" class="item-text">• Modern Language Benefits</text>
+  <text x="315" y="580" class="item-text">• Same Application Structure</text>
+  <text x="315" y="600" class="item-text">• Maintenance Improvements</text>
+  
+  <!-- Rearchitect (Microservices) -->
+  <rect x="420" y="100" width="170" height="530" class="rearchitect-box" />
+  <rect x="420" y="100" width="170" height="40" class="rearchitect-header" />
+  <text x="505" y="125" class="header-text">REARCHITECT</text>
+  <text x="505" y="155" class="strategy-subtitle">"Microservices Transformation"</text>
+  
+  <!-- Rearchitect Diagram -->
+  <rect x="440" y="180" width="130" height="120" class="dashed-box" />
+  <rect x="450" y="195" width="110" height="90" fill="#dddddd" stroke="#666" />
+  <text x="505" y="240" class="item-text">Monolithic</text>
+  <text x="505" y="255" class="item-text">Application</text>
+  
+  <path d="M 505 300 L 505 330" class="arrow" />
+  
+  <rect x="440" y="330" width="130" height="120" class="dashed-box" />
+  
+  <rect x="450" y="345" width="30" height="30" fill="#e6f0ff" stroke="#0078d4" rx="3" ry="3" />
+  <rect x="490" y="345" width="30" height="30" fill="#e6f0ff" stroke="#0078d4" rx="3" ry="3" />
+  <rect x="530" y="345" width="30" height="30" fill="#e6f0ff" stroke="#0078d4" rx="3" ry="3" />
+  
+  <rect x="450" y="385" width="30" height="30" fill="#e6f0ff" stroke="#0078d4" rx="3" ry="3" />
+  <rect x="490" y="385" width="30" height="30" fill="#e6f0ff" stroke="#0078d4" rx="3" ry="3" />
+  <rect x="530" y="385" width="30" height="30" fill="#e6f0ff" stroke="#0078d4" rx="3" ry="3" />
+  
+  <rect x="450" y="425" width="30" height="30" fill="#e6f0ff" stroke="#0078d4" rx="3" ry="3" />
+  <rect x="490" y="425" width="30" height="30" fill="#e6f0ff" stroke="#0078d4" rx="3" ry="3" />
+  <rect x="530" y="425" width="30" height="30" fill="#e6f0ff" stroke="#0078d4" rx="3" ry="3" />
+  
+  <path d="M 460 345 L 490 385" stroke="#0078d4" stroke-width="1" />
+  <path d="M 505 345 L 530 385" stroke="#0078d4" stroke-width="1" />
+  <path d="M 460 385 L 490 425" stroke="#0078d4" stroke-width="1" />
+  <path d="M 505 385 L 460 425" stroke="#0078d4" stroke-width="1" />
+  <path d="M 530 385 L 505 425" stroke="#0078d4" stroke-width="1" />
+  <path d="M 490 345 L 530 345" stroke="#0078d4" stroke-width="1" />
+  
+  <!-- Rearchitect Attributes -->
+  <text x="505" y="480" class="attribute-text">ATTRIBUTES:</text>
+  <text x="505" y="500" class="item-text">• Decomposed Architecture</text>
+  <text x="505" y="520" class="item-text">• Longer Timeline</text>
+  <text x="505" y="540" class="item-text">• Higher Investment</text>
+  <text x="505" y="560" class="item-text">• Full Cloud-Native Benefits</text>
+  <text x="505" y="580" class="item-text">• Service-Oriented Design</text>
+  <text x="505" y="600" class="item-text">• Scalable Components</text>
+  
+  <!-- Replace (New Implementation) -->
+  <rect x="610" y="100" width="170" height="530" class="replace-box" />
+  <rect x="610" y="100" width="170" height="40" class="replace-header" />
+  <text x="695" y="125" class="header-text">REPLACE</text>
+  <text x="695" y="155" class="strategy-subtitle">"New Implementation"</text>
+  
+  <!-- Replace Diagram -->
+  <rect x="630" y="180" width="130" height="120" class="dashed-box" />
+  <rect x="640" y="195" width="110" height="90" fill="#dddddd" stroke="#666" />
+  <text x="695" y="240" class="item-text">Legacy</text>
+  <text x="695" y="255" class="item-text">System</text>
+  
+  <path d="M 695 300 L 695 330" class="arrow" />
+  
+  <rect x="630" y="330" width="130" height="120" class="dashed-box" />
+  <rect x="640" y="345" width="110" height="90" fill="#e6f0ff" stroke="#0078d4" />
+  <text x="695" y="390" class="item-text">New System</text>
+  <text x="695" y="405" class="item-text">(SaaS/COTS/Custom)</text>
+  
+  <!-- Replace Attributes -->
+  <text x="695" y="480" class="attribute-text">ATTRIBUTES:</text>
+  <text x="695" y="500" class="item-text">• Complete Reimplementation</text>
+  <text x="695" y="520" class="item-text">• Variable Timeline</text>
+  <text x="695" y="540" class="item-text">• Highest Investment</text>
+  <text x="695" y="560" class="item-text">• Optimized Functionality</text>
+  <text x="695" y="580" class="item-text">• Zero Technical Debt</text>
+  <text x="695" y="600" class="item-text">• Modern Capabilities</text>
+  
+  <!-- Hybrid (Incremental Transformation) -->
+  <rect x="800" y="100" width="170" height="530" class="hybrid-box" />
+  <rect x="800" y="100" width="170" height="40" class="hybrid-header" />
+  <text x="885" y="125" class="header-text">HYBRID</text>
+  <text x="885" y="155" class="strategy-subtitle">"Incremental Transformation"</text>
+  
+  <!-- Hybrid Diagram -->
+  <rect x="820" y="180" width="130" height="40" fill="#dddddd" stroke="#666" />
+  <text x="885" y="205" class="item-text">Legacy Component A</text>
+  
+  <rect x="820" y="230" width="130" height="40" fill="#e6f0ff" stroke="#0078d4" />
+  <text x="885" y="255" class="item-text">Modernized Component A</text>
+  
+  <rect x="820" y="280" width="130" height="40" fill="#dddddd" stroke="#666" />
+  <text x="885" y="305" class="item-text">Legacy Component B</text>
+  
+  <rect x="820" y="330" width="130" height="40" fill="#e6f0ff" stroke="#0078d4" />
+  <text x="885" y="355" class="item-text">Modernized Component B</text>
+  
+  <rect x="820" y="380" width="130" height="40" fill="#dddddd" stroke="#666" />
+  <text x="885" y="405" class="item-text">Legacy Component C</text>
+  
+  <rect x="820" y="440" width="65" height="20" fill="#e3f2fd" stroke="#2196f3" />
+  <text x="852" y="455" class="item-text" style="font-size: 10px;">Rehost</text>
+  
+  <rect x="885" y="440" width="65" height="20" fill="#e8f5e9" stroke="#4caf50" />
+  <text x="917" y="455" class="item-text" style="font-size: 10px;">Refactor</text>
+  
+  <rect x="820" y="460" width="65" height="20" fill="#fff3e0" stroke="#ff9800" />
+  <text x="852" y="475" class="item-text" style="font-size: 10px;">Rearchitect</text>
+  
+  <rect x="885" y="460" width="65" height="20" fill="#f3e5f5" stroke="#9c27b0" />
+  <text x="917" y="475" class="item-text" style="font-size: 10px;">Replace</text>
+  
+  <!-- Hybrid Attributes -->
+  <text x="885" y="510" class="attribute-text">ATTRIBUTES:</text>
+  <text x="885" y="530" class="item-text">• Phased Implementation</text>
+  <text x="885" y="550" class="item-text">• Flexible Approach</text>
+  <text x="885" y="570" class="item-text">• Risk Mitigation</text>
+  <text x="885" y="590" class="item-text">• Incremental Value</text>
+  <text x="885" y="610" class="item-text">• Strategy Combination</text>
+  
+  <!-- Risk vs. Value Legend -->
+  <rect x="270" y="655" width="460" height="35" rx="5" ry="5" fill="#f9f9f9" stroke="#666" stroke-width="1" />
+  <text x="310" y="678" class="item-text" style="font-weight: bold;">Lower Risk</text>
+  <text x="500" y="678" class="item-text" style="font-weight: bold;">RISK VS. BUSINESS VALUE SPECTRUM</text>
+  <text x="690" y="678" class="item-text" style="font-weight: bold;">Higher Value</text>
+  
+  <!-- Arrow connecting the spectrum -->
+  <path d="M 310 685 L 690 685" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+</svg> 

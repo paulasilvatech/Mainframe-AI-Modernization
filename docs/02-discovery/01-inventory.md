@@ -4,6 +4,8 @@
 
 This document outlines the technical process for creating a comprehensive inventory of mainframe applications and components across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS) using Azure AI Foundry.
 
+For detailed information on the differences between these mainframe platforms, see the [Platform Comparison](platform-comparison.md) document.
+
 ## Inventory Objectives
 
 The inventory process has these technical objectives:

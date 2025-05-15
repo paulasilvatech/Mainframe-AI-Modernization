@@ -6,6 +6,10 @@
 
 This document outlines the comprehensive strategy for mainframe modernization across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS) using Azure AI Foundry.
 
+<div align="center">
+  <img src="../../images/modernization-approaches.svg" alt="Modernization Approaches" width="900" style="background-color: white; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" />
+</div>
+
 ## Overview
 
 Mainframe modernization requires a carefully planned strategy that balances technical feasibility, business value, and risk mitigation. Azure AI Foundry provides AI-powered capabilities to accelerate and de-risk your modernization journey. This guide presents different modernization strategies and helps you select the approach that best fits your organization's needs.
