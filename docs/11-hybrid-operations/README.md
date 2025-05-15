@@ -90,14 +90,21 @@ graph TD
 
 **Diagram**:
 ```mermaid
-graph TD
-    SVL["Service Virtualization Layer"] 
+flowchart TD
+    client[Client Applications] --> svl
     
-    MSI["Mainframe Service\nImplementation"]
-    CSI["Cloud Service\nImplementation"]
+    subgraph svl["Service Virtualization Layer"]
+        api[API Gateway] --> router[Request Router]
+        router --> registry[Service Registry]
+        registry --> router
+        router --> featflags[Feature Flags]
+    end
     
-    SVL --> MSI
-    SVL --> CSI
+    router --> msi[Mainframe Service\nImplementation]:::mainframe
+    router --> csi[Cloud Service\nImplementation]:::cloud
+    
+    classDef mainframe fill:#0066cc,color:white
+    classDef cloud fill:#00cc66,color:white
 ```
 
 ### 3. Data Synchronization
@@ -148,36 +155,33 @@ graph TD
 
 **Diagram**:
 ```mermaid
-graph TD
-    subgraph "Traffic Distribution During Progressive Migration"
-        subgraph "Phase 1: 90% Mainframe, 10% Cloud"
-            P1M["Mainframe: 90%"]
-            P1C["Cloud: 10%"]
-            style P1M fill:#0066cc,color:white,width:270px
-            style P1C fill:#00cc66,color:white,width:30px
-        end
-        
-        subgraph "Phase 2: 70% Mainframe, 30% Cloud"
-            P2M["Mainframe: 70%"]
-            P2C["Cloud: 30%"]
-            style P2M fill:#0066cc,color:white,width:210px
-            style P2C fill:#00cc66,color:white,width:90px
-        end
-        
-        subgraph "Phase 3: 40% Mainframe, 60% Cloud"
-            P3M["Mainframe: 40%"]
-            P3C["Cloud: 60%"]
-            style P3M fill:#0066cc,color:white,width:120px
-            style P3C fill:#00cc66,color:white,width:180px
-        end
-        
-        subgraph "Phase 4: 10% Mainframe, 90% Cloud"
-            P4M["Mainframe: 10%"]
-            P4C["Cloud: 90%"]
-            style P4M fill:#0066cc,color:white,width:30px
-            style P4C fill:#00cc66,color:white,width:270px
-        end
+flowchart TD
+    title["Traffic Distribution During Progressive Migration"]
+    
+    subgraph phase1["Phase 1"]
+        p1m["Mainframe: 90%"]:::mainframe
+        p1c["Cloud: 10%"]:::cloud
     end
+    
+    subgraph phase2["Phase 2"]
+        p2m["Mainframe: 70%"]:::mainframe
+        p2c["Cloud: 30%"]:::cloud
+    end
+    
+    subgraph phase3["Phase 3"]
+        p3m["Mainframe: 40%"]:::mainframe
+        p3c["Cloud: 60%"]:::cloud
+    end
+    
+    subgraph phase4["Phase 4"]
+        p4m["Mainframe: 10%"]:::mainframe
+        p4c["Cloud: 90%"]:::cloud
+    end
+    
+    title --> phase1 --> phase2 --> phase3 --> phase4
+    
+    classDef mainframe fill:#0066cc,color:white
+    classDef cloud fill:#00cc66,color:white
 ```
 
 ## 🛠️ Implementation Steps
