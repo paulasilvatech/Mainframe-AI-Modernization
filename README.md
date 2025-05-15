@@ -14,12 +14,6 @@ This technical implementation guide serves as a complete resource for IT profess
 
 The playbook offers detailed implementation guidance for both GitHub and Azure DevOps integration paths, allowing teams to select the platform that best suits their requirements.
 
-## 🏗️ Architecture Overview
-
-![Architecture Overview](images/architecture-overview.svg)
-
-This diagram illustrates the high-level architecture of the mainframe modernization approach using Azure AI Foundry with GitHub integration.
-
 ## 👥 Who is this playbook for?
 
 - 💻 Mainframe developers and administrators
