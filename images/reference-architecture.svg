@@ -3,11 +3,11 @@
   <rect width="1000" height="850" fill="#f0f8ff"/>
   <rect x="40" y="40" width="920" height="770" fill="#ffffff" stroke="#0078d4" stroke-width="3" rx="10" ry="10"/>
   <rect x="40" y="40" width="920" height="50" fill="#0078d4" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
-  <text x="500" y="72" font-family="'Segoe UI', Arial, sans-serif" font-size="18px" font-weight="bold" fill="white" text-anchor="middle">AZURE CLOUD</text>
+  <text x="500" y="72" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="white" text-anchor="middle">AZURE CLOUD</text>
   
   <rect x="65" y="110" width="870" height="680" fill="#f7faff" stroke="#0078d4" stroke-width="2" stroke-dasharray="5,5" rx="8" ry="8"/>
   <rect x="65" y="110" width="870" height="50" fill="#0078d4" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
-  <text x="500" y="142" font-family="'Segoe UI', Arial, sans-serif" font-size="18px" font-weight="bold" fill="white" text-anchor="middle">AZURE AI FOUNDRY</text>
+  <text x="500" y="142" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="white" text-anchor="middle">AZURE AI FOUNDRY</text>
   
-  <text x="500" y="425" font-family="'Segoe UI', Arial, sans-serif" font-size="24px" font-weight="bold" fill="#0078d4" text-anchor="middle">Reference Architecture</text>
+  <text x="500" y="425" font-family="Arial, sans-serif" font-size="24px" font-weight="bold" fill="#0078d4" text-anchor="middle">Reference Architecture</text>
 </svg> 
