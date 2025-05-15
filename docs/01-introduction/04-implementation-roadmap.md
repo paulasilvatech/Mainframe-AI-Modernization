@@ -6,22 +6,7 @@ This document provides a comprehensive implementation roadmap for Azure AI Found
 
 The implementation of Azure AI Foundry follows a structured approach with defined phases:
 
-```
-┌────────────────┐     ┌────────────────┐     ┌────────────────┐     ┌────────────────┐
-│                │     │                │     │                │     │                │
-│  Discovery &   │────▶│   Foundation   │────▶│ Development &  │────▶│  Integration   │
-│  Assessment    │     │     Setup      │     │ Code Analysis  │     │     Setup      │
-│                │     │                │     │                │     │                │
-└────────────────┘     └────────────────┘     └────────────────┘     └────────────────┘
-                                                                             │
-                                                                             ▼
-┌────────────────┐     ┌────────────────┐     ┌────────────────┐     ┌────────────────┐
-│                │     │                │     │                │     │                │
-│    Hybrid      │◀────│  Deployment &  │◀────│     CI/CD      │◀────│ Transformation │
-│   Operations   │     │  Risk Mgmt     │     │ Implementation │     │Implementation  │
-│                │     │                │     │                │     │                │
-└────────────────┘     └────────────────┘     └────────────────┘     └────────────────┘
-```
+<img src="../../images/implementation-roadmap.svg" alt="Implementation Roadmap" width="900" style="background-color: white; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" />
 
 ### Phase 1: Discovery and Assessment
 
