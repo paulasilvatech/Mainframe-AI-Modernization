@@ -17,8 +17,6 @@ Key architectural goals include:
 | DevOps Integration | Seamless integration with modern CI/CD tools and processes |
 | Scalability | Ability to handle large-scale modernization initiatives |
 
-![Architecture Overview](../../images/architecture-overview.svg)
-
 ## 🏗️ Reference Architecture
 
 The following diagram illustrates the comprehensive reference architecture for Azure AI Foundry integration with mainframe systems:
