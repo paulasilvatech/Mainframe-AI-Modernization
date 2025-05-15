@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="1000" height="850" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions first -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0078d4"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
   <rect width="1000" height="850" fill="#f0f8ff"/>
+  
+  <!-- Azure Cloud (Outer Container) -->
   <rect x="40" y="40" width="920" height="770" fill="#ffffff" stroke="#0078d4" stroke-width="3" rx="10" ry="10"/>
   <rect x="40" y="40" width="920" height="50" fill="#0078d4" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
   <text x="500" y="72" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="white" text-anchor="middle">AZURE CLOUD</text>
   
+  <!-- Azure AI Foundry Container -->
   <rect x="65" y="110" width="870" height="680" fill="#f7faff" stroke="#0078d4" stroke-width="2" stroke-dasharray="5,5" rx="8" ry="8"/>
   <rect x="65" y="110" width="870" height="50" fill="#0078d4" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
   <text x="500" y="142" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="white" text-anchor="middle">AZURE AI FOUNDRY</text>
@@ -31,13 +42,6 @@
   <path d="M 390 280 L 390 330 L 500 330 L 500 360" stroke="#0078d4" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
   <path d="M 590 280 L 590 330 L 500 330 L 500 360" stroke="#0078d4" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
   <path d="M 790 280 L 790 330 L 500 330 L 500 360" stroke="#0078d4" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-  
-  <!-- Arrow markers definition -->
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#0078d4"/>
-    </marker>
-  </defs>
   
   <!-- AI Foundation Services Container -->
   <rect x="100" y="360" width="780" height="190" fill="#f7faff" stroke="#0078d4" stroke-width="2" stroke-dasharray="5,5" rx="8" ry="8"/>
