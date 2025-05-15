@@ -9,5 +9,79 @@
   <rect x="65" y="110" width="870" height="50" fill="#0078d4" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
   <text x="500" y="142" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="white" text-anchor="middle">AZURE AI FOUNDRY</text>
   
-  <text x="500" y="425" font-family="Arial, sans-serif" font-size="24px" font-weight="bold" fill="#0078d4" text-anchor="middle">Reference Architecture</text>
+  <!-- Intelligence Services Row -->
+  <rect x="100" y="180" width="180" height="100" fill="#f0f6ff" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="190" y="220" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Code</text>
+  <text x="190" y="245" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Intelligence</text>
+  
+  <rect x="300" y="180" width="180" height="100" fill="#f0f6ff" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="390" y="220" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Translation</text>
+  <text x="390" y="245" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Services</text>
+  
+  <rect x="500" y="180" width="180" height="100" fill="#f0f6ff" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="590" y="220" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Risk</text>
+  <text x="590" y="245" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Intelligence</text>
+  
+  <rect x="700" y="180" width="180" height="100" fill="#f0f6ff" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="790" y="220" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Operational</text>
+  <text x="790" y="245" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Intelligence</text>
+  
+  <!-- Arrows from Intelligence Services to AI Foundation Services -->
+  <path d="M 190 280 L 190 330 L 500 330 L 500 360" stroke="#0078d4" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 390 280 L 390 330 L 500 330 L 500 360" stroke="#0078d4" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 590 280 L 590 330 L 500 330 L 500 360" stroke="#0078d4" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 790 280 L 790 330 L 500 330 L 500 360" stroke="#0078d4" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow markers definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0078d4"/>
+    </marker>
+  </defs>
+  
+  <!-- AI Foundation Services Container -->
+  <rect x="100" y="360" width="780" height="190" fill="#f7faff" stroke="#0078d4" stroke-width="2" stroke-dasharray="5,5" rx="8" ry="8"/>
+  <rect x="100" y="360" width="780" height="50" fill="#0078d4" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="500" y="392" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="white" text-anchor="middle">AI FOUNDATION SERVICES</text>
+  
+  <rect x="130" y="430" width="200" height="100" fill="#f0f6ff" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="230" y="470" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Azure OpenAI</text>
+  <text x="230" y="495" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Service</text>
+  
+  <rect x="390" y="430" width="200" height="100" fill="#f0f6ff" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="490" y="470" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Azure Cognitive</text>
+  <text x="490" y="495" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Services</text>
+  
+  <rect x="650" y="430" width="200" height="100" fill="#f0f6ff" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="750" y="470" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Azure Machine</text>
+  <text x="750" y="495" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Learning Service</text>
+  
+  <!-- Integration and Platform Services Row -->
+  <rect x="100" y="580" width="380" height="190" fill="#f7faff" stroke="#0078d4" stroke-width="2" stroke-dasharray="5,5" rx="8" ry="8"/>
+  <rect x="100" y="580" width="380" height="50" fill="#0078d4" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="290" y="612" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="white" text-anchor="middle">INTEGRATION SERVICES</text>
+  
+  <rect x="125" y="640" width="100" height="110" fill="#f0f6ff" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="175" y="685" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Azure</text>
+  <text x="175" y="710" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Functions</text>
+  
+  <rect x="240" y="640" width="100" height="110" fill="#f0f6ff" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="290" y="685" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Azure</text>
+  <text x="290" y="710" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Logic Apps</text>
+  
+  <rect x="355" y="640" width="100" height="110" fill="#f0f6ff" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="405" y="685" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Azure API</text>
+  <text x="405" y="710" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Management</text>
+  
+  <rect x="500" y="580" width="380" height="190" fill="#f7faff" stroke="#0078d4" stroke-width="2" stroke-dasharray="5,5" rx="8" ry="8"/>
+  <rect x="500" y="580" width="380" height="50" fill="#0078d4" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="690" y="612" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="white" text-anchor="middle">PLATFORM SERVICES</text>
+  
+  <rect x="525" y="640" width="150" height="110" fill="#f0f6ff" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="600" y="685" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">GitHub or</text>
+  <text x="600" y="710" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Azure DevOps</text>
+  
+  <rect x="700" y="640" width="150" height="110" fill="#f0f6ff" stroke="#0078d4" stroke-width="2" rx="5" ry="5"/>
+  <text x="775" y="685" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Azure</text>
+  <text x="775" y="710" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0078d4" text-anchor="middle">Monitor</text>
 </svg> 
