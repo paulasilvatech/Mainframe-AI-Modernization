@@ -77,6 +77,8 @@ The CI/CD pipeline accommodates platform-specific requirements while maintaining
 
 See the [mainframe-cicd-workflow.yml](../../templates/workflows/mainframe-cicd-workflow.yml) template for the implementation details of this pipeline.
 
+For detailed GitHub Actions workflow implementations for different mainframe platforms, see the [GitHub Actions Workflows](github-actions-workflows.md) document.
+
 ## Next Steps
 
 - Configure the CI/CD pipeline for your specific mainframe environment
