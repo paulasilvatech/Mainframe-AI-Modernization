@@ -141,7 +141,7 @@
   </style>
   
   <!-- Title -->
-  <text x="550" y="45" class="text-title">Inventory Architecture</text>
+  <text x="550" y="45" class="text-title">Inventory Architecture v2.0</text>
   <text x="550" y="70" class="text-subtitle">Azure AI Foundry for Multi-Vendor Mainframe Modernization</text>
   
   <!-- Main Container -->
