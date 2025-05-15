@@ -32,16 +32,17 @@ flowchart TD
     B --> C[Analyze Application Usage]
     C --> D[Map Dependencies]
     D --> E[Assess Modernization Potential]
+    E --> F[Generate Deliverables]
     
-    subgraph "Platform-Specific Analysis"
+    subgraph PlatformAnalysis["Platform-Specific Analysis"]
         P1[IBM z/OS]
         P2[Unisys ClearPath]
         P3[Bull GCOS]
         P4[NEC ACOS]
     end
     
-    B --> Platform-Specific Analysis
-    E --> F[Generate Deliverables]
+    B --> PlatformAnalysis
+    PlatformAnalysis --> E
 ```
 
 ## ✅ Technical Prerequisites

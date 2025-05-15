@@ -4,7 +4,7 @@ This document outlines the technical governance framework for mainframe moderniz
 
 ```mermaid
 flowchart TD
-    subgraph "Technical Steering Committee"
+    subgraph TSC["Technical Steering Committee"]
         EA["Enterprise Architect"]
         PTL["Platform Technical Leads"]
         CPA["Cloud Platform Architect"]
@@ -13,14 +13,14 @@ flowchart TD
         BDE["Business Domain Expert"]
     end
     
-    subgraph "Working Groups"
+    subgraph WG["Working Groups"]
         AWG["Architecture Working Group"]
         DWG["DevOps Working Group"] 
         SWG["Security Working Group"]
         AIWG["AI and Analytics Working Group"]
     end
     
-    subgraph "Decision Framework"
+    subgraph DF["Decision Framework"]
         DR["Decision Request"] --> IA["Impact Analysis"]
         IA --> DA["Decision Approval"]
         DR --> OE["Options Evaluation"]
@@ -29,8 +29,8 @@ flowchart TD
         DA --> VR
     end
     
-    Technical Steering Committee --> Working Groups
-    Working Groups --> Decision Framework
+    TSC --> WG
+    WG --> DF
 ```
 
 ## Governance Overview

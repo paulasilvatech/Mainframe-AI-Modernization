@@ -39,21 +39,33 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
 - Event Grid with mainframe integration
 
 **Diagram**:
-```
-    ┌─────────────────┐     ┌───────────────────┐     ┌─────────────────┐
-    │                 │     │                   │     │                 │
-    │   Mainframe     │◄───►│   Integration     │◄───►│   Azure Cloud   │
-    │   Systems       │     │   Gateway         │     │   Applications  │
-    │                 │     │                   │     │                 │
-    └─────────────────┘     └───────────────────┘     └─────────────────┘
-           ▲                         ▲                        ▲
-           │                         │                        │
-           ▼                         ▼                        ▼
-    ┌─────────────────┐     ┌───────────────────┐     ┌─────────────────┐
-    │   Mainframe     │     │                   │     │   Cloud         │
-    │   Data Stores   │◄───►│   Data Sync       │◄───►│   Data Stores   │
-    │                 │     │   Services        │     │                 │
-    └─────────────────┘     └───────────────────┘     └─────────────────┘
+
+```mermaid
+graph TD
+    subgraph MainframeLayer["Mainframe Environment"]
+        MS["Mainframe\nSystems"]
+        MDS["Mainframe\nData Stores"]
+    end
+    
+    subgraph IntegrationLayer["Integration Layer"]
+        IG["Integration\nGateway"]
+        DSS["Data Sync\nServices"]
+    end
+    
+    subgraph CloudLayer["Azure Cloud Environment"]
+        ACA["Azure Cloud\nApplications"]
+        CDS["Cloud\nData Stores"]
+    end
+    
+    MS <--> IG
+    IG <--> ACA
+    
+    MS <--> MDS
+    MDS <--> DSS
+    DSS <--> CDS
+    ACA <--> CDS
+    
+    IG <--> DSS
 ```
 
 ### 2. Service Virtualization
@@ -77,21 +89,15 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
 - Custom service virtualization layer
 
 **Diagram**:
-```
-                ┌─────────────────────────────────────┐
-                │        Service Virtualization       │
-                │                Layer                │
-                └─────────────────────────────────────┘
-                              ▲  ▲
-                              │  │
-                 ┌────────────┘  └─────────────┐
-                 │                             │
-    ┌────────────▼─────────┐     ┌────────────▼─────────┐
-    │                      │     │                      │
-    │  Mainframe Service   │     │   Cloud Service      │
-    │  Implementation      │     │   Implementation     │
-    │                      │     │                      │
-    └──────────────────────┘     └──────────────────────┘
+```mermaid
+graph TD
+    SVL["Service Virtualization Layer"] 
+    
+    MSI["Mainframe Service\nImplementation"]
+    CSI["Cloud Service\nImplementation"]
+    
+    SVL --> MSI
+    SVL --> CSI
 ```
 
 ### 3. Data Synchronization
@@ -141,24 +147,37 @@ Hybrid operations refers to the concurrent management of both legacy mainframe s
 - Monitoring-driven automation
 
 **Diagram**:
-```
-    Traffic Distribution During Progressive Migration
-
-    Phase 1: 90% Mainframe, 10% Cloud (New Features)
-    [███████████████████████████████████]  Mainframe
-    [███]  Cloud
-
-    Phase 2: 70% Mainframe, 30% Cloud
-    [█████████████████████████]  Mainframe
-    [█████████]  Cloud
-
-    Phase 3: 40% Mainframe, 60% Cloud
-    [████████████████]  Mainframe
-    [████████████████████████]  Cloud
-
-    Phase 4: 10% Mainframe, 90% Cloud (Legacy Features)
-    [███]  Mainframe
-    [███████████████████████████████████]  Cloud
+```mermaid
+graph TD
+    subgraph "Traffic Distribution During Progressive Migration"
+        subgraph "Phase 1: 90% Mainframe, 10% Cloud"
+            P1M["Mainframe: 90%"]
+            P1C["Cloud: 10%"]
+            style P1M fill:#0066cc,color:white,width:270px
+            style P1C fill:#00cc66,color:white,width:30px
+        end
+        
+        subgraph "Phase 2: 70% Mainframe, 30% Cloud"
+            P2M["Mainframe: 70%"]
+            P2C["Cloud: 30%"]
+            style P2M fill:#0066cc,color:white,width:210px
+            style P2C fill:#00cc66,color:white,width:90px
+        end
+        
+        subgraph "Phase 3: 40% Mainframe, 60% Cloud"
+            P3M["Mainframe: 40%"]
+            P3C["Cloud: 60%"]
+            style P3M fill:#0066cc,color:white,width:120px
+            style P3C fill:#00cc66,color:white,width:180px
+        end
+        
+        subgraph "Phase 4: 10% Mainframe, 90% Cloud"
+            P4M["Mainframe: 10%"]
+            P4C["Cloud: 90%"]
+            style P4M fill:#0066cc,color:white,width:30px
+            style P4C fill:#00cc66,color:white,width:270px
+        end
+    end
 ```
 
 ## 🛠️ Implementation Steps

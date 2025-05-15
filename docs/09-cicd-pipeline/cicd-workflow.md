@@ -8,7 +8,7 @@ The following diagram illustrates the CI/CD pipeline architecture:
 
 ```mermaid
 graph TD
-    subgraph "CI/CD Pipeline"
+    subgraph CICD["CI/CD Pipeline"]
         A["Source Code"] --> B["AI Analysis"]
         B --> C["Platform-Specific Build"]
         C --> D["Automated Testing"]
@@ -17,15 +17,15 @@ graph TD
         E --> F
     end
     
-    subgraph "Platform-Specific Components"
+    subgraph PSC["Platform-Specific Components"]
         P1["IBM z/OS\n(COBOL, PL/I, JCL)"]
         P2["Unisys ClearPath\n(COBOL, Algol, WFL)"]
         P3["Bull GCOS\n(COBOL, GCL)"]
         P4["NEC ACOS\n(COBOL, NCL)"]
     end
     
-    C --> Platform-Specific Components
-    Platform-Specific Components --> D
+    C --> PSC
+    PSC --> D
 ```
 
 ## CI/CD Pipeline Stages
