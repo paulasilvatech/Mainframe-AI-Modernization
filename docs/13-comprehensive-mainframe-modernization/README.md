@@ -38,6 +38,8 @@ IBM z/OS mainframe modernization follows specific transformation paths:
 | Hybrid Cloud Integration | IBM Z and Cloud Modernization Stack |
 | AI-Assisted Refactoring | IBM watsonx Code Assistant for Z |
 
+For detailed implementation steps, see the [IBM z/OS Implementation Guide](ibm-zos-implementation.md).
+
 ### 2. Unisys ClearPath
 
 Unisys ClearPath modernization focuses on hardware independence and cloud readiness:
@@ -48,6 +50,8 @@ Unisys ClearPath modernization focuses on hardware independence and cloud readin
 | Hardware Modernization | ClearPath Forward systems |
 | Application Extension | ClearPath ePortal for web and mobile interfaces |
 | Fabric Architecture | Integrating multiple operating environments |
+
+For detailed implementation steps, see the [Unisys ClearPath Implementation Guide](unisys-clearpath-implementation.md).
 
 ### 3. Bull GCOS
 
@@ -60,6 +64,8 @@ Bull GCOS modernization, led by Atos, focuses on hardware virtualization and inc
 | LiberFactory Suite | Enables application modernization |
 | Migration+ Toolset | Provides automated code analysis capabilities |
 
+For detailed implementation steps, see the [Bull GCOS Implementation Guide](bull-gcos-implementation.md).
+
 ### 4. NEC ACOS
 
 NEC ACOS modernization follows a distinct path reflecting its Japanese market focus:
@@ -70,6 +76,8 @@ NEC ACOS modernization follows a distinct path reflecting its Japanese market fo
 | iPackage Integration | Connects ACOS applications to web environments |
 | Parallel Processing | ACOS-4/XVP PX implementations |
 | Development Environment | Modernization through CASEWORLD/PE tools |
+
+For detailed implementation steps, see the [NEC ACOS Implementation Guide](nec-acos-implementation.md).
 
 ## 💻 Programming Language Modernization
 

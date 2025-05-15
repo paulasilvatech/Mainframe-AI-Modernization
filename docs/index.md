@@ -13,7 +13,8 @@
 - **🔄 Azure DevOps Pipelines**: [Chapter 14](14-cicd-pipeline-implementations/azure-devops-pipelines.md)
 - **🟠 AWS Integration**: [Chapter 13](13-comprehensive-mainframe-modernization/README.md#2-aws-integration)
 
-## 🔤 B
+## �� B
+- **🔴 Bull GCOS Implementation**: [Chapter 13](13-comprehensive-mainframe-modernization/bull-gcos-implementation.md)
 - **🔴 Bull GCOS Modernization**: [Chapter 13](13-comprehensive-mainframe-modernization/README.md#3-bull-gcos)
 - **📋 Business Rules Extraction**: [Chapter 5](05-code-analysis/README.md), [Chapter 8](08-ai-transformation/README.md), [Chapter 12.2](12-agent-based-modernization/README.md)
 - **🔵 Blue-Green Deployment**: [Chapter 14](14-cicd-pipeline-implementations/deployment-strategies.md#blue-green-deployment)
@@ -62,6 +63,7 @@
 
 ## 🔤 N
 - **📗 Natural Modernization**: [Chapter 13](13-comprehensive-mainframe-modernization/README.md#4-natural-modernization)
+- **🟣 NEC ACOS Implementation**: [Chapter 13](13-comprehensive-mainframe-modernization/nec-acos-implementation.md)
 - **🟣 NEC ACOS Modernization**: [Chapter 13](13-comprehensive-mainframe-modernization/README.md#4-nec-acos)
 
 ## 🔤 P
@@ -84,6 +86,7 @@
 - **✅ Test Engineer Agent**: [Chapter 12.2](12-agent-based-modernization/README.md#122-agent-architecture-and-roles)
 
 ## 🔤 U
+- **🔶 Unisys ClearPath Implementation**: [Chapter 13](13-comprehensive-mainframe-modernization/unisys-clearpath-implementation.md)
 - **🔶 Unisys ClearPath Modernization**: [Chapter 13](13-comprehensive-mainframe-modernization/README.md#2-unisys-clearpath)
 
 ## 🔤 W
