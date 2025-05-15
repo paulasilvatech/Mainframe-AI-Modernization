@@ -26,6 +26,11 @@
       <stop offset="0%" stopColor="#059669" stopOpacity="0.9" />
       <stop offset="100%" stopColor="#10B981" stopOpacity="0.9" />
     </linearGradient>
+    
+    <!-- Arrow markers moved to beginning of defs -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94A3B8" />
+    </marker>
   </defs>
   
   <!-- Mainframe Platforms -->
@@ -100,11 +105,4 @@
   
   <rect x="550" y="600" width="120" height="20" rx="3" fill="white" fill-opacity="0.2" />
   <text x="610" y="615" text-anchor="middle" fill="white" font-size="12">On-Premises</text>
-  
-  <!-- Arrow markers -->
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#94A3B8" />
-    </marker>
-  </defs>
 </svg> 
