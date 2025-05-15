@@ -1,6 +1,6 @@
-# ☁️ Azure Cloud Integration for Mainframe Modernization
+# ☁️ Azure Cloud Integration Guide
 
-This document provides technical guidance and examples for integrating mainframe applications with Azure cloud services.
+This technical guide provides detailed implementation steps for integrating mainframe applications with Azure cloud services across multiple mainframe platforms.
 
 ## 📋 Overview
 

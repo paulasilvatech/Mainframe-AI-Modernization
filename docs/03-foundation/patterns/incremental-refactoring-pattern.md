@@ -1,4 +1,4 @@
-# Incremental Refactoring Pattern
+# 🧩 Incremental Refactoring Pattern
 
 ![Incremental Refactoring Pattern](../../../images/incremental-refactoring-pattern.svg)
 

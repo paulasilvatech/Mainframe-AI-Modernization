@@ -1,4 +1,4 @@
-# Governance Framework
+# 🛡️ Governance Framework
 
 This document outlines the technical governance framework for mainframe modernization initiatives across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS) using Azure AI Foundry.
 

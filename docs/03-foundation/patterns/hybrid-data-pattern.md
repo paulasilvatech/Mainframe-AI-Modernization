@@ -1,4 +1,4 @@
-# Hybrid Data Pattern
+# 🔄 Hybrid Data Pattern
 
 ![Hybrid Data Pattern](../../../images/hybrid-data-pattern.svg)
 

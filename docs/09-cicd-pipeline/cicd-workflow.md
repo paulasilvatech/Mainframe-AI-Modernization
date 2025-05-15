@@ -1,4 +1,4 @@
-# CI/CD Pipeline Workflow
+# 🔄 CI/CD Pipeline Workflow
 
 This document provides a visual representation of the CI/CD pipeline workflow for mainframe modernization across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS).
 

@@ -1,4 +1,4 @@
-# Mainframe Dependency Mapping
+# 🔗 Dependency Mapping with AI Foundry
 
 This guide explains how to use the dependency mapping tool to analyze mainframe applications across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS) and identify relationships between components for modernization planning.
 

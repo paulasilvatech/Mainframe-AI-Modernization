@@ -1,4 +1,4 @@
-# 📘 Glossary of Terms
+# 📚 Glossary
 
 This glossary provides definitions for key terms used throughout the Azure AI Foundry Mainframe Modernization Playbook.
 

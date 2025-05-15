@@ -1,4 +1,4 @@
-# Mainframe Modernization Patterns
+# 📋 Mainframe Modernization Patterns
 
 This section provides detailed documentation on proven patterns for mainframe modernization using Azure AI Foundry. Each pattern addresses specific modernization scenarios and can be combined as part of your overall modernization strategy.
 

@@ -1,4 +1,4 @@
-# Containerized Rehosting Pattern
+# 📦 Containerized Rehosting Pattern
 
 ![Containerized Rehosting Pattern](../../../images/containerized-rehosting-pattern.svg)
 

@@ -1,4 +1,4 @@
-# Reference Architecture
+# 🏛️ Reference Architecture
 
 This document provides a comprehensive reference architecture for IBM z/OS mainframe modernization using Azure AI Foundry with GitHub and Azure DevOps integration.
 

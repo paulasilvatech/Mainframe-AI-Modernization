@@ -1,6 +1,6 @@
-# 🔄 COBOL to Java Transformation Examples
+# 📊 COBOL to Java Transformation Examples
 
-This document provides detailed examples of AI-assisted COBOL to Java transformations to demonstrate how complex legacy code can be modernized while preserving business logic.
+This technical guide provides detailed examples of COBOL to Java transformations for mainframe modernization across multiple platforms.
 
 ## 📋 Overview
 

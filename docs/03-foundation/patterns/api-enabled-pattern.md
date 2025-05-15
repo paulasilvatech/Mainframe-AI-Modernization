@@ -1,8 +1,8 @@
-# API-Enabled Mainframe Pattern
+# 🔌 API-Enabled Mainframe Pattern
 
 ![API-Enabled Pattern](../../../images/api-enabled-pattern.svg)
 
-This pattern enables organizations to expose mainframe functionality through modern APIs, creating a bridge between legacy systems and modern applications.
+This pattern documents the technical approach for exposing mainframe functionality via modern APIs while preserving the core mainframe applications across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS).
 
 ## Overview
 

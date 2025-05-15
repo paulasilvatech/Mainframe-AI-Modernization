@@ -1,4 +1,4 @@
-# AI-Powered Assessment Criteria
+# 📊 AI-Powered Assessment Criteria
 
 This document details the technical assessment criteria used by Azure AI Foundry to evaluate mainframe applications across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS) for modernization.
 

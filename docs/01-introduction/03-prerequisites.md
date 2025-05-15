@@ -1,4 +1,4 @@
-# Installation Prerequisites for Azure AI Foundry
+# 📋 Installation Prerequisites for Azure AI Foundry
 
 This document outlines the prerequisites and requirements for implementing Azure AI Foundry with multiple mainframe platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS).
 

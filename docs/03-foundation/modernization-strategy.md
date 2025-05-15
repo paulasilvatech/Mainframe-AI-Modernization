@@ -2,9 +2,9 @@
   <img src="../../images/modernization-strategy.svg" alt="Modernization Strategy" width="800" height="600" />
 </div>
 
-# Mainframe Modernization Strategy Guide
+# 🎯 Modernization Strategy
 
-This guide outlines strategic approaches for modernizing IBM z/OS mainframe applications using Azure AI Foundry with GitHub and Azure DevOps integration.
+This document outlines the comprehensive strategy for mainframe modernization across multiple platforms (IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS) using Azure AI Foundry.
 
 ## Overview
 

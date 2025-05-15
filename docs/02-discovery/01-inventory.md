@@ -1,4 +1,4 @@
-# Mainframe Inventory Process
+# 📦 Mainframe Inventory Process
 
 ![Inventory Architecture](../../images/inventory-architecture.svg)
 

@@ -1,4 +1,4 @@
-# Azure AI Foundry Components for Multiple Mainframe Platforms
+# 🧩 Azure AI Foundry Components for Multiple Mainframe Platforms
 
 This document provides a detailed breakdown of Azure AI Foundry components for integrating with various mainframe platforms, including IBM z/OS, Unisys ClearPath, Bull GCOS, and NEC ACOS.
 

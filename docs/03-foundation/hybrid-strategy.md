@@ -1,6 +1,4 @@
-![Hybrid Strategy Portfolio Approach](../../images/hybrid-strategy.svg)
-
-# Hybrid Strategy Portfolio Approach
+# 🔀 Hybrid Strategy
 
 This document outlines the hybrid strategy portfolio approach for mainframe modernization, which allows organizations to apply different modernization strategies to different applications based on their business value and technical complexity.
 
