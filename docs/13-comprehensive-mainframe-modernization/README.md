@@ -251,8 +251,55 @@ The hybrid approach enables gradual evolution without disruption, allowing organ
 
 To effectively modernize your mainframe applications, we recommend a comprehensive strategy that combines multiple approaches based on application characteristics, business value, and technical complexity:
 
-<div align="center">
-  <img src="../../images/modernization-strategy.svg" alt="Mainframe Modernization Strategy Framework" width="800" height="600" />
-</div>
+```mermaid
+flowchart TD
+    title["Mainframe Modernization Strategy"]
+    
+    subgraph overview["Azure AI Foundry Approach"]
+        title
+    end
+    
+    subgraph approaches["Modernization Approaches"]
+        subgraph rehost["Rehost (Lift & Shift)"]
+            rhLabel["Complexity: Low\nTimeline: Short Term"]:::label
+            rh1["Mainframe Emulation Platform"]:::rehost
+            rh2["Minimal Code Changes"]:::rehost
+            rh3["Environment Simulation"]:::rehost
+            rh4["Rapid Migration"]:::rehost
+        end
+        
+        subgraph refactor["Refactor (Code Transformation)"]
+            rfLabel["Complexity: Medium\nTimeline: Medium Term"]:::label
+            rf1["Automated Code Conversion"]:::refactor
+            rf2["COBOL to Java/C#"]:::refactor
+            rf3["Business Logic Preservation"]:::refactor
+            rf4["Modern Environment"]:::refactor
+        end
+        
+        subgraph rearchitect["Rearchitect (Application Restructuring)"]
+            raLabel["Complexity: Medium-High\nTimeline: Long Term"]:::label
+            ra1["Microservices Transformation"]:::rearchitect
+            ra2["Domain-Driven Design"]:::rearchitect
+            ra3["API-First Approach"]:::rearchitect
+            ra4["Cloud-Native Patterns"]:::rearchitect
+        end
+        
+        subgraph replace["Replace (New Implementation)"]
+            rpLabel["Complexity: High\nTimeline: Strategic"]:::label
+            rp1["Modern Application Replacement"]:::replace
+            rp2["COTS / SaaS Solutions"]:::replace
+            rp3["Modern Development"]:::replace
+            rp4["Process Optimization"]:::replace
+        end
+    end
+    
+    overview --> approaches
+    
+    classDef label fill:#f5f5f5,stroke:#333
+    classDef rehost fill:#4b83e2,color:white
+    classDef refactor fill:#4cb58c,color:white
+    classDef rearchitect fill:#e29a4b,color:white
+    classDef replace fill:#828282,color:white
+```
 
-### Rehost (Lift & Shift) 
+## Rehost (Lift & Shift) 
