@@ -32,10 +32,10 @@
       "mainframePort": "{{mainframe_dev_port}}",
       "platformSpecific": {
         "zos": {
-          "loadLibrary": "DEV.LOADLIB",
-          "copyLibrary": "DEV.COPYLIB",
-          "jclLibrary": "DEV.PROCLIB",
-          "databaseName": "DEVDB01",
+      "loadLibrary": "DEV.LOADLIB",
+      "copyLibrary": "DEV.COPYLIB",
+      "jclLibrary": "DEV.PROCLIB",
+      "databaseName": "DEVDB01",
           "transactionPrefix": "DEV"
         },
         "clearpath": {
@@ -72,10 +72,10 @@
       "mainframePort": "{{mainframe_test_port}}",
       "platformSpecific": {
         "zos": {
-          "loadLibrary": "TEST.LOADLIB",
-          "copyLibrary": "TEST.COPYLIB",
-          "jclLibrary": "TEST.PROCLIB",
-          "databaseName": "TESTDB01",
+      "loadLibrary": "TEST.LOADLIB",
+      "copyLibrary": "TEST.COPYLIB",
+      "jclLibrary": "TEST.PROCLIB",
+      "databaseName": "TESTDB01",
           "transactionPrefix": "TST"
         },
         "clearpath": {
@@ -112,10 +112,10 @@
       "mainframePort": "{{mainframe_staging_port}}",
       "platformSpecific": {
         "zos": {
-          "loadLibrary": "STAGING.LOADLIB",
-          "copyLibrary": "STAGING.COPYLIB",
-          "jclLibrary": "STAGING.PROCLIB",
-          "databaseName": "STGDB01",
+      "loadLibrary": "STAGING.LOADLIB",
+      "copyLibrary": "STAGING.COPYLIB",
+      "jclLibrary": "STAGING.PROCLIB",
+      "databaseName": "STGDB01",
           "transactionPrefix": "STG"
         },
         "clearpath": {
@@ -152,10 +152,10 @@
       "mainframePort": "{{mainframe_prod_port}}",
       "platformSpecific": {
         "zos": {
-          "loadLibrary": "PROD.LOADLIB",
-          "copyLibrary": "PROD.COPYLIB",
-          "jclLibrary": "PROD.PROCLIB",
-          "databaseName": "PRODDB01",
+      "loadLibrary": "PROD.LOADLIB",
+      "copyLibrary": "PROD.COPYLIB",
+      "jclLibrary": "PROD.PROCLIB",
+      "databaseName": "PRODDB01",
           "transactionPrefix": "PRD"
         },
         "clearpath": {
@@ -194,32 +194,32 @@
   },
   "components": {
     "zos": {
-      "cobol": {
-        "deploymentType": "load-module",
-        "sourceExtension": ".cbl",
-        "objectExtension": ".load",
-        "verificationMethod": "runtime-test"
-      },
-      "pli": {
-        "deploymentType": "load-module",
-        "sourceExtension": ".pli",
-        "objectExtension": ".load",
-        "verificationMethod": "runtime-test"
-      },
-      "jcl": {
-        "deploymentType": "procedure",
-        "sourceExtension": ".jcl",
-        "verificationMethod": "syntax-check"
-      },
-      "copybook": {
-        "deploymentType": "source",
-        "sourceExtension": ".cpy",
-        "verificationMethod": "reference-check"
-      },
-      "dclgen": {
-        "deploymentType": "source",
-        "sourceExtension": ".dclgen",
-        "verificationMethod": "reference-check"
+    "cobol": {
+      "deploymentType": "load-module",
+      "sourceExtension": ".cbl",
+      "objectExtension": ".load",
+      "verificationMethod": "runtime-test"
+    },
+    "pli": {
+      "deploymentType": "load-module",
+      "sourceExtension": ".pli",
+      "objectExtension": ".load",
+      "verificationMethod": "runtime-test"
+    },
+    "jcl": {
+      "deploymentType": "procedure",
+      "sourceExtension": ".jcl",
+      "verificationMethod": "syntax-check"
+    },
+    "copybook": {
+      "deploymentType": "source",
+      "sourceExtension": ".cpy",
+      "verificationMethod": "reference-check"
+    },
+    "dclgen": {
+      "deploymentType": "source",
+      "sourceExtension": ".dclgen",
+      "verificationMethod": "reference-check"
       }
     },
     "clearpath": {

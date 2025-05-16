@@ -340,5 +340,5 @@ After completing dependency mapping:
 
 - [Mainframe Dependency Mapping Tool README](../code/dependency-mapping/README.md)
 - [Risk Assessment Integration](../10-risk-management/README.md)
-- [Modernization Planning Guide](../03-foundation/modernization-strategy.md)
+- [Modernization Planning Guide](../03-foundation/modernization-strategy.md) 
 - [Cross-Platform Integration Guide](../11-hybrid-operations/README.md) 

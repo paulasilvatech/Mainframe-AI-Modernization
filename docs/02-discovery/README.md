@@ -166,5 +166,5 @@ After completing this phase, continue to the [🏗️ Foundation Setup](../03-fo
 | [Azure AI Foundry Analysis Documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/analysis/) | Official documentation for analysis features |
 | [Business Rule Extraction Guide](https://learn.microsoft.com/en-us/azure/ai-foundry/business-rules/) | Guide for extracting business rules |
 | [Dependency Mapping Tools](https://learn.microsoft.com/en-us/azure/ai-foundry/dependency-mapping/) | Tools for mapping dependencies |
-| [Sample Analysis Reports](../../code/ai-foundry/code-analysis/sample-reports/) | Example reports for reference |
+| [Sample Analysis Reports](../../code/ai-foundry/code-analysis/sample-reports/) | Example reports for reference | 
 | [Platform-Specific Analysis Guides](https://learn.microsoft.com/en-us/azure/ai-foundry/platform-guides/) | Guides for analyzing specific mainframe platforms | 

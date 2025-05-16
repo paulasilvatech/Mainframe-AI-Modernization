@@ -112,7 +112,7 @@
 *.pli linguist-language=PLI
 *.jcl linguist-language=JCL
 *.asm linguist-language=Assembly
-*.rexx linguist-language=REXX
+*.rexx linguist-language=REXX 
 
 # Unisys ClearPath
 *.cob-unisys linguist-language=COBOL

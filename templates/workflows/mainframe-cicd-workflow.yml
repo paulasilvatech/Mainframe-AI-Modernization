@@ -221,9 +221,9 @@ jobs:
           # Platform-specific artifact handling
           case "${{ env.MAINFRAME_PLATFORM }}" in
             zos)
-              cp -r ${{ inputs.source-dir }}/cobol/*.load ./build-output/
-              cp -r ${{ inputs.source-dir }}/pl1/*.load ./build-output/
-              cp -r ${{ inputs.source-dir }}/jcl/*.jcl ./build-output/
+          cp -r ${{ inputs.source-dir }}/cobol/*.load ./build-output/
+          cp -r ${{ inputs.source-dir }}/pl1/*.load ./build-output/
+          cp -r ${{ inputs.source-dir }}/jcl/*.jcl ./build-output/
               ;;
             clearpath)
               cp -r ${{ inputs.source-dir }}/cobol/*.o ./build-output/

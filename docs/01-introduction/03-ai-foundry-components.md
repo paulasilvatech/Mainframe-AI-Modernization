@@ -256,5 +256,5 @@ Azure AI Foundry components can be deployed in multiple configurations for any m
 For detailed implementation guidance, continue to:
 - [Implementation Roadmap](04-implementation-roadmap.md)
 - [Discovery and Assessment](../02-discovery/README.md)
-- [Foundation Setup](../03-foundation/README.md)
+- [Foundation Setup](../03-foundation/README.md) 
 - [Platform-Specific Implementation Guides](../13-comprehensive-mainframe-modernization/README.md) 
