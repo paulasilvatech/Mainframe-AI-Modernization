@@ -387,6 +387,469 @@ The integrated analysis provides a comprehensive view of the application, combin
 | Regular Analysis | Run analysis regularly to track modernization progress |
 | Test Integration | Use extracted business rules to generate test cases |
 
+## 🤖 Agent-Based Code Analysis
+
+### Integration with MCP
+
+The AI-powered code analysis can be enhanced using MCP-enabled agents for more sophisticated analysis:
+
+```python
+# agents/code_analysis_orchestrator.py
+class AICodeAnalysisOrchestrator:
+    def __init__(self, mcp_client, ai_foundry_client):
+        self.mcp_client = mcp_client
+        self.ai_foundry_client = ai_foundry_client
+        self.agents = {
+            'structure': StructureAnalysisAgent(),
+            'complexity': ComplexityAnalysisAgent(),
+            'security': SecurityAnalysisAgent(),
+            'patterns': PatternDetectionAgent(),
+            'business_logic': BusinessLogicExtractionAgent()
+        }
+    
+    async def analyze_codebase(self, repository_path):
+        """Orchestrate parallel analysis using multiple specialized agents"""
+        # Discovery phase
+        files = await self.agents['structure'].discover_files(repository_path)
+        
+        # Parallel analysis phase
+        analysis_tasks = []
+        for file in files:
+            if file['language'] in ['COBOL', 'Natural', 'PL/I']:
+                # Create analysis tasks for each agent
+                analysis_tasks.extend([
+                    self.agents['structure'].analyze_structure(file),
+                    self.agents['complexity'].calculate_metrics(file),
+                    self.agents['security'].scan_vulnerabilities(file),
+                    self.agents['patterns'].detect_patterns(file),
+                    self.agents['business_logic'].extract_rules(file)
+                ])
+        
+        # Execute all analyses in parallel
+        results = await asyncio.gather(*analysis_tasks)
+        
+        # Aggregate and correlate results
+        return await self._aggregate_results(results)
+    
+    async def _aggregate_results(self, results):
+        """Aggregate results from multiple agents"""
+        aggregated = {
+            'summary': {},
+            'detailed_findings': {},
+            'recommendations': [],
+            'risk_assessment': {}
+        }
+        
+        # Use AI to synthesize findings
+        synthesis_prompt = self._build_synthesis_prompt(results)
+        ai_synthesis = await self.ai_foundry_client.analyze(synthesis_prompt)
+        
+        aggregated['summary'] = ai_synthesis
+        return aggregated
+```
+
+### Multi-Agent Analysis Example
+
+Here's how to implement multi-agent analysis for comprehensive code understanding:
+
+```python
+# agents/specialized_agents.py
+class COBOLAnalyzerAgent:
+    """Specialized agent for COBOL code analysis"""
+    
+    def __init__(self, mcp_context):
+        self.mcp_context = mcp_context
+        self.analyzer = COBOLParser()
+        
+    async def analyze(self, code_file):
+        """Deep COBOL-specific analysis"""
+        # Parse COBOL structure
+        ast = self.analyzer.parse(code_file)
+        
+        # Extract COBOL-specific patterns
+        patterns = {
+            'divisions': self._extract_divisions(ast),
+            'sections': self._extract_sections(ast),
+            'paragraphs': self._extract_paragraphs(ast),
+            'data_structures': self._extract_data_structures(ast),
+            'file_operations': self._extract_file_operations(ast),
+            'database_calls': self._extract_database_calls(ast),
+            'business_logic': self._extract_business_logic(ast)
+        }
+        
+        # Use MCP context for enhanced analysis
+        enhanced_analysis = await self.mcp_context.enhance_analysis(patterns)
+        
+        return {
+            'language': 'COBOL',
+            'file': code_file,
+            'patterns': patterns,
+            'enhanced_analysis': enhanced_analysis,
+            'complexity_score': self._calculate_complexity(ast),
+            'modernization_candidates': self._identify_modernization_opportunities(patterns)
+        }
+
+class NaturalAnalyzerAgent:
+    """Specialized agent for Natural/Adabas analysis"""
+    
+    async def analyze(self, code_file):
+        """Natural-specific analysis with Adabas considerations"""
+        # Parse Natural code
+        parsed = self.parser.parse(code_file)
+        
+        # Extract Natural-specific elements
+        analysis = {
+            'maps': self._extract_maps(parsed),
+            'ddms': self._extract_ddms(parsed),
+            'subprograms': self._extract_subprograms(parsed),
+            'database_access': self._analyze_adabas_access(parsed),
+            'mu_pe_fields': self._analyze_mu_pe_fields(parsed)
+        }
+        
+        # Identify migration complexities
+        analysis['migration_complexity'] = self._assess_migration_complexity(analysis)
+        
+        return analysis
+```
+
+### Production Agent Examples
+
+#### DiscoveryAgent with MCP
+
+```python
+class DiscoveryAgent:
+    """Enhanced discovery agent with MCP integration"""
+    
+    def __init__(self, mcp_client):
+        self.mcp_client = mcp_client
+        self.discovery_tools = ['file_scanner', 'dependency_mapper', 'catalog_reader']
+        
+    async def discover_mainframe_assets(self, source_path):
+        """Discover all mainframe assets with intelligent categorization"""
+        # Register with MCP server
+        await self.mcp_client.register_agent({
+            'name': 'discovery_agent',
+            'capabilities': ['file_discovery', 'dependency_mapping', 'catalog_analysis']
+        })
+        
+        # Execute discovery tools via MCP
+        discoveries = await self.mcp_client.execute_tool(
+            'comprehensive_discovery',
+            {'path': source_path, 'depth': 'full'}
+        )
+        
+        # Categorize and prioritize findings
+        categorized = await self._categorize_assets(discoveries)
+        
+        return {
+            'total_assets': len(discoveries),
+            'by_type': categorized,
+            'critical_programs': await self._identify_critical_programs(discoveries),
+            'recommended_order': await self._suggest_analysis_order(categorized)
+        }
+```
+
+#### TransformationAgent with AI Foundry
+
+```python
+class TransformationAgent:
+    """Intelligent transformation agent with AI Foundry integration"""
+    
+    def __init__(self, ai_foundry_client, mcp_client):
+        self.ai_foundry = ai_foundry_client
+        self.mcp = mcp_client
+        
+    async def transform_code(self, source_code, source_lang, target_lang):
+        """Transform code with AI assistance and validation"""
+        # Pre-transformation analysis
+        analysis = await self.mcp.execute_tool(
+            'pre_transform_analysis',
+            {'code': source_code, 'language': source_lang}
+        )
+        
+        # AI-powered transformation
+        transformation_prompt = self._build_transformation_prompt(
+            source_code, source_lang, target_lang, analysis
+        )
+        
+        transformed_code = await self.ai_foundry.transform(transformation_prompt)
+        
+        # Post-transformation validation
+        validation = await self._validate_transformation(
+            source_code, transformed_code, analysis['business_rules']
+        )
+        
+        return {
+            'success': validation['passed'],
+            'transformed_code': transformed_code,
+            'validation_results': validation,
+            'preserved_logic': validation['business_logic_preserved'],
+            'optimization_suggestions': await self._suggest_optimizations(transformed_code)
+        }
+```
+
+#### TestGeneratorAgent with Intelligent Test Selection
+
+```python
+class TestGeneratorAgent:
+    """AI-powered test generation agent"""
+    
+    async def generate_tests(self, code_analysis, transformation_result):
+        """Generate comprehensive test suites based on analysis"""
+        # Identify test scenarios from business rules
+        test_scenarios = await self._extract_test_scenarios(
+            code_analysis['business_rules']
+        )
+        
+        # Generate test cases for each scenario
+        test_suites = {}
+        for scenario in test_scenarios:
+            test_suite = await self._generate_test_suite(
+                scenario,
+                transformation_result['transformed_code']
+            )
+            test_suites[scenario['name']] = test_suite
+        
+        # Generate edge cases and negative tests
+        edge_cases = await self._generate_edge_cases(code_analysis)
+        
+        # Create test documentation
+        documentation = await self._document_tests(test_suites, edge_cases)
+        
+        return {
+            'test_suites': test_suites,
+            'edge_cases': edge_cases,
+            'coverage_estimate': self._estimate_coverage(test_suites, code_analysis),
+            'documentation': documentation,
+            'execution_order': self._optimize_execution_order(test_suites)
+        }
+```
+
+#### DeploymentAgent with Self-Healing
+
+```python
+class DeploymentAgent:
+    """Self-healing deployment agent"""
+    
+    async def deploy_with_intelligence(self, artifact, environment, strategy='canary'):
+        """Deploy with self-healing capabilities"""
+        # Assess deployment risk
+        risk_assessment = await self._assess_deployment_risk(artifact, environment)
+        
+        # Select optimal deployment strategy
+        deployment_strategy = await self._select_strategy(
+            risk_assessment, strategy, environment
+        )
+        
+        # Execute deployment with monitoring
+        deployment_id = await self._initiate_deployment(
+            artifact, environment, deployment_strategy
+        )
+        
+        # Monitor and heal if necessary
+        monitoring_task = asyncio.create_task(
+            self._monitor_and_heal(deployment_id)
+        )
+        
+        # Wait for deployment completion
+        result = await self._wait_for_completion(deployment_id, monitoring_task)
+        
+        return {
+            'deployment_id': deployment_id,
+            'status': result['status'],
+            'healing_actions': result.get('healing_actions', []),
+            'metrics': result['metrics'],
+            'recommendations': await self._generate_recommendations(result)
+        }
+```
+
+### Agent Orchestration Patterns
+
+#### Workflow Definitions
+
+```yaml
+# workflows/code_analysis_workflow.yaml
+name: Comprehensive Code Analysis Workflow
+version: 1.0
+
+agents:
+  - name: discovery_agent
+    type: DiscoveryAgent
+    config:
+      scan_depth: full
+      include_patterns: ["*.cbl", "*.nat", "*.pli", "*.jcl"]
+      
+  - name: structure_agent
+    type: StructureAnalysisAgent
+    config:
+      analysis_level: detailed
+      
+  - name: complexity_agent
+    type: ComplexityAnalysisAgent
+    config:
+      metrics: ["cyclomatic", "halstead", "maintainability"]
+      
+  - name: security_agent
+    type: SecurityAnalysisAgent
+    config:
+      scan_type: comprehensive
+      include_owasp: true
+
+workflow:
+  - stage: discovery
+    agent: discovery_agent
+    outputs: [file_list, dependency_map]
+    
+  - stage: parallel_analysis
+    parallel: true
+    agents:
+      - structure_agent
+      - complexity_agent
+      - security_agent
+    inputs:
+      files: discovery.file_list
+      
+  - stage: synthesis
+    agent: synthesis_agent
+    inputs:
+      structure: parallel_analysis.structure_agent
+      complexity: parallel_analysis.complexity_agent
+      security: parallel_analysis.security_agent
+```
+
+#### Python Orchestrator Implementation
+
+```python
+class AgentOrchestrator:
+    """Orchestrate multi-agent workflows"""
+    
+    def __init__(self, workflow_definition, mcp_client):
+        self.workflow = self._load_workflow(workflow_definition)
+        self.mcp = mcp_client
+        self.agents = {}
+        self.results = {}
+        
+    async def execute_workflow(self, context):
+        """Execute the defined workflow"""
+        # Initialize agents
+        await self._initialize_agents()
+        
+        # Execute workflow stages
+        for stage in self.workflow['stages']:
+            if stage.get('parallel'):
+                await self._execute_parallel_stage(stage, context)
+            else:
+                await self._execute_sequential_stage(stage, context)
+        
+        # Generate final report
+        return await self._generate_report()
+    
+    async def _execute_parallel_stage(self, stage, context):
+        """Execute multiple agents in parallel"""
+        tasks = []
+        for agent_name in stage['agents']:
+            agent = self.agents[agent_name]
+            inputs = self._prepare_inputs(stage, agent_name)
+            tasks.append(agent.execute(inputs, context))
+        
+        results = await asyncio.gather(*tasks)
+        
+        # Store results
+        for i, agent_name in enumerate(stage['agents']):
+            self.results[f"{stage['name']}.{agent_name}"] = results[i]
+```
+
+#### Error Handling and Recovery
+
+```python
+class ResilientOrchestrator(AgentOrchestrator):
+    """Orchestrator with error handling and recovery"""
+    
+    async def _execute_with_recovery(self, agent, task, max_retries=3):
+        """Execute agent task with automatic recovery"""
+        for attempt in range(max_retries):
+            try:
+                result = await agent.execute(task)
+                return result
+            except AgentException as e:
+                self.logger.warning(f"Agent error on attempt {attempt + 1}: {e}")
+                
+                # Try recovery strategy
+                recovery_strategy = self._select_recovery_strategy(e)
+                if recovery_strategy:
+                    await self._apply_recovery(recovery_strategy, agent, task)
+                    continue
+                    
+                if attempt == max_retries - 1:
+                    # Final attempt failed
+                    return await self._handle_failure(agent, task, e)
+    
+    def _select_recovery_strategy(self, error):
+        """Select appropriate recovery strategy based on error"""
+        if isinstance(error, ResourceExhaustedError):
+            return {'type': 'scale_resources', 'factor': 2}
+        elif isinstance(error, TimeoutError):
+            return {'type': 'increase_timeout', 'factor': 1.5}
+        elif isinstance(error, DependencyError):
+            return {'type': 'retry_with_fallback', 'fallback': 'cached_data'}
+        return None
+```
+
+### Performance Optimization
+
+```python
+class OptimizedAnalysisOrchestrator:
+    """Performance-optimized orchestrator for large codebases"""
+    
+    def __init__(self, mcp_client, config):
+        self.mcp = mcp_client
+        self.config = config
+        self.cache = AnalysisCache()
+        self.thread_pool = ThreadPoolExecutor(max_workers=config['max_workers'])
+        
+    async def analyze_large_codebase(self, codebase_path):
+        """Analyze large codebase with optimization"""
+        # Chunk the codebase
+        chunks = await self._chunk_codebase(codebase_path)
+        
+        # Process chunks in parallel with caching
+        chunk_results = []
+        for chunk in chunks:
+            # Check cache first
+            cached_result = await self.cache.get(chunk['hash'])
+            if cached_result:
+                chunk_results.append(cached_result)
+                continue
+            
+            # Process chunk
+            result = await self._process_chunk(chunk)
+            
+            # Cache result
+            await self.cache.set(chunk['hash'], result)
+            chunk_results.append(result)
+        
+        # Merge results
+        return await self._merge_results(chunk_results)
+    
+    async def _process_chunk(self, chunk):
+        """Process a chunk of code with optimized resource usage"""
+        # Distribute across available agents
+        available_agents = await self.mcp.get_available_agents('analysis')
+        
+        # Load balance across agents
+        agent = self._select_optimal_agent(available_agents, chunk)
+        
+        # Execute with resource monitoring
+        with ResourceMonitor() as monitor:
+            result = await agent.analyze(chunk)
+            
+        # Adjust resources if needed
+        if monitor.high_resource_usage():
+            await self._adjust_resources(agent)
+        
+        return result
+```
+
 ## ➡️ Next Steps
 
 After completing code analysis:
@@ -395,9 +858,13 @@ After completing code analysis:
 2. Set up [🐙 GitHub Integration](../06-github-integration/README.md) or [🔄 Azure DevOps Integration](../07-azure-devops-integration/README.md)
 3. Begin [🧠 AI-Powered Transformation](../08-ai-transformation/README.md) of selected components
 4. Implement [📦 CI/CD Pipelines](../09-cicd-implementation/README.md) for automated build and deployment
+5. Explore [🔌 MCP-Enabled Agent Architecture](../15-mcp-enabled-agent-architecture/README.md) for advanced orchestration
+6. Implement [🔧 Agentic DevOps](../16-agentic-devops/README.md) for self-healing pipelines
 
 ## 📚 References
 
 - [🔗 Dependency Mapping Guide](../02-discovery/dependency-mapping.md)
 - [⚠️ Risk Assessment Guide](../10-risk-management/README.md)
-- [🔄 Hybrid Operations Management](../11-hybrid-operations/README.md) 
+- [🔄 Hybrid Operations Management](../11-hybrid-operations/README.md)
+- [🤖 Agent-Based Mainframe Modernization](../12-agent-based-modernization/README.md)
+- [🔌 MCP-Enabled Agent Architecture](../15-mcp-enabled-agent-architecture/README.md) 

@@ -72,6 +72,20 @@ Follow these chapters in sequence to implement your mainframe modernization:
     - 🧪 Testing Automation Strategies
     - 🚀 Deployment Strategies (Blue-Green, Canary)
     - 🔧 Pipeline Templates and Matrix Testing Approaches
+15. [🔌 MCP-Enabled Agent Architecture](docs/15-mcp-enabled-agent-architecture/README.md)
+    - 🎯 Introduction to Model Context Protocol
+    - 🖥️ MCP Server Implementation for Mainframe
+    - 🤝 Multi-Agent Orchestration
+    - 🚀 Production MCP Deployment
+    - ☁️ Integration with Azure AI Platform
+    - 📋 Best Practices and Patterns
+16. [🔧 Agentic DevOps for Mainframe](docs/16-agentic-devops/README.md)
+    - 🏥 Self-Healing CI/CD Pipelines
+    - 🤖 Autonomous Pipeline Optimization
+    - 🎯 Intelligent Deployment Strategies
+    - 👷 SRE Agent Implementation
+    - 🐙 GitHub Actions Integration
+    - 📊 Monitoring and Continuous Learning
 
 ## 🧰 Implementation Resources
 

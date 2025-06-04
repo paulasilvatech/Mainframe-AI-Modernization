@@ -655,9 +655,638 @@ The agent-based approach to mainframe modernization represents a powerful enhanc
 
 This chapter has provided a comprehensive framework for implementing agent-based modernization within your organization, complementing the Azure AI Foundry and GitHub integration covered in previous chapters. By adopting this approach, you can accelerate your modernization journey, preserve critical institutional knowledge, and ensure a successful transition to modern platforms across all your mainframe systems.
 
+## 12.8 🔌 Advanced Agent Implementations with MCP
+
+### MCP Integration for Enhanced Agent Communication
+
+The Model Context Protocol (MCP) provides a powerful foundation for agent-based modernization. By integrating MCP, agents can communicate more efficiently and access specialized tools:
+
+```python
+# agents/mcp_enabled_agent.py
+from mcp_client import MCPClient
+from typing import Dict, Any, List
+import asyncio
+
+class MCPEnabledAgent:
+    """Base class for MCP-enabled agents"""
+    
+    def __init__(self, agent_name: str, capabilities: List[str]):
+        self.agent_name = agent_name
+        self.capabilities = capabilities
+        self.mcp_client = MCPClient()
+        
+    async def initialize(self):
+        """Register agent with MCP server"""
+        await self.mcp_client.register_agent({
+            'name': self.agent_name,
+            'type': self.__class__.__name__,
+            'capabilities': self.capabilities
+        })
+        
+    async def execute_tool(self, tool_name: str, params: Dict[str, Any]) -> Dict[str, Any]:
+        """Execute MCP tool"""
+        return await self.mcp_client.execute_tool(tool_name, params)
+```
+
+### Migration Path from Basic to MCP-Enabled Agents
+
+Transform your existing agents to leverage MCP capabilities:
+
+```python
+# Before: Basic Agent
+class BasicCOBOLAnalyzer:
+    def analyze(self, code):
+        # Direct analysis
+        return self._parse_cobol(code)
+
+# After: MCP-Enabled Agent
+class MCPCOBOLAnalyzer(MCPEnabledAgent):
+    def __init__(self):
+        super().__init__(
+            agent_name='cobol_analyzer',
+            capabilities=['cobol_analysis', 'pattern_detection', 'complexity_calculation']
+        )
+        
+    async def analyze(self, code: str) -> Dict[str, Any]:
+        # Use MCP context for enhanced analysis
+        context = await self.mcp_client.get_context('cobol')
+        
+        # Execute multiple tools in parallel via MCP
+        analysis_tasks = [
+            self.execute_tool('analyze_complexity', {'code': code}),
+            self.execute_tool('extract_business_logic', {'code': code}),
+            self.execute_tool('map_dependencies', {'code': code})
+        ]
+        
+        results = await asyncio.gather(*analysis_tasks)
+        
+        # Aggregate results with context awareness
+        return await self._aggregate_with_context(results, context)
+```
+
+### Production Agent Examples
+
+#### Advanced DiscoveryAgent with MCP
+
+```python
+class ProductionDiscoveryAgent(MCPEnabledAgent):
+    """Production-ready discovery agent with MCP integration"""
+    
+    def __init__(self):
+        super().__init__(
+            agent_name='discovery_agent',
+            capabilities=['file_discovery', 'catalog_analysis', 'dependency_mapping']
+        )
+        self.discovery_cache = {}
+        
+    async def discover_mainframe_portfolio(self, sources: List[str]) -> Dict[str, Any]:
+        """Comprehensive mainframe portfolio discovery"""
+        await self.initialize()
+        
+        discovery_results = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'sources': sources,
+            'assets': {},
+            'relationships': {},
+            'statistics': {}
+        }
+        
+        # Phase 1: Parallel source discovery
+        discovery_tasks = []
+        for source in sources:
+            discovery_tasks.append(self._discover_source(source))
+            
+        source_results = await asyncio.gather(*discovery_tasks)
+        
+        # Phase 2: Deep analysis with MCP tools
+        for idx, source in enumerate(sources):
+            assets = source_results[idx]
+            
+            # Categorize assets
+            categorized = await self.execute_tool(
+                'categorize_assets',
+                {'assets': assets, 'platform': self._detect_platform(assets)}
+            )
+            
+            discovery_results['assets'][source] = categorized
+            
+            # Map dependencies
+            dependencies = await self.execute_tool(
+                'map_dependencies',
+                {'assets': categorized, 'depth': 3}
+            )
+            
+            discovery_results['relationships'][source] = dependencies
+        
+        # Phase 3: Generate insights
+        discovery_results['statistics'] = await self._generate_statistics(discovery_results)
+        discovery_results['recommendations'] = await self._generate_recommendations(discovery_results)
+        
+        return discovery_results
+    
+    async def _discover_source(self, source: str) -> List[Dict[str, Any]]:
+        """Discover assets from a single source"""
+        # Check cache first
+        cache_key = f"discovery_{source}"
+        if cache_key in self.discovery_cache:
+            return self.discovery_cache[cache_key]
+            
+        # Execute discovery
+        assets = await self.execute_tool(
+            'scan_directory',
+            {'path': source, 'recursive': True, 'include_metadata': True}
+        )
+        
+        # Cache results
+        self.discovery_cache[cache_key] = assets
+        
+        return assets
+```
+
+#### Intelligent TransformationAgent with Learning
+
+```python
+class IntelligentTransformationAgent(MCPEnabledAgent):
+    """Advanced transformation agent with learning capabilities"""
+    
+    def __init__(self):
+        super().__init__(
+            agent_name='transformation_agent',
+            capabilities=['code_transformation', 'pattern_learning', 'optimization']
+        )
+        self.transformation_history = []
+        self.success_patterns = {}
+        
+    async def transform_with_learning(self, source_code: str, 
+                                    source_lang: str, 
+                                    target_lang: str,
+                                    business_context: Dict[str, Any]) -> Dict[str, Any]:
+        """Transform code with continuous learning"""
+        # Pre-transformation analysis
+        analysis = await self.execute_tool(
+            'analyze_transformation_complexity',
+            {
+                'source_code': source_code,
+                'source_lang': source_lang,
+                'target_lang': target_lang
+            }
+        )
+        
+        # Check for similar successful transformations
+        similar_patterns = await self._find_similar_patterns(analysis)
+        
+        # Build transformation strategy
+        strategy = await self._build_strategy(analysis, similar_patterns, business_context)
+        
+        # Execute transformation with strategy
+        transformation_result = await self.execute_tool(
+            'transform_code',
+            {
+                'source_code': source_code,
+                'source_language': source_lang,
+                'target_language': target_lang,
+                'strategy': strategy,
+                'preserve_comments': True,
+                'optimize': True
+            }
+        )
+        
+        # Validate transformation
+        validation = await self._validate_transformation(
+            source_code,
+            transformation_result['code'],
+            business_context
+        )
+        
+        # Learn from result
+        await self._learn_from_transformation(
+            analysis,
+            strategy,
+            validation
+        )
+        
+        return {
+            'success': validation['passed'],
+            'transformed_code': transformation_result['code'],
+            'validation': validation,
+            'confidence': self._calculate_confidence(validation),
+            'applied_patterns': strategy['patterns'],
+            'optimization_suggestions': await self._suggest_optimizations(
+                transformation_result['code'],
+                target_lang
+            )
+        }
+    
+    async def _build_strategy(self, analysis: Dict[str, Any], 
+                            similar_patterns: List[Dict[str, Any]],
+                            business_context: Dict[str, Any]) -> Dict[str, Any]:
+        """Build transformation strategy based on analysis and patterns"""
+        strategy = {
+            'approach': 'hybrid',  # hybrid, direct, or staged
+            'patterns': [],
+            'risk_mitigations': [],
+            'optimizations': []
+        }
+        
+        # Select transformation patterns
+        for pattern in similar_patterns:
+            if pattern['success_rate'] > 0.8:
+                strategy['patterns'].append({
+                    'id': pattern['id'],
+                    'confidence': pattern['success_rate'],
+                    'applicability': pattern['applicability_score']
+                })
+        
+        # Add risk mitigations based on complexity
+        if analysis['complexity_score'] > 0.7:
+            strategy['risk_mitigations'].extend([
+                'incremental_validation',
+                'parallel_testing',
+                'rollback_checkpoints'
+            ])
+            
+        # Include business context optimizations
+        if business_context.get('performance_critical'):
+            strategy['optimizations'].append('performance_tuning')
+            
+        return strategy
+```
+
+#### Comprehensive TestGeneratorAgent
+
+```python
+class ComprehensiveTestGeneratorAgent(MCPEnabledAgent):
+    """Test generation agent with comprehensive coverage"""
+    
+    def __init__(self):
+        super().__init__(
+            agent_name='test_generator',
+            capabilities=['test_generation', 'coverage_analysis', 'test_optimization']
+        )
+        
+    async def generate_comprehensive_tests(self, 
+                                         source_code: str,
+                                         transformed_code: str,
+                                         business_rules: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Generate comprehensive test suite"""
+        test_suite = {
+            'unit_tests': [],
+            'integration_tests': [],
+            'regression_tests': [],
+            'performance_tests': [],
+            'edge_cases': [],
+            'negative_tests': []
+        }
+        
+        # Analyze code for test scenarios
+        test_scenarios = await self.execute_tool(
+            'identify_test_scenarios',
+            {
+                'source_code': source_code,
+                'transformed_code': transformed_code,
+                'business_rules': business_rules
+            }
+        )
+        
+        # Generate tests for each scenario type
+        generation_tasks = []
+        
+        # Unit tests for each function/method
+        for scenario in test_scenarios['unit_scenarios']:
+            generation_tasks.append(
+                self._generate_unit_test(scenario, transformed_code)
+            )
+            
+        # Integration tests for system interactions
+        for scenario in test_scenarios['integration_scenarios']:
+            generation_tasks.append(
+                self._generate_integration_test(scenario, transformed_code)
+            )
+            
+        # Business rule validation tests
+        for rule in business_rules:
+            generation_tasks.append(
+                self._generate_business_rule_test(rule, transformed_code)
+            )
+            
+        # Execute all test generation in parallel
+        generated_tests = await asyncio.gather(*generation_tasks)
+        
+        # Organize tests by type
+        for test in generated_tests:
+            test_suite[test['type']].append(test)
+            
+        # Generate edge cases
+        edge_cases = await self.execute_tool(
+            'generate_edge_cases',
+            {'code': transformed_code, 'scenarios': test_scenarios}
+        )
+        test_suite['edge_cases'] = edge_cases
+        
+        # Calculate coverage
+        coverage = await self._calculate_coverage(test_suite, transformed_code)
+        
+        # Optimize test execution order
+        execution_order = await self._optimize_execution_order(test_suite)
+        
+        return {
+            'test_suite': test_suite,
+            'coverage': coverage,
+            'execution_order': execution_order,
+            'estimated_runtime': self._estimate_runtime(test_suite),
+            'test_documentation': await self._generate_documentation(test_suite)
+        }
+```
+
+#### Self-Healing DeploymentAgent
+
+```python
+class SelfHealingDeploymentAgent(MCPEnabledAgent):
+    """Deployment agent with self-healing capabilities"""
+    
+    def __init__(self):
+        super().__init__(
+            agent_name='deployment_agent',
+            capabilities=['deployment', 'monitoring', 'self_healing', 'rollback']
+        )
+        self.healing_strategies = self._load_healing_strategies()
+        
+    async def deploy_with_self_healing(self, 
+                                     artifact: Dict[str, Any],
+                                     environment: str,
+                                     deployment_config: Dict[str, Any]) -> Dict[str, Any]:
+        """Deploy with self-healing monitoring"""
+        deployment_id = str(uuid.uuid4())
+        
+        # Assess deployment risk
+        risk_assessment = await self.execute_tool(
+            'assess_deployment_risk',
+            {
+                'artifact': artifact,
+                'environment': environment,
+                'historical_data': await self._get_deployment_history(environment)
+            }
+        )
+        
+        # Select deployment strategy based on risk
+        strategy = await self._select_deployment_strategy(risk_assessment)
+        
+        # Initiate deployment
+        deployment_task = asyncio.create_task(
+            self._execute_deployment(deployment_id, artifact, environment, strategy)
+        )
+        
+        # Start monitoring with self-healing
+        monitoring_task = asyncio.create_task(
+            self._monitor_with_healing(deployment_id, strategy)
+        )
+        
+        # Wait for deployment to complete
+        deployment_result = await deployment_task
+        
+        # Continue monitoring for post-deployment issues
+        if deployment_result['status'] == 'success':
+            post_monitoring = asyncio.create_task(
+                self._post_deployment_monitoring(deployment_id, duration=300)  # 5 minutes
+            )
+            
+        # Cancel monitoring if still running
+        monitoring_task.cancel()
+        
+        return {
+            'deployment_id': deployment_id,
+            'status': deployment_result['status'],
+            'strategy_used': strategy,
+            'healing_actions': await self._get_healing_actions(deployment_id),
+            'metrics': deployment_result.get('metrics', {}),
+            'recommendations': await self._generate_recommendations(deployment_result)
+        }
+    
+    async def _monitor_with_healing(self, deployment_id: str, strategy: Dict[str, Any]):
+        """Monitor deployment and apply healing when needed"""
+        while True:
+            try:
+                # Get current deployment status
+                status = await self.execute_tool(
+                    'get_deployment_status',
+                    {'deployment_id': deployment_id}
+                )
+                
+                # Check for issues
+                issues = await self._detect_issues(status)
+                
+                if issues:
+                    # Apply healing strategies
+                    for issue in issues:
+                        healing_result = await self._apply_healing(deployment_id, issue)
+                        
+                        if not healing_result['success']:
+                            # Healing failed, consider rollback
+                            if issue['severity'] == 'critical':
+                                await self._initiate_rollback(deployment_id)
+                                break
+                
+                await asyncio.sleep(10)  # Check every 10 seconds
+                
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                self.logger.error(f"Monitoring error: {e}")
+```
+
+### Agent Orchestration Patterns
+
+#### Workflow Engine Implementation
+
+```python
+class AgentWorkflowEngine:
+    """Orchestrate complex agent workflows"""
+    
+    def __init__(self, mcp_client: MCPClient):
+        self.mcp_client = mcp_client
+        self.workflows = {}
+        self.execution_history = []
+        
+    async def execute_modernization_workflow(self, 
+                                           source_code: str,
+                                           source_metadata: Dict[str, Any]) -> Dict[str, Any]:
+        """Execute complete modernization workflow"""
+        workflow_id = str(uuid.uuid4())
+        workflow_context = {
+            'id': workflow_id,
+            'source_code': source_code,
+            'metadata': source_metadata,
+            'results': {},
+            'start_time': datetime.utcnow()
+        }
+        
+        try:
+            # Phase 1: Discovery and Analysis
+            discovery_result = await self._execute_phase(
+                'discovery',
+                DiscoveryAgent(),
+                workflow_context
+            )
+            workflow_context['results']['discovery'] = discovery_result
+            
+            # Phase 2: Parallel Analysis
+            analysis_agents = [
+                COBOLAnalyzerAgent(),
+                ComplexityAnalysisAgent(),
+                SecurityAnalysisAgent(),
+                BusinessLogicExtractionAgent()
+            ]
+            
+            analysis_results = await self._execute_parallel_phase(
+                'analysis',
+                analysis_agents,
+                workflow_context
+            )
+            workflow_context['results']['analysis'] = analysis_results
+            
+            # Phase 3: Transformation Planning
+            planning_result = await self._execute_phase(
+                'planning',
+                TransformationPlanningAgent(),
+                workflow_context
+            )
+            workflow_context['results']['planning'] = planning_result
+            
+            # Phase 4: Code Transformation
+            transformation_result = await self._execute_phase(
+                'transformation',
+                IntelligentTransformationAgent(),
+                workflow_context
+            )
+            workflow_context['results']['transformation'] = transformation_result
+            
+            # Phase 5: Test Generation
+            test_result = await self._execute_phase(
+                'testing',
+                ComprehensiveTestGeneratorAgent(),
+                workflow_context
+            )
+            workflow_context['results']['testing'] = test_result
+            
+            # Phase 6: Validation
+            validation_result = await self._execute_phase(
+                'validation',
+                ValidationAgent(),
+                workflow_context
+            )
+            workflow_context['results']['validation'] = validation_result
+            
+            # Generate final report
+            final_report = await self._generate_workflow_report(workflow_context)
+            
+            return {
+                'workflow_id': workflow_id,
+                'success': True,
+                'duration': (datetime.utcnow() - workflow_context['start_time']).total_seconds(),
+                'results': workflow_context['results'],
+                'report': final_report
+            }
+            
+        except Exception as e:
+            return {
+                'workflow_id': workflow_id,
+                'success': False,
+                'error': str(e),
+                'partial_results': workflow_context['results']
+            }
+```
+
+### Performance Optimization Strategies
+
+```python
+class OptimizedAgentCoordinator:
+    """Coordinator for optimized agent execution"""
+    
+    def __init__(self, mcp_client: MCPClient, config: Dict[str, Any]):
+        self.mcp_client = mcp_client
+        self.config = config
+        self.agent_pool = AgentPool(config['pool_size'])
+        self.cache = DistributedCache()
+        
+    async def process_large_portfolio(self, portfolio: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Process large mainframe portfolio with optimization"""
+        # Group programs by similarity for batch processing
+        program_groups = await self._group_similar_programs(portfolio)
+        
+        # Process groups in priority order
+        results = {}
+        for priority, group in enumerate(program_groups):
+            # Check if we can reuse patterns from previous groups
+            reusable_patterns = await self._find_reusable_patterns(group, results)
+            
+            # Process group with optimization
+            group_results = await self._process_group_optimized(
+                group,
+                reusable_patterns,
+                priority
+            )
+            
+            results[f"group_{priority}"] = group_results
+            
+            # Update pattern cache
+            await self._update_pattern_cache(group_results)
+        
+        return {
+            'total_programs': len(portfolio),
+            'groups_processed': len(program_groups),
+            'results': results,
+            'optimization_metrics': await self._calculate_optimization_metrics(results)
+        }
+    
+    async def _process_group_optimized(self, 
+                                     group: List[Dict[str, Any]],
+                                     patterns: Dict[str, Any],
+                                     priority: int) -> Dict[str, Any]:
+        """Process a group of similar programs with optimization"""
+        # Allocate agents based on priority
+        agent_allocation = self._calculate_agent_allocation(priority, len(group))
+        
+        # Create processing pipeline
+        pipeline = ProcessingPipeline(
+            stages=['analysis', 'transformation', 'validation'],
+            parallelism=agent_allocation
+        )
+        
+        # Process with caching and pattern reuse
+        results = []
+        for program in group:
+            # Check cache first
+            cache_key = self._generate_cache_key(program)
+            cached_result = await self.cache.get(cache_key)
+            
+            if cached_result and self._is_cache_valid(cached_result):
+                results.append(cached_result)
+                continue
+                
+            # Process with pattern optimization
+            result = await pipeline.process(
+                program,
+                context={'patterns': patterns, 'priority': priority}
+            )
+            
+            # Cache result
+            await self.cache.set(cache_key, result, ttl=3600)
+            results.append(result)
+        
+        return {
+            'programs_processed': len(results),
+            'cache_hits': sum(1 for r in results if r.get('from_cache')),
+            'results': results
+        }
+```
+
 ## ➡️ Next Steps
 
-With your agent-based modernization framework in place, revisit [📦 Chapter 9: CI/CD Implementation](../09-cicd-implementation/README.md) to integrate your agent-based components into your continuous integration and delivery pipelines. This integration will enable automated code analysis, transformation, and testing using the agent framework you've established.
+With your agent-based modernization framework in place and enhanced with MCP integration:
+
+1. Explore [🔌 Chapter 15: MCP-Enabled Agent Architecture](../15-mcp-enabled-agent-architecture/README.md) for deeper MCP implementation details
+2. Implement [🔧 Chapter 16: Agentic DevOps](../16-agentic-devops/README.md) for self-healing pipelines
+3. Revisit [📦 Chapter 9: CI/CD Implementation](../09-cicd-implementation/README.md) to integrate your agent-based components into your continuous integration and delivery pipelines
 
 For risk management considerations specific to agent-based approaches, proceed to [⚠️ Chapter 10: AI-Powered Risk Management](../10-risk-management/README.md) where you'll learn how to assess and mitigate risks in your modernization journey.
 
